@@ -448,11 +448,13 @@ nav.scrolled {
   background: rgba(39,174,96,0.12);
   border: 1px solid rgba(39,174,96,0.3);
   color: #4ade80;
-  padding: 5px 12px;
+  padding: 5px 14px;
   border-radius: 20px;
   font-size: 11px;
   font-weight: 600;
   margin-bottom: 20px;
+  white-space: nowrap;
+  text-align: center;
 }
 
 .work-badge::before {
@@ -1949,7 +1951,7 @@ footer {
         <p class="profile-skills" data-i18n="profile_skills">Documentary Credits · SWIFT · Nostro · TBML</p>
 
         <div class="cdcs-badge">🏅 CDCS® Certified · ICC</div>
-        <div class="work-badge" data-i18n="work_badge">Open to Work · Helsinki Metro Area</div>
+        <div class="work-badge" data-i18n="work_badge">Open to Work · Uusimaa, Fin</div>
 
         <div class="social-row">
           <a href="https://www.linkedin.com/in/ishtiak-ahmed-cdcs/" target="_blank"
@@ -2950,7 +2952,10 @@ fetchSubstackPosts();
 // ══════════════════════════════════════════════════════════════
 const TRANSLATIONS = {
   en: {
-    nav_certs: 'Certifications',
+    // Nav
+    nav_home: 'Home', nav_expertise: 'Expertise', nav_experience: 'Experience',
+    nav_research: 'Research', nav_writings: 'Writings', nav_education: 'Education',
+    nav_contact: 'Contact', nav_certs: 'Certifications',
     // Certifications section
     certs_label: 'Training & Development',
     certs_title: 'Certifications',
@@ -2965,7 +2970,7 @@ const TRANSLATIONS = {
     btn_cv: 'Download CV', btn_contact: 'Get in Touch',
     profile_role: 'Senior Trade Finance Professional · CDCS®',
     profile_skills: 'Documentary Credits · SWIFT · Nostro · TBML',
-    work_badge: 'Open to Work · Helsinki Metro Area',
+    work_badge: 'Open to Work · Helsinki',
     stat_years: 'Years Exp.', stat_ops: 'Annual Ops', stat_trained: 'Professionals Trained',
     // Expertise
     exp_label: 'Core Competencies', exp_title: 'Areas of Expertise',
@@ -3031,7 +3036,10 @@ const TRANSLATIONS = {
   },
 
   fi: {
-    nav_certs: 'Sertifikaatit',
+    // Nav
+    nav_home: 'Etusivu', nav_expertise: 'Osaaminen', nav_experience: 'Kokemus',
+    nav_research: 'Tutkimus', nav_writings: 'Kirjoitukset', nav_education: 'Koulutus',
+    nav_contact: 'Yhteystiedot', nav_certs: 'Sertifikaatit',
     // Certifications section
     certs_label: 'Koulutus ja kehitys',
     certs_title: 'Sertifikaatit',
@@ -3046,7 +3054,7 @@ const TRANSLATIONS = {
     btn_cv: 'Lataa CV', btn_contact: 'Ota yhteyttä',
     profile_role: 'Senior kaupparahoituksen ammattilainen · CDCS®',
     profile_skills: 'Remburssit · SWIFT · Nostro · TBML',
-    work_badge: 'Avoin töille · Helsingin seutu',
+    work_badge: 'Avoin töille · Helsinki',
     stat_years: 'Vuotta kokemusta', stat_ops: 'Vuosittaiset operaatiot', stat_trained: 'Koulutettua ammattilaista',
     // Expertise
     exp_label: 'Ydinosaaminen', exp_title: 'Asiantuntemusalueet',
@@ -3112,7 +3120,10 @@ const TRANSLATIONS = {
   },
 
   sv: {
-    nav_certs: 'Certifieringar',
+    // Nav
+    nav_home: 'Hem', nav_expertise: 'Kompetens', nav_experience: 'Erfarenhet',
+    nav_research: 'Forskning', nav_writings: 'Skrifter', nav_education: 'Utbildning',
+    nav_contact: 'Kontakt', nav_certs: 'Certifieringar',
     // Certifications section
     certs_label: 'Utbildning och utveckling',
     certs_title: 'Certifieringar',
@@ -3127,7 +3138,7 @@ const TRANSLATIONS = {
     btn_cv: 'Ladda ned CV', btn_contact: 'Kontakta mig',
     profile_role: 'Senior specialist inom handelsfinansiering · CDCS®',
     profile_skills: 'Dokumentärkrediter · SWIFT · Nostro · TBML',
-    work_badge: 'Öppen för arbete · Helsingfors Metro',
+    work_badge: 'Öppen för arbete · Helsingfors',
     stat_years: 'Års erfarenhet', stat_ops: 'Årliga operationer', stat_trained: 'Utbildade proffs',
     // Expertise
     exp_label: 'Kärnkompetens', exp_title: 'Expertisområden',
