@@ -409,10 +409,21 @@ nav.scrolled {
 }
 
 .profile-role {
-  font-size: 11px;
-  color: var(--text-dim);
-  margin-bottom: 14px;
+  font-size: 13px;
+  color: var(--off-white);
+  margin-bottom: 5px;
   line-height: 1.5;
+  font-weight: 500;
+  text-align: center;
+}
+
+.profile-skills {
+  font-size: 10.5px;
+  color: var(--text-dim);
+  text-align: center;
+  letter-spacing: 0.4px;
+  margin-bottom: 14px;
+  line-height: 1.6;
 }
 
 .cdcs-badge {
@@ -465,22 +476,26 @@ nav.scrolled {
 }
 
 .social-btn {
-  width: 36px;
-  height: 36px;
+  width: 38px;
+  height: 38px;
   border-radius: 8px;
   background: rgba(255,255,255,0.06);
   border: 1px solid var(--border);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 16px;
-  transition: background var(--transition), border-color var(--transition), transform var(--transition);
+  font-size: 15px;
+  color: var(--text-dim);
+  transition: background var(--transition), border-color var(--transition),
+              transform var(--transition), color var(--transition);
   cursor: pointer;
+  text-decoration: none;
 }
 
 .social-btn:hover {
   background: rgba(201,168,76,0.15);
   border-color: var(--gold);
+  color: var(--gold);
   transform: translateY(-2px);
 }
 
@@ -1930,16 +1945,30 @@ footer {
         </div>
 
         <p class="profile-name">Ishtiak Ahmed</p>
-        <p class="profile-role" data-i18n="profile_role">VP – International Banking Ops<br>Trade Finance Specialist</p>
+        <p class="profile-role" data-i18n="profile_role">Senior Trade Finance Professional · CDCS®</p>
+        <p class="profile-skills" data-i18n="profile_skills">Documentary Credits · SWIFT · Nostro · TBML</p>
 
-        <div class="cdcs-badge">🏅 CDCS® Certified</div><br>
-        <div class="work-badge" data-i18n="work_badge">Open to Work · Finland</div>
+        <div class="cdcs-badge">🏅 CDCS® Certified · ICC</div>
+        <div class="work-badge" data-i18n="work_badge">Open to Work · Helsinki Metro Area</div>
 
         <div class="social-row">
           <a href="https://www.linkedin.com/in/ishtiak-ahmed-cdcs/" target="_blank"
-             class="social-btn" title="LinkedIn">🔗</a>
-          <a href="mailto:ahmedishtiak293@gmail.com" class="social-btn" title="Email">📧</a>
-          <a href="tel:+358442469239" class="social-btn" title="Phone">📞</a>
+             class="social-btn" title="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="15" height="15" aria-hidden="true">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+          </a>
+          <a href="mailto:ahmedishtiak293@gmail.com" class="social-btn" title="Email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15" aria-hidden="true">
+              <rect x="2" y="4" width="20" height="16" rx="2"/>
+              <path d="m2 7 10 7 10-7"/>
+            </svg>
+          </a>
+          <a href="tel:+358442469239" class="social-btn" title="Phone">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.62 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.08 6.08l.97-.97a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+          </a>
         </div>
 
         <div class="stats-row">
@@ -1953,7 +1982,7 @@ footer {
           </div>
           <div class="stat">
             <span class="stat-num">100+</span>
-            <span class="stat-label" data-i18n="stat_trained">Trained</span>
+            <span class="stat-label" data-i18n="stat_trained">Professionals Trained</span>
           </div>
         </div>
       </div>
@@ -2934,9 +2963,10 @@ const TRANSLATIONS = {
     hero_title: 'CDCS® | VP – International Banking Operations | Uusimaa Region',
     hero_desc: 'Over 21 years in international banking, I have managed cross-border trade and payment operations exceeding €1.5 billion annually. My strength is knowing not just how a transaction is processed — but where the risk lives when something goes wrong, and building the controls to catch it before it does.',
     btn_cv: 'Download CV', btn_contact: 'Get in Touch',
-    profile_role: 'VP – International Banking Ops<br>Trade Finance Specialist',
-    work_badge: 'Open to Work · Finland',
-    stat_years: 'Years Exp.', stat_ops: 'Annual Ops', stat_trained: 'Trained',
+    profile_role: 'Senior Trade Finance Professional · CDCS®',
+    profile_skills: 'Documentary Credits · SWIFT · Nostro · TBML',
+    work_badge: 'Open to Work · Helsinki Metro Area',
+    stat_years: 'Years Exp.', stat_ops: 'Annual Ops', stat_trained: 'Professionals Trained',
     // Expertise
     exp_label: 'Core Competencies', exp_title: 'Areas of Expertise',
     exp_sub: 'Two decades of operational depth across trade finance, international payments, TBML compliance, and sustainable finance — from documentary credits to green lending.',
@@ -3014,9 +3044,10 @@ const TRANSLATIONS = {
     hero_title: 'CDCS® | VP – Kansainväliset pankkioperaatiot | Uudenmaan alue',
     hero_desc: 'Yli 21 vuoden kansainvälisessä pankkiuralla olen johtanut rajanylittäviä kauppa- ja maksuoperaatioita yli 1,5 miljardin euron vuosivolyymilla. Vahvuuteni on tietää paitsi miten transaktio käsitellään – myös missä riski piilee kun jokin menee pieleen, ja rakentaa kontrollit sen sieppaamiseksi ennen kuin se tapahtuu.',
     btn_cv: 'Lataa CV', btn_contact: 'Ota yhteyttä',
-    profile_role: 'VP – Kansainväliset pankkioperaatiot<br>Kaupparahoitusasiantuntija',
-    work_badge: 'Avoin työpaikalle · Suomi',
-    stat_years: 'Vuotta kokemusta', stat_ops: 'Vuosittaiset operaatiot', stat_trained: 'Koulutettuja',
+    profile_role: 'Senior kaupparahoituksen ammattilainen · CDCS®',
+    profile_skills: 'Remburssit · SWIFT · Nostro · TBML',
+    work_badge: 'Avoin töille · Helsingin seutu',
+    stat_years: 'Vuotta kokemusta', stat_ops: 'Vuosittaiset operaatiot', stat_trained: 'Koulutettua ammattilaista',
     // Expertise
     exp_label: 'Ydinosaaminen', exp_title: 'Asiantuntemusalueet',
     exp_sub: 'Kahden vuosikymmenen operatiivinen syvyysosaaminen kaupparahoituksessa, kansainvälisissä maksuissa, TBML-vaatimustenmukaisuudessa ja kestävässä rahoituksessa – rembursseista vihreään lainanantoon.',
@@ -3094,9 +3125,10 @@ const TRANSLATIONS = {
     hero_title: 'CDCS® | VP – Internationell bankverksamhet | Nyland',
     hero_desc: 'Under 21 år inom internationell bankverksamhet har jag lett gränsöverskridande handels- och betalningsoperationer överstigande 1,5 miljarder euro årligen. Min styrka är att veta inte bara hur en transaktion behandlas – utan var risken finns när något går fel, och att bygga kontroller för att fånga det innan det inträffar.',
     btn_cv: 'Ladda ned CV', btn_contact: 'Kontakta mig',
-    profile_role: 'VP – Internationell bankverksamhet<br>Specialist inom handelsfinansiering',
-    work_badge: 'Öppen för arbete · Finland',
-    stat_years: 'Års erfarenhet', stat_ops: 'Årliga operationer', stat_trained: 'Utbildade',
+    profile_role: 'Senior specialist inom handelsfinansiering · CDCS®',
+    profile_skills: 'Dokumentärkrediter · SWIFT · Nostro · TBML',
+    work_badge: 'Öppen för arbete · Helsingfors Metro',
+    stat_years: 'Års erfarenhet', stat_ops: 'Årliga operationer', stat_trained: 'Utbildade proffs',
     // Expertise
     exp_label: 'Kärnkompetens', exp_title: 'Expertisområden',
     exp_sub: 'Två decenniers operativt djup inom handelsfinansiering, internationella betalningar, TBML-efterlevnad och hållbar finansiering — från dokumentärkrediter till gröna lån.',
