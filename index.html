@@ -1847,6 +1847,64 @@ footer {
   .btn-substack { align-self: stretch; justify-content: center; }
 }
 </style>
+  <!-- Open Graph Image — tells Google/social which photo to use -->
+  <meta property="og:image" content="https://ahmedishtiak.com/profile.jpg">
+  <meta property="og:image:width" content="400">
+  <meta property="og:image:height" content="400">
+  <meta property="og:image:alt" content="Ishtiak Ahmed — Senior Trade Finance Professional">
+  <meta property="og:type" content="profile">
+  <meta property="og:url" content="https://ahmedishtiak.com/">
+  <meta property="og:locale" content="en_GB">
+
+  <!-- JSON-LD Person Schema — tells Google exactly who this page is about -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Ishtiak Ahmed",
+    "alternateName": "Ahmed Ishtiak",
+    "url": "https://ahmedishtiak.com",
+    "image": "https://ahmedishtiak.com/profile.jpg",
+    "jobTitle": "Senior Trade Finance & Payments Professional",
+    "description": "Senior Trade Finance and Payments Professional with 21+ years of international banking experience. CDCS® certified. Specialist in documentary credits (UCP 600), SWIFT payments (MT103/MT202), Nostro reconciliation, and TBML compliance. Based in Espoo, Finland.",
+    "knowsAbout": [
+      "Trade Finance", "Documentary Credits", "SWIFT Payments",
+      "Nostro Reconciliation", "TBML Compliance",
+      "International Banking", "Sustainable Finance"
+    ],
+    "hasCredential": {
+      "@type": "EducationalOccupationalCredential",
+      "name": "Certified Documentary Credit Specialist (CDCS®)",
+      "credentialCategory": "Professional Certification",
+      "recognizedBy": {
+        "@type": "Organization",
+        "name": "International Chamber of Commerce (ICC)"
+      }
+    },
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "JAMK University of Applied Sciences",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Jyväskylä",
+        "addressCountry": "FI"
+      }
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Espoo",
+      "addressRegion": "Uusimaa",
+      "addressCountry": "FI"
+    },
+    "sameAs": [
+      "https://www.linkedin.com/in/ishtiak-ahmed-cdcs/",
+      "https://ahmedishtiak.substack.com/"
+    ],
+    "email": "ahmedishtiak293@gmail.com",
+    "telephone": "+358442469239"
+  }
+  </script>
+
   <!-- Google Analytics GA4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-P5SBKRDD27"></script>
   <script>
@@ -1869,6 +1927,7 @@ footer {
     <li><a href="#writings" data-i18n="nav_writings">Writings</a></li>
     <li><a href="#education" data-i18n="nav_education">Education</a></li>
     <li><a href="#certifications" data-i18n="nav_certs">Certifications</a></li>
+    <li><a href="/vibe-coding/" data-i18n="nav_vibecoding">Vibe Coding</a></li>
     <li><a href="#contact" class="nav-cta" data-i18n="nav_contact">Contact</a></li>
   </ul>
   <div class="nav-right">
@@ -1892,6 +1951,7 @@ footer {
   <a href="#writings" class="mobile-link" data-i18n="nav_writings">Writings</a>
   <a href="#education" class="mobile-link" data-i18n="nav_education">Education</a>
   <a href="#certifications" class="mobile-link" data-i18n="nav_certs">Certifications</a>
+  <a href="/vibe-coding/" class="mobile-link" data-i18n="nav_vibecoding">Vibe Coding</a>
   <a href="#contact" class="mobile-link" data-i18n="nav_contact">Contact</a>
 </div>
 
@@ -1951,7 +2011,7 @@ footer {
         <p class="profile-skills" data-i18n="profile_skills">Documentary Credits · SWIFT · Nostro · TBML</p>
 
         <div class="cdcs-badge">🏅 CDCS® Certified · ICC</div>
-        <div class="work-badge" data-i18n="work_badge">Open to Work · Uusimaa, Fin</div>
+        <div class="work-badge" data-i18n="work_badge">Open to Work · Helsinki</div>
 
         <div class="social-row">
           <a href="https://www.linkedin.com/in/ishtiak-ahmed-cdcs/" target="_blank"
@@ -2955,7 +3015,7 @@ const TRANSLATIONS = {
     // Nav
     nav_home: 'Home', nav_expertise: 'Expertise', nav_experience: 'Experience',
     nav_research: 'Research', nav_writings: 'Writings', nav_education: 'Education',
-    nav_contact: 'Contact', nav_certs: 'Certifications',
+    nav_contact: 'Contact', nav_certs: 'Certifications', nav_vibecoding: 'Vibe Coding',
     // Certifications section
     certs_label: 'Training & Development',
     certs_title: 'Certifications',
@@ -3039,7 +3099,7 @@ const TRANSLATIONS = {
     // Nav
     nav_home: 'Etusivu', nav_expertise: 'Osaaminen', nav_experience: 'Kokemus',
     nav_research: 'Tutkimus', nav_writings: 'Kirjoitukset', nav_education: 'Koulutus',
-    nav_contact: 'Yhteystiedot', nav_certs: 'Sertifikaatit',
+    nav_contact: 'Yhteystiedot', nav_certs: 'Sertifikaatit', nav_vibecoding: 'Vibe Coding',
     // Certifications section
     certs_label: 'Koulutus ja kehitys',
     certs_title: 'Sertifikaatit',
@@ -3123,7 +3183,7 @@ const TRANSLATIONS = {
     // Nav
     nav_home: 'Hem', nav_expertise: 'Kompetens', nav_experience: 'Erfarenhet',
     nav_research: 'Forskning', nav_writings: 'Skrifter', nav_education: 'Utbildning',
-    nav_contact: 'Kontakt', nav_certs: 'Certifieringar',
+    nav_contact: 'Kontakt', nav_certs: 'Certifieringar', nav_vibecoding: 'Vibe Coding',
     // Certifications section
     certs_label: 'Utbildning och utveckling',
     certs_title: 'Certifieringar',
