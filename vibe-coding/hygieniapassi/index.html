@@ -1,1 +1,1154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hygieniapassi — Practice</title>
+<style>
+:root{
+  --ink:#0B1F2A;
+  --ink-2:#123141;
+  --frost:#EDF1F0;
+  --card:#FFFFFF;
+  --steel:#6A7B84;
+  --steel-2:#9AA9AF;
+  --rule:#D6DEDD;
+  --amber:#E39A2B;
+  --green:#1E7A55;
+  --green-bg:#E6F2EC;
+  --red:#B4342C;
+  --red-bg:#FAEAE8;
 
+  --display:"Futura","Century Gothic","Avenir Next","Trebuchet MS",-apple-system,system-ui,sans-serif;
+  --serif:"Charter","Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+
+  --maxw:660px;
+  --pad:20px;
+  --radius:3px;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--frost);
+  color:var(--ink);
+  font-family:var(--display);
+  -webkit-font-smoothing:antialiased;
+  line-height:1.45;
+  padding-bottom:env(safe-area-inset-bottom);
+}
+button{font:inherit;color:inherit;cursor:pointer;border:none;background:none}
+:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 var(--pad) 64px}
+
+/* ── header ───────────────────────────── */
+.masthead{
+  background:var(--ink);color:#fff;
+  padding:22px var(--pad) 18px;
+}
+.masthead .inner{max-width:var(--maxw);margin:0 auto}
+.wordmark{
+  font-size:clamp(26px,7vw,38px);
+  font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  margin:0;line-height:1;
+}
+.wordmark span{color:var(--amber)}
+.tagline{
+  font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--steel-2);margin-top:9px;
+}
+.spec{
+  display:flex;gap:18px;flex-wrap:wrap;margin-top:16px;
+  font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:#C6D2D6;
+}
+.spec b{color:var(--amber);font-weight:700}
+
+/* ── tabs ─────────────────────────────── */
+.tabs{
+  display:flex;gap:2px;
+  background:var(--ink-2);overflow-x:auto;scrollbar-width:none;
+}
+.tabs::-webkit-scrollbar{display:none}
+.tabs .row{display:flex;gap:2px;max-width:var(--maxw);margin:0 auto;width:100%;padding:0 var(--pad)}
+.tab{
+  flex:1;white-space:nowrap;padding:13px 14px 11px;
+  font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;
+  color:#9FB0B7;border-bottom:3px solid transparent;
+}
+.tab small{display:block;font-size:9px;letter-spacing:.08em;font-weight:400;opacity:.7;margin-top:2px}
+.tab[aria-selected="true"]{color:#fff;border-bottom-color:var(--amber)}
+
+/* ── generic blocks ───────────────────── */
+.panel{padding-top:26px}
+.eyebrow{
+  font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--steel);margin:0 0 10px;
+}
+h2.head{font-size:22px;letter-spacing:.01em;margin:0 0 6px;font-weight:700}
+.sub{color:var(--steel);font-size:14px;margin:0 0 22px}
+.sub em{font-style:normal;color:var(--ink)}
+
+/* ── mode cards ───────────────────────── */
+.stack{display:grid;gap:10px}
+.opt{
+  display:flex;align-items:center;gap:14px;width:100%;text-align:left;
+  background:var(--card);border:1px solid var(--rule);border-radius:var(--radius);
+  padding:15px 16px;transition:border-color .15s,transform .15s;
+}
+.opt:hover{border-color:var(--ink);transform:translateX(2px)}
+.opt .n{
+  font-family:var(--mono);font-size:11px;color:var(--steel);
+  min-width:34px;text-align:right;
+}
+.opt .t{flex:1}
+.opt .t strong{display:block;font-size:15px;font-weight:700}
+.opt .t span{display:block;font-size:12px;color:var(--steel);margin-top:1px}
+.opt .arrow{color:var(--amber);font-size:18px}
+
+/* ── quiz ─────────────────────────────── */
+.statusbar{
+  display:flex;align-items:center;gap:12px;
+  font-family:var(--mono);font-size:11px;letter-spacing:.05em;color:var(--steel);
+  padding:14px 0 10px;
+}
+.statusbar .grow{flex:1}
+.rail{height:3px;background:var(--rule);border-radius:2px;overflow:hidden}
+.rail i{display:block;height:100%;background:var(--ink);width:0;transition:width .3s}
+#clock.warn{color:var(--red)}
+
+.qcard{
+  background:var(--card);border:1px solid var(--rule);border-radius:var(--radius);
+  padding:26px 22px 22px;margin-top:16px;
+}
+.qtag{
+  font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--amber);margin-bottom:14px;
+}
+.claim{
+  font-size:clamp(19px,4.6vw,23px);line-height:1.35;font-weight:700;
+  letter-spacing:-.005em;margin:0 0 24px;
+}
+.tf{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.tf button{
+  border:1.5px solid var(--ink);border-radius:var(--radius);
+  padding:15px 8px;font-weight:700;font-size:15px;letter-spacing:.08em;text-transform:uppercase;
+  transition:background .12s,color .12s;
+}
+.tf button small{display:block;font-size:10px;letter-spacing:.1em;font-weight:400;color:var(--steel);margin-top:3px}
+.tf button:hover:not(:disabled){background:var(--ink);color:#fff}
+.tf button:hover:not(:disabled) small{color:#B9C6CB}
+.tf button:disabled{cursor:default;opacity:.35}
+.tf button.pick-right{background:var(--green);border-color:var(--green);color:#fff;opacity:1}
+.tf button.pick-right small{color:#CDE7DA}
+.tf button.pick-wrong{background:var(--red);border-color:var(--red);color:#fff;opacity:1}
+.tf button.pick-wrong small{color:#F0CFCC}
+.tf button.was-right{border-color:var(--green);color:var(--green);opacity:1}
+.tf button.was-right small{color:var(--green)}
+
+.reveal{margin-top:22px;border-top:1px solid var(--rule);padding-top:18px}
+.verdict{
+  font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  font-weight:700;margin-bottom:10px;
+}
+.verdict.ok{color:var(--green)}
+.verdict.no{color:var(--red)}
+.why{font-family:var(--serif);font-size:16px;line-height:1.6;margin:0}
+.why b{background:linear-gradient(transparent 62%,#FBE9CB 62%);font-weight:700}
+
+.navrow{display:flex;gap:10px;margin-top:20px}
+.btn{
+  border:1.5px solid var(--ink);border-radius:var(--radius);background:var(--ink);color:#fff;
+  padding:13px 22px;font-weight:700;font-size:13px;letter-spacing:.1em;text-transform:uppercase;
+}
+.btn:hover{background:var(--ink-2)}
+.btn.ghost{background:none;color:var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:#fff}
+.btn.full{flex:1;text-align:center}
+
+/* ── result / Oiva ────────────────────── */
+.result{background:var(--card);border:1px solid var(--rule);border-radius:var(--radius);padding:28px 22px;margin-top:16px;text-align:center}
+.score{font-family:var(--mono);font-size:52px;font-weight:700;line-height:1;letter-spacing:-.02em}
+.score .of{font-size:20px;color:var(--steel)}
+.verdictbig{font-size:18px;font-weight:700;margin-top:10px;letter-spacing:.02em}
+.verdictbig.pass{color:var(--green)}
+.verdictbig.fail{color:var(--red)}
+.passline{margin-top:22px}
+.passline .bar{position:relative;height:10px;background:var(--rule);border-radius:2px;overflow:hidden}
+.passline .bar i{display:block;height:100%;background:var(--ink)}
+.passline .mark{position:absolute;top:-5px;bottom:-5px;width:2px;background:var(--amber);left:85%}
+.passline .lab{display:flex;justify-content:space-between;font-family:var(--mono);font-size:10px;color:var(--steel);margin-top:7px;letter-spacing:.08em}
+
+.oiva{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:26px}
+.oiva figure{margin:0;padding:11px 4px 9px;border:1px solid var(--rule);border-radius:var(--radius);opacity:.3;transition:opacity .3s,border-color .3s}
+.oiva figure.on{opacity:1;border-color:var(--ink);background:#FCFDFD}
+.oiva svg{width:34px;height:34px;display:block;margin:0 auto}
+.oiva figcaption{font-family:var(--mono);font-size:8.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--steel);margin-top:6px;line-height:1.3}
+.oiva figure.on figcaption{color:var(--ink);font-weight:700}
+.oivanote{font-family:var(--mono);font-size:10px;color:var(--steel-2);letter-spacing:.06em;margin-top:12px}
+
+/* ── facts sheet ──────────────────────── */
+.zone{background:var(--card);border:1px solid var(--rule);border-radius:var(--radius);padding:20px;margin-bottom:14px}
+.zone h3{font-size:12px;letter-spacing:.14em;text-transform:uppercase;margin:0 0 14px;color:var(--steel);font-family:var(--mono);font-weight:400}
+.thermo{display:flex;height:150px;gap:14px;margin:4px 0 6px}
+.thermo .col{width:34px;border-radius:2px;overflow:hidden;display:flex;flex-direction:column;flex-shrink:0}
+.thermo .col div{flex:1}
+.t-hot{background:#C86A28}
+.t-danger{background:repeating-linear-gradient(45deg,var(--amber),var(--amber) 5px,#EDAE4E 5px,#EDAE4E 10px);flex:2.4 !important}
+.t-cold{background:#3D7E9B}
+.thermo .keys{flex:1;display:flex;flex-direction:column;justify-content:space-between;font-size:12px}
+.thermo .keys div{display:flex;gap:10px;align-items:baseline}
+.thermo .keys b{font-family:var(--mono);font-size:13px;min-width:62px}
+.thermo .keys span{color:var(--steel);font-size:12px}
+
+table.facts{width:100%;border-collapse:collapse;font-size:13.5px}
+table.facts td{padding:8px 0;border-bottom:1px solid var(--rule);vertical-align:top}
+table.facts tr:last-child td{border-bottom:none}
+table.facts td:first-child{font-family:var(--mono);font-weight:700;white-space:nowrap;padding-right:14px;width:1%}
+table.facts td:last-child{color:var(--ink)}
+table.facts .fi{display:block;color:var(--steel);font-size:11.5px;font-family:var(--mono);letter-spacing:.02em;margin-top:2px}
+
+/* ── empty / misc ─────────────────────── */
+.empty{text-align:center;padding:48px 20px;color:var(--steel);font-size:14px}
+.empty strong{display:block;color:var(--ink);font-size:16px;margin-bottom:6px}
+.foot{margin-top:34px;padding-top:16px;border-top:1px solid var(--rule);font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:var(--steel-2);line-height:1.7}
+.hidden{display:none !important}
+
+
+.fieldhead{display:flex;align-items:center;gap:11px;margin:30px 0 10px;padding-bottom:9px;border-bottom:1px solid var(--rule)}
+.fieldhead:first-child{margin-top:4px}
+.fieldhead .num{font-family:var(--mono);font-size:13px;font-weight:700;color:var(--amber);min-width:18px}
+.fieldhead .nm{flex:1;font-size:14px;font-weight:700;letter-spacing:.01em;line-height:1.25}
+.fieldhead .nm span{display:block;font-size:11px;color:var(--steel);font-weight:400;font-family:var(--mono);letter-spacing:.02em;margin-top:3px}
+.fieldhead .go{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink);border:1px solid var(--rule);border-radius:2px;padding:6px 9px;white-space:nowrap}
+.fieldhead .go:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
+.solo{margin-bottom:6px}
+.zone h3.big{font-family:var(--display);font-size:15px;font-weight:700;letter-spacing:.01em;text-transform:none;color:var(--ink);margin-bottom:12px}
+ol.six{margin:0;padding-left:0;list-style:none;counter-reset:sf}
+ol.six li{counter-increment:sf;display:flex;gap:12px;padding:9px 0;border-bottom:1px solid var(--rule);font-size:13.5px}
+ol.six li:last-child{border-bottom:none}
+ol.six li::before{content:counter(sf);font-family:var(--mono);font-weight:700;color:var(--amber);font-size:12px;min-width:14px}
+ol.six li span{display:block;color:var(--steel);font-size:11.5px;font-family:var(--mono);margin-top:2px}
+
+
+/* ── mistakes / result card grid ──────────── */
+.zonegrid{display:grid;gap:14px}
+#topiclist{display:block}
+
+/* ── site footer ──────────────────────────── */
+.sitefoot{background:var(--ink);color:#C6D2D6;margin-top:58px;padding:40px var(--pad) 26px}
+.sitefoot .inner{max-width:var(--maxw);margin:0 auto}
+.sitefoot .lede{font-size:13px;letter-spacing:.14em;text-transform:uppercase;font-family:var(--mono);color:var(--amber);margin:0 0 4px}
+.sitefoot .lede small{display:block;font-size:10px;letter-spacing:.1em;color:#7E9199;margin-top:5px;text-transform:none}
+.sitefoot .cols{display:grid;gap:6px 34px;margin-top:22px}
+.sitefoot h4{font-size:11px;font-family:var(--mono);letter-spacing:.14em;text-transform:uppercase;color:#fff;margin:16px 0 6px;font-weight:400}
+.sitefoot p{font-size:12.5px;line-height:1.65;color:#9FB0B7;margin:0}
+.sitefoot p em{font-style:normal;color:#DCE5E8}
+.copyline{margin-top:30px;padding-top:16px;border-top:1px solid #22404F;display:flex;justify-content:space-between;gap:8px 20px;flex-wrap:wrap;
+  font-family:var(--mono);font-size:11px;letter-spacing:.05em;color:#7E9199}
+.copyline b{color:#fff;font-weight:700;letter-spacing:.06em}
+
+/* ── desktop ──────────────────────────────── */
+@media (min-width:900px){
+  :root{--maxw:1080px;--pad:34px}
+  .masthead{padding-top:28px;padding-bottom:24px}
+  .masthead .inner{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  .masthead .spec{margin-top:0;justify-content:flex-end;gap:22px}
+  .tabs .row{justify-content:flex-start}
+  .tab{flex:0 0 auto;min-width:158px}
+  .panel{padding-top:34px}
+  .wrap{padding-bottom:44px}
+  h2.head{font-size:27px}
+  .panel .sub{max-width:640px;font-size:15px}
+  .stack{grid-template-columns:repeat(2,1fr);gap:12px}
+  .opt{padding:17px 18px}
+  #p-quiz,#p-result{max-width:760px;margin:0 auto}
+  .claim{font-size:25px}
+  .qcard{padding:32px 30px 26px}
+  .zonegrid{grid-template-columns:repeat(2,1fr)}
+  #factsheet{columns:2;column-gap:16px}
+  #factsheet .zone{break-inside:avoid;margin-bottom:16px}
+  .fieldhead{margin-top:36px}
+  .sitefoot .cols{grid-template-columns:1fr 1fr}
+  .sitefoot h4{margin-top:20px}
+  .sitefoot .cols > div > h4:first-child{margin-top:0}
+}
+@media (min-width:1240px){
+  #factsheet{columns:3}
+}
+
+@media (prefers-reduced-motion:reduce){*{transition:none !important;animation:none !important}}
+@media (max-width:420px){
+  .tf button{font-size:14px;padding:14px 4px}
+  .oiva figcaption{font-size:7.5px}
+}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="inner">
+    <div class="brand">
+      <h1 class="wordmark">Hygienia<span>passi</span></h1>
+      <div class="tagline">Harjoituskoe · Practice exam</div>
+    </div>
+    <div class="spec">
+      <span><b>40</b> kysymystä / questions</span>
+      <span><b>34</b> läpipääsyraja / pass mark</span>
+      <span><b>45</b> min</span>
+    </div>
+  </div>
+</header>
+
+<nav class="tabs">
+  <div class="row" role="tablist">
+    <button class="tab" role="tab" data-tab="exam" aria-selected="true">Koe<small>Mock exam</small></button>
+    <button class="tab" role="tab" data-tab="topics" aria-selected="false">Aiheet<small>By topic</small></button>
+    <button class="tab" role="tab" data-tab="wrong" aria-selected="false">Virheet<small>Mistakes</small></button>
+    <button class="tab" role="tab" data-tab="facts" aria-selected="false">Faktat<small>Key facts</small></button>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <section id="p-exam" class="panel">
+    <p class="eyebrow">Mode 01</p>
+    <h2 class="head">Sit a full mock exam</h2>
+    <p class="sub">40 statements drawn at random, 45 minutes on the clock, graded against the real pass mark of <em>34/40</em>. Answers stay hidden until you finish — same as the day itself.</p>
+    <div class="stack">
+      <button class="opt" data-start="exam-timed"><span class="n">40</span><span class="t"><strong>Full mock, timed</strong><span>Kokeen kaltainen · no feedback until the end</span></span><span class="arrow">→</span></button>
+      <button class="opt" data-start="exam-instant"><span class="n">40</span><span class="t"><strong>Full mock, instant feedback</strong><span>Palaute heti · explanation after every answer</span></span><span class="arrow">→</span></button>
+      <button class="opt" data-start="official"><span class="n">40</span><span class="t"><strong>Official model series</strong><span>Ruokavirasto · the Food Authority's own sample paper</span></span><span class="arrow">→</span></button>
+      <button class="opt" data-start="rapid"><span class="n">15</span><span class="t"><strong>Quick drill</strong><span>Pikaharjoitus · 15 random statements</span></span><span class="arrow">→</span></button>
+    </div>
+    <p class="foot">275 statements in the bank, across the six official subfields. Progress is held in the page only — reloading starts you fresh.</p>
+  </section>
+
+  <section id="p-topics" class="panel hidden">
+    <p class="eyebrow">Mode 02</p>
+    <h2 class="head">Drill one topic at a time</h2>
+    <p class="sub">Every statement in the bank, filed under the <em>six official subfields</em> of hygiene proficiency. Drill a whole subfield, or one topic at a time. Instant explanation after each answer.</p>
+    <div class="stack" id="topiclist"></div>
+  </section>
+
+  <section id="p-wrong" class="panel hidden">
+    <p class="eyebrow">Mode 03</p>
+    <h2 class="head">Statements you got wrong</h2>
+    <p class="sub">Your misses collect here as you practise. This is the list worth re-reading before the exam.</p>
+    <div id="wronglist"></div>
+  </section>
+
+  <section id="p-facts" class="panel hidden">
+    <p class="eyebrow">Reference</p>
+    <h2 class="head">The numbers that carry the marks</h2>
+    <p class="sub">Most failed statements come down to a temperature or a time limit. Learn this page and you've covered a large slice of the paper.</p>
+    <div id="factsheet"></div>
+  </section>
+
+  <section id="p-quiz" class="panel hidden">
+    <div class="statusbar">
+      <span id="counter">1 / 40</span>
+      <span class="grow"></span>
+      <span id="tally">0 oikein</span>
+      <span id="clock"></span>
+    </div>
+    <div class="rail"><i id="railfill"></i></div>
+
+    <div class="qcard">
+      <div class="qtag" id="qtag">Väite</div>
+      <p class="claim" id="claim"></p>
+      <div class="tf">
+        <button id="btn-true">Tosi<small>True</small></button>
+        <button id="btn-false">Epätosi<small>False</small></button>
+      </div>
+      <div class="reveal hidden" id="reveal">
+        <div class="verdict" id="verdict"></div>
+        <p class="why" id="why"></p>
+      </div>
+      <div class="navrow">
+        <button class="btn full hidden" id="next">Seuraava · Next</button>
+        <button class="btn ghost" id="quit">Lopeta · Quit</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="p-result" class="panel hidden"></section>
+
+</main>
+
+<footer class="sitefoot">
+  <div class="inner">
+    <p class="lede">Vastuuvapauslauseke · Disclaimer
+      <small>Tämä sivusto on itsenäinen harjoitusmateriaali. Se ei ole Ruokaviraston hyväksymä eikä anna hygieniapassia.</small>
+    </p>
+
+    <div class="cols">
+      <div>
+        <h4>What this is</h4>
+        <p>An independent, non-commercial study aid made for personal exam preparation. It is <em>not affiliated with, endorsed by, or connected to</em> the Finnish Food Authority (Ruokavirasto), Osaamistehdas Oy, or any authorised hygiene passport tester.</p>
+
+        <h4>No certification</h4>
+        <p>Practising here grants no hygiene passport and carries no official standing. The passport can only be obtained by passing a test administered by a tester authorised by the Finnish Food Authority. The Authority states that its published model series is not the actual test.</p>
+
+        <h4>No warranty</h4>
+        <p>The material is derived from third-party study documents and is provided <em>as is</em>, without warranty of any kind, express or implied, as to accuracy, completeness or currency. Food legislation and official guidance change. Always verify against the current sources published by Ruokavirasto and against the Food Act (23/2006).</p>
+      </div>
+
+      <div>
+        <h4>Not advice</h4>
+        <p>Nothing here is legal, regulatory, medical or professional advice, and none of it should be relied upon for operating a food business or for any decision with legal or commercial consequences.</p>
+
+        <h4>Liability</h4>
+        <p>To the fullest extent permitted by applicable law, the author accepts no liability for any loss or damage, direct or indirect, arising from use of or reliance on this material. Use is entirely at your own risk.</p>
+
+        <h4>Rights &amp; sources</h4>
+        <p>Question content is derived from the Osaamistehdas Oy training deck, the Finnish Food Authority's English model series, a topic-organised practice bank, and Marja Laukkanen's <em>Basic Facts of Food Hygiene</em> (SEFO-konsultointi). Rights in those underlying works remain with their respective owners. Names such as Ruokavirasto, Oiva and Osaamistehdas are used descriptively, for identification only.</p>
+
+        <h4>Privacy</h4>
+        <p>Nothing is collected, transmitted or stored. Your answers and progress exist only in the browser's memory for the session and are discarded when the page is closed.</p>
+      </div>
+    </div>
+
+    <div class="copyline">
+      <span>&copy; 2026 <b>Ishtiak Ahmed</b> · Compilation, explanations &amp; design</span>
+      <span>Harjoituskäyttöön · For practice use only</span>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+/* Statement format: [claim, isTrue(1|0), explanation] */
+const BANK = [
+
+{id:"official", fi:"Virallinen mallisarja", en:"Official model series", src:"Ruokavirasto · Finnish Food Authority", q:[
+["Vacuum packaged foodstuffs might contain microbes that cause food poisoning.",1,"Vacuum removes oxygen — it kills nothing. <b>Listeria monocytogenes</b> thrives without oxygen, and <b>Clostridium botulinum</b> actually requires anoxic conditions to produce its toxin. The food may also have been contaminated before it was packed."],
+["Temperature does not affect the reproduction of microbes.",0,"Temperature is one of the main factors governing microbial growth. Reproduction speeds up sharply once the temperature suits them."],
+["Microbes grow well in cooked rice at room temperature.",1,"Cooked rice has high <b>water activity</b> — lots of free water available to microbes — so it is an excellent growth substrate unless held properly hot or properly cold."],
+["Berries may collect viruses if the irrigation water is contaminated by, e.g., faeces.",1,"Faecally contaminated irrigation water is a classic route, as are contaminated spray water and the picker's own hands. <b>Norovirus</b> and <b>hepatitis A</b> are the two most important food- and waterborne viruses."],
+["When food is heated in a microwave oven, all microbes in the food are destroyed.",0,"Microwaves heat unevenly unless the food is stirred, and they have no microbe-killing effect beyond the heat itself. Any cold pocket keeps its microbes alive."],
+["A preservative destroys all microbes in a foodstuff.",0,"Preservatives suppress growth, they do not kill. Sodium nitrite, citric acid, sugar and salt all work by worsening growing conditions — sugar and salt by binding water and lowering water activity."],
+["Food poisoning always requires a large number of harmful bacteria.",0,"Some food poisonings are caused by very small numbers of bacteria."],
+["Deep-frozen berries might contain microbes that cause food poisoning.",1,"Freezing kills only a fraction of microbes and leaves viruses fully infective. Imported frozen berries eaten unheated have caused norovirus and hepatitis A outbreaks in Finland — consumers are advised to heat them <b>5 minutes at +90 °C</b>, or boil them for 2 minutes."],
+["Food prepared by heating, but refrigerated too slowly, can cause food poisoning.",1,"<b>Bacillus cereus</b> spores survive cooking and germinate as the food cools. Cooked food must be cooled to <b>+6 °C or below within four hours</b>. Outbreaks typically trace to food cooked the day before and cooled too slowly."],
+["Steak tartare, i.e. a raw meat patty, can give you food poisoning.",1,"Most microbes sit on the surface of a cut of meat; mincing mixes them right through, and minced meat is a fast growth substrate. <b>EHEC</b> is the classic risk. Tartare should be minced from the inside of whole meat immediately before serving."],
+["Salmonella can spread for example from utensils used for processing raw poultry meat.",1,"This transfer via tools, surfaces or hands is <b>cross-contamination</b>, a common cause of food poisoning in kitchens. Raw meat, poultry and fish must be kept away from foods eaten without heating, and must never share tools or unwashed hands with them."],
+["Norovirus is destroyed when food is heated at least two minutes in over +90 °C.",1,"Norovirus resists high temperatures, but <b>two minutes above +90 °C</b> right through the food is enough. Holding the food at +60 °C or above during service then stops microbes reproducing."],
+["The most dangerous temperature range for food poisoning is +6 – +60 °C, since bacteria multiply quickly in that range.",1,"That band is the <b>danger zone</b>. Legislation sets no cooking temperatures, but food containing meat — especially poultry — is considered reasonably safe when heated right through to at least <b>+75 °C</b>. Hot food in transport, storage and service must be held at <b>+60 °C or above</b>."],
+["A dirty ice cream scoop might introduce harmful microbes into ice cream.",1,"Microbes multiply on the dirty scoop and transfer straight into the unpackaged ice cream. The temperature of ice cream does not kill them."],
+["The primary purpose of disposable gloves is to protect the hands from becoming dirty.",0,"Gloves protect the <b>food</b> from microbes still present on washed hands. They must be changed often — always after touching money, dirty surfaces or tools — and hands still need regular washing, because it gets warm and moist inside a glove."],
+["Jam that is slightly mouldy on the surface can be eaten, if the mouldy surface layer is removed.",0,"Mould grows well in acidic food; its favourite range is <b>pH 3–5</b>. The mould flora and its toxins may have spread invisibly through the rest of the jar."],
+["Foodstuffs might become contaminated, if you sneeze and cough towards them.",1,"Coughing and sneezing spread very small droplets that always carry microbes — onto food, but also onto equipment, tools and other workers who then carry them further."],
+["If a shipment contains dairy products, meat products or fish products, it can be safely stored for a few hours in room temperature before it is transferred to a cold storage.",0,"The <b>cold chain</b> must not break at any stage. Perishables go straight into storage at their required temperature; every hour in the danger zone shortens shelf life."],
+["UHT-treatment (Ultra-High Temperature) and pasteurization of milk are the same thing.",0,"Pasteurisation is <b>+72 °C for 15 seconds</b> then immediate cooling — most microbes die, spores survive. UHT heats to at least <b>+135 °C</b> for a few seconds and kills all microorganisms."],
+["The raw materials for the pizzas can be kept at room temperature as the pizza is baked in the hot oven.",0,"Chopped vegetables, sliced ham, shrimp, tuna and cooked mince are unpackaged perishables and must be cold-stored. Microbes may multiply or secrete toxins before baking, and baking does not destroy all toxins."],
+["The slicing, cutting and mincing of the raw materials and food cause them easily perishable.",1,"Cutting multiplies the surface area and carries surface microbes into the food, where they find fresh nutrients and space to reproduce."],
+["A catering service may use perishable foodstuffs as an ingredient for evening meal, even though the foodstuffs were offered in a buffet during the day.",0,"Unpackaged perishable food that has been offered at a buffet may be served <b>once only</b>. Buffet conditions — many hands, service temperatures, long exposure — are among the most favourable there are for contamination."],
+["Unpackaged smoked fish and fresh fish must not touch each other in the sales counter.",1,"Smoked fish is eaten as it is, with no later step that kills microbes, so it must be kept apart from raw fish to prevent cross-contamination."],
+["If raw milk is stored at refrigerator temperature, it cannot contain pathogenic bacteria.",0,"Contamination during milking puts pathogens into the milk, and cold storage neither kills them nor necessarily stops them reproducing. Safety comes from heat treatment — pasteurisation or UHT."],
+["One may bring pets to the restaurant's customer premises or terrace and to a grocery store if the operator has given their permission.",1,"The food business operator decides, may limit which animals are allowed, and must inform customers at the entrance. Animals may never enter food-handling premises."],
+["When an employee prepares minced meat at a food establishment he/she must wear protective clothing which he/she may only wear within the food establishment.",1,"Handling unpackaged perishable food carries the highest hygiene risk. In a meat plant, slaughterhouse or dairy the protective clothing — work wear, headgear, shoes — is worn only at the workplace, and may need changing when moving between areas of different hygiene levels even if it looks clean."],
+["A person should not handle unpackaged foodstuffs to be served without heating in a food premise if he or she has a salmonella infection.",1,"A salmonella carrier can contaminate food directly. Under the <b>Act on Infectious Diseases (1227/2016)</b> the employer must obtain a reliable statement that the worker is not carrying salmonella before they work with unpackaged food served without heating."],
+["From a hygiene perspective, it does not matter whether you close a water tap with your bare hand or a disposable hand towel after washing your hands.",0,"Taps get touched by dirty hands, so clean hands become dirty again the moment they close one. Use a paper towel unless the tap is automatic or otherwise hands-free."],
+["A food establishment must be cleaned regularly following a cleaning plan. Furthermore, cleanliness must be monitored continuously.",1,"Monitoring cleanliness is part of daily work, not just of the plan. Cleaning is done beyond the schedule whenever it is needed to stop food safety slipping."],
+["Worn areas, scratches and cracks in work surfaces and cutting boards accumulate dirt. That is why microbes can easily multiply in them.",1,"Damaged surfaces trap dirt that cannot be washed out, and microbes reproduce in it. Everything in contact with food must be intact and cleanable."],
+["One of the methods of keeping pests away is to keep the loading and storage areas of a food establishment clean.",1,"Food premises must have a <b>pest control programme</b> as part of own-check. Clean loading and storage areas deny pests food and shelter, and well-run waste handling matters just as much."],
+["Packaging labels must correspond to the composition of the raw materials in the food.",1,"The ingredient declaration is a mandatory packaging label — and so is the quantity of certain ingredients where required — so that consumers can make informed choices and pick products suitable for them."],
+["Gravading of fish does not prevent listeria from multiplying.",1,"Listeria grows in salt concentrations up to <b>20 %</b>, at normal fridge temperatures, with or without oxygen. Cold-smoking and salt-curing include no step that kills it, which is why vacuum-packed cold-smoked and gravad fish are the classic listeriosis sources. Risk groups should heat these products right through to over <b>+72 °C</b>."],
+["A food industry operator does not have to do own-check, but it is recommended nevertheless.",0,"<b>Own-check (omavalvonta) is a statutory obligation</b> for every approved and registered food premises. The law does not demand a separate written plan document, but the operator must carry out own-check and record the results."],
+["A health inspector carries out own-check activities in food industry companies.",0,"The operator runs own-check. Inspectors supervise compliance and judge whether the own-check is adequate — they neither write it nor correct it, and they are not responsible for the safety of the operation. That responsibility is the operator's."],
+["Anybody can establish a food premises, such as a café or a manufacturing plant, without having food industry education.",1,"No qualification is required to operate in the food sector. That does not dilute responsibility: under food law the operator is always answerable for the legality of the operation and the safety of the food, so contact the municipal food control authority when setting up."],
+["The owner of a restaurant must notify the local food control authority about the opening of the restaurant after the restaurant has been opened to customers.",0,"A registered premises — café, restaurant, food shop — must notify the authority <b>at least four weeks before</b> starting. An approved plant, such as a meat or fish processor or a dairy, needs written approval before it starts at all."],
+["A food industry operator must ensure that all employees who are required by the Food Act to have a hygiene passport actually have it.",1,"The passport is required of anyone handling <b>unpackaged perishable food</b>, at the employer's expense. It need not be held until <b>three months</b> after starting work — so not every food-sector employee needs one, though many employers ask for it anyway."],
+["A foodstuff may not be sold after its 'use by' date.",1,"<b>Use by</b> is a safety date carried by perishable products: after it the food may be neither sold nor used, at work or at home. <b>Best before</b> is a quality date, and those products may still be sold and eaten afterwards if their condition is fine."],
+["It is not possible to get food poisoning from ice cubes.",0,"Freezing is nowhere near enough to kill all harmful microbes, though some die. Harmful microbes in the ice machine or in the water used end up in the cubes."]
+]},
+
+{id:"microbes", fi:"Mikrobit ja ruokamyrkytykset", en:"Microbes, spores & food poisoning", src:"Practice bank", q:[
+["Bacteria are always harmful on human skin or in the intestines.",0,"Beneficial bacteria live on the skin and in the intestines. They protect us against harmful bacteria and strengthen the immune system."],
+["Mould that has spread from blue cheese to other cheeses is not hazardous.",0,"Mould spreading into cheeses where it does not belong is harmful — it worsens quality and spoils them — although the spread is not always a health risk in itself."],
+["During the cooling of food microbes are able to reproduce in the food.",1,"The danger zone for food is <b>+6 to +60 °C</b>, and cooling food passes straight through it. This is why cooling has to be fast: down to +6 °C within four hours."],
+["Bacteria spores are destroyed when products are boiled (+100 °C).",0,"Spores are destroyed only by <b>sterilisation</b>, where excess pressure raises the temperature to about <b>+145 °C</b>. Boiling is not enough."],
+["Bacteria spores die when a product is dried.",0,"Spores are the survival form of bacteria: they endure dryness, boiling, salting and cold. Bacteria cannot reproduce in a dry product, but they survive in it as spores."],
+["Food poisoning only spreads by contaminated food products or drinking water.",0,"Poor work and hand hygiene spreads it too. Salmonella can pass person to person with no food in between, and symptomless carriers can spread it."],
+["Food poisoning suspicions must always be reported to health officials.",0,"Reporting is required when <b>more than five people</b> have fallen ill, when the outbreak is in a school, hospital or other institution, or when a commercial or otherwise widely distributed product is suspected."],
+["A neutral pH of 6.6–7.5 is the best growth medium for most microbes.",1,"Most microbes prefer near-neutral conditions, which is why <b>raising acidity slows growth</b> — the principle behind pickling in vinegar and lactic acid fermentation."],
+["Vacuum packing removes the need for cold storage.",0,"Vacuum packing slows microbes that need oxygen, but it does <b>not</b> reduce the need for cold storage — and anaerobic organisms such as Listeria and Clostridium botulinum are unaffected by it."],
+["Beneficial microbes are needed to make bread, beer, yoghurt and sauerkraut.",1,"Also wine, soy sauce, blue cheese and soured milk products. Lactic acid bacteria are the best-known example of microbes we deliberately put to work."],
+["Spoilage of protein-rich foods such as fresh meat, meat products and eggs is called rotting.",1,"Rotting is one of several spoilage types. Bacterial metabolism also builds the mucus you sometimes see on the surface of sausages."],
+["Rancidity of fats is a form of microbiological spoilage.",0,"Rancidity is <b>chemical</b> spoilage. Microbiological spoilage covers rotting, souring by lactic acid bacteria, fermentation by yeasts, and growth of moulds."],
+["Fermentation caused by yeasts is the typical spoilage route for sugary jams and juices.",1,"Products spoil in different ways: yeasts ferment sugary products, moulds attack bread and baked goods, lactic acid bacteria sour vacuum-packed meat, lightly processed fish and milk."],
+["A whole carrot and a grated carrot belong to the same shelf-life category.",0,"A whole carrot is a perishable food whose usability can still be judged by sense. <b>Grated carrot is an easily perishable food.</b> Dried carrot chips stay safe for years — one raw material, three categories."]
+]},
+
+{id:"personal", fi:"Henkilökohtainen hygienia", en:"Personal hygiene & work clothing", src:"Practice bank", q:[
+["Headwear is used in kitchens to protect the employee's hair from getting dirty.",0,"Headwear is worn to stop the employee's <b>hair getting into the food</b> — protecting the food, not the hair."],
+["Jewellery and watches must be removed from one's hands before washing hands.",1,"They must always come off before washing, and must not be worn while preparing food: they collect microbes that can travel into the food and cause a food poisoning risk."],
+["If an employee has inflamed wounds on their hands, they must not handle easily perishable food products.",1,"Anyone with inflamed wounds or other inflamed areas on their hands or visible skin must not handle unpackaged food. Small wounds are cleaned, covered with a waterproof dressing, and single-use gloves worn over them."],
+["Hands must be washed after sneezing and blowing one's nose.",1,"Microbes land on the hands when you sneeze or blow your nose. Unwashed, those hands transfer them straight onto food."],
+["An employee who only works the cash register, serves ready meals or washes dishes needs a salmonella certificate.",0,"The health clearance is required of people who handle food that will be served unheated. Cashiers, servers of ready meals and dishwashers are not covered by it."],
+["Polished or false nails are acceptable in a professional kitchen as long as gloves are worn.",0,"No polished or false nails, and no jewellery. Open cuts and burns are covered with finger cots and gloves."],
+["A salmonella test should be taken immediately if an employee develops stomach symptoms after travelling abroad.",1,"Any reason to suspect a salmonella infection triggers a test, and an employee with a stomach illness is not permitted to process food in the meantime."],
+["Hands must be washed after handling money.",1,"Money joins the list with using the toilet, breaks, smoking, eating, coughing or sneezing, touching hair or wounds, handling raw meat, poultry or fish, touching waste, floors or dirty dishes, and using chemicals."],
+["The employee is the single most important factor in maintaining a good hygienic level.",1,"Equipment and premises help, but it is good hygienic practice by staff that reduces risk, holds product quality up and cuts food waste."]
+]},
+
+{id:"cleaning", fi:"Puhtaanapito ja astianpesu", en:"Washing, cleaning & disinfection", src:"Practice bank", q:[
+["Working surfaces must be dried properly after cleaning.",1,"Harmful microbes multiply in damp conditions, so surfaces must be dried fully once they have been cleaned."],
+["Disinfecting work surfaces does not compensate for regular, careful washing.",1,"Surfaces must be washed after each phase of work. Disinfection improves the overall result — it does not replace the washing."],
+["A cleaning and washing programme must be included in the own-check plan.",1,"It lists the areas to be cleaned, the method for each, and any specific equipment or chemicals required. Effectiveness is checked visually every day and the responsible person logs the results, e.g. weekly or whenever something is off."],
+["Working areas and equipment must always be cleaned by using plenty of water.",1,"Water is the solvent that carries dirt away. Surfaces and equipment must then be dried properly, because microbes grow and reproduce easily in moisture."],
+["The disinfection of working surfaces destroys all harmful microbes and sterilizes the surfaces.",0,"Thorough cleaning alone removes about <b>90 %</b> of micro-organisms, and disinfectants destroy nearly all the rest — but not bacterial spores, so a surface is never sterile. The aim is regular, proper cleaning, not sterility."],
+["Food production areas do not need a written cleaning plan if the procedures have been discussed carefully with the personnel and everyone knows their tasks.",0,"The cleaning and washing programme is always part of the own-check plan, and it is produced on paper before operations begin."],
+["Kitchen surfaces and work stations must be washed once a day after one's work shift is over.",0,"They are cleaned after every step of work and whenever they visibly need it. The full clean — surfaces, work stations, floors and emptied waste bins — comes at the end of the shift, and more often if required."],
+["It is enough to visually monitor the results of cleaning and washing.",0,"The own-check plan must name a responsible person and set out a monitoring plan. Alongside visual checks, microbiological samples can be taken from surfaces and equipment, for example with Hygicult strips."],
+["Dirt and dust can make microbes spread to food products.",1,"Impurities such as dirt and dust carry microbes. If they land on a food product, the microbes go with them."],
+["The same cleaning equipment can be used to clean the customer areas and the kitchen in small cafés.",0,"Shared equipment carries microbes from the customer area straight into the kitchen."],
+["When washing dishes, the prewashing should be done with water that is as hot as possible.",0,"Prewash with <b>cool</b> water. Water that is too hot bakes protein onto the dish and forms <b>biofilm</b>, which is a fine growing surface for microbes."],
+["Biofilm means plastic wrap that is specially made for food products.",0,"Biofilm forms on surfaces — for instance on a plate prewashed in water that was too hot — and is a suitable growing environment for microbes."],
+["Detergents (washing chemicals) can be stored in soda bottles.",0,"Only original packaging may be used, so that the right chemical is certain to be used for the right job."],
+["The safety data sheets of detergents (washing chemicals) must always be kept close to their storage location.",1,"They are kept near the chemicals so that whoever uses one can read, for example, the first-aid instructions."],
+["Brooms and mops can be stored on the floor in the corner of a cleaning equipment storage room.",0,"They will not dry lying on the floor, and microbes reproduce quickly in wet cleaning equipment."],
+["Hand washing areas must be cleaned regularly.",1,"A dirty hand-washing point is itself a risk to hand hygiene."],
+["Cleaning plans include accurate instructions about how and when cleaning is done.",1,"The cleaning plan is an essential part of the own-check plan and covers every part of the food production area."],
+["Cleaning equipment must be cleaned once a week.",0,"Cleaning equipment is cleaned <b>after every use</b> and then left to dry."],
+["Cleaning equipment must be cleaned always after being used.",1,"Dirty, wet cleaning equipment is full of microbes, and cleaning with it gives a poor result."],
+["Cleaning equipment storage rooms must be cleaned regularly.",1,"Every part of a food production area is cleaned regularly according to the cleaning plan — the equipment store included."],
+["Worn down and broken equipment is a hygienic risk.",1,"Food residue lodges easily in worn or broken equipment, and even small amounts give microbes a good growing environment."],
+["Cleaning equipment do not need a separate storage area.",0,"Food production areas need a separate space for storing, maintaining and drying cleaning equipment. It need not be an actual room or cupboard, as long as it is properly separate from food preparation areas."],
+["Cleaning equipment that is old and in bad condition can spread harmful microbes to a food production area.",1,"Cleaning equipment wears and gets dirty in use, and often carries microbes despite regular washing. It should be renewed regularly."],
+["Disinfecting reduces the amount of microbes from work surfaces and equipment.",1,"Correctly performed disinfection reduces the microbe count on work surfaces and equipment very effectively."],
+["Dishes should be pre-rinsed with water no hotter than 35–40 °C.",1,"Above that, protein bakes onto the surface as <b>biofilm</b>, which sticks to the dish and shelters microbes. Hot water at the pre-rinse stage is prohibited for exactly this reason."],
+["Not all dirt and deficiencies in hygiene can be noticed by looking.",1,"This is why samples are taken from cleaning results now and then and the report added to the own-check records — a surface can look clean and still fail a swab."],
+["The correct cleaning sequence is: remove dirt mechanically, wash with detergent, then rinse and dry.",1,"Detergent dosage and the instructions for use must be observed at the washing stage, and drying is part of the job rather than an optional extra."]
+]},
+
+{id:"waste", fi:"Jätehuolto", en:"Waste disposal", src:"Practice bank", q:[
+["Waste disposal is not a part of the own-check plan.",0,"The own-check plan always includes waste instructions, scaled to what the operation actually involves, with daily duties and areas of responsibility set out. Health inspectors also look at how waste is handled."],
+["Waste disposal is an essential part of hygienic working in a professional kitchen.",1,"Suitable bins, regular emptying and cleaning, and proper sorting and storage areas for waste awaiting collection are all part of hygienic work. It rests on waste law and regional waste directives."],
+["Food production areas' waste bins must be cleaned regularly.",1,"Kitchen waste bins should be cleaned every time they are emptied."],
+["The waste disposal procedures for professional kitchens, such as recycling, are decided upon between the personnel.",0,"A professional kitchen's waste disposal follows <b>waste law and regional waste directives</b>, not an internal agreement between staff."],
+["Kitchen waste bins are always emptied after a work shift.",0,"They are emptied into the waste sorting room whenever necessary <b>during</b> the shift — and washed at the same time."],
+["Waste does not cause a hygiene risk because it is stored in separate containers.",0,"Poor waste-handling hygiene, or food coming into contact with waste, creates real hygiene risks regardless of the containers."],
+["The state and cleanliness of the waste management room does not affect the kitchen's hygienic quality.",0,"A dirty waste room and badly cleaned bins attract pests and spread microbes that are harmful to food."],
+["The waste bins in waste assortment rooms do not need lids if they are emptied regularly.",0,"They need lids and regular cleaning. That keeps insects out and the room itself cleaner and more hygienic."],
+["The priority of waste laws is to make people working in the food industry responsible for sorting their waste.",0,"The priority of waste law is to <b>reduce the amount of waste and its effects</b>."],
+["Food production areas do not produce hazardous waste which would require special attention.",0,"Cleaning and washing chemicals and their packaging, and items such as fluorescent lamps, are hazardous waste and must be recycled appropriately."],
+["The placement of biowaste bins outside a restaurant does not matter as long as they are not close to an entrance.",0,"Biowaste bins in a waste room or recycling area must be shaded from the sun and placed so that pests cannot reach them."],
+["The cleanliness of waste rooms is not essential for hygiene because only waste is stored in those rooms.",0,"Employees walk into the waste room during the day in the same work clothes they wear everywhere else. Waste rooms must be kept clean and organised."],
+["After handling waste it is important to check the cleanliness of one's work clothes and keep care of hand hygiene.",1,"Badly soiled work clothes should be changed before carrying on, and hand hygiene deserves particular attention after handling waste."],
+["The waste disposal instructions for a food production area need to tell who is responsible for emptying the area's waste into the waste room's recycling bins.",0,"What the instructions must state is which waste company transports the waste away from the waste room. Waste from the production area is in any case moved to the waste room at least by the end of the shift."],
+["The amount of things covered in the waste disposal instructions must be the same for everyone in the food industry.",0,"How far the own-check plan's waste instructions reach depends on what the operation covers."],
+["Food production areas' food waste must be stored in cool temperatures if possible.",1,"Food waste should be kept in cold storage meant for it where that is possible — although few kitchens have enough cold space to spare for it."],
+["Wastebins do not need to be cleaned.",0,"Bins must be unbroken, have a lid, and be cleaned regularly."],
+["Wastebins must be cleaned regularly.",1,"The same rule the right way round: bins must be unbroken, lidded and regularly cleaned."],
+["Waste bins in a professional kitchen should be emptied at least once every shift.",1,"Emptied at least once a shift, cleaned and washed daily, with the waste room and its containers thoroughly cleaned as well."]
+]},
+
+{id:"owncheck", fi:"Omavalvonta ja viranomaisvalvonta", en:"Own-check & official control", src:"Practice bank", q:[
+["An establishment's own-check plan is in effect for 10 years at a time.",0,"It is updated whenever the need arises. Go through it regularly and check whether changes in the operation, or changes in food industry regulations, call for changes in the plan."],
+["Customer feedback is a part of the own-check plan.",1,"Feedback should be written down, discussed with staff and used to develop procedures. It is a way of raising the quality of service."],
+["When preparing an own-check plan, all essential food product risk monitoring must be explained.",1,"The plan must identify which parts of the operation allow microbes to reproduce, how those risks are monitored, and what corrective action follows when something goes wrong."],
+["The creation and following of own-check plans is required of all companies that handle food products.",1,"It has been a legal requirement for every company handling food <b>since 1995</b>, and every employee is responsible for implementing it."],
+["Own-check plans help to lessen the amount of food products that is unfit or needs to be thrown away.",1,"Operators are required by law to identify the critical points in preparation and handling and monitor them. Catching problems in time means less food ends up unusable."],
+["The temperature monitoring of cold storages is a part of own-check plans.",1,"Temperatures are checked and logged regularly according to the plan, and cold storage must always have a thermometer for the measurement."],
+["HACCP is not a food poisoning causing bacteria.",1,"<b>HACCP</b> stands for Hazard Analysis and Critical Control Points, and is part of own-check. Those critical points must be identified and constantly monitored."],
+["HACCP is a food poisoning causing bacteria.",0,"HACCP is Hazard Analysis and Critical Control Points — a management method inside own-check, not an organism."],
+["Own-check plans are meant for the leadership of food industry companies.",0,"They contain instructions and assign responsibilities, so every employee has to know the plan and work to it."],
+["Temperature measurements are to be made only by the superiors of a workplace.",0,"All employees must follow the own-check plan, which makes the measurements everyone's responsibility."],
+["Temperature measurements stated in own-check plans do not have to be made when one is busy.",0,"Only measurements taken regularly can prove the own-check plan has actually been followed."],
+["Cleaning plans are not a part of own-check plans.",0,"Cleaning plans are an important part of own-check, holding the instructions and the schedules for cleaning."],
+["Own-check plans must not be changed.",0,"They must be updated whenever things change at the workplace."],
+["If the temperature of a cold storage unit is too high it must not be marked down on the own-check plan's monitoring logs.",0,"Every measured temperature is logged, too high or too low, along with the corrective action taken to put it right."],
+["When a food industry workplace, e.g. a sausage factory, is being founded, the workplace must only inform local food control authorities about the activities.",0,"A plant of that kind needs <b>written approval</b> from the local food control authority — notification alone is not enough."],
+["Health inspectors can not inspect restaurant kitchens.",0,"Inspecting food production areas such as shops and restaurants is precisely their job."],
+["If a summer restaurant is located next to a lake with clean water, the water in the lake can be used for washing fruits.",0,"All food preparation requires water of <b>tap-water quality</b>, however clean the lake looks."],
+["When a health inspector inspects a workplace, he or she will also check the workplace's own-check monitoring logs.",1,"Logs must be kept at the workplace for <b>one year</b>. Only stored logs can prove the workplace has followed its own-check plan."],
+["Officials benefit from own-check plans the most, because a large part of planning the monitoring is given to food industry companies.",0,"A well-made own-check plan mainly helps the company: monitoring resources go where they matter, knowledge of quality improves, and at best customer satisfaction, profitability and the authorities' trust all rise with it."],
+["Own-check plans are always the task of employers and superiors.",0,"Superiors must make sure everyone knows the plan and their own part in it — but working according to the plan is everybody's responsibility."],
+["Oiva is a system which helps to assess the food product safety of different workplaces.",1,"Municipal food control authorities carry out routine inspections, and <b>Oiva</b> is the system that publishes the results of those inspections."],
+["Samples taken in case of a suspected food poisoning must be stored for three weeks.",1,"Keeping the sample is what lets the investigation identify the cause afterwards. Own-check also covers logs of received deliveries, temperature monitoring, cleaning results and clear guidelines for food poisoning cases."],
+["The cleaning plan in the own-check plan may be verbal, as long as everyone knows it.",0,"It must be <b>in writing</b>, include the division of labour, the schedule and the cleaning instructions, and be displayed and available at the cleaning sites themselves."],
+["Incoming products are checked for date, labelling, temperature and sensory quality.",1,"All four, every delivery. The point is avoiding food waste and holding quality, not just ticking a box."],
+["Own-check aims to ensure food is safe for consumers and that operations comply with regulatory requirements.",1,"It is the operator&rsquo;s own system for doing that, and HACCP is the method inside it for finding and controlling the critical points."]
+]},
+
+{id:"preservation", fi:"Säilyvyyden parantaminen", en:"Preservation & shelf life", src:"Practice bank", q:[
+["UHT-treated milk products can be stored in room temperature.",1,"In <b>UHT</b> treatment the product is heated rapidly to a very high temperature and filled into sterilised packaging, so an unopened package keeps at room temperature."],
+["The shelf life of spices can be prolonged by radiation.",1,"UV, infrared and gamma radiation can be used to destroy microbes in products such as spices and long-life pastries."],
+["High salt content prevents harmful microbes from multiplying in a product.",1,"Heavy salting changes the state of the water in the product so microbes cannot reproduce. Salted products such as mushrooms still need cold storage, or surface microbes will spoil them."],
+["The lastingness of food products can also be improved during treatment by using hygienic work methods, clean surfaces and equipment.",1,"Raw ingredients and their equipment must be kept apart from cooked products. Colour-coded cutting boards and tools for vegetables, fish, meat and cooked food are a practical way to prevent cross-contamination."],
+["The acidity of food products affects the reproduction of bacteria in the products.",1,"More acid makes reproduction harder for many harmful microbes, which is why <b>lactic acid fermentation</b> is a traditional way of preserving vegetables. Lactic acid bacteria are a good example of beneficial microbes — not all microbes are harmful."],
+["All E-numbered additives improve the lastingness of food products.",0,"In the EU permitted preservatives carry an E-number — <b>E 200</b> is sorbic acid, <b>E 296</b> malic acid — but E-numbers also identify additives with nothing to do with shelf life. Colours, for example, do not preserve anything."],
+["Drying makes an easily perishable food product a long-lasting one.",1,"Microbes need water to reproduce, so removing it is one of the oldest and most effective preserving methods. Dry products keep well as long as they stay dry through every stage of transport and storage."],
+["Unpeeled and peeled carrots will last the same amount of time as long as they are stored in the cold.",0,"Earthy, untreated root vegetables keep for a long time in proper cold storage. Every treatment — washing, peeling, grating — shortens that."],
+["Bacteria spores are destroyed during sterilization.",1,"Sterilisation, as used in canning, destroys all microbes and spores. That is how a perishable product becomes shelf-stable at room temperature."],
+["Dried products last well due to having no water that bacteria could use to reproduce.",1,"Water is necessary for microbes to reproduce, and dried products have almost none available."],
+["Food products containing preservatives will also spoil.",1,"Preservatives only slow the spoiling caused by microbes. In the EU every permitted preservative carries an E-code."],
+["Water is not necessary for microbes to reproduce.",0,"Microbes need water. That is exactly why dried products keep — there is no free water for them to use."],
+["In Finland the milk found in cartons in stores is almost always pasteurized milk.",1,"Only raw milk bought directly from a dairy farm is usually unpasteurised."],
+["In Finland the milk found in cartons in stores is rarely pasteurized.",0,"The reverse is true: carton milk in Finnish shops is almost always pasteurised. Only raw milk bought straight from a dairy farm usually is not."],
+["Products that have gone through ultra-high-temperature treatment (UHT) can not be stored in room temperature.",0,"UHT sterilises the product with very rapid heating. Unopened packages keep at room temperature because most bacterial spores have been destroyed."],
+["A grated carrot spoils faster than an entire carrot.",1,"Grating spreads microbes over the carrot, frees the water inside for them to use, and multiplies the surface area — where microbes that need oxygen do best."],
+["An entire block of cheese spoils faster than cheese that has been sliced.",0,"Spoiling usually starts at the surface, which has oxygen and picks up microbes during production and packing. More surface area means faster spoiling, so the sliced cheese goes first."],
+["Microbes can not reproduce in dry products.",1,"They need water to reproduce. Dry products can still contain spores of bacteria, moulds and yeasts — dormant, but present."],
+["Bacteria spores can not be found inside the cans of canned food.",1,"Canned food is produced by sterilisation, which destroys all bacterial spores."],
+["Dry flour contains no microbes.",0,"The microbes in dry products have not been destroyed. Dry products can contain spores of bacteria, moulds and yeasts."],
+["Dry flour contains microbes.",1,"Dry products can contain spores of bacteria, moulds and yeasts. They simply cannot reproduce while the product stays dry."],
+["If the product being handled is fresh and of good quality, the handling hygiene is not as important.",0,"Hygienic methods and clean equipment always matter. A fresh, good-quality product will still spoil quickly if it is handled unhygienically."]
+]},
+
+{id:"preparation", fi:"Ruoan valmistus ja tarjoilu", en:"Preparing, cooking & serving", src:"Practice bank", q:[
+["A frozen product may be defrosted in room temperature if the product is needed quickly.",0,"Frozen products are always defrosted in a cooler. To speed it up, use the microwave's defrost setting or keep the product in its packaging under cold running water."],
+["Spices cannot cause food poisoning.",0,"Spices too can carry a food poisoning risk, so they must be used and stored hygienically and carefully like any other food."],
+["Vegetables and fruit must be washed prior to food preparation with water that meets the requirements of household water.",1,"Taps in any food preparation space must supply household-quality water — the same water used for making food and for staff hand washing."],
+["Coffee cream and milk may be stored in room temperature, because they will be added to hot coffee.",0,"Milk and cream are easily perishable and must be served cold, whatever they are going into."],
+["The slime that appears on the surface of meat products is caused by harmful microbes.",1,"Some harmful microbes produce slime — on a sausage it is a sign of spoiling. Slime-producing microbes reproduce quickly when the product is stored or served too warm."],
+["Ripened cheese is prepared by using beneficial microbes.",1,"Carefully studied and monitored microbe populations are used. They help the cheese keep longer and shape its composition and taste."],
+["Food poisoning causing bacteria reproduce quickly in food kept in room temperature.",1,"Room temperature sits inside the range that suits them, so reproduction speeds up sharply in food left out."],
+["Defrosting frozen foods in room temperature increases the risk of food poisoning.",1,"The surface thaws faster than the middle. In a warm room the surface reaches temperatures where microbes grow while the inside is still frozen."],
+["Fresh fish and roe must be stored between 0 and 3 degrees Celsius.",1,"They are extremely perishable and must be kept close to the temperature of melting ice, <b>0 – +3 °C</b>. Certain spoilage bacteria reproduce even at +3 °C, which is why fish and roe count as risk foods."],
+["Berry kisels can be stored in room temperature because the sugar prevents the growth of harmful bacteria.",0,"Kisel has a lot of water and a much lower sugar density than jam or marmalade, so the sugar does not hold bacteria back. It must be kept cold."],
+["The gutting and proper washing of fish is enough to prevent tapeworm infections.",0,"Infectious tapeworm larvae can sit inside the muscle or the roe. Prevention is <b>cooking or freezing</b> the fish or roe."],
+["Easily perishable food products that have been up for retail sale can be frozen and sold as frozen foods.",0,"Frozen food production requires perfect-quality ingredients, prepared, cooled and frozen without delay, and only in appropriate production centres. Bakeries, households and farm households may freeze only if premises and equipment are officially approved."],
+["When serving or distributing food products for free, the rules and requirements for handling food products must be followed.",1,"Handing food out free of charge does not exempt anyone from the food handling rules."],
+["Minced meat that has been prepared in a store can be sold on the day of preparation and the day after that.",1,"That applies to minced meat and ground liver prepared in a retail store: <b>the day of preparation and the following day</b>."],
+["Food products can be cooled in the same freezer where frozen products are stored.",0,"Food must first be cooled using separate cooling equipment, and only then moved into a freezer for storage."],
+["Guide dogs are allowed inside food product stores.",1,"Guide dogs are always allowed in areas meant for customers. No animals may be taken into food handling or storage areas."],
+["The sale time for minced meat produced in a store is 10 days.",0,"Minced meat produced in a store may be sold on the day of production and the day after — two days, not ten."],
+["When hot food being served is kept at over 60 degrees Celsius the microbes in the food can not reproduce.",1,"Food that is not eaten or cooled immediately after cooking must be held above <b>+60 °C</b> during service, for a maximum of <b>4 hours</b>."],
+["Thoroughly boiled food does not contain any microbes.",0,"Bacterial spores survive boiling. Once the food cools below +60 °C those spores can start reproducing again."],
+["Food products can not be stored on the floor of dry storage rooms.",1,"Floors always carry more microbes than shelves. Storing food on the floor is not a hygienic way to store it."],
+["The temperature of cold food on a buffet may not rise above +12 °C during serving.",1,"Cold food is stored and served at <b>+6 °C or under</b>. During service the temperature may rise no higher than <b>+12 °C</b>, and cold dishes must sit in a cold pool or be changed regularly."],
+["Refrigerated food being reheated must be heated right through to over +70 °C.",1,"Over <b>+70 °C</b> for reheated food, and poultry to a minimum of <b>+75 °C</b>. Reheating has to be efficient and thorough, not merely warm to the touch."],
+["A microwave oven is a reliable way to reheat a portion in a professional kitchen.",0,"Microwaves heat foods of different composition unevenly, so they are not considered a reliable method for professional reheating."],
+["Food that has been served on a buffet may be passed to a charity if the cold chain has stayed intact.",1,"It may not be served again by the establishment itself. Passing it on is possible in some cases provided the cold chain holds and transport, storage and serving stay hygienic — the route used by services such as ResQ Club."],
+["Chilling food outdoors is acceptable in a professional kitchen if the weather is cold enough.",0,"Home kitchen practice does not transfer: the volumes and the risks are far higher. Food cannot be chilled outdoors or in front of an open window."]
+]},
+
+{id:"coldstorage", fi:"Varastointi ja kylmäketju", en:"Storage, cold chain & dates", src:"Practice bank", q:[
+["New products that are to be moved into cold storage are placed where there is enough room for them.",0,"Older products go at the front, newer ones behind — the <b>first in, first out</b> principle. The oldest stock is always used first."],
+["Unprepared root vegetables can temporarily be stored in a cleaning supply closet or another spacious place.",0,"Food cannot be stored in places that are not meant for storing food, however much room they have."],
+["Minced meat lasts as long as unprepared meat if it is packaged in a vacuum container or vacuum bag.",0,"Minced meat must be stored at a maximum of <b>+4 °C</b>, whereas whole cuts of meat may be kept at <b>+6 °C</b>. Vacuum packing does not change that."],
+["The temperatures of cold storage equipment do not need to be measured if they feel cold enough.",0,"Temperatures of refrigerating equipment, drawers and cabinets are measured and logged <b>at the same time each day</b>. Atypical readings go into the own-check forms along with the action taken to restore the right temperature."],
+["Pasteurized dairy products can be stored unopened in room temperature.",0,"Pasteurisation does not make that possible — pasteurised milk belongs below +6 °C. It is <b>UHT-treated</b> dairy products that keep at room temperature while unopened."],
+["The washing and treatment of vegetables worsens their lastingness.",1,"Untreated carrots keep for weeks in proper storage. Washed, peeled and grated, the same carrot becomes an easily perishable product."],
+["Pasteurization improves the lastingness of food products.",1,"Milk is heated to <b>+72 °C for 15 seconds</b> and cooled immediately. A large number of reproducing bacteria die, but not all microbes — pasteurised milk must still be kept below <b>+6 °C</b>. Juices are another product improved by pasteurisation."],
+["Freezing in a sufficiently cold temperature improves the lastingness of products.",0,"Products can be preserved by freezing, but freezing affects quality: fish, meat and baked goods dry out easily, so frozen stock has to be checked regularly."],
+["Freezing improves the lastingness of food products because microbes are destroyed in the cold.",0,"Cold does not destroy microbes. A microbiologically poor product will be worse after thawing. A good-quality product does keep longer if frozen at <b>-18 °C or colder</b> and thawed slowly in the cold."],
+["Blanching improves the lastingness of for example vegetables when they are stored in freezing.",1,"Blanching — quick boiling — stops enzyme activity on the surface by destroying microbe activity, so vegetables do not dry out on the surface in the freezer. It is also used to remove natural toxins from morel mushrooms, boiling several times and changing the water between boilings."],
+["A product can not be used for food preparation after the product's best-before date.",0,"<b>Best before</b> means the product's main characteristics hold until that date if it has been stored correctly. It may still be used and sold afterwards, with quality checked by the senses."],
+["All cold storage units in food production areas must contain a thermometer.",1,"Monitoring and logging temperatures is an important part of own-check, and a thermometer is the tool that makes it possible."],
+["Indoor plants can spread harmful microbes to food products.",1,"Microbes live on the surfaces of plants and in their soil, so indoor plants must not be kept in food preparation areas."],
+["Unpacked raw fish must always be stored separate from other food products.",1,"Raw fish is stored separately to prevent the risk of cross-contamination."],
+["Food products can not be sold nor used after the last use-by-date.",1,"The <b>use-by date</b> must be marked on easily perishable food, and the marking has to be based on research into the product's shelf life."],
+["Transported products and cargo being received do not have to be checked.",0,"The quality of arriving products must be checked and the temperatures of perishables measured. The results are written down."],
+["Ascorbic acid (vitamin C) can be used as a preservative.",1,"Ascorbic acid lowers the pH value of the product. Raising acidity slows the growth of bacteria in particular."],
+["Ultra-high-temperature processing (UHT) uses higher temperatures than pasteurizing.",1,"Much higher. UHT destroys most bacterial spores, which is why UHT-treated products can be stored at room temperature."],
+["Food products can be used after the last use-by-date if the product does not look spoiled.",0,"Perishable food carries a use-by date and may be neither used nor sold after it, no matter how it looks."],
+["If an easily perishable food product has been stored in too warm conditions, the product can still be stored until the use-by-date.",0,"The use-by date is reliable only if the product has been stored correctly. Storing too warm always shortens the time a product lasts."],
+["A best-before date is marked as day and month when the shelf life of the food is shorter than three months.",1,"The format follows shelf life: <b>day + month</b> under 3 months, <b>month + year</b> for 3–18 months, <b>year alone</b> for over 18 months."],
+["Pasteurised products are chilled immediately after heating.",1,"Pasteurisation is +72 °C for 15 seconds followed by immediate chilling to +6 °C. It does not change the product&rsquo;s composition, taste or nutritional value."]
+]},
+
+{id:"receiving", fi:"Hankinta, kuljetus ja vastaanotto", en:"Purchase, transport & receiving", src:"Practice bank", q:[
+["A food production area means an area in which food is prepared.",0,"A food production area is any building, room, part of a room, or other indoor or outdoor space where food meant to be sold or handed on is prepared, stored, transported, kept on sale, served <em>or handled in any other way</em> — far wider than the kitchen."],
+["All plastic containers are suitable for storing food.",0,"Materials that come into contact with food must be intended for food use."],
+["The transportation company is responsible for the appropriate storing temperature of food during transportation.",1,"Drivers make sure food is held at the right temperature and packaging is not damaged. The person receiving the delivery then inspects it and gets the products into the right storage quickly."],
+["Boxes meant for transporting food can be stored outside if there is no space indoors.",0,"Transport boxes must be stored where they do not get dirty. The restaurant and the transport company agree how often boxes and trolleys are collected and cleaned."],
+["Packages of easily perishable food products must have a label indicating their best-before date.",0,"Perishable products require a <b>use-by date</b> and storage instructions, not a best-before date. The date is valid only for unopened products stored at the right temperature."],
+["Packages for non-easily perishable food products must have a label indicating their best-before date.",1,"How precise the date is depends on the product's shelf life. It may be used after the date if its sensory qualities — smell, taste, appearance — are still impeccable."],
+["When evaluating or checking the quality of food it is enough to check the dates on the packaging.",0,"Food must also be checked with the senses, because products may have warmed up or partly melted if they were stored wrongly during transport."],
+["When receiving food products it is enough to check their temperature.",0,"Appearance, the condition of the packaging and the packaging markings must be checked by eye as well."],
+["Received food products must be stored where there is the most space for them in the storage facility.",0,"Storage follows <b>FIFO — First In, First Out</b>. Stock already in the store moves to the front to be used first, and new products go behind it, so goods leave in the order they arrived and less is wasted."],
+["The temperature checks for received food products that need hot or cold storage are part of the own-check plan.",1,"Temperature monitoring at receiving is an important part of own-check. If temperatures fail the requirements, the goods can be returned to the supplier as faulty."],
+["In a cramped or nearly full storage facility, food products that can easily perish can be stored on the floor if it has just been washed.",0,"Perishable food always needs shelves or a platform. Food is never stored on the floor, however clean it is."],
+["When unprotected, cooked and uncooked food products must be stored in separate areas.",1,"Unprotected cooked and uncooked products need separate storage areas to prevent cross-contamination."],
+["When receiving products one must make sure that they are moved into their appropriate, separate storage areas as soon as possible after the receival check.",1,"Easily perishable food cannot be left at room temperature for longer than <b>10–15 minutes</b>."],
+["Kitchens in hospitals should have separate spaces for different work phases such as the treatment of root vegetables, baking and dishwashing.",1,"When each work phase has its own area, the work is hygienic and the risk of cross-contamination is smaller."],
+["All work phases, such as dishwashing, baking and treatment of root vegetables, can be done in the same area in hospital kitchens.",0,"Each work phase needs its own area. That is what keeps the work hygienic and the cross-contamination risk low."],
+["Food production areas need to have a changing room.",1,"Employees need a changing room with a separate storage space for clean work clothes."],
+["Customers and employees must have their own, separate toilets.",1,"Food production demands strict toilet and hand hygiene, and that is not possible if toilets are shared with customers."],
+["Earthy root vegetables and pre-made food products can be stored in the same cold room.",0,"Soil always contains many microbes. Earthy root vegetables must be handled separately so those microbes do not spread to other food."],
+["Earthy root vegetables and pre-made food products can not be stored in the same cold room.",1,"Soil always contains many microbes, so earthy root vegetables are kept and handled apart from other food products."],
+["An unopened UHT-processed milk will keep at room temperature for several months.",1,"UHT heats to +135 °C for a few seconds, chills quickly and fills into sterilised packaging, which is what makes months at room temperature possible."]
+]},
+
+{id:"hazards", fi:"Kemialliset ja fysikaaliset vaarat", en:"Chemical & physical hazards", src:"Training deck", q:[
+["Food hazards are divided into three groups: microbiological, chemical and physical.",1,"Those three groups are the backbone of the whole syllabus. Microbiological hazards are living organisms, chemical hazards are substances, physical hazards are objects."],
+["Green potatoes can be used normally, because the green colour is only a visual defect.",0,"Green potatoes contain <b>solanine</b>, a natural toxin, and should be rejected."],
+["False morels contain a natural toxin that must be removed by correct handling.",1,"False morels contain <b>gyromitrin</b>. They are made edible by repeated boiling with the water changed between boilings — the same blanching technique used elsewhere for shelf life."],
+["Histamine can form in tuna, mackerel and herring as they spoil.",1,"Spoilage generates <b>histamine</b> in these fish, and it is a chemical hazard rather than a microbiological one, so cooking does not remove it."],
+["Natural toxins are not a food hazard, because they occur naturally in the food.",0,"Naturally occurring toxins — gyromitrin in false morels, solanine in green potatoes — are a chemical hazard and are avoided by correct handling or rejection."],
+["Mercury, dioxin, lead and cadmium are examples of harmful residues that can end up in food.",1,"They sit alongside pesticide and antibiotic residues as chemical hazards carried into food from the environment or from production."],
+["Aluminium leaching from dishes and plasticizers from plastics are chemical hazards.",1,"Wrong materials and detergent residues transfer chemically into food. This is why materials in contact with food must be intended for food use."],
+["An allergenic ingredient missing from the label is a chemical hazard.",1,"An undeclared allergen is treated as a chemical hazard, because the consumer cannot detect it and the reaction can be severe."],
+["Pesticide and antibiotic residues are physical hazards.",0,"They are <b>chemical</b> hazards. Physical hazards are objects you could pick out — stones, glass, hair, packaging fragments."],
+["Physical hazards are usually noticed by the senses.",1,"Dust and dirt, stones, buttons, pieces of wood or metal, hair, plasters, cigarette ends and ash, insects and their droppings, loose or broken pieces of equipment, fragments of packaging — all normally visible."],
+["A plaster that falls off a worker's finger into food is a physical hazard.",1,"It is a classic physical hazard, which is why small wounds are covered with a waterproof dressing <em>and</em> a glove over the top."],
+["Only sterile products such as UHT milk and canned food are completely free of microbes.",1,"Everything else contains microbes to some degree. Sterilisation and UHT are the processes that leave a product genuinely microbe-free."],
+["Contamination can only happen in the kitchen.",0,"Contamination is the transfer of a hazard to food, and it can happen at <b>any stage of the food chain</b> — from one foodstuff to another, via dirty water or pests, via dirty tools or surfaces, or via people's hands and droplets."],
+["Post-contamination means contamination transferring to an already cooked product.",1,"The textbook example is cooked meat handled with the same equipment that was used for raw meat. The cooking step that would have killed the microbes has already passed."],
+["Pests can only cause microbiological hazards.",0,"Animals can bring all three kinds — microbiological, chemical and physical. Beetles, flying insects, larvae, ants, spiders, rodents and birds all count as pests."],
+["Keeping a dry food store below +18 °C helps prevent insect infestation.",1,"Along with inspecting incoming goods, proper ventilation, keeping packages off the floor, tidiness and FIFO, temperature control is part of basic pest prevention."],
+["Covering floor drains and other pass-throughs with metal grating helps keep mice, rats and birds out.",1,"That, plus cleaning floor drains and the spaces under storage units, daily waste removal, and keeping doors and windows shut. Heavy infestations are handed to a professional pest control service."],
+["In Finland, insects may be sold as food only as farmed whole insects.",1,"They may be crushed, ground or dried, but no parts — wings, legs, head — may be removed, isolated or extracted. Insect proteins may also cause allergic reactions."]
+]},
+
+{id:"poisoning", fi:"Ruokamyrkytykset ja epidemiat", en:"Food poisoning, bacteria & epidemics", src:"Training deck", q:[
+["A food poisoning epidemic means at least two people getting similar symptoms after eating or drinking the same thing.",1,"<b>Two people</b> is the threshold for calling it an epidemic. That is a different number from the reporting threshold — notification to THL follows when more than five people have similar symptoms."],
+["A suspected food poisoning must be reported to the Finnish institute for health and welfare (THL) if more than five people have similar symptoms.",1,"The operator of the premises where the food was eaten notifies the food safety officials, and the health inspector takes it to the municipal investigation team."],
+["Staphylococcus aureus is typically a skin bacterium.",1,"It travels from hands and skin into food, which is why hand hygiene and covered wounds matter so much."],
+["Bacillus cereus is typically a soil bacterium.",1,"It forms spores that survive cooking, so it is the organism behind food cooked in advance and cooled too slowly — rice being the classic case."],
+["Salmonella is typically associated with animal intestines and eggs.",1,"Raw or undercooked poultry meat and eggs are the common routes, and it also spreads person to person through poor hand hygiene."],
+["EHEC (STEC) originates from cattle intestines.",1,"That is why raw or undercooked minced beef — steak tartare, rare burgers — is the classic EHEC risk."],
+["Campylobacter is associated with poultry, natural waters and raw milk.",1,"All three routes involve something eaten or drunk without a heating step that would kill it."],
+["Yersinia is associated with pork, game and vegetables.",1,"Yersinia enterocolitica spreads via insufficiently heated or raw pork. Sufficient heating kills it."],
+["Listeria is a soil and water bacterium and is common in raw milk.",1,"Listeria is widespread in the environment — soil, water, plants, animal feed, intestines — and it grows at fridge temperatures, in salt, with or without oxygen."],
+["Norovirus and hepatitis A are bacteria.",0,"They are <b>viruses</b>. Viruses do not multiply in food, but they survive in it and very small numbers are enough to make you ill."],
+["Children under school age, pregnant women, the elderly and people with reduced resistance are at greater risk from food poisoning.",1,"These are the recognised risk groups, and they are the reason certain products — raw milk, cold-smoked fish — carry specific warnings."],
+["Food poisoning is always caused by bacteria.",0,"Bacteria are the most common cause, but viruses, parasites, protozoa, natural toxins, toxic plants, animals or fungi, and chemical substances all cause it too."],
+["Insufficient chilling is one of the most common reasons behind food poisoning outbreaks.",1,"The usual list: insufficient chilling, insufficient heating, contaminated raw material, a break in the cold chain, over-long serving times, poor hygiene in preparation or serving, and poor personal hygiene of staff."],
+["An employee with a stomach illness may keep handling food as long as they wear gloves.",0,"They must not process food at all. <b>Diarrhoea, vomiting, fever, jaundice, sore throat with fever and open lesions</b> all bar you from handling food."],
+["Some diseases caused by food poisoning are classified as generally hazardous communicable diseases.",1,"Which is why suspicions are escalated to the authorities rather than handled quietly in-house."],
+["Infectious organisms can only contaminate food during preparation, not during production.",0,"Infectious organisms or their toxins can contaminate food at <b>any point</b> of production or processing."]
+]},
+
+{id:"legislation", fi:"Lainsäädäntö, viranomaiset ja koe", en:"Legislation, authorities & the test", src:"Training deck", q:[
+["The Food Act regulates the safety and quality of food in Finland.",1,"The <b>Food Act (23/2006)</b> sets requirements for manufacturers, distributors and sellers, and the hygiene passport requirement sits in its § 27. Every operator and employee must comply with it."],
+["The hygiene passport is issued by a tester authorised by the Finnish Food Authority.",1,"The Finnish Food Authority (Ruokavirasto) is the highest food authority in the country, and it supervises both the testers and the organisation of the test."],
+["The Oiva report must be displayed at the door of a restaurant or shop.",1,"Displaying it is mandatory. The smileys tell the consumer how each part of the inspection went — that is the whole point of the system."],
+["The purpose of the Oiva system is to publish food inspection results to consumers.",1,"It is coordinated by the Finnish Food Authority and makes food safety visible at the door rather than buried in a file."],
+["Serving coffee and biscuits in a hair salon requires a notification to the food control authority.",0,"Small-scale catering attached to another business needs no notification. Nor does a private person baking occasionally for a pop-up, or food sold at a church, school or sports club event — those are not business activities. When in doubt, ask the local authority."],
+["Food premises must be indoors.",0,"A food premises is any space where food is prepared, stored, transported, sold or served — <b>indoors or outdoors</b>. A transport vehicle, a warehouse and an ice cream kiosk all qualify."],
+["Food premises need a separate changing room with separate storage for clean work clothes.",1,"Along with enough space for the different work steps, adequate drainage, lighting, ventilation, storage and cold storage, a cleaning cupboard, hand washing points and own-check."],
+["Restaurants and cafés need separate toilets for staff and guests.",1,"Shared toilets make the strict toilet and hand hygiene required in food work impossible."],
+["Municipal health authorities carry out surveillance and receive notifications about food premises.",1,"They receive the notification when a food premises is established and they carry out the inspections that feed the Oiva system."],
+["Each hygiene passport test consists of 40 questions drawn from a database of over 1000.",1,"You will not see the same paper twice, which is why understanding the reasoning beats memorising individual statements."],
+["Wrong answers give minus points in the hygiene passport test.",0,"There are <b>no minus points</b>. So never leave a box empty — an uncertain answer costs nothing more than a blank one."],
+["You may leave the test room as soon as you have finished answering.",0,"You may not leave until <b>20 minutes</b> have passed. The test runs 20–45 minutes, so there is no reward for rushing."],
+["The test is filled in with a pencil so that mistakes can be erased.",0,"Use a <b>blue ballpoint pen</b> — pencil is forbidden, because the papers must be archived. Corrections are marked clearly, inside the boxes."],
+["Your name and date of birth are written on the test form in block letters.",1,"Write them carefully in capitals, and mark each answer with a clear X in the answer box."],
+["A valid official ID must be brought to the hygiene passport test.",1,"The examiner checks your identity against an identity card, passport or driving licence when collecting the form."],
+["The hygiene passport card arrives 2–4 weeks after the test.",1,"The certificate and card are delivered after the papers have been processed, so leave time before a job start date if an employer wants to see it."],
+["Talking with other participants during the test is allowed if you do not discuss the answers.",0,"Talking is not allowed, and the examiner cannot answer questions during the test either. Cheating or attempting to cheat disqualifies the paper."],
+["Food legislation exists partly to protect consumers from financial losses, not only from health risks.",1,"It ensures correct food information and traceability, protects against health risks <em>and</em> financial losses from non-compliant products, and unifies practices through control."]
+]}
+
+];
+
+/* ── helpers ─────────────────────────────────────────── */
+const $ = s => document.querySelector(s);
+const byId = i => document.getElementById(i);
+const topicOf = id => BANK.find(t => t.id === id);
+
+const ALL = [];
+BANK.forEach(t => t.q.forEach((row, i) => ALL.push({
+  key: t.id + ":" + i, topic: t.id, claim: row[0], ans: !!row[1], why: row[2]
+})));
+
+function shuffle(a){
+  const r = a.slice();
+  for (let i = r.length - 1; i > 0; i--){
+    const j = Math.floor(Math.random() * (i + 1));
+    [r[i], r[j]] = [r[j], r[i]];
+  }
+  return r;
+}
+
+/* ── session state (in-page only) ────────────────────── */
+const missed = new Map();   // key -> item
+let S = null;               // active run
+
+/* ── tabs ────────────────────────────────────────────── */
+const PANELS = ["exam","topics","wrong","facts","quiz","result"];
+function show(name){
+  PANELS.forEach(p => byId("p-" + p).classList.toggle("hidden", p !== name));
+  document.querySelectorAll(".tab").forEach(t =>
+    t.setAttribute("aria-selected", t.dataset.tab === name));
+  window.scrollTo(0, 0);
+}
+document.querySelectorAll(".tab").forEach(t => t.addEventListener("click", () => {
+  stopClock(); S = null;
+  if (t.dataset.tab === "wrong") renderWrong();
+  show(t.dataset.tab);
+}));
+
+/* ── topic list ──────────────────────────────────────── */
+const FIELDS = [
+  { fi:"Mikrobiologia ja elintarvikkeiden saastuminen", en:"Microbiology & food contamination", t:["microbes","hazards"] },
+  { fi:"Ruokamyrkytykset ja hygieeniset työtavat",      en:"Food poisoning & hygienic working methods", t:["poisoning","preparation","preservation","coldstorage","receiving"] },
+  { fi:"Henkilökohtainen hygienia",                     en:"Personal hygiene", t:["personal"] },
+  { fi:"Puhtaanapito",                                  en:"Sanitation", t:["cleaning","waste"] },
+  { fi:"Omavalvontajärjestelmä",                        en:"Own-check system", t:["owncheck"] },
+  { fi:"Elintarvikelainsäädäntö ja viranomaiset",       en:"Food legislation & authorities", t:["legislation"] }
+];
+
+const card = t => `
+  <button class="opt" data-start="topic:${t.id}">
+    <span class="n">${t.q.length}</span>
+    <span class="t"><strong>${t.en}</strong><span>${t.fi}</span></span>
+    <span class="arrow">→</span>
+  </button>`;
+
+byId("topiclist").innerHTML =
+  `<div class="stack solo">${card(topicOf("official"))}</div>` +
+  FIELDS.map((f, n) => {
+    const ts = f.t.map(topicOf);
+    const count = ts.reduce((a, t) => a + t.q.length, 0);
+    return `<div class="fieldhead">
+        <span class="num">${n + 1}</span>
+        <span class="nm">${f.en}<span>${f.fi}</span></span>
+        <button class="go" data-start="field:${n}">${count} →</button>
+      </div>
+      <div class="stack">${ts.map(card).join("")}</div>`;
+  }).join("");
+
+document.addEventListener("click", e => {
+  const b = e.target.closest("[data-start]");
+  if (b) start(b.dataset.start);
+});
+
+/* ── run builder ─────────────────────────────────────── */
+function start(mode){
+  let items, timed = false, instant = true, label = "";
+
+  if (mode === "exam-timed"){
+    items = shuffle(ALL).slice(0, 40); timed = true; instant = false;
+    label = "Harjoituskoe · Mock exam";
+  } else if (mode === "exam-instant"){
+    items = shuffle(ALL).slice(0, 40);
+    label = "Harjoituskoe · Mock exam";
+  } else if (mode === "official"){
+    items = ALL.filter(q => q.topic === "official");
+    label = "Virallinen mallisarja · Official model series";
+  } else if (mode === "rapid"){
+    items = shuffle(ALL).slice(0, 15);
+    label = "Pikaharjoitus · Quick drill";
+  } else if (mode === "missed"){
+    items = shuffle([...missed.values()]);
+    label = "Virheet · Your mistakes";
+  } else if (mode.startsWith("field:")){
+    const f = FIELDS[+mode.split(":")[1]];
+    items = shuffle(f.t.flatMap(id => {
+      const t = topicOf(id);
+      return t.q.map((r, i) => ({key:id+":"+i, topic:id, claim:r[0], ans:!!r[1], why:r[2]}));
+    }));
+    label = f.fi + " · " + f.en;
+  } else {
+    const t = topicOf(mode.split(":")[1]);
+    items = shuffle(t.q.map((r, i) => ({key:t.id+":"+i, topic:t.id, claim:r[0], ans:!!r[1], why:r[2]})));
+    label = t.fi + " · " + t.en;
+  }
+
+  if (!items.length){ renderWrong(); show("wrong"); return; }
+  S = { mode, items, i: 0, right: 0, timed, instant, label, answers: [] };
+  byId("tally").classList.toggle("hidden", timed);
+  byId("clock").classList.toggle("hidden", !timed);
+  if (timed) startClock(45 * 60); else stopClock();
+  show("quiz");
+  paint();
+}
+
+/* ── clock ───────────────────────────────────────────── */
+let tick = null;
+function startClock(secs){
+  stopClock();
+  let left = secs;
+  const el = byId("clock");
+  const draw = () => {
+    const m = Math.floor(left / 60), s = left % 60;
+    el.textContent = m + ":" + String(s).padStart(2, "0");
+    el.classList.toggle("warn", left <= 300);
+  };
+  draw();
+  tick = setInterval(() => {
+    left--; draw();
+    if (left <= 0){ stopClock(); finish(true); }
+  }, 1000);
+}
+function stopClock(){ if (tick) clearInterval(tick); tick = null; byId("clock").textContent = ""; }
+
+/* ── quiz painting ───────────────────────────────────── */
+const bT = byId("btn-true"), bF = byId("btn-false");
+
+function paint(){
+  const q = S.items[S.i];
+  byId("counter").textContent = (S.i + 1) + " / " + S.items.length;
+  byId("tally").textContent = S.right + " oikein";
+  byId("railfill").style.width = (S.i / S.items.length * 100) + "%";
+  byId("qtag").textContent = topicOf(q.topic).fi;
+  byId("claim").textContent = q.claim;
+  byId("reveal").classList.add("hidden");
+  byId("next").classList.add("hidden");
+  [bT, bF].forEach(b => {
+    b.disabled = false;
+    b.className = "";
+  });
+}
+
+function answer(said){
+  if (bT.disabled) return;
+  const q = S.items[S.i];
+  const ok = said === q.ans;
+  if (ok) { S.right++; missed.delete(q.key); } else missed.set(q.key, q);
+  S.answers.push({ q, said, ok });
+
+  if (!S.instant){ advance(); return; }
+
+  bT.disabled = bF.disabled = true;
+  const picked = said ? bT : bF, other = said ? bF : bT;
+  picked.className = ok ? "pick-right" : "pick-wrong";
+  if (!ok) other.className = "was-right";
+
+  byId("verdict").className = "verdict " + (ok ? "ok" : "no");
+  byId("verdict").textContent = ok
+    ? "Oikein · Correct"
+    : "Väärin · Incorrect — oikea vastaus on " + (q.ans ? "TOSI / TRUE" : "EPÄTOSI / FALSE");
+  byId("why").innerHTML = q.why;
+  byId("reveal").classList.remove("hidden");
+  byId("next").classList.remove("hidden");
+  byId("tally").textContent = S.right + " oikein";
+  byId("next").focus();
+}
+
+function advance(){
+  S.i++;
+  if (S.i >= S.items.length) finish(false); else paint();
+}
+
+bT.addEventListener("click", () => answer(true));
+bF.addEventListener("click", () => answer(false));
+byId("next").addEventListener("click", advance);
+byId("quit").addEventListener("click", () => { stopClock(); S = null; show("exam"); });
+
+document.addEventListener("keydown", e => {
+  if (byId("p-quiz").classList.contains("hidden")) return;
+  const k = e.key.toLowerCase();
+  if (!bT.disabled && (k === "t" || k === "1" || k === "arrowleft")) { e.preventDefault(); answer(true); }
+  else if (!bT.disabled && (k === "f" || k === "e" || k === "2" || k === "arrowright")) { e.preventDefault(); answer(false); }
+  else if (bT.disabled && (k === "enter" || k === " ")) { e.preventDefault(); advance(); }
+});
+
+/* ── Oiva grading (practice analogy) ─────────────────── */
+const OIVA = [
+  { fi:"Oivallinen", en:"Excellent",       min:95 },
+  { fi:"Hyvä",       en:"Good",            min:85 },
+  { fi:"Korjattavaa",en:"To be corrected", min:70 },
+  { fi:"Huono",      en:"Poor",            min:0  }
+];
+const face = (mouth, on) => `<svg viewBox="0 0 40 40" aria-hidden="true">
+  <circle cx="20" cy="20" r="18" fill="none" stroke="${on ? '#0B1F2A' : '#9AA9AF'}" stroke-width="2"/>
+  <circle cx="14" cy="16" r="2.2" fill="${on ? '#0B1F2A' : '#9AA9AF'}"/>
+  <circle cx="26" cy="16" r="2.2" fill="${on ? '#0B1F2A' : '#9AA9AF'}"/>
+  <path d="${mouth}" fill="none" stroke="${on ? '#0B1F2A' : '#9AA9AF'}" stroke-width="2.2" stroke-linecap="round"/>
+</svg>`;
+const MOUTHS = [
+  "M11 24 Q20 34 29 24",
+  "M12 25 Q20 30 28 25",
+  "M12 27 L28 27",
+  "M11 30 Q20 21 29 30"
+];
+
+function finish(ranOut){
+  stopClock();
+  const total = S.items.length, right = S.right;
+  const pct = Math.round(right / total * 100);
+  const passMark = Math.ceil(total * 0.85);
+  const passed = right >= passMark;
+  const grade = OIVA.findIndex(o => pct >= o.min);
+
+  const wrongCards = S.answers.filter(a => !a.ok).map(a => `
+    <div class="zone">
+      <h3>${topicOf(a.q.topic).fi} — oikea vastaus ${a.q.ans ? "TOSI / TRUE" : "EPÄTOSI / FALSE"}</h3>
+      <p class="claim" style="font-size:16px;margin-bottom:12px">${a.q.claim}</p>
+      <p class="why">${a.q.why}</p>
+    </div>`).join("");
+
+  byId("p-result").innerHTML = `
+    <p class="eyebrow">${S.label}${ranOut ? " · aika loppui / time up" : ""}</p>
+    <div class="result">
+      <div class="score">${right}<span class="of">/${total}</span></div>
+      <div class="verdictbig ${passed ? "pass" : "fail"}">
+        ${passed ? "Hyväksytty · Passed" : "Hylätty · Not passed"}
+      </div>
+      <div class="passline">
+        <div class="bar"><i style="width:${pct}%"></i><span class="mark"></span></div>
+        <div class="lab"><span>0</span><span>${passMark}/${total} = läpi</span><span>${total}</span></div>
+      </div>
+      <div class="oiva">
+        ${OIVA.map((o, n) => `<figure class="${n === grade ? "on" : ""}">
+          ${face(MOUTHS[n], n === grade)}
+          <figcaption>${o.fi}<br>${o.en}</figcaption>
+        </figure>`).join("")}
+      </div>
+      <p class="oivanote">Oiva-asteikko tässä on harjoitusvertaus, ei virallinen arviointi.<br>
+      The Oiva scale here is a practice analogy, not official inspection criteria.</p>
+      <div class="navrow" style="margin-top:24px">
+        <button class="btn full" data-start="${S.mode}">Uudestaan · Again</button>
+        <button class="btn ghost" id="backhome">Valikko · Menu</button>
+      </div>
+    </div>
+    ${wrongCards ? `<h2 class="head" style="margin-top:34px">Nämä menivät väärin · What you missed</h2>
+      <p class="sub">${S.answers.filter(a => !a.ok).length} statement(s). They are also waiting for you under <em>Virheet</em>.</p>
+      ${wrongCards}` : `<div class="empty" style="margin-top:26px"><strong>Puhdas suoritus</strong>Every statement correct.</div>`}
+  `;
+  byId("backhome").addEventListener("click", () => { S = null; show("exam"); });
+  S.i = S.items.length;
+  show("result");
+}
+
+/* ── mistakes panel ──────────────────────────────────── */
+function renderWrong(){
+  const list = [...missed.values()];
+  byId("wronglist").innerHTML = list.length === 0
+    ? `<div class="empty"><strong>Ei virheitä vielä</strong>Nothing here yet. Statements you answer incorrectly will collect on this page.</div>`
+    : `<div class="navrow" style="margin:0 0 20px">
+         <button class="btn full" data-start="missed">Kertaa nämä · Drill these ${list.length}</button>
+       </div><div class="zonegrid">` +
+      list.map(q => `
+        <div class="zone">
+          <h3>${topicOf(q.topic).fi} — oikea vastaus ${q.ans ? "TOSI / TRUE" : "EPÄTOSI / FALSE"}</h3>
+          <p class="claim" style="font-size:16px;margin-bottom:12px">${q.claim}</p>
+          <p class="why">${q.why}</p>
+        </div>`).join("") + `</div>`;
+}
+
+/* ── facts sheet ─────────────────────────────────────── */
+byId("factsheet").innerHTML = `
+<div class="zone">
+  <h3 class="big">Kuusi osa-aluetta · The six subfields the test covers</h3>
+  <ol class="six">
+    <li><div>Microbiology and food contamination<span>mikrobiologia ja saastuminen</span></div></li>
+    <li><div>Food poisoning and hygienic working methods<span>ruokamyrkytykset ja työtavat</span></div></li>
+    <li><div>Personal hygiene<span>henkilökohtainen hygienia</span></div></li>
+    <li><div>Sanitation<span>puhtaanapito</span></div></li>
+    <li><div>Own-check system<span>omavalvonta</span></div></li>
+    <li><div>Finnish food legislation and authorities<span>lainsäädäntö ja viranomaiset</span></div></li>
+  </ol>
+</div>
+
+<div class="zone">
+  <h3>Vaaravyöhyke · The danger zone</h3>
+  <div class="thermo">
+    <div class="col"><div class="t-hot"></div><div class="t-danger"></div><div class="t-cold"></div></div>
+    <div class="keys">
+      <div><b>+60 °C →</b><span>Hot holding. Microbes cannot reproduce above this. Serve for max 4 hours.</span></div>
+      <div><b>+60…+6 °C</b><span>Danger zone. Bacteria multiply fast. Cooked food must cross it downwards within 4 hours.</span></div>
+      <div><b>← +6 °C</b><span>Cold storage of perishables. Minced meat +4 °C, fresh fish and roe 0…+3 °C.</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="zone">
+  <h3>Lämpötilat · Temperatures worth memorising</h3>
+  <table class="facts">
+    <tr><td>+75 °C</td><td>Poultry, heated right through — also the practical safe limit for meat dishes<span class="fi">läpikuumennus</span></td></tr>
+    <tr><td>+72 °C / 15 s</td><td>Pasteurisation, then immediate chilling to +6 °C. Kills most microbes, not spores<span class="fi">pastörointi</span></td></tr>
+    <tr><td>+70 °C</td><td>Minimum for reheating refrigerated food, right through</td></tr>
+    <tr><td>+90 °C / 2 min</td><td>Kills norovirus. Consumers: heat imported frozen berries 5 min at +90 °C</td></tr>
+    <tr><td>+135 °C</td><td>UHT, a few seconds. Kills all microorganisms — unopened, keeps months at room temperature</td></tr>
+    <tr><td>+145 °C</td><td>Sterilisation under pressure. The only routine process that destroys spores<span class="fi">itiöt tuhoutuvat</span></td></tr>
+    <tr><td>+12 °C</td><td>Highest a cold buffet dish may reach <em>during</em> service. Stored and served at +6 °C or under</td></tr>
+    <tr><td>+18 °C</td><td>Keep dry food stores below this to discourage insects</td></tr>
+    <tr><td>35–40 °C</td><td>Maximum pre-rinse water for dishes. Hotter bakes protein on as biofilm</td></tr>
+    <tr><td>−18 °C</td><td>Freezing. Preserves quality — does not kill microbes<span class="fi">pakastus</span></td></tr>
+  </table>
+</div>
+
+<div class="zone">
+  <h3>Ajat ja rajat · Times and limits</h3>
+  <table class="facts">
+    <tr><td>4 h</td><td>Cool cooked food to +6 °C · and the maximum hot service time</td></tr>
+    <tr><td>10–15 min</td><td>Longest a perishable delivery may sit at room temperature after the receiving check</td></tr>
+    <tr><td>2 days</td><td>Store-made minced meat: day of production plus the day after</td></tr>
+    <tr><td>3 weeks</td><td>Samples kept in case of a suspected food poisoning</td></tr>
+    <tr><td>1 year</td><td>Own-check monitoring logs are kept at the workplace<span class="fi">omavalvonnan kirjanpito</span></td></tr>
+    <tr><td>4 weeks</td><td>Notify the food control authority before a registered premises opens</td></tr>
+    <tr><td>3 months</td><td>Grace period to obtain the hygiene passport after starting work</td></tr>
+    <tr><td>2 people</td><td>An epidemic: two or more with similar symptoms after the same food or drink</td></tr>
+    <tr><td>&gt; 5 people</td><td>Threshold for reporting a suspicion to THL (also any school, hospital or institution outbreak)</td></tr>
+    <tr><td>1995</td><td>Own-check has been a legal requirement for all food companies since</td></tr>
+  </table>
+</div>
+
+<div class="zone">
+  <h3>Bakteerit · Where the usual suspects come from</h3>
+  <table class="facts">
+    <tr><td>Staph. aureus</td><td>Skin bacterium — travels from hands and wounds</td></tr>
+    <tr><td>Bacillus cereus</td><td>Soil bacterium. Spores survive cooking, grow as food cools slowly (rice)</td></tr>
+    <tr><td>Cl. botulinum</td><td>Soil and animal intestines. Needs anoxic conditions — vacuum packs, cans</td></tr>
+    <tr><td>Listeria</td><td>Soil and water, common in raw milk. Grows cold, salty, with or without oxygen</td></tr>
+    <tr><td>Yersinia</td><td>Pork, game, vegetables</td></tr>
+    <tr><td>Salmonella</td><td>Animal intestines, eggs, raw poultry. Also spreads person to person</td></tr>
+    <tr><td>EHEC / STEC</td><td>Cattle intestines — raw or rare minced beef</td></tr>
+    <tr><td>Campylobacter</td><td>Poultry, natural waters, raw milk</td></tr>
+    <tr><td>Norovirus, Hep. A</td><td>Viruses, not bacteria. Frozen berries, contaminated water, poor hand hygiene</td></tr>
+  </table>
+</div>
+
+<div class="zone">
+  <h3>Päiväysmerkinnät · How dates are marked</h3>
+  <table class="facts">
+    <tr><td>&lt; 3 months</td><td>Best before shown as day + month</td></tr>
+    <tr><td>3–18 months</td><td>Best before shown as month + year</td></tr>
+    <tr><td>&gt; 18 months</td><td>Best before shown as the year alone</td></tr>
+    <tr><td>Parasta ennen</td><td>Quality date. May be sold and used after it<span class="fi">best before</span></td></tr>
+    <tr><td>Viim. käyttöajankohta</td><td>Safety date on perishables. May not be sold or used after it<span class="fi">use by</span></td></tr>
+  </table>
+</div>
+
+<div class="zone">
+  <h3>Muita numeroita · Odd numbers that turn up</h3>
+  <table class="facts">
+    <tr><td>pH 6.6–7.5</td><td>Neutral — the best breeding medium for most microbes. Acidity slows them</td></tr>
+    <tr><td>90 %</td><td>Micro-organisms removed by thorough cleaning alone, before any disinfectant</td></tr>
+    <tr><td>20 %</td><td>Salt concentration Listeria still tolerates — curing does not stop it</td></tr>
+    <tr><td>pH 3–5</td><td>Mould's favourite range, which is why jam and juice go mouldy</td></tr>
+    <tr><td>+4 / +6 °C</td><td>Minced meat versus whole cuts of meat</td></tr>
+  </table>
+</div>
+
+<div class="zone">
+  <h3 class="big">Koepäivä · On the day</h3>
+  <table class="facts">
+    <tr><td>Bring</td><td>A valid official ID — identity card, passport or driving licence. The examiner checks it</td></tr>
+    <tr><td>Pen</td><td>A blue ballpoint. Pencil is forbidden; the papers are archived</td></tr>
+    <tr><td>Form</td><td>Name and date of birth in BLOCK LETTERS. Answers marked with a clear X inside the box</td></tr>
+    <tr><td>Paper</td><td>40 statements drawn from a database of over 1000. Pass at 34/40</td></tr>
+    <tr><td>Time</td><td>20–45 minutes. You may not leave before 20 minutes have passed, so take them</td></tr>
+    <tr><td>Scoring</td><td>No minus points for a wrong answer — never leave a box empty</td></tr>
+    <tr><td>Rules</td><td>No talking, and the examiner cannot answer questions. Cheating disqualifies the paper</td></tr>
+    <tr><td>After</td><td>The certificate and card arrive 2–4 weeks later</td></tr>
+  </table>
+</div>
+
+<div class="zone">
+  <h3>Sanasto · Glossary</h3>
+  <table class="facts">
+    <tr><td>omavalvonta</td><td>Own-check — the operator's own system for identifying and managing hazards</td></tr>
+    <tr><td>elintarvikehuoneisto</td><td>Food premises — indoors or outdoors, including transport and storage</td></tr>
+    <tr><td>hygieniapassi</td><td>Hygiene passport</td></tr>
+    <tr><td>Ruokavirasto</td><td>Finnish Food Authority — the highest food authority in Finland</td></tr>
+    <tr><td>Oiva</td><td>The system that publishes inspection results, displayed at the door</td></tr>
+    <tr><td>vaaravyöhyke</td><td>Danger zone (+6 – +60 °C)</td></tr>
+    <tr><td>kylmäketju</td><td>Cold chain</td></tr>
+    <tr><td>ristikontaminaatio</td><td>Cross-contamination</td></tr>
+    <tr><td>jälkikontaminaatio</td><td>Post-contamination — onto an already cooked product</td></tr>
+    <tr><td>pilaantuminen</td><td>Spoilage</td></tr>
+    <tr><td>tuholaiset</td><td>Pests</td></tr>
+    <tr><td>helposti pilaantuva</td><td>Easily perishable</td></tr>
+    <tr><td>itiö</td><td>Spore — the survival form that boiling does not kill</td></tr>
+    <tr><td>suojavaatetus</td><td>Protective clothing</td></tr>
+    <tr><td>jätehuolto</td><td>Waste disposal</td></tr>
+    <tr><td>terveystarkastaja</td><td>Health inspector</td></tr>
+  </table>
+</div>
+`;
+
+/* first paint */
+show("exam");
+</script>
+</body>
+</html>
