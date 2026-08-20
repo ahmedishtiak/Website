@@ -17364,6 +17364,16 @@ body{font-size:16px;line-height:1.5;background:${C.bg};color:${C.ink};font-famil
 .sbtoggle{display:none}
 .sbscrim{display:none}
 .wrap{width:100%;max-width:1040px;margin:0 auto;padding:18px 18px 70px;box-sizing:border-box}
+.sitefoot{margin-top:24px;border-top:1px solid ${C.line};padding-top:14px}
+.sitefoot-bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;font-size:12.5px;color:${C.sub}}
+.sitefoot-brand{font-weight:800;color:${C.ink}}
+.sitefoot-tag{flex:1;min-width:180px}
+.sitefoot-toggle{border:0;background:none;color:${C.sub};font-size:12.5px;font-weight:700;cursor:pointer;padding:4px 0;white-space:nowrap}
+.sitefoot-toggle:hover{color:${C.ink}}
+.sitefoot-detail{margin-top:12px;padding-top:12px;border-top:1px solid ${C.line};display:grid;gap:14px}
+.sitefoot-h{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:${C.ink};margin-bottom:4px}
+.sitefoot-p{font-size:13px;line-height:1.55;color:${C.sub}}
+.sitefoot-copy{font-size:11.5px;color:${C.sub};padding-top:6px;border-top:1px solid ${C.line}}
 .btnrow>.btn.block{margin:8px 0}
 @media(min-width:1100px){
   .grid{grid-template-columns:repeat(4,1fr)}
@@ -22848,6 +22858,35 @@ function Settings({
     home: onHome
   }));
 }
+function Footer({
+  lang
+}) {
+  const [open, setOpen] = useState(false);
+  const sec = (labelFi, labelEn, bodyFi, bodyEn) => /*#__PURE__*/React.createElement("div", {
+    className: "sitefoot-sec"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "sitefoot-h"
+  }, P(lang, labelFi, labelEn)), /*#__PURE__*/React.createElement("div", {
+    className: "sitefoot-p"
+  }, P(lang, bodyFi, bodyEn)));
+  return /*#__PURE__*/React.createElement("footer", {
+    className: "sitefoot"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "sitefoot-bar"
+  }, /*#__PURE__*/React.createElement("span", {
+    className: "sitefoot-brand"
+  }, "SuomiPolku"), /*#__PURE__*/React.createElement("span", {
+    className: "sitefoot-tag"
+  }, P(lang, "Riippumaton harjoitustyökalu — ei liity Opetushallitukseen tai YKI-kokeeseen", "Independent practice tool — not affiliated with Opetushallitus or the YKI exam")), /*#__PURE__*/React.createElement("button", {
+    className: "sitefoot-toggle",
+    onClick: () => setOpen(o => !o)
+  }, (open ? "▴ " : "▾ ") + P(lang, "Tietoja & yksityisyys", "Legal & privacy"))), open && /*#__PURE__*/React.createElement("div", {
+    className: "sitefoot-detail"
+  }, sec("Ei virallinen", "Not official", "SuomiPolku on itsenäinen, omatoimisesti rakennettu harjoitustyökalu. Sitä ei ole tuottanut, tarkistanut tai hyväksynyt Opetushallitus, YKI-tutkintojärjestelmä tai mikään kielikoulu. YKI-viittaukset kuvaavat vain tavoitteena olevaa taitotasoa.", "SuomiPolku is an independent, self-built practice tool. It is not produced, reviewed or endorsed by Opetushallitus (the Finnish National Agency for Education), the YKI examination board, or any language school. References to YKI describe the target proficiency framework only."), sec("Vastuunrajoitus", "Liability", "Mikään tässä ei ole kielitutkintoihin liittyvää neuvontaa, eikä harjoitusten suorittaminen takaa menestystä missään todellisessa kokeessa, mukaan lukien YKI-koe. Sovellettavan lain sallimissa rajoissa tekijä ei vastaa mistään suorasta tai välillisestä vahingosta, joka aiheutuu tämän materiaalin käytöstä tai siihen luottamisesta. Käyttö tapahtuu omalla vastuulla.", "Nothing here is language-certification advice, and completing these exercises is not a guarantee of any real exam outcome, including the YKI test. To the fullest extent permitted by applicable law, the author accepts no liability for any loss or damage, direct or indirect, arising from use of or reliance on this material. Use is entirely at your own risk."), sec("Sisältö ja tekijänoikeus", "Content & authorship", "Kielioppiselitykset, sanastot, esimerkkilauseet ja harjoitukset ovat itse kirjoitettuja — ei kopioitu mistään oppikirjasta, kurssista tai kolmannen osapuolen julkaisusta. CEFR-tasomerkinnät (A1–C1) ja YKI-viitekehys ovat käytössä kuvailevasti, yleisesti tunnettuina suomen kielen taitotason viitepisteinä. Tämä sovellus ei ole sidoksissa Opetushallitukseen tai YKI-ohjelmaan, eikä niiden tukema tai hyväksymä.", "Grammar explanations, vocabulary entries, example sentences and exercises are original — written by the author, not reproduced from any textbook, course or third-party publisher. CEFR-style level labels (A1–C1) and the YKI framework are used descriptively, as widely recognised reference points for Finnish proficiency. This app is not affiliated with, sponsored by, or endorsed by Opetushallitus or the YKI programme."), sec("Tietosuoja", "Privacy", "Edistymisesi, tallennetut sanat ja asetukset tallennetaan paikallisesti selaimeesi (localStorage), jotta ne säilyvät käyntien välillä tällä laitteella. Mitään ei lähetetä palvelimelle, eikä henkilötietoja kerätä. Voit tyhjentää tallennetut tiedot milloin tahansa selaimesi sivustotietojen tyhjennyksestä.", "Your progress, saved words and settings are stored locally in your browser (localStorage) so they persist between visits on this device. Nothing is transmitted to any server, and no personal data is collected. You can clear this at any time by clearing your browser's site data for this page."), /*#__PURE__*/React.createElement("div", {
+    className: "sitefoot-copy"
+  }, "\u00A9 2026 Ishtiak Ahmed \u00B7 " + P(lang, "Sis\u00e4lt\u00f6, selitykset ja suunnittelu", "Content, explanations & design"))));
+}
+
 function App() {
   const [lang, setLang] = usePersist("suomi_lang", "fi");
   const [prog, setProg] = usePersist("suomi_prog", {
@@ -23475,7 +23514,9 @@ function App() {
     className: "content"
   }, /*#__PURE__*/React.createElement("div", {
     className: "wrap"
-  }, content)));
+  }, content), /*#__PURE__*/React.createElement(Footer, {
+    lang: lang
+  })));
 }
 function Shell({
   children
