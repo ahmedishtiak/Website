@@ -1,0 +1,6106 @@
+[
+ {
+  "fi": "hei",
+  "en": "hi / hello",
+  "t": "greet",
+  "lvl": "A1",
+  "exf": "Hei, minä olen Anna.",
+  "exe": "Hi, I'm Anna."
+ },
+ {
+  "fi": "moi",
+  "en": "hi (informal)",
+  "t": "greet",
+  "lvl": "A1",
+  "exf": "Moi, mitä kuuluu?",
+  "exe": "Hi, how are you?"
+ },
+ {
+  "fi": "terve",
+  "en": "hello",
+  "t": "greet",
+  "lvl": "A1",
+  "exf": "Terve, kiva nähdä!",
+  "exe": "Hello, nice to see you!"
+ },
+ {
+  "fi": "hyvää huomenta",
+  "en": "good morning",
+  "t": "greet",
+  "lvl": "A1",
+  "exf": "Hyvää huomenta, isä!",
+  "exe": "Good morning, dad!"
+ },
+ {
+  "fi": "hyvää päivää",
+  "en": "good day",
+  "t": "greet",
+  "lvl": "A1",
+  "exf": "Hyvää päivää, voinko auttaa?",
+  "exe": "Good day, can I help?"
+ },
+ {
+  "fi": "hyvää iltaa",
+  "en": "good evening",
+  "t": "greet",
+  "lvl": "A1",
+  "exf": "Hyvää iltaa, tervetuloa!",
+  "exe": "Good evening, welcome!"
+ },
+ {
+  "fi": "hyvää yötä",
+  "en": "good night",
+  "t": "greet",
+  "lvl": "A1",
+  "exf": "Hyvää yötä, nuku hyvin.",
+  "exe": "Good night, sleep well."
+ },
+ {
+  "fi": "näkemiin",
+  "en": "goodbye",
+  "t": "greet",
+  "lvl": "A1",
+  "exf": "Näkemiin, nähdään huomenna!",
+  "exe": "Goodbye, see you tomorrow!"
+ },
+ {
+  "fi": "moi moi",
+  "en": "bye",
+  "t": "greet",
+  "lvl": "A1",
+  "exf": "Moi moi, nähdään pian!",
+  "exe": "Bye, see you soon!"
+ },
+ {
+  "fi": "kiitos",
+  "en": "thank you",
+  "t": "greet",
+  "lvl": "A1",
+  "exf": "Kiitos avusta!",
+  "exe": "Thanks for the help!"
+ },
+ {
+  "fi": "kiitos paljon",
+  "en": "thank you very much",
+  "t": "greet",
+  "lvl": "A1",
+  "exf": "Kiitos paljon, olit kiltti.",
+  "exe": "Thank you very much, you were kind."
+ },
+ {
+  "fi": "ole hyvä",
+  "en": "you're welcome / here you go",
+  "t": "greet",
+  "lvl": "A1",
+  "exf": "Ole hyvä, tässä on kahvi.",
+  "exe": "Here you go, here's the coffee."
+ },
+ {
+  "fi": "anteeksi",
+  "en": "sorry / excuse me",
+  "t": "greet",
+  "lvl": "A1",
+  "exf": "Anteeksi, missä on asema?",
+  "exe": "Excuse me, where is the station?"
+ },
+ {
+  "fi": "kyllä",
+  "en": "yes",
+  "t": "greet",
+  "lvl": "A1",
+  "exf": "Kyllä, minä ymmärrän.",
+  "exe": "Yes, I understand."
+ },
+ {
+  "fi": "ei",
+  "en": "no",
+  "t": "greet",
+  "lvl": "A1",
+  "exf": "Ei, en puhu ruotsia.",
+  "exe": "No, I don't speak Swedish."
+ },
+ {
+  "fi": "ehkä",
+  "en": "maybe",
+  "t": "greet",
+  "lvl": "A1",
+  "exf": "Ehkä tulen huomenna.",
+  "exe": "Maybe I'll come tomorrow."
+ },
+ {
+  "fi": "tervetuloa",
+  "en": "welcome",
+  "t": "greet",
+  "lvl": "A1",
+  "exf": "Tervetuloa Suomeen!",
+  "exe": "Welcome to Finland!"
+ },
+ {
+  "fi": "onnea",
+  "en": "good luck / congratulations",
+  "t": "greet",
+  "lvl": "A2",
+  "exf": "Onnea uuteen työhön!",
+  "exe": "Good luck with the new job!"
+ },
+ {
+  "fi": "mitä kuuluu",
+  "en": "how are you",
+  "t": "greet",
+  "lvl": "A1",
+  "exf": "Hei! Mitä kuuluu?",
+  "exe": "Hi! How are you?"
+ },
+ {
+  "fi": "hyvää",
+  "en": "fine / good",
+  "t": "greet",
+  "lvl": "A1",
+  "exf": "Kiitos, hyvää. Entä sinulle?",
+  "exe": "Fine, thanks. And you?"
+ },
+ {
+  "fi": "ihminen",
+  "en": "person / human",
+  "t": "fam",
+  "lvl": "A1",
+  "exf": "Hän on ystävällinen ihminen.",
+  "exe": "He is a friendly person."
+ },
+ {
+  "fi": "nainen",
+  "en": "woman",
+  "t": "fam",
+  "lvl": "A1",
+  "exf": "Nainen odottaa bussia.",
+  "exe": "The woman is waiting for the bus."
+ },
+ {
+  "fi": "mies",
+  "en": "man",
+  "t": "fam",
+  "lvl": "A1",
+  "exf": "Mies lukee lehteä.",
+  "exe": "The man is reading a newspaper."
+ },
+ {
+  "fi": "lapsi",
+  "en": "child",
+  "t": "fam",
+  "lvl": "A1",
+  "exf": "Lapsi leikkii pihalla.",
+  "exe": "The child is playing in the yard."
+ },
+ {
+  "fi": "poika",
+  "en": "boy / son",
+  "t": "fam",
+  "lvl": "A1",
+  "exf": "Poika menee kouluun.",
+  "exe": "The boy goes to school."
+ },
+ {
+  "fi": "tyttö",
+  "en": "girl",
+  "t": "fam",
+  "lvl": "A1",
+  "exf": "Tyttö osaa jo lukea.",
+  "exe": "The girl can already read."
+ },
+ {
+  "fi": "vauva",
+  "en": "baby",
+  "t": "fam",
+  "lvl": "A1",
+  "exf": "Vauva nukkuu rauhallisesti.",
+  "exe": "The baby is sleeping peacefully."
+ },
+ {
+  "fi": "äiti",
+  "en": "mother",
+  "t": "fam",
+  "lvl": "A1",
+  "exf": "Äiti tekee ruokaa.",
+  "exe": "Mother is cooking."
+ },
+ {
+  "fi": "isä",
+  "en": "father",
+  "t": "fam",
+  "lvl": "A1",
+  "exf": "Isä korjaa autoa.",
+  "exe": "Father is fixing the car."
+ },
+ {
+  "fi": "vanhemmat",
+  "en": "parents",
+  "t": "fam",
+  "lvl": "A2",
+  "exf": "Vanhemmat asuvat maalla.",
+  "exe": "The parents live in the countryside."
+ },
+ {
+  "fi": "sisko",
+  "en": "sister",
+  "t": "fam",
+  "lvl": "A1",
+  "exf": "Siskoni opiskelee Turussa.",
+  "exe": "My sister studies in Turku."
+ },
+ {
+  "fi": "veli",
+  "en": "brother",
+  "t": "fam",
+  "lvl": "A1",
+  "exf": "Veli ja sisko asuvat yhdessä.",
+  "exe": "The brother and sister live together."
+ },
+ {
+  "fi": "perhe",
+  "en": "family",
+  "t": "fam",
+  "lvl": "A1",
+  "exf": "Perhe syö yhdessä illallista.",
+  "exe": "The family eats dinner together."
+ },
+ {
+  "fi": "isoäiti",
+  "en": "grandmother",
+  "t": "fam",
+  "lvl": "A2",
+  "exf": "Isoäiti kertoo vanhoja tarinoita.",
+  "exe": "Grandmother tells old stories."
+ },
+ {
+  "fi": "isoisä",
+  "en": "grandfather",
+  "t": "fam",
+  "lvl": "A2",
+  "exf": "Isoisä asuu maaseudulla.",
+  "exe": "Grandfather lives in the countryside."
+ },
+ {
+  "fi": "ystävä",
+  "en": "friend",
+  "t": "fam",
+  "lvl": "A1",
+  "exf": "Ystäväni auttoi minua muutossa.",
+  "exe": "My friend helped me with the move."
+ },
+ {
+  "fi": "kaveri",
+  "en": "buddy / mate",
+  "t": "fam",
+  "lvl": "A1",
+  "exf": "Menen kaverin kanssa elokuviin.",
+  "exe": "I'm going to the cinema with a mate."
+ },
+ {
+  "fi": "naapuri",
+  "en": "neighbour",
+  "t": "fam",
+  "lvl": "A2",
+  "exf": "Naapuri on hyvin ystävällinen.",
+  "exe": "The neighbour is very friendly."
+ },
+ {
+  "fi": "aviomies",
+  "en": "husband",
+  "t": "fam",
+  "lvl": "A2",
+  "exf": "Hänen aviomiehensä on opettaja.",
+  "exe": "Her husband is a teacher."
+ },
+ {
+  "fi": "vaimo",
+  "en": "wife",
+  "t": "fam",
+  "lvl": "A2",
+  "exf": "Vaimo tulee kotiin myöhään.",
+  "exe": "The wife comes home late."
+ },
+ {
+  "fi": "nimi",
+  "en": "name",
+  "t": "fam",
+  "lvl": "A1",
+  "exf": "Kirjoita nimi paperiin.",
+  "exe": "Write your name on the paper."
+ },
+ {
+  "fi": "ikä",
+  "en": "age",
+  "t": "fam",
+  "lvl": "A1",
+  "exf": "Ikä ei ole tärkeä asia.",
+  "exe": "Age is not an important thing."
+ },
+ {
+  "fi": "nolla",
+  "en": "zero",
+  "t": "num",
+  "lvl": "A1",
+  "exf": "Ulkona on nolla astetta.",
+  "exe": "It's zero degrees outside."
+ },
+ {
+  "fi": "yksi",
+  "en": "one",
+  "t": "num",
+  "lvl": "A1",
+  "exf": "Minulla on yksi sisko.",
+  "exe": "I have one sister."
+ },
+ {
+  "fi": "kaksi",
+  "en": "two",
+  "t": "num",
+  "lvl": "A1",
+  "exf": "Ostin kaksi lippua.",
+  "exe": "I bought two tickets."
+ },
+ {
+  "fi": "kolme",
+  "en": "three",
+  "t": "num",
+  "lvl": "A1",
+  "exf": "Odotan kolme minuuttia.",
+  "exe": "I'll wait three minutes."
+ },
+ {
+  "fi": "neljä",
+  "en": "four",
+  "t": "num",
+  "lvl": "A1",
+  "exf": "Perheessä on neljä lasta.",
+  "exe": "There are four children in the family."
+ },
+ {
+  "fi": "viisi",
+  "en": "five",
+  "t": "num",
+  "lvl": "A1",
+  "exf": "Kello on viisi.",
+  "exe": "It's five o'clock."
+ },
+ {
+  "fi": "kuusi",
+  "en": "six",
+  "t": "num",
+  "lvl": "A1",
+  "exf": "Työpäivä kestää kuusi tuntia.",
+  "exe": "The workday lasts six hours."
+ },
+ {
+  "fi": "seitsemän",
+  "en": "seven",
+  "t": "num",
+  "lvl": "A1",
+  "exf": "Herään seitsemältä.",
+  "exe": "I wake up at seven."
+ },
+ {
+  "fi": "kahdeksan",
+  "en": "eight",
+  "t": "num",
+  "lvl": "A1",
+  "exf": "Bussi lähtee kahdeksalta.",
+  "exe": "The bus leaves at eight."
+ },
+ {
+  "fi": "yhdeksän",
+  "en": "nine",
+  "t": "num",
+  "lvl": "A1",
+  "exf": "Kauppa aukeaa yhdeksältä.",
+  "exe": "The shop opens at nine."
+ },
+ {
+  "fi": "kymmenen",
+  "en": "ten",
+  "t": "num",
+  "lvl": "A1",
+  "exf": "Kurssi maksaa kymmenen euroa.",
+  "exe": "The course costs ten euros."
+ },
+ {
+  "fi": "sata",
+  "en": "hundred",
+  "t": "num",
+  "lvl": "A1",
+  "exf": "Kirjassa on sata sivua.",
+  "exe": "The book has a hundred pages."
+ },
+ {
+  "fi": "tuhat",
+  "en": "thousand",
+  "t": "num",
+  "lvl": "A2",
+  "exf": "Sain tuhat euroa palkkaa.",
+  "exe": "I got a thousand euros in pay."
+ },
+ {
+  "fi": "ensimmäinen",
+  "en": "first",
+  "t": "num",
+  "lvl": "A2",
+  "exf": "Tämä on ensimmäinen päiväni täällä.",
+  "exe": "This is my first day here."
+ },
+ {
+  "fi": "toinen",
+  "en": "second / another",
+  "t": "num",
+  "lvl": "A2",
+  "exf": "Toinen lapsi on jo koulussa.",
+  "exe": "The other child is already at school."
+ },
+ {
+  "fi": "aika",
+  "en": "time",
+  "t": "time",
+  "lvl": "A1",
+  "exf": "Minulla ei ole aikaa.",
+  "exe": "I don't have time."
+ },
+ {
+  "fi": "päivä",
+  "en": "day",
+  "t": "time",
+  "lvl": "A1",
+  "exf": "Tänään on kaunis päivä.",
+  "exe": "Today is a beautiful day."
+ },
+ {
+  "fi": "viikko",
+  "en": "week",
+  "t": "time",
+  "lvl": "A1",
+  "exf": "Ensi viikko on kiireinen.",
+  "exe": "Next week is busy."
+ },
+ {
+  "fi": "kuukausi",
+  "en": "month",
+  "t": "time",
+  "lvl": "A1",
+  "exf": "Olen asunut täällä kuukauden.",
+  "exe": "I have lived here for a month."
+ },
+ {
+  "fi": "vuosi",
+  "en": "year",
+  "t": "time",
+  "lvl": "A1",
+  "exf": "Muutin Suomeen viime vuonna.",
+  "exe": "I moved to Finland last year."
+ },
+ {
+  "fi": "tunti",
+  "en": "hour",
+  "t": "time",
+  "lvl": "A1",
+  "exf": "Odotin bussia tunnin.",
+  "exe": "I waited an hour for the bus."
+ },
+ {
+  "fi": "minuutti",
+  "en": "minute",
+  "t": "time",
+  "lvl": "A1",
+  "exf": "Odota vielä yksi minuutti.",
+  "exe": "Wait one more minute."
+ },
+ {
+  "fi": "nyt",
+  "en": "now",
+  "t": "time",
+  "lvl": "A1",
+  "exf": "Nyt minun täytyy mennä.",
+  "exe": "Now I have to go."
+ },
+ {
+  "fi": "tänään",
+  "en": "today",
+  "t": "time",
+  "lvl": "A1",
+  "exf": "Tänään sataa vettä.",
+  "exe": "It's raining today."
+ },
+ {
+  "fi": "huomenna",
+  "en": "tomorrow",
+  "t": "time",
+  "lvl": "A1",
+  "exf": "Huomenna menen töihin.",
+  "exe": "Tomorrow I'm going to work."
+ },
+ {
+  "fi": "eilen",
+  "en": "yesterday",
+  "t": "time",
+  "lvl": "A1",
+  "exf": "Eilen kävin kaupassa.",
+  "exe": "Yesterday I went to the shop."
+ },
+ {
+  "fi": "aamu",
+  "en": "morning",
+  "t": "time",
+  "lvl": "A1",
+  "exf": "Aamu alkaa kahvilla.",
+  "exe": "The morning starts with coffee."
+ },
+ {
+  "fi": "ilta",
+  "en": "evening",
+  "t": "time",
+  "lvl": "A1",
+  "exf": "Ilta oli rauhallinen.",
+  "exe": "The evening was peaceful."
+ },
+ {
+  "fi": "yö",
+  "en": "night",
+  "t": "time",
+  "lvl": "A1",
+  "exf": "Yö oli pitkä ja pimeä.",
+  "exe": "The night was long and dark."
+ },
+ {
+  "fi": "maanantai",
+  "en": "Monday",
+  "t": "time",
+  "lvl": "A1",
+  "exf": "Maanantaina alkaa uusi kurssi.",
+  "exe": "A new course starts on Monday."
+ },
+ {
+  "fi": "tiistai",
+  "en": "Tuesday",
+  "t": "time",
+  "lvl": "A1",
+  "exf": "Tiistaina käyn lääkärissä.",
+  "exe": "On Tuesday I go to the doctor."
+ },
+ {
+  "fi": "keskiviikko",
+  "en": "Wednesday",
+  "t": "time",
+  "lvl": "A1",
+  "exf": "Keskiviikkona on kokous.",
+  "exe": "On Wednesday there is a meeting."
+ },
+ {
+  "fi": "torstai",
+  "en": "Thursday",
+  "t": "time",
+  "lvl": "A1",
+  "exf": "Torstaina pelaan jalkapalloa.",
+  "exe": "On Thursday I play football."
+ },
+ {
+  "fi": "perjantai",
+  "en": "Friday",
+  "t": "time",
+  "lvl": "A1",
+  "exf": "Perjantaina työ loppuu aikaisin.",
+  "exe": "On Friday work ends early."
+ },
+ {
+  "fi": "lauantai",
+  "en": "Saturday",
+  "t": "time",
+  "lvl": "A1",
+  "exf": "Lauantaina nukun pitkään.",
+  "exe": "On Saturday I sleep in."
+ },
+ {
+  "fi": "sunnuntai",
+  "en": "Sunday",
+  "t": "time",
+  "lvl": "A1",
+  "exf": "Sunnuntaina lepään kotona.",
+  "exe": "On Sunday I rest at home."
+ },
+ {
+  "fi": "viikonloppu",
+  "en": "weekend",
+  "t": "time",
+  "lvl": "A2",
+  "exf": "Viikonloppuna matkustamme mökille.",
+  "exe": "At the weekend we travel to the cottage."
+ },
+ {
+  "fi": "aikainen",
+  "en": "early",
+  "t": "time",
+  "lvl": "A2",
+  "exf": "Aikainen aamu on hiljainen.",
+  "exe": "An early morning is quiet."
+ },
+ {
+  "fi": "myöhä",
+  "en": "late",
+  "t": "time",
+  "lvl": "A2",
+  "exf": "Nyt on jo myöhä.",
+  "exe": "It is already late now."
+ },
+ {
+  "fi": "ruoka",
+  "en": "food",
+  "t": "food",
+  "lvl": "A1",
+  "exf": "Ruoka on valmista.",
+  "exe": "The food is ready."
+ },
+ {
+  "fi": "vesi",
+  "en": "water",
+  "t": "food",
+  "lvl": "A1",
+  "exf": "Vesi on kylmää.",
+  "exe": "The water is cold."
+ },
+ {
+  "fi": "maito",
+  "en": "milk",
+  "t": "food",
+  "lvl": "A1",
+  "exf": "Ostan maitoa kaupasta.",
+  "exe": "I buy milk from the shop."
+ },
+ {
+  "fi": "kahvi",
+  "en": "coffee",
+  "t": "food",
+  "lvl": "A1",
+  "exf": "Kahvi on liian kuumaa.",
+  "exe": "The coffee is too hot."
+ },
+ {
+  "fi": "tee",
+  "en": "tea",
+  "t": "food",
+  "lvl": "A1",
+  "exf": "Juon teetä illalla.",
+  "exe": "I drink tea in the evening."
+ },
+ {
+  "fi": "leipä",
+  "en": "bread",
+  "t": "food",
+  "lvl": "A1",
+  "exf": "Leipä on tuoretta.",
+  "exe": "The bread is fresh."
+ },
+ {
+  "fi": "juusto",
+  "en": "cheese",
+  "t": "food",
+  "lvl": "A1",
+  "exf": "Juusto maistuu hyvältä.",
+  "exe": "The cheese tastes good."
+ },
+ {
+  "fi": "voi",
+  "en": "butter",
+  "t": "food",
+  "lvl": "A1",
+  "exf": "Voi sulaa pannulla.",
+  "exe": "The butter melts in the pan."
+ },
+ {
+  "fi": "kala",
+  "en": "fish",
+  "t": "food",
+  "lvl": "A1",
+  "exf": "Kala on terveellistä ruokaa.",
+  "exe": "Fish is healthy food."
+ },
+ {
+  "fi": "liha",
+  "en": "meat",
+  "t": "food",
+  "lvl": "A1",
+  "exf": "Liha kypsyy uunissa.",
+  "exe": "The meat cooks in the oven."
+ },
+ {
+  "fi": "kana",
+  "en": "chicken",
+  "t": "food",
+  "lvl": "A1",
+  "exf": "Kana on halpaa lihaa.",
+  "exe": "Chicken is cheap meat."
+ },
+ {
+  "fi": "kananmuna",
+  "en": "egg",
+  "t": "food",
+  "lvl": "A2",
+  "exf": "Keitän kananmunan aamiaiseksi.",
+  "exe": "I boil an egg for breakfast."
+ },
+ {
+  "fi": "omena",
+  "en": "apple",
+  "t": "food",
+  "lvl": "A1",
+  "exf": "Omena on punainen ja makea.",
+  "exe": "The apple is red and sweet."
+ },
+ {
+  "fi": "banaani",
+  "en": "banana",
+  "t": "food",
+  "lvl": "A1",
+  "exf": "Banaani on keltainen.",
+  "exe": "The banana is yellow."
+ },
+ {
+  "fi": "peruna",
+  "en": "potato",
+  "t": "food",
+  "lvl": "A1",
+  "exf": "Peruna kasvaa maassa.",
+  "exe": "The potato grows in the ground."
+ },
+ {
+  "fi": "tomaatti",
+  "en": "tomato",
+  "t": "food",
+  "lvl": "A1",
+  "exf": "Tomaatti on punainen.",
+  "exe": "The tomato is red."
+ },
+ {
+  "fi": "sokeri",
+  "en": "sugar",
+  "t": "food",
+  "lvl": "A1",
+  "exf": "En laita sokeria kahviin.",
+  "exe": "I don't put sugar in coffee."
+ },
+ {
+  "fi": "suola",
+  "en": "salt",
+  "t": "food",
+  "lvl": "A1",
+  "exf": "Lisää vähän suolaa keittoon.",
+  "exe": "Add a little salt to the soup."
+ },
+ {
+  "fi": "aamiainen",
+  "en": "breakfast",
+  "t": "food",
+  "lvl": "A1",
+  "exf": "Syön aamiaisen seitsemältä.",
+  "exe": "I eat breakfast at seven."
+ },
+ {
+  "fi": "lounas",
+  "en": "lunch",
+  "t": "food",
+  "lvl": "A1",
+  "exf": "Lounas maksaa kymmenen euroa.",
+  "exe": "Lunch costs ten euros."
+ },
+ {
+  "fi": "päivällinen",
+  "en": "dinner",
+  "t": "food",
+  "lvl": "A2",
+  "exf": "Päivällinen on valmis kuudelta.",
+  "exe": "Dinner is ready at six."
+ },
+ {
+  "fi": "ravintola",
+  "en": "restaurant",
+  "t": "food",
+  "lvl": "A1",
+  "exf": "Ravintola on täynnä.",
+  "exe": "The restaurant is full."
+ },
+ {
+  "fi": "kahvila",
+  "en": "café",
+  "t": "food",
+  "lvl": "A1",
+  "exf": "Tapaamme kahvilassa.",
+  "exe": "We will meet at the café."
+ },
+ {
+  "fi": "nälkä",
+  "en": "hunger",
+  "t": "food",
+  "lvl": "A1",
+  "exf": "Minulla on kova nälkä.",
+  "exe": "I am very hungry."
+ },
+ {
+  "fi": "jano",
+  "en": "thirst",
+  "t": "food",
+  "lvl": "A1",
+  "exf": "Jano tuli juoksun jälkeen.",
+  "exe": "I got thirsty after running."
+ },
+ {
+  "fi": "mehu",
+  "en": "juice",
+  "t": "food",
+  "lvl": "A1",
+  "exf": "Lapset juovat mehua.",
+  "exe": "The children drink juice."
+ },
+ {
+  "fi": "olut",
+  "en": "beer",
+  "t": "food",
+  "lvl": "A2",
+  "exf": "Olut on kylmää.",
+  "exe": "The beer is cold."
+ },
+ {
+  "fi": "koti",
+  "en": "home",
+  "t": "home",
+  "lvl": "A1",
+  "exf": "Koti on lähellä keskustaa.",
+  "exe": "Home is near the centre."
+ },
+ {
+  "fi": "talo",
+  "en": "house",
+  "t": "home",
+  "lvl": "A1",
+  "exf": "Talo on vanha mutta kaunis.",
+  "exe": "The house is old but beautiful."
+ },
+ {
+  "fi": "asunto",
+  "en": "apartment / flat",
+  "t": "home",
+  "lvl": "A1",
+  "exf": "Asunto on pieni mutta valoisa.",
+  "exe": "The flat is small but bright."
+ },
+ {
+  "fi": "huone",
+  "en": "room",
+  "t": "home",
+  "lvl": "A1",
+  "exf": "Huone on siisti.",
+  "exe": "The room is tidy."
+ },
+ {
+  "fi": "keittiö",
+  "en": "kitchen",
+  "t": "home",
+  "lvl": "A1",
+  "exf": "Keittiö on remontissa.",
+  "exe": "The kitchen is being renovated."
+ },
+ {
+  "fi": "makuuhuone",
+  "en": "bedroom",
+  "t": "home",
+  "lvl": "A2",
+  "exf": "Makuuhuone on rauhallinen.",
+  "exe": "The bedroom is peaceful."
+ },
+ {
+  "fi": "kylpyhuone",
+  "en": "bathroom",
+  "t": "home",
+  "lvl": "A2",
+  "exf": "Kylpyhuone on pieni.",
+  "exe": "The bathroom is small."
+ },
+ {
+  "fi": "olohuone",
+  "en": "living room",
+  "t": "home",
+  "lvl": "A2",
+  "exf": "Olohuone on iso ja valoisa.",
+  "exe": "The living room is big and bright."
+ },
+ {
+  "fi": "ovi",
+  "en": "door",
+  "t": "home",
+  "lvl": "A1",
+  "exf": "Sulje ovi, ulkona on kylmä.",
+  "exe": "Close the door, it is cold outside."
+ },
+ {
+  "fi": "ikkuna",
+  "en": "window",
+  "t": "home",
+  "lvl": "A1",
+  "exf": "Avaa ikkuna, täällä on kuuma.",
+  "exe": "Open the window, it is hot in here."
+ },
+ {
+  "fi": "pöytä",
+  "en": "table",
+  "t": "home",
+  "lvl": "A1",
+  "exf": "Pöytä on keittiössä.",
+  "exe": "The table is in the kitchen."
+ },
+ {
+  "fi": "tuoli",
+  "en": "chair",
+  "t": "home",
+  "lvl": "A1",
+  "exf": "Istu tuolille, ole hyvä.",
+  "exe": "Sit on the chair, please."
+ },
+ {
+  "fi": "sänky",
+  "en": "bed",
+  "t": "home",
+  "lvl": "A1",
+  "exf": "Menen sänkyyn kymmeneltä.",
+  "exe": "I go to bed at ten."
+ },
+ {
+  "fi": "sohva",
+  "en": "sofa",
+  "t": "home",
+  "lvl": "A2",
+  "exf": "Sohva on olohuoneessa.",
+  "exe": "The sofa is in the living room."
+ },
+ {
+  "fi": "lamppu",
+  "en": "lamp",
+  "t": "home",
+  "lvl": "A1",
+  "exf": "Sammuta lamppu, kun lähdet.",
+  "exe": "Turn off the lamp when you leave."
+ },
+ {
+  "fi": "jääkaappi",
+  "en": "fridge",
+  "t": "home",
+  "lvl": "A2",
+  "exf": "Jääkaappi on tyhjä.",
+  "exe": "The fridge is empty."
+ },
+ {
+  "fi": "avain",
+  "en": "key",
+  "t": "home",
+  "lvl": "A1",
+  "exf": "Unohdin avaimen kotiin.",
+  "exe": "I forgot the key at home."
+ },
+ {
+  "fi": "seinä",
+  "en": "wall",
+  "t": "home",
+  "lvl": "A2",
+  "exf": "Seinä on valkoinen.",
+  "exe": "The wall is white."
+ },
+ {
+  "fi": "vaate",
+  "en": "piece of clothing",
+  "t": "cloth",
+  "lvl": "A1",
+  "exf": "Ostin uusia vaatteita.",
+  "exe": "I bought new clothes."
+ },
+ {
+  "fi": "paita",
+  "en": "shirt",
+  "t": "cloth",
+  "lvl": "A1",
+  "exf": "Puen valkoisen paidan.",
+  "exe": "I'll put on a white shirt."
+ },
+ {
+  "fi": "housut",
+  "en": "trousers",
+  "t": "cloth",
+  "lvl": "A1",
+  "exf": "Nämä housut ovat liian pienet.",
+  "exe": "These trousers are too small."
+ },
+ {
+  "fi": "takki",
+  "en": "jacket / coat",
+  "t": "cloth",
+  "lvl": "A1",
+  "exf": "Ota takki mukaan, ulkona on kylmä.",
+  "exe": "Take a coat with you, it's cold outside."
+ },
+ {
+  "fi": "kengät",
+  "en": "shoes",
+  "t": "cloth",
+  "lvl": "A1",
+  "exf": "Riisu kengät eteisessä.",
+  "exe": "Take off your shoes in the hallway."
+ },
+ {
+  "fi": "sukat",
+  "en": "socks",
+  "t": "cloth",
+  "lvl": "A2",
+  "exf": "Talvella tarvitsen lämpimät sukat.",
+  "exe": "In winter I need warm socks."
+ },
+ {
+  "fi": "hattu",
+  "en": "hat",
+  "t": "cloth",
+  "lvl": "A2",
+  "exf": "Isoisällä on vanha hattu.",
+  "exe": "Grandfather has an old hat."
+ },
+ {
+  "fi": "hansikkaat",
+  "en": "gloves",
+  "t": "cloth",
+  "lvl": "A2",
+  "exf": "Unohdin hansikkaat kotiin.",
+  "exe": "I forgot my gloves at home."
+ },
+ {
+  "fi": "mekko",
+  "en": "dress",
+  "t": "cloth",
+  "lvl": "A2",
+  "exf": "Hän osti kauniin mekon.",
+  "exe": "She bought a beautiful dress."
+ },
+ {
+  "fi": "keho",
+  "en": "body",
+  "t": "body",
+  "lvl": "A2",
+  "exf": "Liikunta on hyväksi keholle.",
+  "exe": "Exercise is good for the body."
+ },
+ {
+  "fi": "pää",
+  "en": "head",
+  "t": "body",
+  "lvl": "A1",
+  "exf": "Päätäni särkee tänään.",
+  "exe": "My head aches today."
+ },
+ {
+  "fi": "silmä",
+  "en": "eye",
+  "t": "body",
+  "lvl": "A1",
+  "exf": "Hänellä on siniset silmät.",
+  "exe": "He has blue eyes."
+ },
+ {
+  "fi": "korva",
+  "en": "ear",
+  "t": "body",
+  "lvl": "A1",
+  "exf": "Korva on kipeä.",
+  "exe": "My ear is sore."
+ },
+ {
+  "fi": "suu",
+  "en": "mouth",
+  "t": "body",
+  "lvl": "A1",
+  "exf": "Avaa suu, sanoi lääkäri.",
+  "exe": "Open your mouth, the doctor said."
+ },
+ {
+  "fi": "nenä",
+  "en": "nose",
+  "t": "body",
+  "lvl": "A1",
+  "exf": "Nenä vuotaa, kun olen flunssassa.",
+  "exe": "My nose runs when I have a cold."
+ },
+ {
+  "fi": "käsi",
+  "en": "hand / arm",
+  "t": "body",
+  "lvl": "A1",
+  "exf": "Käsi on kipeä ja turvoksissa.",
+  "exe": "The hand is sore and swollen."
+ },
+ {
+  "fi": "jalka",
+  "en": "foot / leg",
+  "t": "body",
+  "lvl": "A1",
+  "exf": "Jalka on kipeä kävelyn jälkeen.",
+  "exe": "My leg hurts after the walk."
+ },
+ {
+  "fi": "sydän",
+  "en": "heart",
+  "t": "body",
+  "lvl": "A2",
+  "exf": "Sydän lyö nopeasti juoksun jälkeen.",
+  "exe": "The heart beats fast after running."
+ },
+ {
+  "fi": "sairas",
+  "en": "sick / ill",
+  "t": "body",
+  "lvl": "A1",
+  "exf": "Olen sairas ja jään kotiin.",
+  "exe": "I am sick and will stay at home."
+ },
+ {
+  "fi": "terveys",
+  "en": "health",
+  "t": "body",
+  "lvl": "A2",
+  "exf": "Terveys on tärkeintä.",
+  "exe": "Health is the most important thing."
+ },
+ {
+  "fi": "kipu",
+  "en": "pain",
+  "t": "body",
+  "lvl": "A2",
+  "exf": "Kipu meni pois lääkkeen jälkeen.",
+  "exe": "The pain went away after the medicine."
+ },
+ {
+  "fi": "lääkäri",
+  "en": "doctor",
+  "t": "body",
+  "lvl": "A1",
+  "exf": "Menen huomenna lääkäriin.",
+  "exe": "I'm going to the doctor tomorrow."
+ },
+ {
+  "fi": "sairaala",
+  "en": "hospital",
+  "t": "body",
+  "lvl": "A2",
+  "exf": "Hän on sairaalassa viikon.",
+  "exe": "He is in hospital for a week."
+ },
+ {
+  "fi": "lääke",
+  "en": "medicine",
+  "t": "body",
+  "lvl": "A2",
+  "exf": "Otan lääkkeen aamulla.",
+  "exe": "I take the medicine in the morning."
+ },
+ {
+  "fi": "apteekki",
+  "en": "pharmacy",
+  "t": "body",
+  "lvl": "A2",
+  "exf": "Hain lääkkeet apteekista.",
+  "exe": "I picked up the medicines from the pharmacy."
+ },
+ {
+  "fi": "flunssa",
+  "en": "cold / flu",
+  "t": "body",
+  "lvl": "A2",
+  "exf": "Minulla on paha flunssa.",
+  "exe": "I have a bad cold."
+ },
+ {
+  "fi": "työ",
+  "en": "work / job",
+  "t": "work",
+  "lvl": "A1",
+  "exf": "Työ alkaa kello kahdeksan.",
+  "exe": "Work starts at eight o'clock."
+ },
+ {
+  "fi": "ammatti",
+  "en": "profession",
+  "t": "work",
+  "lvl": "A2",
+  "exf": "Mikä sinun ammattisi on?",
+  "exe": "What is your profession?"
+ },
+ {
+  "fi": "toimisto",
+  "en": "office",
+  "t": "work",
+  "lvl": "A2",
+  "exf": "Toimisto on kolmannessa kerroksessa.",
+  "exe": "The office is on the third floor."
+ },
+ {
+  "fi": "palaveri",
+  "en": "meeting",
+  "t": "work",
+  "lvl": "B1",
+  "exf": "Palaveri alkaa kymmeneltä.",
+  "exe": "The meeting starts at ten."
+ },
+ {
+  "fi": "kokous",
+  "en": "meeting",
+  "t": "work",
+  "lvl": "B1",
+  "exf": "Kokous kestää kaksi tuntia.",
+  "exe": "The meeting lasts two hours."
+ },
+ {
+  "fi": "raha",
+  "en": "money",
+  "t": "work",
+  "lvl": "A1",
+  "exf": "Raha loppui kuun lopussa.",
+  "exe": "The money ran out at the end of the month."
+ },
+ {
+  "fi": "palkka",
+  "en": "salary / pay",
+  "t": "work",
+  "lvl": "A2",
+  "exf": "Palkka maksetaan kerran kuussa.",
+  "exe": "The salary is paid once a month."
+ },
+ {
+  "fi": "koulu",
+  "en": "school",
+  "t": "work",
+  "lvl": "A1",
+  "exf": "Koulu alkaa elokuussa.",
+  "exe": "School starts in August."
+ },
+ {
+  "fi": "yliopisto",
+  "en": "university",
+  "t": "work",
+  "lvl": "A1",
+  "exf": "Yliopisto sijaitsee keskustassa.",
+  "exe": "The university is located in the centre."
+ },
+ {
+  "fi": "opiskelija",
+  "en": "student",
+  "t": "work",
+  "lvl": "A1",
+  "exf": "Opiskelija lukee tenttiin.",
+  "exe": "The student is studying for an exam."
+ },
+ {
+  "fi": "opettaja",
+  "en": "teacher",
+  "t": "work",
+  "lvl": "A1",
+  "exf": "Opettaja selittää kieliopin.",
+  "exe": "The teacher explains the grammar."
+ },
+ {
+  "fi": "kirja",
+  "en": "book",
+  "t": "work",
+  "lvl": "A1",
+  "exf": "Kirja on mielenkiintoinen.",
+  "exe": "The book is interesting."
+ },
+ {
+  "fi": "kynä",
+  "en": "pen",
+  "t": "work",
+  "lvl": "A1",
+  "exf": "Kynä on pöydällä.",
+  "exe": "The pen is on the table."
+ },
+ {
+  "fi": "paperi",
+  "en": "paper",
+  "t": "work",
+  "lvl": "A1",
+  "exf": "Kirjoita nimesi paperiin.",
+  "exe": "Write your name on the paper."
+ },
+ {
+  "fi": "tietokone",
+  "en": "computer",
+  "t": "work",
+  "lvl": "A1",
+  "exf": "Tietokone on hidas.",
+  "exe": "The computer is slow."
+ },
+ {
+  "fi": "puhelin",
+  "en": "phone",
+  "t": "work",
+  "lvl": "A1",
+  "exf": "Puhelin soi kokouksen aikana.",
+  "exe": "The phone rang during the meeting."
+ },
+ {
+  "fi": "kokemus",
+  "en": "experience",
+  "t": "work",
+  "lvl": "B1",
+  "exf": "Minulla on pitkä kokemus alalta.",
+  "exe": "I have long experience in the field."
+ },
+ {
+  "fi": "hakemus",
+  "en": "application",
+  "t": "work",
+  "lvl": "B1",
+  "exf": "Lähetin hakemuksen eilen.",
+  "exe": "I sent the application yesterday."
+ },
+ {
+  "fi": "työpaikka",
+  "en": "workplace / job",
+  "t": "work",
+  "lvl": "A2",
+  "exf": "Uusi työpaikka on lähellä kotia.",
+  "exe": "The new workplace is near home."
+ },
+ {
+  "fi": "pankki",
+  "en": "bank",
+  "t": "work",
+  "lvl": "A1",
+  "exf": "Pankki on auki neljään asti.",
+  "exe": "The bank is open until four."
+ },
+ {
+  "fi": "kauppa",
+  "en": "shop / store",
+  "t": "work",
+  "lvl": "A1",
+  "exf": "Kauppa sulkeutuu yhdeksältä.",
+  "exe": "The shop closes at nine."
+ },
+ {
+  "fi": "matka",
+  "en": "trip / journey",
+  "t": "travel",
+  "lvl": "A1",
+  "exf": "Matka Helsinkiin kestää tunnin.",
+  "exe": "The trip to Helsinki takes an hour."
+ },
+ {
+  "fi": "juna",
+  "en": "train",
+  "t": "travel",
+  "lvl": "A1",
+  "exf": "Juna lähtee kello kahdeksan.",
+  "exe": "The train leaves at eight o'clock."
+ },
+ {
+  "fi": "bussi",
+  "en": "bus",
+  "t": "travel",
+  "lvl": "A1",
+  "exf": "Bussi on myöhässä.",
+  "exe": "The bus is late."
+ },
+ {
+  "fi": "auto",
+  "en": "car",
+  "t": "travel",
+  "lvl": "A1",
+  "exf": "Auto on korjaamolla.",
+  "exe": "The car is at the garage."
+ },
+ {
+  "fi": "polkupyörä",
+  "en": "bicycle",
+  "t": "travel",
+  "lvl": "A1",
+  "exf": "Polkupyörä on halpa kulkuväline.",
+  "exe": "A bicycle is a cheap way to get around."
+ },
+ {
+  "fi": "lentokone",
+  "en": "airplane",
+  "t": "travel",
+  "lvl": "A2",
+  "exf": "Lentokone laskeutui ajoissa.",
+  "exe": "The plane landed on time."
+ },
+ {
+  "fi": "laiva",
+  "en": "ship",
+  "t": "travel",
+  "lvl": "A2",
+  "exf": "Laiva lähtee satamasta.",
+  "exe": "The ship leaves from the harbour."
+ },
+ {
+  "fi": "asema",
+  "en": "station",
+  "t": "travel",
+  "lvl": "A1",
+  "exf": "Asema on kaupungin keskustassa.",
+  "exe": "The station is in the city centre."
+ },
+ {
+  "fi": "lippu",
+  "en": "ticket",
+  "t": "travel",
+  "lvl": "A1",
+  "exf": "Ostin lipun netistä.",
+  "exe": "I bought the ticket online."
+ },
+ {
+  "fi": "kartta",
+  "en": "map",
+  "t": "travel",
+  "lvl": "A2",
+  "exf": "Kartta auttaa löytämään perille.",
+  "exe": "The map helps you find your way."
+ },
+ {
+  "fi": "tie",
+  "en": "road",
+  "t": "travel",
+  "lvl": "A1",
+  "exf": "Tie on liukas talvella.",
+  "exe": "The road is slippery in winter."
+ },
+ {
+  "fi": "katu",
+  "en": "street",
+  "t": "travel",
+  "lvl": "A1",
+  "exf": "Katu on kapea ja hiljainen.",
+  "exe": "The street is narrow and quiet."
+ },
+ {
+  "fi": "lentokenttä",
+  "en": "airport",
+  "t": "travel",
+  "lvl": "A2",
+  "exf": "Lentokenttä on kaukana keskustasta.",
+  "exe": "The airport is far from the centre."
+ },
+ {
+  "fi": "pysäkki",
+  "en": "stop (bus)",
+  "t": "travel",
+  "lvl": "A2",
+  "exf": "Odotan bussia pysäkillä.",
+  "exe": "I wait for the bus at the stop."
+ },
+ {
+  "fi": "sää",
+  "en": "weather",
+  "t": "nat",
+  "lvl": "A1",
+  "exf": "Sää on tänään kaunis.",
+  "exe": "The weather is beautiful today."
+ },
+ {
+  "fi": "aurinko",
+  "en": "sun",
+  "t": "nat",
+  "lvl": "A1",
+  "exf": "Aurinko paistaa kirkkaasti.",
+  "exe": "The sun is shining brightly."
+ },
+ {
+  "fi": "sade",
+  "en": "rain",
+  "t": "nat",
+  "lvl": "A1",
+  "exf": "Sade jatkui koko päivän.",
+  "exe": "The rain continued all day."
+ },
+ {
+  "fi": "lumi",
+  "en": "snow",
+  "t": "nat",
+  "lvl": "A1",
+  "exf": "Lumi peittää maan.",
+  "exe": "Snow covers the ground."
+ },
+ {
+  "fi": "tuuli",
+  "en": "wind",
+  "t": "nat",
+  "lvl": "A1",
+  "exf": "Tuuli on kova rannalla.",
+  "exe": "The wind is strong on the shore."
+ },
+ {
+  "fi": "pilvi",
+  "en": "cloud",
+  "t": "nat",
+  "lvl": "A2",
+  "exf": "Pilvi peittää auringon.",
+  "exe": "A cloud covers the sun."
+ },
+ {
+  "fi": "kylmä",
+  "en": "cold",
+  "t": "nat",
+  "lvl": "A1",
+  "exf": "Ulkona on kylmä.",
+  "exe": "It is cold outside."
+ },
+ {
+  "fi": "kuuma",
+  "en": "hot",
+  "t": "nat",
+  "lvl": "A1",
+  "exf": "Kesällä on usein kuuma.",
+  "exe": "In summer it is often hot."
+ },
+ {
+  "fi": "lämmin",
+  "en": "warm",
+  "t": "nat",
+  "lvl": "A1",
+  "exf": "Vesi on lämmin.",
+  "exe": "The water is warm."
+ },
+ {
+  "fi": "metsä",
+  "en": "forest",
+  "t": "nat",
+  "lvl": "A1",
+  "exf": "Metsä on hiljainen ja vihreä.",
+  "exe": "The forest is quiet and green."
+ },
+ {
+  "fi": "järvi",
+  "en": "lake",
+  "t": "nat",
+  "lvl": "A1",
+  "exf": "Järvi jäätyy talvella.",
+  "exe": "The lake freezes in winter."
+ },
+ {
+  "fi": "meri",
+  "en": "sea",
+  "t": "nat",
+  "lvl": "A1",
+  "exf": "Meri on tyyni tänään.",
+  "exe": "The sea is calm today."
+ },
+ {
+  "fi": "puu",
+  "en": "tree",
+  "t": "nat",
+  "lvl": "A1",
+  "exf": "Puu kasvaa hitaasti.",
+  "exe": "The tree grows slowly."
+ },
+ {
+  "fi": "kukka",
+  "en": "flower",
+  "t": "nat",
+  "lvl": "A1",
+  "exf": "Kukka kukkii keväällä.",
+  "exe": "The flower blooms in spring."
+ },
+ {
+  "fi": "eläin",
+  "en": "animal",
+  "t": "nat",
+  "lvl": "A1",
+  "exf": "Eläin juoksi metsään.",
+  "exe": "The animal ran into the forest."
+ },
+ {
+  "fi": "koira",
+  "en": "dog",
+  "t": "nat",
+  "lvl": "A1",
+  "exf": "Koira haukkuu pihalla.",
+  "exe": "The dog is barking in the yard."
+ },
+ {
+  "fi": "kissa",
+  "en": "cat",
+  "t": "nat",
+  "lvl": "A1",
+  "exf": "Kissa nukkuu sohvalla.",
+  "exe": "The cat is sleeping on the sofa."
+ },
+ {
+  "fi": "lintu",
+  "en": "bird",
+  "t": "nat",
+  "lvl": "A1",
+  "exf": "Lintu laulaa aamulla.",
+  "exe": "The bird sings in the morning."
+ },
+ {
+  "fi": "kevät",
+  "en": "spring",
+  "t": "nat",
+  "lvl": "A2",
+  "exf": "Keväällä luonto herää.",
+  "exe": "In spring nature wakes up."
+ },
+ {
+  "fi": "kesä",
+  "en": "summer",
+  "t": "nat",
+  "lvl": "A1",
+  "exf": "Kesä on lyhyt Suomessa.",
+  "exe": "Summer is short in Finland."
+ },
+ {
+  "fi": "syksy",
+  "en": "autumn",
+  "t": "nat",
+  "lvl": "A2",
+  "exf": "Syksyllä lehdet putoavat.",
+  "exe": "In autumn the leaves fall."
+ },
+ {
+  "fi": "talvi",
+  "en": "winter",
+  "t": "nat",
+  "lvl": "A1",
+  "exf": "Talvi on pitkä ja pimeä.",
+  "exe": "Winter is long and dark."
+ },
+ {
+  "fi": "kaupunki",
+  "en": "city / town",
+  "t": "city",
+  "lvl": "A1",
+  "exf": "Kaupunki on suuri ja vilkas.",
+  "exe": "The city is big and lively."
+ },
+ {
+  "fi": "kylä",
+  "en": "village",
+  "t": "city",
+  "lvl": "A2",
+  "exf": "Kylä on pieni ja rauhallinen.",
+  "exe": "The village is small and peaceful."
+ },
+ {
+  "fi": "keskusta",
+  "en": "centre / downtown",
+  "t": "city",
+  "lvl": "A2",
+  "exf": "Menen keskustaan bussilla.",
+  "exe": "I go to the centre by bus."
+ },
+ {
+  "fi": "tori",
+  "en": "market square",
+  "t": "city",
+  "lvl": "A2",
+  "exf": "Torilla myydään tuoreita marjoja.",
+  "exe": "Fresh berries are sold at the market square."
+ },
+ {
+  "fi": "kirjasto",
+  "en": "library",
+  "t": "city",
+  "lvl": "A1",
+  "exf": "Kirjasto on auki kymmeneen asti.",
+  "exe": "The library is open until ten."
+ },
+ {
+  "fi": "museo",
+  "en": "museum",
+  "t": "city",
+  "lvl": "A1",
+  "exf": "Museo on maksuton sunnuntaisin.",
+  "exe": "The museum is free on Sundays."
+ },
+ {
+  "fi": "kirkko",
+  "en": "church",
+  "t": "city",
+  "lvl": "A2",
+  "exf": "Kirkko on kaupungin vanhin rakennus.",
+  "exe": "The church is the oldest building in town."
+ },
+ {
+  "fi": "puisto",
+  "en": "park",
+  "t": "city",
+  "lvl": "A1",
+  "exf": "Puistossa on paljon lapsia.",
+  "exe": "There are many children in the park."
+ },
+ {
+  "fi": "posti",
+  "en": "post office",
+  "t": "city",
+  "lvl": "A2",
+  "exf": "Vien kirjeen postiin.",
+  "exe": "I take the letter to the post office."
+ },
+ {
+  "fi": "hotelli",
+  "en": "hotel",
+  "t": "city",
+  "lvl": "A1",
+  "exf": "Hotelli sijaitsee aseman lähellä.",
+  "exe": "The hotel is located near the station."
+ },
+ {
+  "fi": "elokuvateatteri",
+  "en": "cinema",
+  "t": "city",
+  "lvl": "A2",
+  "exf": "Elokuvateatteri on kauppakeskuksessa.",
+  "exe": "The cinema is in the shopping mall."
+ },
+ {
+  "fi": "olla",
+  "en": "to be",
+  "t": "verb",
+  "lvl": "A1",
+  "exf": "Minä olen opiskelija.",
+  "exe": "I am a student."
+ },
+ {
+  "fi": "tulla",
+  "en": "to come",
+  "t": "verb",
+  "lvl": "A1",
+  "exf": "Tuletko sinä huomenna?",
+  "exe": "Are you coming tomorrow?"
+ },
+ {
+  "fi": "mennä",
+  "en": "to go",
+  "t": "verb",
+  "lvl": "A1",
+  "exf": "Menen kauppaan iltapäivällä.",
+  "exe": "I am going to the shop in the afternoon."
+ },
+ {
+  "fi": "tehdä",
+  "en": "to do / make",
+  "t": "verb",
+  "lvl": "A1",
+  "exf": "Mitä sinä teet nyt?",
+  "exe": "What are you doing now?"
+ },
+ {
+  "fi": "syödä",
+  "en": "to eat",
+  "t": "verb",
+  "lvl": "A1",
+  "exf": "Syön aamiaista seitsemältä.",
+  "exe": "I eat breakfast at seven."
+ },
+ {
+  "fi": "juoda",
+  "en": "to drink",
+  "t": "verb",
+  "lvl": "A1",
+  "exf": "Juon kahvia joka aamu.",
+  "exe": "I drink coffee every morning."
+ },
+ {
+  "fi": "nähdä",
+  "en": "to see",
+  "t": "verb",
+  "lvl": "A1",
+  "exf": "Näen sinut huomenna.",
+  "exe": "I will see you tomorrow."
+ },
+ {
+  "fi": "kuulla",
+  "en": "to hear",
+  "t": "verb",
+  "lvl": "A1",
+  "exf": "Kuuletko sinä minua?",
+  "exe": "Do you hear me?"
+ },
+ {
+  "fi": "puhua",
+  "en": "to speak",
+  "t": "verb",
+  "lvl": "A1",
+  "exf": "Puhun vähän suomea.",
+  "exe": "I speak a little Finnish."
+ },
+ {
+  "fi": "sanoa",
+  "en": "to say",
+  "t": "verb",
+  "lvl": "A1",
+  "exf": "Mitä sinä sanoit?",
+  "exe": "What did you say?"
+ },
+ {
+  "fi": "tietää",
+  "en": "to know (fact)",
+  "t": "verb",
+  "lvl": "A1",
+  "exf": "Tiedän vastauksen.",
+  "exe": "I know the answer."
+ },
+ {
+  "fi": "tuntea",
+  "en": "to know (person)",
+  "t": "verb",
+  "lvl": "A2",
+  "exf": "Tunnen hänet hyvin.",
+  "exe": "I know him well."
+ },
+ {
+  "fi": "ymmärtää",
+  "en": "to understand",
+  "t": "verb",
+  "lvl": "A1",
+  "exf": "Ymmärrän nyt paremmin.",
+  "exe": "I understand better now."
+ },
+ {
+  "fi": "osata",
+  "en": "to be able / know how",
+  "t": "verb",
+  "lvl": "A2",
+  "exf": "Osaan uida hyvin.",
+  "exe": "I can swim well."
+ },
+ {
+  "fi": "voida",
+  "en": "can / to be able",
+  "t": "verb",
+  "lvl": "A1",
+  "exf": "Voitko auttaa minua?",
+  "exe": "Can you help me?"
+ },
+ {
+  "fi": "haluta",
+  "en": "to want",
+  "t": "verb",
+  "lvl": "A1",
+  "exf": "Haluan oppia suomea.",
+  "exe": "I want to learn Finnish."
+ },
+ {
+  "fi": "pitää",
+  "en": "to like / must",
+  "t": "verb",
+  "lvl": "A1",
+  "exf": "Pidän suomen kielestä.",
+  "exe": "I like the Finnish language."
+ },
+ {
+  "fi": "rakastaa",
+  "en": "to love",
+  "t": "verb",
+  "lvl": "A2",
+  "exf": "Rakastan kesää ja aurinkoa.",
+  "exe": "I love summer and the sun."
+ },
+ {
+  "fi": "asua",
+  "en": "to live / reside",
+  "t": "verb",
+  "lvl": "A1",
+  "exf": "Asun Espoossa.",
+  "exe": "I live in Espoo."
+ },
+ {
+  "fi": "työskennellä",
+  "en": "to work",
+  "t": "verb",
+  "lvl": "A2",
+  "exf": "Työskentelen pankissa.",
+  "exe": "I work at a bank."
+ },
+ {
+  "fi": "opiskella",
+  "en": "to study",
+  "t": "verb",
+  "lvl": "A1",
+  "exf": "Opiskelen suomea illalla.",
+  "exe": "I study Finnish in the evening."
+ },
+ {
+  "fi": "oppia",
+  "en": "to learn",
+  "t": "verb",
+  "lvl": "A1",
+  "exf": "Opin joka päivä uusia sanoja.",
+  "exe": "I learn new words every day."
+ },
+ {
+  "fi": "lukea",
+  "en": "to read",
+  "t": "verb",
+  "lvl": "A1",
+  "exf": "Luen sanomalehteä aamulla.",
+  "exe": "I read the newspaper in the morning."
+ },
+ {
+  "fi": "kirjoittaa",
+  "en": "to write",
+  "t": "verb",
+  "lvl": "A1",
+  "exf": "Kirjoitan sähköpostin pian.",
+  "exe": "I will write the email soon."
+ },
+ {
+  "fi": "ostaa",
+  "en": "to buy",
+  "t": "verb",
+  "lvl": "A1",
+  "exf": "Ostan leipää kaupasta.",
+  "exe": "I buy bread from the shop."
+ },
+ {
+  "fi": "maksaa",
+  "en": "to pay / cost",
+  "t": "verb",
+  "lvl": "A1",
+  "exf": "Kuinka paljon tämä maksaa?",
+  "exe": "How much does this cost?"
+ },
+ {
+  "fi": "antaa",
+  "en": "to give",
+  "t": "verb",
+  "lvl": "A1",
+  "exf": "Annan sinulle kirjan.",
+  "exe": "I will give you the book."
+ },
+ {
+  "fi": "ottaa",
+  "en": "to take",
+  "t": "verb",
+  "lvl": "A1",
+  "exf": "Otan kupin kahvia.",
+  "exe": "I will take a cup of coffee."
+ },
+ {
+  "fi": "auttaa",
+  "en": "to help",
+  "t": "verb",
+  "lvl": "A1",
+  "exf": "Autan sinua mielelläni.",
+  "exe": "I will gladly help you."
+ },
+ {
+  "fi": "odottaa",
+  "en": "to wait",
+  "t": "verb",
+  "lvl": "A2",
+  "exf": "Odotan bussia pysäkillä.",
+  "exe": "I am waiting for the bus at the stop."
+ },
+ {
+  "fi": "matkustaa",
+  "en": "to travel",
+  "t": "verb",
+  "lvl": "A1",
+  "exf": "Matkustan junalla Tampereelle.",
+  "exe": "I travel to Tampere by train."
+ },
+ {
+  "fi": "nukkua",
+  "en": "to sleep",
+  "t": "verb",
+  "lvl": "A1",
+  "exf": "Nukun kahdeksan tuntia yössä.",
+  "exe": "I sleep eight hours a night."
+ },
+ {
+  "fi": "herätä",
+  "en": "to wake up",
+  "t": "verb",
+  "lvl": "A2",
+  "exf": "Herään aikaisin aamulla.",
+  "exe": "I wake up early in the morning."
+ },
+ {
+  "fi": "alkaa",
+  "en": "to begin",
+  "t": "verb",
+  "lvl": "A2",
+  "exf": "Kurssi alkaa ensi viikolla.",
+  "exe": "The course begins next week."
+ },
+ {
+  "fi": "loppua",
+  "en": "to end",
+  "t": "verb",
+  "lvl": "A2",
+  "exf": "Työpäivä loppuu neljältä.",
+  "exe": "The workday ends at four."
+ },
+ {
+  "fi": "tarvita",
+  "en": "to need",
+  "t": "verb",
+  "lvl": "A2",
+  "exf": "Tarvitsen apua lomakkeen kanssa.",
+  "exe": "I need help with the form."
+ },
+ {
+  "fi": "kysyä",
+  "en": "to ask",
+  "t": "verb",
+  "lvl": "A1",
+  "exf": "Kysyn opettajalta neuvoa.",
+  "exe": "I will ask the teacher for advice."
+ },
+ {
+  "fi": "vastata",
+  "en": "to answer",
+  "t": "verb",
+  "lvl": "A2",
+  "exf": "Vastaan sähköpostiin heti.",
+  "exe": "I will answer the email right away."
+ },
+ {
+  "fi": "muistaa",
+  "en": "to remember",
+  "t": "verb",
+  "lvl": "A2",
+  "exf": "Muistan hänen nimensä.",
+  "exe": "I remember his name."
+ },
+ {
+  "fi": "hyvä",
+  "en": "good",
+  "t": "adj",
+  "lvl": "A1",
+  "exf": "Tämä on hyvä kirja.",
+  "exe": "This is a good book."
+ },
+ {
+  "fi": "huono",
+  "en": "bad",
+  "t": "adj",
+  "lvl": "A1",
+  "exf": "Sää on tänään huono.",
+  "exe": "The weather is bad today."
+ },
+ {
+  "fi": "iso",
+  "en": "big",
+  "t": "adj",
+  "lvl": "A1",
+  "exf": "Asunto on iso ja valoisa.",
+  "exe": "The flat is big and bright."
+ },
+ {
+  "fi": "pieni",
+  "en": "small",
+  "t": "adj",
+  "lvl": "A1",
+  "exf": "Kaupunki on pieni mutta kaunis.",
+  "exe": "The town is small but beautiful."
+ },
+ {
+  "fi": "uusi",
+  "en": "new",
+  "t": "adj",
+  "lvl": "A1",
+  "exf": "Uusi kurssi alkaa maanantaina.",
+  "exe": "The new course starts on Monday."
+ },
+ {
+  "fi": "vanha",
+  "en": "old",
+  "t": "adj",
+  "lvl": "A1",
+  "exf": "Talo on hyvin vanha.",
+  "exe": "The house is very old."
+ },
+ {
+  "fi": "kaunis",
+  "en": "beautiful",
+  "t": "adj",
+  "lvl": "A1",
+  "exf": "Ilta oli kaunis ja lämmin.",
+  "exe": "The evening was beautiful and warm."
+ },
+ {
+  "fi": "ruma",
+  "en": "ugly",
+  "t": "adj",
+  "lvl": "A2",
+  "exf": "Rakennus on minusta ruma.",
+  "exe": "The building is ugly in my opinion."
+ },
+ {
+  "fi": "nopea",
+  "en": "fast",
+  "t": "adj",
+  "lvl": "A1",
+  "exf": "Juna on nopea ja mukava.",
+  "exe": "The train is fast and comfortable."
+ },
+ {
+  "fi": "hidas",
+  "en": "slow",
+  "t": "adj",
+  "lvl": "A2",
+  "exf": "Internet on tänään hidas.",
+  "exe": "The internet is slow today."
+ },
+ {
+  "fi": "helppo",
+  "en": "easy",
+  "t": "adj",
+  "lvl": "A1",
+  "exf": "Tehtävä oli helppo.",
+  "exe": "The task was easy."
+ },
+ {
+  "fi": "vaikea",
+  "en": "difficult",
+  "t": "adj",
+  "lvl": "A1",
+  "exf": "Suomen kielioppi on vaikea.",
+  "exe": "Finnish grammar is difficult."
+ },
+ {
+  "fi": "kallis",
+  "en": "expensive",
+  "t": "adj",
+  "lvl": "A1",
+  "exf": "Asunto keskustassa on kallis.",
+  "exe": "An apartment in the centre is expensive."
+ },
+ {
+  "fi": "halpa",
+  "en": "cheap",
+  "t": "adj",
+  "lvl": "A1",
+  "exf": "Bussilippu on halpa.",
+  "exe": "The bus ticket is cheap."
+ },
+ {
+  "fi": "tärkeä",
+  "en": "important",
+  "t": "adj",
+  "lvl": "A2",
+  "exf": "Tämä asia on tärkeä.",
+  "exe": "This matter is important."
+ },
+ {
+  "fi": "kiva",
+  "en": "nice",
+  "t": "adj",
+  "lvl": "A1",
+  "exf": "Oli kiva nähdä sinua.",
+  "exe": "It was nice to see you."
+ },
+ {
+  "fi": "hauska",
+  "en": "fun / funny",
+  "t": "adj",
+  "lvl": "A1",
+  "exf": "Ilta oli todella hauska.",
+  "exe": "The evening was really fun."
+ },
+ {
+  "fi": "väsynyt",
+  "en": "tired",
+  "t": "adj",
+  "lvl": "A2",
+  "exf": "Olen väsynyt pitkän päivän jälkeen.",
+  "exe": "I am tired after a long day."
+ },
+ {
+  "fi": "iloinen",
+  "en": "happy",
+  "t": "adj",
+  "lvl": "A1",
+  "exf": "Lapsi on iloinen ja vilkas.",
+  "exe": "The child is happy and lively."
+ },
+ {
+  "fi": "surullinen",
+  "en": "sad",
+  "t": "adj",
+  "lvl": "A2",
+  "exf": "Elokuva oli surullinen.",
+  "exe": "The film was sad."
+ },
+ {
+  "fi": "pitkä",
+  "en": "long / tall",
+  "t": "adj",
+  "lvl": "A1",
+  "exf": "Matka oli pitkä ja raskas.",
+  "exe": "The journey was long and hard."
+ },
+ {
+  "fi": "lyhyt",
+  "en": "short",
+  "t": "adj",
+  "lvl": "A1",
+  "exf": "Kokous oli lyhyt.",
+  "exe": "The meeting was short."
+ },
+ {
+  "fi": "oikea",
+  "en": "right / correct",
+  "t": "adj",
+  "lvl": "A2",
+  "exf": "Tämä on oikea vastaus.",
+  "exe": "This is the correct answer."
+ },
+ {
+  "fi": "väärä",
+  "en": "wrong",
+  "t": "adj",
+  "lvl": "A2",
+  "exf": "Vastaus oli väärä.",
+  "exe": "The answer was wrong."
+ },
+ {
+  "fi": "valmis",
+  "en": "ready / finished",
+  "t": "adj",
+  "lvl": "A2",
+  "exf": "Ruoka on valmis.",
+  "exe": "The food is ready."
+ },
+ {
+  "fi": "täysi",
+  "en": "full",
+  "t": "adj",
+  "lvl": "A2",
+  "exf": "Bussi oli täysi.",
+  "exe": "The bus was full."
+ },
+ {
+  "fi": "tyhjä",
+  "en": "empty",
+  "t": "adj",
+  "lvl": "A2",
+  "exf": "Huone on tyhjä.",
+  "exe": "The room is empty."
+ },
+ {
+  "fi": "mikä",
+  "en": "what (thing)",
+  "t": "q",
+  "lvl": "A1",
+  "exf": "Mikä tämä on?",
+  "exe": "What is this?"
+ },
+ {
+  "fi": "kuka",
+  "en": "who",
+  "t": "q",
+  "lvl": "A1",
+  "exf": "Kuka sinä olet?",
+  "exe": "Who are you?"
+ },
+ {
+  "fi": "missä",
+  "en": "where (in)",
+  "t": "q",
+  "lvl": "A1",
+  "exf": "Missä sinä asut?",
+  "exe": "Where do you live?"
+ },
+ {
+  "fi": "mihin",
+  "en": "where to",
+  "t": "q",
+  "lvl": "A1",
+  "exf": "Mihin sinä menet?",
+  "exe": "Where are you going?"
+ },
+ {
+  "fi": "mistä",
+  "en": "where from",
+  "t": "q",
+  "lvl": "A1",
+  "exf": "Mistä sinä olet kotoisin?",
+  "exe": "Where are you from?"
+ },
+ {
+  "fi": "milloin",
+  "en": "when",
+  "t": "q",
+  "lvl": "A1",
+  "exf": "Milloin juna lähtee?",
+  "exe": "When does the train leave?"
+ },
+ {
+  "fi": "miksi",
+  "en": "why",
+  "t": "q",
+  "lvl": "A1",
+  "exf": "Miksi sinä opiskelet suomea?",
+  "exe": "Why do you study Finnish?"
+ },
+ {
+  "fi": "miten",
+  "en": "how",
+  "t": "q",
+  "lvl": "A1",
+  "exf": "Miten pääsen keskustaan?",
+  "exe": "How do I get to the centre?"
+ },
+ {
+  "fi": "kuinka",
+  "en": "how / how much",
+  "t": "q",
+  "lvl": "A1",
+  "exf": "Kuinka vanha sinä olet?",
+  "exe": "How old are you?"
+ },
+ {
+  "fi": "paljonko",
+  "en": "how much (price)",
+  "t": "q",
+  "lvl": "A1",
+  "exf": "Paljonko tämä maksaa?",
+  "exe": "How much does this cost?"
+ },
+ {
+  "fi": "montako",
+  "en": "how many",
+  "t": "q",
+  "lvl": "A2",
+  "exf": "Montako lasta teillä on?",
+  "exe": "How many children do you have?"
+ },
+ {
+  "fi": "kumpi",
+  "en": "which (of two)",
+  "t": "q",
+  "lvl": "A2",
+  "exf": "Kumpi paita on parempi?",
+  "exe": "Which shirt is better?"
+ },
+ {
+  "fi": "väri",
+  "en": "colour",
+  "t": "col",
+  "lvl": "A1",
+  "exf": "Mikä väri sinulle sopii?",
+  "exe": "Which colour suits you?"
+ },
+ {
+  "fi": "punainen",
+  "en": "red",
+  "t": "col",
+  "lvl": "A1",
+  "exf": "Auto on punainen.",
+  "exe": "The car is red."
+ },
+ {
+  "fi": "sininen",
+  "en": "blue",
+  "t": "col",
+  "lvl": "A1",
+  "exf": "Suomen lippu on sininen ja valkoinen.",
+  "exe": "The Finnish flag is blue and white."
+ },
+ {
+  "fi": "vihreä",
+  "en": "green",
+  "t": "col",
+  "lvl": "A1",
+  "exf": "Metsä on kesällä vihreä.",
+  "exe": "The forest is green in summer."
+ },
+ {
+  "fi": "keltainen",
+  "en": "yellow",
+  "t": "col",
+  "lvl": "A1",
+  "exf": "Aurinko on keltainen.",
+  "exe": "The sun is yellow."
+ },
+ {
+  "fi": "musta",
+  "en": "black",
+  "t": "col",
+  "lvl": "A1",
+  "exf": "Ostin mustan takin.",
+  "exe": "I bought a black coat."
+ },
+ {
+  "fi": "valkoinen",
+  "en": "white",
+  "t": "col",
+  "lvl": "A1",
+  "exf": "Talvella maa on valkoinen.",
+  "exe": "In winter the ground is white."
+ },
+ {
+  "fi": "ruskea",
+  "en": "brown",
+  "t": "col",
+  "lvl": "A2",
+  "exf": "Hänellä on ruskeat silmät.",
+  "exe": "She has brown eyes."
+ },
+ {
+  "fi": "harmaa",
+  "en": "grey",
+  "t": "col",
+  "lvl": "A2",
+  "exf": "Taivas on tänään harmaa.",
+  "exe": "The sky is grey today."
+ },
+ {
+  "fi": "oranssi",
+  "en": "orange",
+  "t": "col",
+  "lvl": "A2",
+  "exf": "Appelsiini on oranssi.",
+  "exe": "The orange is orange."
+ },
+ {
+  "fi": "vaaleanpunainen",
+  "en": "pink",
+  "t": "col",
+  "lvl": "A2",
+  "exf": "Mekko on vaaleanpunainen.",
+  "exe": "The dress is pink."
+ },
+ {
+  "fi": "tutkinto",
+  "en": "degree",
+  "t": "work",
+  "lvl": "A2",
+  "exf": "Suoritin tutkinnon viime vuonna.",
+  "exe": "I completed the degree last year."
+ },
+ {
+  "fi": "kurssi",
+  "en": "course",
+  "t": "work",
+  "lvl": "A1",
+  "exf": "Kurssi kestää kolme kuukautta.",
+  "exe": "The course lasts three months."
+ },
+ {
+  "fi": "tentti",
+  "en": "exam",
+  "t": "work",
+  "lvl": "A2",
+  "exf": "Tentti oli vaikea.",
+  "exe": "The exam was difficult."
+ },
+ {
+  "fi": "koe",
+  "en": "test",
+  "t": "work",
+  "lvl": "A2",
+  "exf": "Koe pidetään perjantaina.",
+  "exe": "The test is held on Friday."
+ },
+ {
+  "fi": "läksyt",
+  "en": "homework",
+  "t": "work",
+  "lvl": "A2",
+  "exf": "Läksyt pitää tehdä huomiseksi.",
+  "exe": "The homework must be done by tomorrow."
+ },
+ {
+  "fi": "luento",
+  "en": "lecture",
+  "t": "work",
+  "lvl": "B1",
+  "exf": "Luento alkaa kohta.",
+  "exe": "The lecture starts soon."
+ },
+ {
+  "fi": "harjoitus",
+  "en": "exercise / practice",
+  "t": "work",
+  "lvl": "A2",
+  "exf": "Harjoitus tekee mestarin.",
+  "exe": "Practice makes perfect."
+ },
+ {
+  "fi": "todistus",
+  "en": "certificate",
+  "t": "work",
+  "lvl": "A2",
+  "exf": "Sain todistuksen kurssista.",
+  "exe": "I got a certificate for the course."
+ },
+ {
+  "fi": "ansioluettelo",
+  "en": "résumé / CV",
+  "t": "work",
+  "lvl": "B1",
+  "exf": "Liitä ansioluettelo hakemukseen.",
+  "exe": "Attach your CV to the application."
+ },
+ {
+  "fi": "työhaastattelu",
+  "en": "job interview",
+  "t": "work",
+  "lvl": "B1",
+  "exf": "Työhaastattelu meni hyvin.",
+  "exe": "The job interview went well."
+ },
+ {
+  "fi": "työnantaja",
+  "en": "employer",
+  "t": "work",
+  "lvl": "A2",
+  "exf": "Työnantaja maksaa palkan.",
+  "exe": "The employer pays the salary."
+ },
+ {
+  "fi": "työntekijä",
+  "en": "employee",
+  "t": "work",
+  "lvl": "A2",
+  "exf": "Työntekijä aloittaa maanantaina.",
+  "exe": "The employee starts on Monday."
+ },
+ {
+  "fi": "työtön",
+  "en": "unemployed",
+  "t": "work",
+  "lvl": "A2",
+  "exf": "Hän on ollut työtön puoli vuotta.",
+  "exe": "He has been unemployed for half a year."
+ },
+ {
+  "fi": "lomake",
+  "en": "form",
+  "t": "work",
+  "lvl": "A2",
+  "exf": "Täytä lomake huolellisesti.",
+  "exe": "Fill in the form carefully."
+ },
+ {
+  "fi": "johtaja",
+  "en": "manager / director",
+  "t": "work",
+  "lvl": "A2",
+  "exf": "Johtaja piti lyhyen puheen.",
+  "exe": "The manager gave a short speech."
+ },
+ {
+  "fi": "kollega",
+  "en": "colleague",
+  "t": "work",
+  "lvl": "A2",
+  "exf": "Kollega auttoi minua tehtävässä.",
+  "exe": "A colleague helped me with the task."
+ },
+ {
+  "fi": "asiakas",
+  "en": "customer / client",
+  "t": "work",
+  "lvl": "A2",
+  "exf": "Asiakas odottaa vastausta.",
+  "exe": "The customer is waiting for an answer."
+ },
+ {
+  "fi": "yritys",
+  "en": "company",
+  "t": "work",
+  "lvl": "A2",
+  "exf": "Yritys palkkaa uusia työntekijöitä.",
+  "exe": "The company is hiring new employees."
+ },
+ {
+  "fi": "ala",
+  "en": "field / sector",
+  "t": "work",
+  "lvl": "B1",
+  "exf": "Ala kehittyy nopeasti.",
+  "exe": "The field is developing fast."
+ },
+ {
+  "fi": "projekti",
+  "en": "project",
+  "t": "work",
+  "lvl": "A2",
+  "exf": "Projekti valmistuu ensi kuussa.",
+  "exe": "The project will be finished next month."
+ },
+ {
+  "fi": "tehtävä",
+  "en": "task",
+  "t": "work",
+  "lvl": "A2",
+  "exf": "Tehtävä oli helppo.",
+  "exe": "The task was easy."
+ },
+ {
+  "fi": "kokouspöytä",
+  "en": "meeting table",
+  "t": "work",
+  "lvl": "B1",
+  "exf": "Kokouspöytä on suuri ja pyöreä.",
+  "exe": "The meeting table is big and round."
+ },
+ {
+  "fi": "hammas",
+  "en": "tooth",
+  "t": "body",
+  "lvl": "A2",
+  "exf": "Hammas on kipeä.",
+  "exe": "The tooth hurts."
+ },
+ {
+  "fi": "selkä",
+  "en": "back",
+  "t": "body",
+  "lvl": "A2",
+  "exf": "Selkä on kipeä istumisesta.",
+  "exe": "My back hurts from sitting."
+ },
+ {
+  "fi": "vatsa",
+  "en": "stomach",
+  "t": "body",
+  "lvl": "A2",
+  "exf": "Vatsa on täynnä hyvää ruokaa.",
+  "exe": "The stomach is full of good food."
+ },
+ {
+  "fi": "kaula",
+  "en": "neck",
+  "t": "body",
+  "lvl": "A2",
+  "exf": "Kaula on jäykkä aamulla.",
+  "exe": "My neck is stiff in the morning."
+ },
+ {
+  "fi": "sormi",
+  "en": "finger",
+  "t": "body",
+  "lvl": "A2",
+  "exf": "Loukkasin sormeni ovessa.",
+  "exe": "I hurt my finger in the door."
+ },
+ {
+  "fi": "veri",
+  "en": "blood",
+  "t": "body",
+  "lvl": "A2",
+  "exf": "Veri on punaista.",
+  "exe": "Blood is red."
+ },
+ {
+  "fi": "iho",
+  "en": "skin",
+  "t": "body",
+  "lvl": "B1",
+  "exf": "Talvella iho kuivuu helposti.",
+  "exe": "In winter the skin dries easily."
+ },
+ {
+  "fi": "terveyskeskus",
+  "en": "health centre",
+  "t": "body",
+  "lvl": "A2",
+  "exf": "Varasin ajan terveyskeskukseen.",
+  "exe": "I booked an appointment at the health centre."
+ },
+ {
+  "fi": "sairaanhoitaja",
+  "en": "nurse",
+  "t": "body",
+  "lvl": "A2",
+  "exf": "Sairaanhoitaja mittasi verenpaineen.",
+  "exe": "The nurse measured the blood pressure."
+ },
+ {
+  "fi": "hammaslääkäri",
+  "en": "dentist",
+  "t": "body",
+  "lvl": "A2",
+  "exf": "Käyn hammaslääkärissä kerran vuodessa.",
+  "exe": "I go to the dentist once a year."
+ },
+ {
+  "fi": "resepti",
+  "en": "prescription",
+  "t": "body",
+  "lvl": "B1",
+  "exf": "Lääkäri kirjoitti reseptin.",
+  "exe": "The doctor wrote a prescription."
+ },
+ {
+  "fi": "kuume",
+  "en": "fever",
+  "t": "body",
+  "lvl": "A2",
+  "exf": "Lapsella on korkea kuume.",
+  "exe": "The child has a high fever."
+ },
+ {
+  "fi": "yskä",
+  "en": "cough",
+  "t": "body",
+  "lvl": "A2",
+  "exf": "Yskä ei mene pois.",
+  "exe": "The cough will not go away."
+ },
+ {
+  "fi": "päänsärky",
+  "en": "headache",
+  "t": "body",
+  "lvl": "A2",
+  "exf": "Minulla on kova päänsärky.",
+  "exe": "I have a bad headache."
+ },
+ {
+  "fi": "sumu",
+  "en": "fog",
+  "t": "nat",
+  "lvl": "A2",
+  "exf": "Sumu peittää tien.",
+  "exe": "Fog covers the road."
+ },
+ {
+  "fi": "jää",
+  "en": "ice",
+  "t": "nat",
+  "lvl": "A2",
+  "exf": "Jää on ohut ja vaarallinen.",
+  "exe": "The ice is thin and dangerous."
+ },
+ {
+  "fi": "pakkanen",
+  "en": "frost / sub-zero cold",
+  "t": "nat",
+  "lvl": "A2",
+  "exf": "Pakkanen paukkuu ulkona.",
+  "exe": "It is freezing cold outside."
+ },
+ {
+  "fi": "ukkonen",
+  "en": "thunderstorm",
+  "t": "nat",
+  "lvl": "B1",
+  "exf": "Ukkonen alkoi illalla.",
+  "exe": "The thunderstorm started in the evening."
+ },
+ {
+  "fi": "taivas",
+  "en": "sky",
+  "t": "nat",
+  "lvl": "A2",
+  "exf": "Taivas on sininen ja kirkas.",
+  "exe": "The sky is blue and clear."
+ },
+ {
+  "fi": "tähti",
+  "en": "star",
+  "t": "nat",
+  "lvl": "A2",
+  "exf": "Tähti loistaa taivaalla.",
+  "exe": "The star shines in the sky."
+ },
+ {
+  "fi": "kuu",
+  "en": "moon",
+  "t": "nat",
+  "lvl": "A2",
+  "exf": "Kuu näkyy hyvin tänään.",
+  "exe": "The moon is clearly visible today."
+ },
+ {
+  "fi": "ilma",
+  "en": "air / weather",
+  "t": "nat",
+  "lvl": "A1",
+  "exf": "Ilma on raikas metsässä.",
+  "exe": "The air is fresh in the forest."
+ },
+ {
+  "fi": "luonto",
+  "en": "nature",
+  "t": "nat",
+  "lvl": "A2",
+  "exf": "Luonto on lähellä kaupunkia.",
+  "exe": "Nature is close to the city."
+ },
+ {
+  "fi": "ranta",
+  "en": "shore / beach",
+  "t": "nat",
+  "lvl": "A2",
+  "exf": "Ranta on täynnä ihmisiä kesällä.",
+  "exe": "The beach is full of people in summer."
+ },
+ {
+  "fi": "saari",
+  "en": "island",
+  "t": "nat",
+  "lvl": "B1",
+  "exf": "Saari on pieni ja rauhallinen.",
+  "exe": "The island is small and peaceful."
+ },
+ {
+  "fi": "vuori",
+  "en": "mountain",
+  "t": "nat",
+  "lvl": "B1",
+  "exf": "Vuori näkyy kauas.",
+  "exe": "The mountain is visible from far away."
+ },
+ {
+  "fi": "kasvi",
+  "en": "plant",
+  "t": "nat",
+  "lvl": "A2",
+  "exf": "Kasvi tarvitsee vettä ja valoa.",
+  "exe": "The plant needs water and light."
+ },
+ {
+  "fi": "aurinkoinen",
+  "en": "sunny",
+  "t": "nat",
+  "lvl": "A2",
+  "exf": "Päivä on aurinkoinen ja lämmin.",
+  "exe": "The day is sunny and warm."
+ },
+ {
+  "fi": "pilvinen",
+  "en": "cloudy",
+  "t": "nat",
+  "lvl": "A2",
+  "exf": "Sää on pilvinen ja harmaa.",
+  "exe": "The weather is cloudy and grey."
+ },
+ {
+  "fi": "tammikuu",
+  "en": "January",
+  "t": "time",
+  "lvl": "A2",
+  "exf": "Tammikuussa on kylmä.",
+  "exe": "It is cold in January."
+ },
+ {
+  "fi": "helmikuu",
+  "en": "February",
+  "t": "time",
+  "lvl": "A2",
+  "exf": "Helmikuu on lyhyin kuukausi.",
+  "exe": "February is the shortest month."
+ },
+ {
+  "fi": "maaliskuu",
+  "en": "March",
+  "t": "time",
+  "lvl": "A2",
+  "exf": "Maaliskuussa lumi sulaa.",
+  "exe": "In March the snow melts."
+ },
+ {
+  "fi": "huhtikuu",
+  "en": "April",
+  "t": "time",
+  "lvl": "A2",
+  "exf": "Huhtikuussa alkaa kevät.",
+  "exe": "Spring begins in April."
+ },
+ {
+  "fi": "toukokuu",
+  "en": "May",
+  "t": "time",
+  "lvl": "A2",
+  "exf": "Toukokuussa puut ovat vihreitä.",
+  "exe": "In May the trees are green."
+ },
+ {
+  "fi": "kesäkuu",
+  "en": "June",
+  "t": "time",
+  "lvl": "A2",
+  "exf": "Kesäkuussa alkaa loma.",
+  "exe": "The holiday starts in June."
+ },
+ {
+  "fi": "heinäkuu",
+  "en": "July",
+  "t": "time",
+  "lvl": "A2",
+  "exf": "Heinäkuu on lämpimin kuukausi.",
+  "exe": "July is the warmest month."
+ },
+ {
+  "fi": "elokuu",
+  "en": "August",
+  "t": "time",
+  "lvl": "A2",
+  "exf": "Elokuussa koulu alkaa.",
+  "exe": "School starts in August."
+ },
+ {
+  "fi": "syyskuu",
+  "en": "September",
+  "t": "time",
+  "lvl": "A2",
+  "exf": "Syyskuussa illat pimenevät.",
+  "exe": "In September the evenings get darker."
+ },
+ {
+  "fi": "lokakuu",
+  "en": "October",
+  "t": "time",
+  "lvl": "A2",
+  "exf": "Lokakuussa sataa usein.",
+  "exe": "In October it often rains."
+ },
+ {
+  "fi": "marraskuu",
+  "en": "November",
+  "t": "time",
+  "lvl": "A2",
+  "exf": "Marraskuu on pimeä kuukausi.",
+  "exe": "November is a dark month."
+ },
+ {
+  "fi": "joulukuu",
+  "en": "December",
+  "t": "time",
+  "lvl": "A2",
+  "exf": "Joulukuussa vietämme joulua.",
+  "exe": "In December we celebrate Christmas."
+ },
+ {
+  "fi": "keskipäivä",
+  "en": "noon",
+  "t": "time",
+  "lvl": "A2",
+  "exf": "Syön lounasta keskipäivällä.",
+  "exe": "I eat lunch at noon."
+ },
+ {
+  "fi": "keskiyö",
+  "en": "midnight",
+  "t": "time",
+  "lvl": "A2",
+  "exf": "Juhlat jatkuivat keskiyöhön asti.",
+  "exe": "The party continued until midnight."
+ },
+ {
+  "fi": "aamupäivä",
+  "en": "morning (a.m.)",
+  "t": "time",
+  "lvl": "A2",
+  "exf": "Aamupäivällä on kokous.",
+  "exe": "There is a meeting in the morning."
+ },
+ {
+  "fi": "iltapäivä",
+  "en": "afternoon",
+  "t": "time",
+  "lvl": "A2",
+  "exf": "Iltapäivällä juon kahvia.",
+  "exe": "In the afternoon I drink coffee."
+ },
+ {
+  "fi": "hetki",
+  "en": "moment",
+  "t": "time",
+  "lvl": "A2",
+  "exf": "Odota hetki, tulen kohta.",
+  "exe": "Wait a moment, I'll come soon."
+ },
+ {
+  "fi": "kello",
+  "en": "clock / o'clock",
+  "t": "time",
+  "lvl": "A1",
+  "exf": "Kello on nyt kaksi.",
+  "exe": "It is two o'clock now."
+ },
+ {
+  "fi": "nykyään",
+  "en": "nowadays",
+  "t": "time",
+  "lvl": "B1",
+  "exf": "Nykyään opiskelen suomea.",
+  "exe": "Nowadays I study Finnish."
+ },
+ {
+  "fi": "joskus",
+  "en": "sometimes",
+  "t": "time",
+  "lvl": "A1",
+  "exf": "Joskus käyn uimassa.",
+  "exe": "Sometimes I go swimming."
+ },
+ {
+  "fi": "aina",
+  "en": "always",
+  "t": "time",
+  "lvl": "A1",
+  "exf": "Juon aina aamulla kahvia.",
+  "exe": "I always drink coffee in the morning."
+ },
+ {
+  "fi": "usein",
+  "en": "often",
+  "t": "time",
+  "lvl": "A1",
+  "exf": "Käyn usein kirjastossa.",
+  "exe": "I often go to the library."
+ },
+ {
+  "fi": "harvoin",
+  "en": "rarely",
+  "t": "time",
+  "lvl": "A2",
+  "exf": "Katson harvoin televisiota.",
+  "exe": "I rarely watch television."
+ },
+ {
+  "fi": "heti",
+  "en": "immediately",
+  "t": "time",
+  "lvl": "A2",
+  "exf": "Tule heti tänne!",
+  "exe": "Come here immediately!"
+ },
+ {
+  "fi": "riisi",
+  "en": "rice",
+  "t": "food",
+  "lvl": "A1",
+  "exf": "Riisi kiehuu kymmenen minuuttia.",
+  "exe": "The rice boils for ten minutes."
+ },
+ {
+  "fi": "pasta",
+  "en": "pasta",
+  "t": "food",
+  "lvl": "A1",
+  "exf": "Pasta on nopea ruoka.",
+  "exe": "Pasta is a quick meal."
+ },
+ {
+  "fi": "keitto",
+  "en": "soup",
+  "t": "food",
+  "lvl": "A2",
+  "exf": "Keitto on kuumaa.",
+  "exe": "The soup is hot."
+ },
+ {
+  "fi": "salaatti",
+  "en": "salad",
+  "t": "food",
+  "lvl": "A1",
+  "exf": "Salaatti on tuoretta ja vihreää.",
+  "exe": "The salad is fresh and green."
+ },
+ {
+  "fi": "hedelmä",
+  "en": "fruit",
+  "t": "food",
+  "lvl": "A1",
+  "exf": "Hedelmä on terveellistä.",
+  "exe": "Fruit is healthy."
+ },
+ {
+  "fi": "vihannes",
+  "en": "vegetable",
+  "t": "food",
+  "lvl": "A2",
+  "exf": "Vihannes kasvaa puutarhassa.",
+  "exe": "The vegetable grows in the garden."
+ },
+ {
+  "fi": "marja",
+  "en": "berry",
+  "t": "food",
+  "lvl": "A2",
+  "exf": "Marja on makea.",
+  "exe": "The berry is sweet."
+ },
+ {
+  "fi": "jäätelö",
+  "en": "ice cream",
+  "t": "food",
+  "lvl": "A1",
+  "exf": "Jäätelö sulaa nopeasti.",
+  "exe": "The ice cream melts quickly."
+ },
+ {
+  "fi": "kakku",
+  "en": "cake",
+  "t": "food",
+  "lvl": "A2",
+  "exf": "Kakku on syntymäpäivää varten.",
+  "exe": "The cake is for the birthday."
+ },
+ {
+  "fi": "pulla",
+  "en": "sweet bun",
+  "t": "food",
+  "lvl": "A2",
+  "exf": "Pulla maistuu kahvin kanssa.",
+  "exe": "A sweet bun tastes good with coffee."
+ },
+ {
+  "fi": "voileipä",
+  "en": "sandwich",
+  "t": "food",
+  "lvl": "A2",
+  "exf": "Teen voileivän aamulla.",
+  "exe": "I make a sandwich in the morning."
+ },
+ {
+  "fi": "makkara",
+  "en": "sausage",
+  "t": "food",
+  "lvl": "A2",
+  "exf": "Makkara paistuu grillissä.",
+  "exe": "The sausage cooks on the grill."
+ },
+ {
+  "fi": "jogurtti",
+  "en": "yoghurt",
+  "t": "food",
+  "lvl": "A2",
+  "exf": "Syön jogurttia aamiaisella.",
+  "exe": "I eat yoghurt for breakfast."
+ },
+ {
+  "fi": "appelsiini",
+  "en": "orange",
+  "t": "food",
+  "lvl": "A1",
+  "exf": "Appelsiini on hyvä ja mehukas.",
+  "exe": "The orange is good and juicy."
+ },
+ {
+  "fi": "porkkana",
+  "en": "carrot",
+  "t": "food",
+  "lvl": "A2",
+  "exf": "Porkkana on oranssi.",
+  "exe": "The carrot is orange."
+ },
+ {
+  "fi": "sipuli",
+  "en": "onion",
+  "t": "food",
+  "lvl": "A2",
+  "exf": "Sipuli saa silmät vuotamaan.",
+  "exe": "The onion makes your eyes water."
+ },
+ {
+  "fi": "lautanen",
+  "en": "plate",
+  "t": "food",
+  "lvl": "A2",
+  "exf": "Pane lautanen pöydälle.",
+  "exe": "Put the plate on the table."
+ },
+ {
+  "fi": "lasi",
+  "en": "glass",
+  "t": "food",
+  "lvl": "A1",
+  "exf": "Lasi on täynnä vettä.",
+  "exe": "The glass is full of water."
+ },
+ {
+  "fi": "haarukka",
+  "en": "fork",
+  "t": "food",
+  "lvl": "A2",
+  "exf": "Syön haarukalla ja veitsellä.",
+  "exe": "I eat with a fork and knife."
+ },
+ {
+  "fi": "veitsi",
+  "en": "knife",
+  "t": "food",
+  "lvl": "A2",
+  "exf": "Veitsi on terävä.",
+  "exe": "The knife is sharp."
+ },
+ {
+  "fi": "lusikka",
+  "en": "spoon",
+  "t": "food",
+  "lvl": "A2",
+  "exf": "Sekoita kahvi lusikalla.",
+  "exe": "Stir the coffee with a spoon."
+ },
+ {
+  "fi": "viini",
+  "en": "wine",
+  "t": "food",
+  "lvl": "A2",
+  "exf": "Viini on punaista.",
+  "exe": "The wine is red."
+ },
+ {
+  "fi": "raitiovaunu",
+  "en": "tram",
+  "t": "travel",
+  "lvl": "A2",
+  "exf": "Raitiovaunu kulkee usein.",
+  "exe": "The tram runs often."
+ },
+ {
+  "fi": "metro",
+  "en": "metro",
+  "t": "travel",
+  "lvl": "A1",
+  "exf": "Metro on nopein tapa liikkua.",
+  "exe": "The metro is the fastest way to get around."
+ },
+ {
+  "fi": "taksi",
+  "en": "taxi",
+  "t": "travel",
+  "lvl": "A1",
+  "exf": "Tilasin taksin lentokentälle.",
+  "exe": "I ordered a taxi to the airport."
+ },
+ {
+  "fi": "matkalippu",
+  "en": "travel ticket",
+  "t": "travel",
+  "lvl": "A2",
+  "exf": "Matkalippu maksaa kolme euroa.",
+  "exe": "The travel ticket costs three euros."
+ },
+ {
+  "fi": "aikataulu",
+  "en": "timetable",
+  "t": "travel",
+  "lvl": "A2",
+  "exf": "Aikataulu muuttuu kesällä.",
+  "exe": "The timetable changes in summer."
+ },
+ {
+  "fi": "matkustaja",
+  "en": "passenger",
+  "t": "travel",
+  "lvl": "A2",
+  "exf": "Matkustaja etsii paikkaansa.",
+  "exe": "The passenger is looking for a seat."
+ },
+ {
+  "fi": "kuljettaja",
+  "en": "driver",
+  "t": "travel",
+  "lvl": "A2",
+  "exf": "Kuljettaja neuvoi oikean pysäkin.",
+  "exe": "The driver advised the right stop."
+ },
+ {
+  "fi": "satama",
+  "en": "harbour / port",
+  "t": "travel",
+  "lvl": "B1",
+  "exf": "Satama on täynnä laivoja.",
+  "exe": "The harbour is full of ships."
+ },
+ {
+  "fi": "silta",
+  "en": "bridge",
+  "t": "travel",
+  "lvl": "A2",
+  "exf": "Silta ylittää joen.",
+  "exe": "The bridge crosses the river."
+ },
+ {
+  "fi": "risteys",
+  "en": "intersection",
+  "t": "travel",
+  "lvl": "A2",
+  "exf": "Käänny risteyksestä vasemmalle.",
+  "exe": "Turn left at the intersection."
+ },
+ {
+  "fi": "suunta",
+  "en": "direction",
+  "t": "travel",
+  "lvl": "A2",
+  "exf": "Suunta on väärä.",
+  "exe": "The direction is wrong."
+ },
+ {
+  "fi": "passi",
+  "en": "passport",
+  "t": "travel",
+  "lvl": "A2",
+  "exf": "Passi on voimassa viisi vuotta.",
+  "exe": "The passport is valid for five years."
+ },
+ {
+  "fi": "viisumi",
+  "en": "visa",
+  "t": "travel",
+  "lvl": "B1",
+  "exf": "Viisumi haetaan etukäteen.",
+  "exe": "The visa is applied for in advance."
+ },
+ {
+  "fi": "reitti",
+  "en": "route",
+  "t": "travel",
+  "lvl": "A2",
+  "exf": "Reitti kulkee metsän läpi.",
+  "exe": "The route goes through the forest."
+ },
+ {
+  "fi": "hylly",
+  "en": "shelf",
+  "t": "home",
+  "lvl": "A2",
+  "exf": "Hylly on täynnä kirjoja.",
+  "exe": "The shelf is full of books."
+ },
+ {
+  "fi": "kaappi",
+  "en": "cupboard / closet",
+  "t": "home",
+  "lvl": "A2",
+  "exf": "Kaappi on täynnä vaatteita.",
+  "exe": "The cupboard is full of clothes."
+ },
+ {
+  "fi": "peili",
+  "en": "mirror",
+  "t": "home",
+  "lvl": "A2",
+  "exf": "Peili on eteisessä.",
+  "exe": "The mirror is in the hallway."
+ },
+ {
+  "fi": "matto",
+  "en": "rug / carpet",
+  "t": "home",
+  "lvl": "A2",
+  "exf": "Matto on lattialla.",
+  "exe": "The rug is on the floor."
+ },
+ {
+  "fi": "verho",
+  "en": "curtain",
+  "t": "home",
+  "lvl": "A2",
+  "exf": "Verho peittää ikkunan.",
+  "exe": "The curtain covers the window."
+ },
+ {
+  "fi": "uuni",
+  "en": "oven",
+  "t": "home",
+  "lvl": "A2",
+  "exf": "Uuni on kuuma.",
+  "exe": "The oven is hot."
+ },
+ {
+  "fi": "pesukone",
+  "en": "washing machine",
+  "t": "home",
+  "lvl": "A2",
+  "exf": "Pesukone pesee pyykin.",
+  "exe": "The washing machine washes the laundry."
+ },
+ {
+  "fi": "lattia",
+  "en": "floor",
+  "t": "home",
+  "lvl": "A2",
+  "exf": "Lattia on puhdas.",
+  "exe": "The floor is clean."
+ },
+ {
+  "fi": "katto",
+  "en": "ceiling / roof",
+  "t": "home",
+  "lvl": "A2",
+  "exf": "Katto vuotaa sateella.",
+  "exe": "The roof leaks in the rain."
+ },
+ {
+  "fi": "portaat",
+  "en": "stairs",
+  "t": "home",
+  "lvl": "A2",
+  "exf": "Portaat vievät toiseen kerrokseen.",
+  "exe": "The stairs lead to the second floor."
+ },
+ {
+  "fi": "parveke",
+  "en": "balcony",
+  "t": "home",
+  "lvl": "A2",
+  "exf": "Parveke on aurinkoinen.",
+  "exe": "The balcony is sunny."
+ },
+ {
+  "fi": "piha",
+  "en": "yard",
+  "t": "home",
+  "lvl": "A2",
+  "exf": "Piha on iso ja vihreä.",
+  "exe": "The yard is big and green."
+ },
+ {
+  "fi": "vuokra",
+  "en": "rent",
+  "t": "home",
+  "lvl": "B1",
+  "exf": "Vuokra maksetaan joka kuukausi.",
+  "exe": "The rent is paid every month."
+ },
+ {
+  "fi": "remontti",
+  "en": "renovation",
+  "t": "home",
+  "lvl": "B1",
+  "exf": "Remontti kestää kaksi viikkoa.",
+  "exe": "The renovation takes two weeks."
+ },
+ {
+  "fi": "kauppakeskus",
+  "en": "shopping mall",
+  "t": "city",
+  "lvl": "A2",
+  "exf": "Kauppakeskus on täynnä ihmisiä.",
+  "exe": "The shopping mall is full of people."
+ },
+ {
+  "fi": "aukio",
+  "en": "square",
+  "t": "city",
+  "lvl": "B1",
+  "exf": "Aukiolla on suuri joulukuusi.",
+  "exe": "There is a big Christmas tree on the square."
+ },
+ {
+  "fi": "uimahalli",
+  "en": "swimming hall",
+  "t": "city",
+  "lvl": "A2",
+  "exf": "Käyn uimahallissa kerran viikossa.",
+  "exe": "I go to the swimming hall once a week."
+ },
+ {
+  "fi": "teatteri",
+  "en": "theatre",
+  "t": "city",
+  "lvl": "A2",
+  "exf": "Teatteri esittää uuden näytelmän.",
+  "exe": "The theatre is showing a new play."
+ },
+ {
+  "fi": "virasto",
+  "en": "public office",
+  "t": "city",
+  "lvl": "B1",
+  "exf": "Virasto on kiinni lauantaisin.",
+  "exe": "The public office is closed on Saturdays."
+ },
+ {
+  "fi": "kaupungintalo",
+  "en": "city hall",
+  "t": "city",
+  "lvl": "B1",
+  "exf": "Kaupungintalo on torin vieressä.",
+  "exe": "The city hall is next to the market square."
+ },
+ {
+  "fi": "käydä",
+  "en": "to visit / go",
+  "t": "verb",
+  "lvl": "A2",
+  "exf": "Käyn kaupassa joka päivä.",
+  "exe": "I go to the shop every day."
+ },
+ {
+  "fi": "lähteä",
+  "en": "to leave",
+  "t": "verb",
+  "lvl": "A2",
+  "exf": "Lähden kotoa kahdeksalta.",
+  "exe": "I leave home at eight."
+ },
+ {
+  "fi": "jäädä",
+  "en": "to stay",
+  "t": "verb",
+  "lvl": "A2",
+  "exf": "Jään kotiin tänään.",
+  "exe": "I will stay home today."
+ },
+ {
+  "fi": "päästä",
+  "en": "to get to / reach",
+  "t": "verb",
+  "lvl": "B1",
+  "exf": "Pääsen töistä viideltä.",
+  "exe": "I get off work at five."
+ },
+ {
+  "fi": "saada",
+  "en": "to get / receive",
+  "t": "verb",
+  "lvl": "A1",
+  "exf": "Sain kirjeen eilen.",
+  "exe": "I got a letter yesterday."
+ },
+ {
+  "fi": "löytää",
+  "en": "to find",
+  "t": "verb",
+  "lvl": "A2",
+  "exf": "Löysin avaimet taskusta.",
+  "exe": "I found the keys in my pocket."
+ },
+ {
+  "fi": "etsiä",
+  "en": "to look for",
+  "t": "verb",
+  "lvl": "A2",
+  "exf": "Etsin uutta työpaikkaa.",
+  "exe": "I am looking for a new job."
+ },
+ {
+  "fi": "katsoa",
+  "en": "to watch / look",
+  "t": "verb",
+  "lvl": "A1",
+  "exf": "Katson elokuvaa illalla.",
+  "exe": "I watch a film in the evening."
+ },
+ {
+  "fi": "kuunnella",
+  "en": "to listen",
+  "t": "verb",
+  "lvl": "A2",
+  "exf": "Kuuntelen musiikkia töissä.",
+  "exe": "I listen to music at work."
+ },
+ {
+  "fi": "tavata",
+  "en": "to meet",
+  "t": "verb",
+  "lvl": "A1",
+  "exf": "Tapaan ystäväni kahvilassa.",
+  "exe": "I meet my friend at the café."
+ },
+ {
+  "fi": "soittaa",
+  "en": "to call / play (instrument)",
+  "t": "verb",
+  "lvl": "A1",
+  "exf": "Soitan sinulle illalla.",
+  "exe": "I will call you in the evening."
+ },
+ {
+  "fi": "laittaa",
+  "en": "to put / make",
+  "t": "verb",
+  "lvl": "A2",
+  "exf": "Laitan ruokaa perheelle.",
+  "exe": "I cook food for the family."
+ },
+ {
+  "fi": "avata",
+  "en": "to open",
+  "t": "verb",
+  "lvl": "A2",
+  "exf": "Avaan oven vieraalle.",
+  "exe": "I open the door for the guest."
+ },
+ {
+  "fi": "sulkea",
+  "en": "to close",
+  "t": "verb",
+  "lvl": "A2",
+  "exf": "Suljen tietokoneen illalla.",
+  "exe": "I close the computer in the evening."
+ },
+ {
+  "fi": "myydä",
+  "en": "to sell",
+  "t": "verb",
+  "lvl": "A2",
+  "exf": "Myyn vanhan autoni.",
+  "exe": "I am selling my old car."
+ },
+ {
+  "fi": "korjata",
+  "en": "to fix / repair",
+  "t": "verb",
+  "lvl": "A2",
+  "exf": "Korjaan pyörän itse.",
+  "exe": "I will fix the bike myself."
+ },
+ {
+  "fi": "siivota",
+  "en": "to clean",
+  "t": "verb",
+  "lvl": "A2",
+  "exf": "Siivoan asunnon lauantaina.",
+  "exe": "I clean the flat on Saturday."
+ },
+ {
+  "fi": "pestä",
+  "en": "to wash",
+  "t": "verb",
+  "lvl": "A2",
+  "exf": "Pesen astiat ruoan jälkeen.",
+  "exe": "I wash the dishes after the meal."
+ },
+ {
+  "fi": "keittää",
+  "en": "to cook / boil",
+  "t": "verb",
+  "lvl": "A2",
+  "exf": "Keitän perunoita illalliseksi.",
+  "exe": "I boil potatoes for dinner."
+ },
+ {
+  "fi": "leipoa",
+  "en": "to bake",
+  "t": "verb",
+  "lvl": "A2",
+  "exf": "Leivon pullaa sunnuntaisin.",
+  "exe": "I bake buns on Sundays."
+ },
+ {
+  "fi": "ajaa",
+  "en": "to drive",
+  "t": "verb",
+  "lvl": "A2",
+  "exf": "Ajan autolla töihin.",
+  "exe": "I drive to work by car."
+ },
+ {
+  "fi": "kävellä",
+  "en": "to walk",
+  "t": "verb",
+  "lvl": "A1",
+  "exf": "Kävelen töihin joka aamu.",
+  "exe": "I walk to work every morning."
+ },
+ {
+  "fi": "juosta",
+  "en": "to run",
+  "t": "verb",
+  "lvl": "A2",
+  "exf": "Juoksen puistossa kolme kertaa viikossa.",
+  "exe": "I run in the park three times a week."
+ },
+ {
+  "fi": "uida",
+  "en": "to swim",
+  "t": "verb",
+  "lvl": "A2",
+  "exf": "Uin järvessä kesällä.",
+  "exe": "I swim in the lake in summer."
+ },
+ {
+  "fi": "pelata",
+  "en": "to play (a game)",
+  "t": "verb",
+  "lvl": "A1",
+  "exf": "Pelaan jalkapalloa kavereiden kanssa.",
+  "exe": "I play football with friends."
+ },
+ {
+  "fi": "harrastaa",
+  "en": "to do as a hobby",
+  "t": "verb",
+  "lvl": "A2",
+  "exf": "Harrastan valokuvausta.",
+  "exe": "Photography is my hobby."
+ },
+ {
+  "fi": "lentää",
+  "en": "to fly",
+  "t": "verb",
+  "lvl": "A2",
+  "exf": "Lennän Helsingistä Tukholmaan.",
+  "exe": "I fly from Helsinki to Stockholm."
+ },
+ {
+  "fi": "muuttaa",
+  "en": "to move / change",
+  "t": "verb",
+  "lvl": "A2",
+  "exf": "Muutan uuteen asuntoon.",
+  "exe": "I am moving to a new flat."
+ },
+ {
+  "fi": "rakentaa",
+  "en": "to build",
+  "t": "verb",
+  "lvl": "B1",
+  "exf": "Naapuri rakentaa uutta taloa.",
+  "exe": "The neighbour is building a new house."
+ },
+ {
+  "fi": "käyttää",
+  "en": "to use",
+  "t": "verb",
+  "lvl": "A2",
+  "exf": "Käytän sovellusta joka päivä.",
+  "exe": "I use the app every day."
+ },
+ {
+  "fi": "yrittää",
+  "en": "to try",
+  "t": "verb",
+  "lvl": "A2",
+  "exf": "Yritän puhua vain suomea.",
+  "exe": "I try to speak only Finnish."
+ },
+ {
+  "fi": "onnistua",
+  "en": "to succeed",
+  "t": "verb",
+  "lvl": "B1",
+  "exf": "Onnistuin tentissä hyvin.",
+  "exe": "I did well in the exam."
+ },
+ {
+  "fi": "aloittaa",
+  "en": "to begin",
+  "t": "verb",
+  "lvl": "A2",
+  "exf": "Aloitan uuden kurssin syksyllä.",
+  "exe": "I will start a new course in autumn."
+ },
+ {
+  "fi": "lopettaa",
+  "en": "to stop / quit",
+  "t": "verb",
+  "lvl": "A2",
+  "exf": "Lopetan työt kuudelta.",
+  "exe": "I finish work at six."
+ },
+ {
+  "fi": "jatkaa",
+  "en": "to continue",
+  "t": "verb",
+  "lvl": "A2",
+  "exf": "Jatkan opiskelua ensi vuonna.",
+  "exe": "I will continue studying next year."
+ },
+ {
+  "fi": "unohtaa",
+  "en": "to forget",
+  "t": "verb",
+  "lvl": "A2",
+  "exf": "Unohdin sateenvarjon kotiin.",
+  "exe": "I forgot the umbrella at home."
+ },
+ {
+  "fi": "ajatella",
+  "en": "to think",
+  "t": "verb",
+  "lvl": "A2",
+  "exf": "Ajattelen asiaa vielä.",
+  "exe": "I will think about the matter more."
+ },
+ {
+  "fi": "uskoa",
+  "en": "to believe",
+  "t": "verb",
+  "lvl": "A2",
+  "exf": "Uskon, että kaikki järjestyy.",
+  "exe": "I believe everything will work out."
+ },
+ {
+  "fi": "toivoa",
+  "en": "to hope / wish",
+  "t": "verb",
+  "lvl": "A2",
+  "exf": "Toivon parasta.",
+  "exe": "I hope for the best."
+ },
+ {
+  "fi": "kertoa",
+  "en": "to tell",
+  "t": "verb",
+  "lvl": "A2",
+  "exf": "Kerron sinulle myöhemmin.",
+  "exe": "I will tell you later."
+ },
+ {
+  "fi": "selittää",
+  "en": "to explain",
+  "t": "verb",
+  "lvl": "B1",
+  "exf": "Opettaja selitti säännön uudestaan.",
+  "exe": "The teacher explained the rule again."
+ },
+ {
+  "fi": "valita",
+  "en": "to choose",
+  "t": "verb",
+  "lvl": "A2",
+  "exf": "Valitsen halvemman vaihtoehdon.",
+  "exe": "I choose the cheaper option."
+ },
+ {
+  "fi": "mukava",
+  "en": "nice / comfortable",
+  "t": "adj",
+  "lvl": "A1",
+  "exf": "Sohva on mukava.",
+  "exe": "The sofa is comfortable."
+ },
+ {
+  "fi": "ystävällinen",
+  "en": "friendly",
+  "t": "adj",
+  "lvl": "A2",
+  "exf": "Myyjä oli ystävällinen ja avulias.",
+  "exe": "The salesperson was friendly and helpful."
+ },
+ {
+  "fi": "kohtelias",
+  "en": "polite",
+  "t": "adj",
+  "lvl": "B1",
+  "exf": "Ole kohtelias asiakkaille.",
+  "exe": "Be polite to customers."
+ },
+ {
+  "fi": "ahkera",
+  "en": "hard-working",
+  "t": "adj",
+  "lvl": "A2",
+  "exf": "Opiskelija on ahkera.",
+  "exe": "The student is hard-working."
+ },
+ {
+  "fi": "laiska",
+  "en": "lazy",
+  "t": "adj",
+  "lvl": "A2",
+  "exf": "Kissa on laiska ja unelias.",
+  "exe": "The cat is lazy and sleepy."
+ },
+ {
+  "fi": "vahva",
+  "en": "strong",
+  "t": "adj",
+  "lvl": "A2",
+  "exf": "Kahvi on liian vahva.",
+  "exe": "The coffee is too strong."
+ },
+ {
+  "fi": "heikko",
+  "en": "weak",
+  "t": "adj",
+  "lvl": "A2",
+  "exf": "Signaali on heikko täällä.",
+  "exe": "The signal is weak here."
+ },
+ {
+  "fi": "rikas",
+  "en": "rich",
+  "t": "adj",
+  "lvl": "A2",
+  "exf": "Suomen luonto on rikas.",
+  "exe": "Finland's nature is rich."
+ },
+ {
+  "fi": "köyhä",
+  "en": "poor",
+  "t": "adj",
+  "lvl": "A2",
+  "exf": "Opiskelija on usein köyhä.",
+  "exe": "A student is often poor."
+ },
+ {
+  "fi": "nuori",
+  "en": "young",
+  "t": "adj",
+  "lvl": "A1",
+  "exf": "Hän on vielä nuori.",
+  "exe": "He is still young."
+ },
+ {
+  "fi": "rohkea",
+  "en": "brave",
+  "t": "adj",
+  "lvl": "B1",
+  "exf": "Ole rohkea ja puhu suomea.",
+  "exe": "Be brave and speak Finnish."
+ },
+ {
+  "fi": "kiireinen",
+  "en": "busy",
+  "t": "adj",
+  "lvl": "A2",
+  "exf": "Viikko on ollut kiireinen.",
+  "exe": "The week has been busy."
+ },
+ {
+  "fi": "hiljainen",
+  "en": "quiet",
+  "t": "adj",
+  "lvl": "A2",
+  "exf": "Kirjasto on hiljainen paikka.",
+  "exe": "The library is a quiet place."
+ },
+ {
+  "fi": "puhdas",
+  "en": "clean",
+  "t": "adj",
+  "lvl": "A2",
+  "exf": "Ilma on puhdas metsässä.",
+  "exe": "The air is clean in the forest."
+ },
+ {
+  "fi": "likainen",
+  "en": "dirty",
+  "t": "adj",
+  "lvl": "A2",
+  "exf": "Ikkuna on likainen.",
+  "exe": "The window is dirty."
+ },
+ {
+  "fi": "märkä",
+  "en": "wet",
+  "t": "adj",
+  "lvl": "A2",
+  "exf": "Takki on märkä sateesta.",
+  "exe": "The coat is wet from the rain."
+ },
+ {
+  "fi": "kuiva",
+  "en": "dry",
+  "t": "adj",
+  "lvl": "A2",
+  "exf": "Talvella iho on kuiva.",
+  "exe": "In winter the skin is dry."
+ },
+ {
+  "fi": "makea",
+  "en": "sweet",
+  "t": "adj",
+  "lvl": "A2",
+  "exf": "Marja on makea ja mehukas.",
+  "exe": "The berry is sweet and juicy."
+ },
+ {
+  "fi": "kirkas",
+  "en": "bright / clear",
+  "t": "adj",
+  "lvl": "A2",
+  "exf": "Taivas on kirkas tänään.",
+  "exe": "The sky is clear today."
+ },
+ {
+  "fi": "pimeä",
+  "en": "dark",
+  "t": "adj",
+  "lvl": "A2",
+  "exf": "Talvella on pimeä jo neljältä.",
+  "exe": "In winter it is dark already at four."
+ },
+ {
+  "fi": "korkea",
+  "en": "high / tall",
+  "t": "adj",
+  "lvl": "A2",
+  "exf": "Rakennus on korkea.",
+  "exe": "The building is tall."
+ },
+ {
+  "fi": "matala",
+  "en": "low",
+  "t": "adj",
+  "lvl": "A2",
+  "exf": "Katto on matala.",
+  "exe": "The ceiling is low."
+ },
+ {
+  "fi": "sama",
+  "en": "same",
+  "t": "adj",
+  "lvl": "A1",
+  "exf": "Meillä on sama tavoite.",
+  "exe": "We have the same goal."
+ },
+ {
+  "fi": "erilainen",
+  "en": "different",
+  "t": "adj",
+  "lvl": "A2",
+  "exf": "Jokainen oppija on erilainen.",
+  "exe": "Every learner is different."
+ },
+ {
+  "fi": "tavallinen",
+  "en": "ordinary",
+  "t": "adj",
+  "lvl": "A2",
+  "exf": "Tämä on tavallinen arkipäivä.",
+  "exe": "This is an ordinary weekday."
+ },
+ {
+  "fi": "mahdollinen",
+  "en": "possible",
+  "t": "adj",
+  "lvl": "B1",
+  "exf": "Muutos on mahdollinen.",
+  "exe": "Change is possible."
+ },
+ {
+  "fi": "varma",
+  "en": "sure / certain",
+  "t": "adj",
+  "lvl": "A2",
+  "exf": "Olen varma vastauksesta.",
+  "exe": "I am sure about the answer."
+ },
+ {
+  "fi": "yksitoista",
+  "en": "eleven",
+  "t": "num",
+  "lvl": "A1",
+  "exf": "Kello on yksitoista.",
+  "exe": "It's eleven o'clock."
+ },
+ {
+  "fi": "kaksitoista",
+  "en": "twelve",
+  "t": "num",
+  "lvl": "A1",
+  "exf": "Vuodessa on kaksitoista kuukautta.",
+  "exe": "There are twelve months in a year."
+ },
+ {
+  "fi": "kolmetoista",
+  "en": "thirteen",
+  "t": "num",
+  "lvl": "A1",
+  "exf": "Tyttö täyttää kolmetoista vuotta.",
+  "exe": "The girl turns thirteen."
+ },
+ {
+  "fi": "neljätoista",
+  "en": "fourteen",
+  "t": "num",
+  "lvl": "A1",
+  "exf": "Kurssi kestää neljätoista viikkoa.",
+  "exe": "The course lasts fourteen weeks."
+ },
+ {
+  "fi": "viisitoista",
+  "en": "fifteen",
+  "t": "num",
+  "lvl": "A1",
+  "exf": "Odotin viisitoista minuuttia.",
+  "exe": "I waited fifteen minutes."
+ },
+ {
+  "fi": "kaksikymmentä",
+  "en": "twenty",
+  "t": "num",
+  "lvl": "A1",
+  "exf": "Bussissa oli kaksikymmentä matkustajaa.",
+  "exe": "There were twenty passengers on the bus."
+ },
+ {
+  "fi": "kolmekymmentä",
+  "en": "thirty",
+  "t": "num",
+  "lvl": "A2",
+  "exf": "Työviikko on kolmekymmentä tuntia.",
+  "exe": "The working week is thirty hours."
+ },
+ {
+  "fi": "neljäkymmentä",
+  "en": "forty",
+  "t": "num",
+  "lvl": "A2",
+  "exf": "Isäni on neljäkymmentä vuotta vanha.",
+  "exe": "My father is forty years old."
+ },
+ {
+  "fi": "viisikymmentä",
+  "en": "fifty",
+  "t": "num",
+  "lvl": "A2",
+  "exf": "Lippu maksaa viisikymmentä euroa.",
+  "exe": "The ticket costs fifty euros."
+ },
+ {
+  "fi": "miljoona",
+  "en": "million",
+  "t": "num",
+  "lvl": "A2",
+  "exf": "Kaupungissa asuu miljoona ihmistä.",
+  "exe": "A million people live in the city."
+ },
+ {
+  "fi": "kolmas",
+  "en": "third",
+  "t": "num",
+  "lvl": "A2",
+  "exf": "Asun kolmannessa kerroksessa.",
+  "exe": "I live on the third floor."
+ },
+ {
+  "fi": "neljäs",
+  "en": "fourth",
+  "t": "num",
+  "lvl": "A2",
+  "exf": "Neljäs kysymys oli vaikea.",
+  "exe": "The fourth question was difficult."
+ },
+ {
+  "fi": "viides",
+  "en": "fifth",
+  "t": "num",
+  "lvl": "A2",
+  "exf": "Viides kerros on ylin.",
+  "exe": "The fifth floor is the top one."
+ },
+ {
+  "fi": "euro",
+  "en": "euro",
+  "t": "shop",
+  "lvl": "A1",
+  "exf": "Kahvi maksaa kolme euroa.",
+  "exe": "The coffee costs three euros."
+ },
+ {
+  "fi": "sentti",
+  "en": "cent",
+  "t": "shop",
+  "lvl": "A1",
+  "exf": "Hinta on kaksi euroa ja viisikymmentä senttiä.",
+  "exe": "The price is two euros fifty cents."
+ },
+ {
+  "fi": "hinta",
+  "en": "price",
+  "t": "shop",
+  "lvl": "A1",
+  "exf": "Hinta on liian korkea.",
+  "exe": "The price is too high."
+ },
+ {
+  "fi": "kassa",
+  "en": "checkout / till",
+  "t": "shop",
+  "lvl": "A2",
+  "exf": "Maksa kassalla.",
+  "exe": "Pay at the checkout."
+ },
+ {
+  "fi": "kuitti",
+  "en": "receipt",
+  "t": "shop",
+  "lvl": "A2",
+  "exf": "Säilytä kuitti.",
+  "exe": "Keep the receipt."
+ },
+ {
+  "fi": "käteinen",
+  "en": "cash",
+  "t": "shop",
+  "lvl": "A2",
+  "exf": "Maksan käteisellä.",
+  "exe": "I pay in cash."
+ },
+ {
+  "fi": "kortti",
+  "en": "card",
+  "t": "shop",
+  "lvl": "A1",
+  "exf": "Kortti ei toiminut.",
+  "exe": "The card did not work."
+ },
+ {
+  "fi": "pankkikortti",
+  "en": "debit card",
+  "t": "shop",
+  "lvl": "A2",
+  "exf": "Pankkikortti on lompakossa.",
+  "exe": "The debit card is in the wallet."
+ },
+ {
+  "fi": "alennus",
+  "en": "discount",
+  "t": "shop",
+  "lvl": "A2",
+  "exf": "Takista sai hyvän alennuksen.",
+  "exe": "There was a good discount on the coat."
+ },
+ {
+  "fi": "tarjous",
+  "en": "offer / deal",
+  "t": "shop",
+  "lvl": "A2",
+  "exf": "Tarjous on voimassa sunnuntaihin.",
+  "exe": "The offer is valid until Sunday."
+ },
+ {
+  "fi": "ostoskori",
+  "en": "shopping basket",
+  "t": "shop",
+  "lvl": "A2",
+  "exf": "Ostoskori on täynnä.",
+  "exe": "The shopping basket is full."
+ },
+ {
+  "fi": "ostoslista",
+  "en": "shopping list",
+  "t": "shop",
+  "lvl": "A2",
+  "exf": "Kirjoitin ostoslistan.",
+  "exe": "I wrote a shopping list."
+ },
+ {
+  "fi": "koko",
+  "en": "size",
+  "t": "shop",
+  "lvl": "A2",
+  "exf": "Mikä koko sinulla on?",
+  "exe": "What size do you take?"
+ },
+ {
+  "fi": "tuote",
+  "en": "product",
+  "t": "shop",
+  "lvl": "A2",
+  "exf": "Tuote on loppunut varastosta.",
+  "exe": "The product is out of stock."
+ },
+ {
+  "fi": "lasku",
+  "en": "bill / invoice",
+  "t": "shop",
+  "lvl": "A2",
+  "exf": "Lasku pitää maksaa perjantaina.",
+  "exe": "The bill must be paid on Friday."
+ },
+ {
+  "fi": "maksu",
+  "en": "payment",
+  "t": "shop",
+  "lvl": "A2",
+  "exf": "Maksu meni läpi.",
+  "exe": "The payment went through."
+ },
+ {
+  "fi": "vaihtoraha",
+  "en": "change (money)",
+  "t": "shop",
+  "lvl": "A2",
+  "exf": "Sain vaihtorahat takaisin.",
+  "exe": "I got the change back."
+ },
+ {
+  "fi": "myyjä",
+  "en": "salesperson",
+  "t": "shop",
+  "lvl": "A2",
+  "exf": "Myyjä auttoi valitsemaan koon.",
+  "exe": "The salesperson helped choose the size."
+ },
+ {
+  "fi": "edullinen",
+  "en": "affordable",
+  "t": "shop",
+  "lvl": "A2",
+  "exf": "Tämä puhelin on edullinen.",
+  "exe": "This phone is affordable."
+ },
+ {
+  "fi": "ilmainen",
+  "en": "free of charge",
+  "t": "shop",
+  "lvl": "A2",
+  "exf": "Sisäänpääsy on ilmainen.",
+  "exe": "Entry is free of charge."
+ },
+ {
+  "fi": "harrastus",
+  "en": "hobby",
+  "t": "free",
+  "lvl": "A2",
+  "exf": "Harrastus vie paljon aikaa.",
+  "exe": "The hobby takes a lot of time."
+ },
+ {
+  "fi": "urheilu",
+  "en": "sport",
+  "t": "free",
+  "lvl": "A2",
+  "exf": "Urheilu on hyväksi terveydelle.",
+  "exe": "Sport is good for your health."
+ },
+ {
+  "fi": "musiikki",
+  "en": "music",
+  "t": "free",
+  "lvl": "A1",
+  "exf": "Musiikki rauhoittaa mieltä.",
+  "exe": "Music calms the mind."
+ },
+ {
+  "fi": "elokuva",
+  "en": "film / movie",
+  "t": "free",
+  "lvl": "A1",
+  "exf": "Elokuva alkaa seitsemältä.",
+  "exe": "The film starts at seven."
+ },
+ {
+  "fi": "konsertti",
+  "en": "concert",
+  "t": "free",
+  "lvl": "A2",
+  "exf": "Konsertti oli loppuunmyyty.",
+  "exe": "The concert was sold out."
+ },
+ {
+  "fi": "peli",
+  "en": "game",
+  "t": "free",
+  "lvl": "A1",
+  "exf": "Peli päättyi tasan.",
+  "exe": "The game ended in a draw."
+ },
+ {
+  "fi": "loma",
+  "en": "holiday / vacation",
+  "t": "free",
+  "lvl": "A2",
+  "exf": "Loma alkaa ensi viikolla.",
+  "exe": "The holiday starts next week."
+ },
+ {
+  "fi": "juhla",
+  "en": "party / celebration",
+  "t": "free",
+  "lvl": "A2",
+  "exf": "Juhla jatkui myöhään.",
+  "exe": "The party continued late."
+ },
+ {
+  "fi": "tanssi",
+  "en": "dance",
+  "t": "free",
+  "lvl": "A2",
+  "exf": "Tanssi on hyvää liikuntaa.",
+  "exe": "Dancing is good exercise."
+ },
+ {
+  "fi": "laulu",
+  "en": "song",
+  "t": "free",
+  "lvl": "A2",
+  "exf": "Laulu on kaunis ja surullinen.",
+  "exe": "The song is beautiful and sad."
+ },
+ {
+  "fi": "maalaus",
+  "en": "painting",
+  "t": "free",
+  "lvl": "B1",
+  "exf": "Maalaus riippuu seinällä.",
+  "exe": "The painting hangs on the wall."
+ },
+ {
+  "fi": "valokuvaus",
+  "en": "photography",
+  "t": "free",
+  "lvl": "B1",
+  "exf": "Valokuvaus on minun harrastukseni.",
+  "exe": "Photography is my hobby."
+ },
+ {
+  "fi": "lenkki",
+  "en": "jog / run",
+  "t": "free",
+  "lvl": "A2",
+  "exf": "Käyn lenkillä joka aamu.",
+  "exe": "I go for a jog every morning."
+ },
+ {
+  "fi": "kuntosali",
+  "en": "gym",
+  "t": "free",
+  "lvl": "A2",
+  "exf": "Kuntosali on auki aikaisin.",
+  "exe": "The gym opens early."
+ },
+ {
+  "fi": "uinti",
+  "en": "swimming",
+  "t": "free",
+  "lvl": "A2",
+  "exf": "Uinti rentouttaa kehoa.",
+  "exe": "Swimming relaxes the body."
+ },
+ {
+  "fi": "retki",
+  "en": "outing / trip",
+  "t": "free",
+  "lvl": "A2",
+  "exf": "Retki metsään oli hauska.",
+  "exe": "The outing to the forest was fun."
+ },
+ {
+  "fi": "televisio",
+  "en": "television",
+  "t": "free",
+  "lvl": "A1",
+  "exf": "Televisio on rikki.",
+  "exe": "The television is broken."
+ },
+ {
+  "fi": "sarja",
+  "en": "series",
+  "t": "free",
+  "lvl": "A2",
+  "exf": "Sarja on todella jännittävä.",
+  "exe": "The series is really exciting."
+ },
+ {
+  "fi": "jalkapallo",
+  "en": "football",
+  "t": "free",
+  "lvl": "A2",
+  "exf": "Jalkapallo on suosittu laji.",
+  "exe": "Football is a popular sport."
+ },
+ {
+  "fi": "jääkiekko",
+  "en": "ice hockey",
+  "t": "free",
+  "lvl": "A2",
+  "exf": "Jääkiekko on Suomen kansallislaji.",
+  "exe": "Ice hockey is Finland's national sport."
+ },
+ {
+  "fi": "sauna",
+  "en": "sauna",
+  "t": "free",
+  "lvl": "A1",
+  "exf": "Sauna lämpiää lauantaisin.",
+  "exe": "The sauna is heated on Saturdays."
+ },
+ {
+  "fi": "ajanvaraus",
+  "en": "appointment (booking)",
+  "t": "serv",
+  "lvl": "B1",
+  "exf": "Ajanvaraus tehdään netissä.",
+  "exe": "The appointment is booked online."
+ },
+ {
+  "fi": "jono",
+  "en": "queue",
+  "t": "serv",
+  "lvl": "A2",
+  "exf": "Jono oli pitkä postissa.",
+  "exe": "The queue was long at the post office."
+ },
+ {
+  "fi": "palvelu",
+  "en": "service",
+  "t": "serv",
+  "lvl": "A2",
+  "exf": "Palvelu oli nopeaa ja ystävällistä.",
+  "exe": "The service was fast and friendly."
+ },
+ {
+  "fi": "henkilökortti",
+  "en": "ID card",
+  "t": "serv",
+  "lvl": "A2",
+  "exf": "Ota henkilökortti mukaan.",
+  "exe": "Take your ID card with you."
+ },
+ {
+  "fi": "oleskelulupa",
+  "en": "residence permit",
+  "t": "serv",
+  "lvl": "B1",
+  "exf": "Oleskelulupa on voimassa vuoden.",
+  "exe": "The residence permit is valid for a year."
+ },
+ {
+  "fi": "vakuutus",
+  "en": "insurance",
+  "t": "serv",
+  "lvl": "B1",
+  "exf": "Vakuutus kattaa vahingot.",
+  "exe": "The insurance covers the damages."
+ },
+ {
+  "fi": "verokortti",
+  "en": "tax card",
+  "t": "serv",
+  "lvl": "B1",
+  "exf": "Toimita verokortti työnantajalle.",
+  "exe": "Deliver the tax card to the employer."
+ },
+ {
+  "fi": "vero",
+  "en": "tax",
+  "t": "serv",
+  "lvl": "B1",
+  "exf": "Vero maksetaan joka kuukausi.",
+  "exe": "The tax is paid every month."
+ },
+ {
+  "fi": "pankkitili",
+  "en": "bank account",
+  "t": "serv",
+  "lvl": "A2",
+  "exf": "Avasin pankkitilin Suomessa.",
+  "exe": "I opened a bank account in Finland."
+ },
+ {
+  "fi": "sopimus",
+  "en": "contract / agreement",
+  "t": "serv",
+  "lvl": "B1",
+  "exf": "Sopimus allekirjoitettiin eilen.",
+  "exe": "The contract was signed yesterday."
+ },
+ {
+  "fi": "allekirjoitus",
+  "en": "signature",
+  "t": "serv",
+  "lvl": "B1",
+  "exf": "Allekirjoitus puuttuu lomakkeesta.",
+  "exe": "The signature is missing from the form."
+ },
+ {
+  "fi": "tulkki",
+  "en": "interpreter",
+  "t": "serv",
+  "lvl": "B1",
+  "exf": "Tulkki auttoi lääkärissä.",
+  "exe": "The interpreter helped at the doctor's."
+ },
+ {
+  "fi": "tunne",
+  "en": "feeling / emotion",
+  "t": "feel",
+  "lvl": "A2",
+  "exf": "Tunne oli vahva ja outo.",
+  "exe": "The feeling was strong and strange."
+ },
+ {
+  "fi": "mielipide",
+  "en": "opinion",
+  "t": "feel",
+  "lvl": "A2",
+  "exf": "Mielipide muuttui keskustelun aikana.",
+  "exe": "The opinion changed during the discussion."
+ },
+ {
+  "fi": "onnellinen",
+  "en": "happy",
+  "t": "feel",
+  "lvl": "A2",
+  "exf": "Olen onnellinen uudesta työstä.",
+  "exe": "I am happy about the new job."
+ },
+ {
+  "fi": "vihainen",
+  "en": "angry",
+  "t": "feel",
+  "lvl": "A2",
+  "exf": "Hän oli vihainen myöhästymisestä.",
+  "exe": "He was angry about the delay."
+ },
+ {
+  "fi": "pelko",
+  "en": "fear",
+  "t": "feel",
+  "lvl": "A2",
+  "exf": "Pelko esiintymistä kohtaan on tavallinen.",
+  "exe": "Fear of public speaking is common."
+ },
+ {
+  "fi": "stressi",
+  "en": "stress",
+  "t": "feel",
+  "lvl": "A2",
+  "exf": "Stressi haittaa unta.",
+  "exe": "Stress harms sleep."
+ },
+ {
+  "fi": "huoli",
+  "en": "worry",
+  "t": "feel",
+  "lvl": "B1",
+  "exf": "Huoli tulevaisuudesta kasvaa.",
+  "exe": "Worry about the future is growing."
+ },
+ {
+  "fi": "ilo",
+  "en": "joy",
+  "t": "feel",
+  "lvl": "A2",
+  "exf": "Ilo näkyi hänen kasvoillaan.",
+  "exe": "Joy showed on his face."
+ },
+ {
+  "fi": "rakkaus",
+  "en": "love",
+  "t": "feel",
+  "lvl": "A2",
+  "exf": "Rakkaus kieleen auttaa oppimaan.",
+  "exe": "Love for a language helps you learn."
+ },
+ {
+  "fi": "pettynyt",
+  "en": "disappointed",
+  "t": "feel",
+  "lvl": "B1",
+  "exf": "Olin pettynyt tulokseen.",
+  "exe": "I was disappointed with the result."
+ },
+ {
+  "fi": "innostunut",
+  "en": "excited",
+  "t": "feel",
+  "lvl": "B1",
+  "exf": "Olen innostunut uudesta kurssista.",
+  "exe": "I am excited about the new course."
+ },
+ {
+  "fi": "ylpeä",
+  "en": "proud",
+  "t": "feel",
+  "lvl": "B1",
+  "exf": "Olen ylpeä lapsistani.",
+  "exe": "I am proud of my children."
+ },
+ {
+  "fi": "yksinäinen",
+  "en": "lonely",
+  "t": "feel",
+  "lvl": "B1",
+  "exf": "Uudessa maassa voi olla yksinäinen.",
+  "exe": "In a new country one can be lonely."
+ },
+ {
+  "fi": "samaa mieltä",
+  "en": "in agreement",
+  "t": "feel",
+  "lvl": "B1",
+  "exf": "Olen samaa mieltä kanssasi.",
+  "exe": "I agree with you."
+ },
+ {
+  "fi": "eri mieltä",
+  "en": "in disagreement",
+  "t": "feel",
+  "lvl": "B1",
+  "exf": "Olen eri mieltä tästä asiasta.",
+  "exe": "I disagree about this matter."
+ },
+ {
+  "fi": "mielestäni",
+  "en": "in my opinion",
+  "t": "feel",
+  "lvl": "B1",
+  "exf": "Mielestäni ehdotus on hyvä.",
+  "exe": "In my opinion the proposal is good."
+ },
+ {
+  "fi": "valitettavasti",
+  "en": "unfortunately",
+  "t": "feel",
+  "lvl": "B1",
+  "exf": "Valitettavasti en pääse tulemaan.",
+  "exe": "Unfortunately I cannot come."
+ },
+ {
+  "fi": "onneksi",
+  "en": "luckily",
+  "t": "feel",
+  "lvl": "A2",
+  "exf": "Onneksi sää parani illaksi.",
+  "exe": "Luckily the weather improved by evening."
+ },
+ {
+  "fi": "yhteiskunta",
+  "en": "society",
+  "t": "soc",
+  "lvl": "B1",
+  "exf": "Yhteiskunta muuttuu nopeasti.",
+  "exe": "Society is changing fast."
+ },
+ {
+  "fi": "media",
+  "en": "media",
+  "t": "soc",
+  "lvl": "A2",
+  "exf": "Media kertoi uutisesta heti.",
+  "exe": "The media reported the news immediately."
+ },
+ {
+  "fi": "uutiset",
+  "en": "the news",
+  "t": "soc",
+  "lvl": "A2",
+  "exf": "Katson uutiset joka ilta.",
+  "exe": "I watch the news every evening."
+ },
+ {
+  "fi": "sanomalehti",
+  "en": "newspaper",
+  "t": "soc",
+  "lvl": "A2",
+  "exf": "Sanomalehti tulee joka aamu.",
+  "exe": "The newspaper comes every morning."
+ },
+ {
+  "fi": "internet",
+  "en": "internet",
+  "t": "soc",
+  "lvl": "A1",
+  "exf": "Internet toimii hyvin kotona.",
+  "exe": "The internet works well at home."
+ },
+ {
+  "fi": "sähköposti",
+  "en": "email",
+  "t": "soc",
+  "lvl": "A1",
+  "exf": "Lähetin sähköpostin johtajalle.",
+  "exe": "I sent an email to the manager."
+ },
+ {
+  "fi": "viesti",
+  "en": "message",
+  "t": "soc",
+  "lvl": "A2",
+  "exf": "Sain viestin ystävältäni.",
+  "exe": "I got a message from my friend."
+ },
+ {
+  "fi": "sovellus",
+  "en": "app",
+  "t": "soc",
+  "lvl": "A2",
+  "exf": "Sovellus on ilmainen.",
+  "exe": "The app is free."
+ },
+ {
+  "fi": "maahanmuuttaja",
+  "en": "immigrant",
+  "t": "soc",
+  "lvl": "B1",
+  "exf": "Maahanmuuttaja opiskelee suomea.",
+  "exe": "The immigrant studies Finnish."
+ },
+ {
+  "fi": "kansalaisuus",
+  "en": "citizenship",
+  "t": "soc",
+  "lvl": "B1",
+  "exf": "Kansalaisuutta haetaan viiden vuoden jälkeen.",
+  "exe": "Citizenship is applied for after five years."
+ },
+ {
+  "fi": "hallitus",
+  "en": "government",
+  "t": "soc",
+  "lvl": "B1",
+  "exf": "Hallitus päätti uudesta laista.",
+  "exe": "The government decided on a new law."
+ },
+ {
+  "fi": "laki",
+  "en": "law",
+  "t": "soc",
+  "lvl": "B1",
+  "exf": "Laki tuli voimaan tammikuussa.",
+  "exe": "The law came into force in January."
+ },
+ {
+  "fi": "presidentti",
+  "en": "president",
+  "t": "soc",
+  "lvl": "A2",
+  "exf": "Presidentti piti puheen.",
+  "exe": "The president gave a speech."
+ },
+ {
+  "fi": "kunta",
+  "en": "municipality",
+  "t": "soc",
+  "lvl": "B1",
+  "exf": "Kunta järjestää palvelut.",
+  "exe": "The municipality organises the services."
+ },
+ {
+  "fi": "kulttuuri",
+  "en": "culture",
+  "t": "soc",
+  "lvl": "A2",
+  "exf": "Kulttuuri on erilainen joka maassa.",
+  "exe": "Culture is different in every country."
+ },
+ {
+  "fi": "tapa",
+  "en": "custom / habit",
+  "t": "soc",
+  "lvl": "A2",
+  "exf": "Tämä on suomalainen tapa.",
+  "exe": "This is a Finnish custom."
+ },
+ {
+  "fi": "uskonto",
+  "en": "religion",
+  "t": "soc",
+  "lvl": "B1",
+  "exf": "Uskonto on henkilökohtainen asia.",
+  "exe": "Religion is a personal matter."
+ },
+ {
+  "fi": "historia",
+  "en": "history",
+  "t": "soc",
+  "lvl": "A2",
+  "exf": "Historia opettaa paljon.",
+  "exe": "History teaches a lot."
+ },
+ {
+  "fi": "tulevaisuus",
+  "en": "future",
+  "t": "soc",
+  "lvl": "B1",
+  "exf": "Tulevaisuus näyttää valoisalta.",
+  "exe": "The future looks bright."
+ },
+ {
+  "fi": "kieli",
+  "en": "language",
+  "t": "soc",
+  "lvl": "A1",
+  "exf": "Kieli on avain työelämään.",
+  "exe": "Language is the key to working life."
+ },
+ {
+  "fi": "laina",
+  "en": "loan",
+  "t": "fin",
+  "lvl": "B1",
+  "exf": "Pankki myönsi lainan asuntoon.",
+  "exe": "The bank granted a loan for the apartment."
+ },
+ {
+  "fi": "korko",
+  "en": "interest (rate)",
+  "t": "fin",
+  "lvl": "B1",
+  "exf": "Korko nousi tänä vuonna.",
+  "exe": "The interest rate rose this year."
+ },
+ {
+  "fi": "tili",
+  "en": "account",
+  "t": "fin",
+  "lvl": "A2",
+  "exf": "Avasin uuden tilin pankissa.",
+  "exe": "I opened a new account at the bank."
+ },
+ {
+  "fi": "talletus",
+  "en": "deposit",
+  "t": "fin",
+  "lvl": "B1",
+  "exf": "Talletus tuottaa vähän korkoa.",
+  "exe": "The deposit yields little interest."
+ },
+ {
+  "fi": "luotto",
+  "en": "credit",
+  "t": "fin",
+  "lvl": "B1",
+  "exf": "Yritys sai luottoa pankista.",
+  "exe": "The company got credit from the bank."
+ },
+ {
+  "fi": "vakuus",
+  "en": "collateral / security",
+  "t": "fin",
+  "lvl": "B1",
+  "exf": "Laina vaatii vakuuden.",
+  "exe": "The loan requires collateral."
+ },
+ {
+  "fi": "takaus",
+  "en": "guarantee",
+  "t": "fin",
+  "lvl": "B1",
+  "exf": "Isä antoi takauksen lainalle.",
+  "exe": "Father gave a guarantee for the loan."
+ },
+ {
+  "fi": "kirjanpito",
+  "en": "accounting",
+  "t": "fin",
+  "lvl": "B1",
+  "exf": "Kirjanpito on ajan tasalla.",
+  "exe": "The accounting is up to date."
+ },
+ {
+  "fi": "tilinpäätös",
+  "en": "financial statement",
+  "t": "fin",
+  "lvl": "B1",
+  "exf": "Tilinpäätös valmistuu maaliskuussa.",
+  "exe": "The financial statement is completed in March."
+ },
+ {
+  "fi": "budjetti",
+  "en": "budget",
+  "t": "fin",
+  "lvl": "B1",
+  "exf": "Budjetti ylittyi hieman.",
+  "exe": "The budget was slightly exceeded."
+ },
+ {
+  "fi": "voitto",
+  "en": "profit",
+  "t": "fin",
+  "lvl": "A2",
+  "exf": "Yritys teki hyvän voiton.",
+  "exe": "The company made a good profit."
+ },
+ {
+  "fi": "tappio",
+  "en": "loss",
+  "t": "fin",
+  "lvl": "A2",
+  "exf": "Viime vuosi päättyi tappioon.",
+  "exe": "Last year ended in a loss."
+ },
+ {
+  "fi": "sijoitus",
+  "en": "investment",
+  "t": "fin",
+  "lvl": "B1",
+  "exf": "Sijoitus tuotti hyvin.",
+  "exe": "The investment yielded well."
+ },
+ {
+  "fi": "osake",
+  "en": "share / stock",
+  "t": "fin",
+  "lvl": "B1",
+  "exf": "Osakkeen hinta nousi.",
+  "exe": "The share price rose."
+ },
+ {
+  "fi": "valuutta",
+  "en": "currency",
+  "t": "fin",
+  "lvl": "B1",
+  "exf": "Valuutta heikkeni nopeasti.",
+  "exe": "The currency weakened quickly."
+ },
+ {
+  "fi": "vaihtokurssi",
+  "en": "exchange rate",
+  "t": "fin",
+  "lvl": "B1",
+  "exf": "Vaihtokurssi vaihtelee päivittäin.",
+  "exe": "The exchange rate varies daily."
+ },
+ {
+  "fi": "tulli",
+  "en": "customs / tariff",
+  "t": "fin",
+  "lvl": "B1",
+  "exf": "Tulli tarkasti tavarat.",
+  "exe": "Customs inspected the goods."
+ },
+ {
+  "fi": "vienti",
+  "en": "export",
+  "t": "fin",
+  "lvl": "B1",
+  "exf": "Vienti Aasiaan kasvoi.",
+  "exe": "Exports to Asia grew."
+ },
+ {
+  "fi": "tuonti",
+  "en": "import",
+  "t": "fin",
+  "lvl": "B1",
+  "exf": "Tuonti on kallistunut.",
+  "exe": "Imports have become more expensive."
+ },
+ {
+  "fi": "rahti",
+  "en": "freight",
+  "t": "fin",
+  "lvl": "B1",
+  "exf": "Rahti maksetaan erikseen.",
+  "exe": "The freight is paid separately."
+ },
+ {
+  "fi": "remburssi",
+  "en": "letter of credit",
+  "t": "fin",
+  "lvl": "B1",
+  "exf": "Remburssi turvaa maksun myyjälle.",
+  "exe": "A letter of credit secures payment for the seller."
+ },
+ {
+  "fi": "maksuehto",
+  "en": "payment terms",
+  "t": "fin",
+  "lvl": "B1",
+  "exf": "Maksuehto on kolmekymmentä päivää.",
+  "exe": "The payment term is thirty days."
+ },
+ {
+  "fi": "toimitus",
+  "en": "delivery",
+  "t": "fin",
+  "lvl": "B1",
+  "exf": "Toimitus myöhästyi viikolla.",
+  "exe": "The delivery was a week late."
+ },
+ {
+  "fi": "verotus",
+  "en": "taxation",
+  "t": "fin",
+  "lvl": "B1",
+  "exf": "Verotus muuttuu ensi vuonna.",
+  "exe": "Taxation changes next year."
+ },
+ {
+  "fi": "inflaatio",
+  "en": "inflation",
+  "t": "fin",
+  "lvl": "B1",
+  "exf": "Inflaatio nosti hintoja.",
+  "exe": "Inflation raised prices."
+ },
+ {
+  "fi": "pääoma",
+  "en": "capital",
+  "t": "fin",
+  "lvl": "B1",
+  "exf": "Yritys tarvitsee lisää pääomaa.",
+  "exe": "The company needs more capital."
+ },
+ {
+  "fi": "velka",
+  "en": "debt",
+  "t": "fin",
+  "lvl": "B1",
+  "exf": "Velka maksetaan takaisin viidessä vuodessa.",
+  "exe": "The debt is repaid in five years."
+ },
+ {
+  "fi": "saldo",
+  "en": "balance",
+  "t": "fin",
+  "lvl": "B1",
+  "exf": "Tilin saldo on positiivinen.",
+  "exe": "The account balance is positive."
+ },
+ {
+  "fi": "rahoitus",
+  "en": "financing",
+  "t": "fin",
+  "lvl": "B1",
+  "exf": "Rahoitus järjestyi nopeasti.",
+  "exe": "The financing was arranged quickly."
+ },
+ {
+  "fi": "kannattavuus",
+  "en": "profitability",
+  "t": "fin",
+  "lvl": "B1",
+  "exf": "Kannattavuus parani selvästi.",
+  "exe": "Profitability improved clearly."
+ },
+ {
+  "fi": "ajatus",
+  "en": "thought / idea",
+  "t": "abst",
+  "lvl": "A2",
+  "exf": "Ajatus oli hyvä mutta vaikea toteuttaa.",
+  "exe": "The idea was good but hard to carry out."
+ },
+ {
+  "fi": "syy",
+  "en": "reason / cause",
+  "t": "abst",
+  "lvl": "A2",
+  "exf": "Syy myöhästymiseen oli ruuhka.",
+  "exe": "The reason for the delay was traffic."
+ },
+ {
+  "fi": "seuraus",
+  "en": "consequence",
+  "t": "abst",
+  "lvl": "B1",
+  "exf": "Seuraus oli odotettu.",
+  "exe": "The consequence was expected."
+ },
+ {
+  "fi": "tavoite",
+  "en": "goal",
+  "t": "abst",
+  "lvl": "B1",
+  "exf": "Tavoite on päästä YKI-testistä läpi.",
+  "exe": "The goal is to pass the YKI test."
+ },
+ {
+  "fi": "mahdollisuus",
+  "en": "possibility / opportunity",
+  "t": "abst",
+  "lvl": "B1",
+  "exf": "Tämä on hyvä mahdollisuus oppia.",
+  "exe": "This is a good opportunity to learn."
+ },
+ {
+  "fi": "ongelma",
+  "en": "problem",
+  "t": "abst",
+  "lvl": "A2",
+  "exf": "Ongelma ratkesi nopeasti.",
+  "exe": "The problem was solved quickly."
+ },
+ {
+  "fi": "ratkaisu",
+  "en": "solution",
+  "t": "abst",
+  "lvl": "B1",
+  "exf": "Ratkaisu löytyi yhdessä.",
+  "exe": "The solution was found together."
+ },
+ {
+  "fi": "päätös",
+  "en": "decision",
+  "t": "abst",
+  "lvl": "B1",
+  "exf": "Päätös tehtiin kokouksessa.",
+  "exe": "The decision was made at the meeting."
+ },
+ {
+  "fi": "muutos",
+  "en": "change",
+  "t": "abst",
+  "lvl": "A2",
+  "exf": "Muutos vie aikaa.",
+  "exe": "Change takes time."
+ },
+ {
+  "fi": "kehitys",
+  "en": "development",
+  "t": "abst",
+  "lvl": "B1",
+  "exf": "Kehitys on ollut nopeaa.",
+  "exe": "The development has been fast."
+ },
+ {
+  "fi": "vaikutus",
+  "en": "effect / influence",
+  "t": "abst",
+  "lvl": "B1",
+  "exf": "Vaikutus näkyi heti.",
+  "exe": "The effect showed immediately."
+ },
+ {
+  "fi": "merkitys",
+  "en": "meaning / significance",
+  "t": "abst",
+  "lvl": "B1",
+  "exf": "Sanan merkitys riippuu asiayhteydestä.",
+  "exe": "The meaning of a word depends on the context."
+ },
+ {
+  "fi": "esimerkki",
+  "en": "example",
+  "t": "abst",
+  "lvl": "A2",
+  "exf": "Anna minulle esimerkki.",
+  "exe": "Give me an example."
+ },
+ {
+  "fi": "tilanne",
+  "en": "situation",
+  "t": "abst",
+  "lvl": "A2",
+  "exf": "Tilanne muuttui yhtäkkiä.",
+  "exe": "The situation changed suddenly."
+ },
+ {
+  "fi": "tarkoitus",
+  "en": "purpose / intention",
+  "t": "abst",
+  "lvl": "B1",
+  "exf": "Tarkoitus oli auttaa, ei loukata.",
+  "exe": "The intention was to help, not to offend."
+ },
+ {
+  "fi": "tulos",
+  "en": "result",
+  "t": "abst",
+  "lvl": "B1",
+  "exf": "Tulos oli parempi kuin odotin.",
+  "exe": "The result was better than I expected."
+ },
+ {
+  "fi": "vaihtoehto",
+  "en": "alternative",
+  "t": "abst",
+  "lvl": "B1",
+  "exf": "Toinen vaihtoehto on halvempi.",
+  "exe": "The other alternative is cheaper."
+ },
+ {
+  "fi": "etu",
+  "en": "advantage / benefit",
+  "t": "abst",
+  "lvl": "B1",
+  "exf": "Kielitaito on suuri etu työnhaussa.",
+  "exe": "Language skills are a big advantage in job seeking."
+ },
+ {
+  "fi": "haitta",
+  "en": "disadvantage",
+  "t": "abst",
+  "lvl": "B1",
+  "exf": "Haitta on pieni verrattuna hyötyyn.",
+  "exe": "The disadvantage is small compared to the benefit."
+ },
+ {
+  "fi": "riski",
+  "en": "risk",
+  "t": "abst",
+  "lvl": "B1",
+  "exf": "Riski on liian suuri.",
+  "exe": "The risk is too great."
+ },
+ {
+  "fi": "vastuu",
+  "en": "responsibility",
+  "t": "abst",
+  "lvl": "B1",
+  "exf": "Vastuu on johtajalla.",
+  "exe": "The responsibility lies with the manager."
+ },
+ {
+  "fi": "oikeus",
+  "en": "right",
+  "t": "abst",
+  "lvl": "B1",
+  "exf": "Jokaisella on oikeus koulutukseen.",
+  "exe": "Everyone has a right to education."
+ },
+ {
+  "fi": "velvollisuus",
+  "en": "duty / obligation",
+  "t": "abst",
+  "lvl": "B1",
+  "exf": "Velvollisuus on maksaa verot.",
+  "exe": "The duty is to pay taxes."
+ },
+ {
+  "fi": "tarve",
+  "en": "need",
+  "t": "abst",
+  "lvl": "B1",
+  "exf": "Tarve uusille asunnoille kasvaa.",
+  "exe": "The need for new apartments is growing."
+ },
+ {
+  "fi": "keino",
+  "en": "means / way",
+  "t": "abst",
+  "lvl": "B1",
+  "exf": "Tämä on hyvä keino oppia sanoja.",
+  "exe": "This is a good way to learn words."
+ },
+ {
+  "fi": "laatu",
+  "en": "quality",
+  "t": "abst",
+  "lvl": "B1",
+  "exf": "Laatu on tärkeämpää kuin määrä.",
+  "exe": "Quality is more important than quantity."
+ },
+ {
+  "fi": "määrä",
+  "en": "amount / quantity",
+  "t": "abst",
+  "lvl": "A2",
+  "exf": "Määrä kasvoi viime vuonna.",
+  "exe": "The amount grew last year."
+ },
+ {
+  "fi": "suhde",
+  "en": "relationship / ratio",
+  "t": "abst",
+  "lvl": "B1",
+  "exf": "Suhde naapureihin on hyvä.",
+  "exe": "The relationship with the neighbours is good."
+ },
+ {
+  "fi": "näkökulma",
+  "en": "viewpoint",
+  "t": "abst",
+  "lvl": "B1",
+  "exf": "Näkökulma muuttuu kokemuksen myötä.",
+  "exe": "The viewpoint changes with experience."
+ },
+ {
+  "fi": "yhteys",
+  "en": "connection / contact",
+  "t": "abst",
+  "lvl": "B1",
+  "exf": "Yhteys pätkii huonolla säällä.",
+  "exe": "The connection breaks up in bad weather."
+ },
+ {
+  "fi": "saavuttaa",
+  "en": "to achieve",
+  "t": "verb",
+  "lvl": "B1",
+  "exf": "Saavutin tavoitteeni.",
+  "exe": "I achieved my goal."
+ },
+ {
+  "fi": "kehittää",
+  "en": "to develop",
+  "t": "verb",
+  "lvl": "B1",
+  "exf": "Kehitän kielitaitoani joka päivä.",
+  "exe": "I develop my language skills every day."
+ },
+ {
+  "fi": "parantaa",
+  "en": "to improve",
+  "t": "verb",
+  "lvl": "B1",
+  "exf": "Harjoittelu parantaa ääntämistä.",
+  "exe": "Practice improves pronunciation."
+ },
+ {
+  "fi": "vähentää",
+  "en": "to reduce",
+  "t": "verb",
+  "lvl": "B1",
+  "exf": "Vähennän sokerin määrää.",
+  "exe": "I reduce the amount of sugar."
+ },
+ {
+  "fi": "lisätä",
+  "en": "to increase / add",
+  "t": "verb",
+  "lvl": "B1",
+  "exf": "Lisään suolaa keittoon.",
+  "exe": "I add salt to the soup."
+ },
+ {
+  "fi": "vaikuttaa",
+  "en": "to affect / seem",
+  "t": "verb",
+  "lvl": "B1",
+  "exf": "Sää vaikuttaa mielialaan.",
+  "exe": "The weather affects the mood."
+ },
+ {
+  "fi": "tarkoittaa",
+  "en": "to mean",
+  "t": "verb",
+  "lvl": "B1",
+  "exf": "Mitä tämä sana tarkoittaa?",
+  "exe": "What does this word mean?"
+ },
+ {
+  "fi": "sisältää",
+  "en": "to contain",
+  "t": "verb",
+  "lvl": "B1",
+  "exf": "Hinta sisältää aamiaisen.",
+  "exe": "The price includes breakfast."
+ },
+ {
+  "fi": "koskea",
+  "en": "to concern / touch",
+  "t": "verb",
+  "lvl": "B1",
+  "exf": "Asia koskee kaikkia työntekijöitä.",
+  "exe": "The matter concerns all employees."
+ },
+ {
+  "fi": "liittyä",
+  "en": "to relate to",
+  "t": "verb",
+  "lvl": "B1",
+  "exf": "Kysymys liittyy sopimukseen.",
+  "exe": "The question relates to the contract."
+ },
+ {
+  "fi": "johtua",
+  "en": "to be due to",
+  "t": "verb",
+  "lvl": "B1",
+  "exf": "Viivästys johtui säästä.",
+  "exe": "The delay was due to the weather."
+ },
+ {
+  "fi": "aiheuttaa",
+  "en": "to cause",
+  "t": "verb",
+  "lvl": "B1",
+  "exf": "Melu aiheuttaa stressiä.",
+  "exe": "Noise causes stress."
+ },
+ {
+  "fi": "estää",
+  "en": "to prevent",
+  "t": "verb",
+  "lvl": "B1",
+  "exf": "Sade esti retken.",
+  "exe": "The rain prevented the outing."
+ },
+ {
+  "fi": "sallia",
+  "en": "to allow",
+  "t": "verb",
+  "lvl": "B1",
+  "exf": "Säännöt eivät salli sitä.",
+  "exe": "The rules do not allow it."
+ },
+ {
+  "fi": "vaatia",
+  "en": "to require / demand",
+  "t": "verb",
+  "lvl": "B1",
+  "exf": "Työ vaatii hyvää kielitaitoa.",
+  "exe": "The job requires good language skills."
+ },
+ {
+  "fi": "ehdottaa",
+  "en": "to suggest",
+  "t": "verb",
+  "lvl": "B1",
+  "exf": "Ehdotan uutta aikaa kokoukselle.",
+  "exe": "I suggest a new time for the meeting."
+ },
+ {
+  "fi": "päättää",
+  "en": "to decide / end",
+  "t": "verb",
+  "lvl": "B1",
+  "exf": "Päätin osallistua kurssille.",
+  "exe": "I decided to take part in the course."
+ },
+ {
+  "fi": "suunnitella",
+  "en": "to plan",
+  "t": "verb",
+  "lvl": "B1",
+  "exf": "Suunnittelen matkaa Lappiin.",
+  "exe": "I am planning a trip to Lapland."
+ },
+ {
+  "fi": "järjestää",
+  "en": "to arrange",
+  "t": "verb",
+  "lvl": "B1",
+  "exf": "Järjestän juhlat kotona.",
+  "exe": "I will organise the party at home."
+ },
+ {
+  "fi": "hoitaa",
+  "en": "to take care of",
+  "t": "verb",
+  "lvl": "B1",
+  "exf": "Hoidan asian huomenna.",
+  "exe": "I will take care of the matter tomorrow."
+ },
+ {
+  "fi": "keskittyä",
+  "en": "to focus",
+  "t": "verb",
+  "lvl": "B1",
+  "exf": "Keskityn nyt kielioppiin.",
+  "exe": "I am focusing on grammar now."
+ },
+ {
+  "fi": "verrata",
+  "en": "to compare",
+  "t": "verb",
+  "lvl": "B1",
+  "exf": "Vertaan hintoja ennen ostoa.",
+  "exe": "I compare prices before buying."
+ },
+ {
+  "fi": "yhdistää",
+  "en": "to combine",
+  "t": "verb",
+  "lvl": "B1",
+  "exf": "Silta yhdistää kaksi saarta.",
+  "exe": "The bridge connects two islands."
+ },
+ {
+  "fi": "jakaa",
+  "en": "to divide / share",
+  "t": "verb",
+  "lvl": "B1",
+  "exf": "Jaan tehtävät kollegoiden kesken.",
+  "exe": "I divide the tasks among colleagues."
+ },
+ {
+  "fi": "sopia",
+  "en": "to agree / suit",
+  "t": "verb",
+  "lvl": "B1",
+  "exf": "Sovimme tapaamisen ensi viikolle.",
+  "exe": "We agreed on a meeting for next week."
+ },
+ {
+  "fi": "riittää",
+  "en": "to be enough",
+  "t": "verb",
+  "lvl": "B1",
+  "exf": "Aika ei riitä kaikkeen.",
+  "exe": "Time is not enough for everything."
+ },
+ {
+  "fi": "kasvaa",
+  "en": "to grow",
+  "t": "verb",
+  "lvl": "A2",
+  "exf": "Lapsi kasvaa nopeasti.",
+  "exe": "The child grows quickly."
+ },
+ {
+  "fi": "laskea",
+  "en": "to calculate / go down",
+  "t": "verb",
+  "lvl": "B1",
+  "exf": "Lasken kulut joka kuukausi.",
+  "exe": "I calculate the expenses every month."
+ },
+ {
+  "fi": "nousta",
+  "en": "to rise / get up",
+  "t": "verb",
+  "lvl": "A2",
+  "exf": "Nousen sängystä kuudelta.",
+  "exe": "I get up at six."
+ },
+ {
+  "fi": "välttää",
+  "en": "to avoid",
+  "t": "verb",
+  "lvl": "B1",
+  "exf": "Vältän ruuhka-aikaa.",
+  "exe": "I avoid rush hour."
+ },
+ {
+  "fi": "hakea",
+  "en": "to apply / fetch",
+  "t": "verb",
+  "lvl": "A2",
+  "exf": "Haen töitä aktiivisesti.",
+  "exe": "I am actively applying for jobs."
+ },
+ {
+  "fi": "saapua",
+  "en": "to arrive",
+  "t": "verb",
+  "lvl": "B1",
+  "exf": "Juna saapuu asemalle ajoissa.",
+  "exe": "The train arrives at the station on time."
+ },
+ {
+  "fi": "tehokas",
+  "en": "efficient",
+  "t": "adj",
+  "lvl": "B1",
+  "exf": "Menetelmä on tehokas.",
+  "exe": "The method is efficient."
+ },
+ {
+  "fi": "hyödyllinen",
+  "en": "useful",
+  "t": "adj",
+  "lvl": "B1",
+  "exf": "Kurssi oli hyödyllinen.",
+  "exe": "The course was useful."
+ },
+ {
+  "fi": "haastava",
+  "en": "challenging",
+  "t": "adj",
+  "lvl": "B1",
+  "exf": "Työ on haastava mutta kiinnostava.",
+  "exe": "The job is challenging but interesting."
+ },
+ {
+  "fi": "monimutkainen",
+  "en": "complex",
+  "t": "adj",
+  "lvl": "B1",
+  "exf": "Sääntö on monimutkainen.",
+  "exe": "The rule is complex."
+ },
+ {
+  "fi": "yksinkertainen",
+  "en": "simple",
+  "t": "adj",
+  "lvl": "B1",
+  "exf": "Ratkaisu on yksinkertainen.",
+  "exe": "The solution is simple."
+ },
+ {
+  "fi": "selkeä",
+  "en": "clear",
+  "t": "adj",
+  "lvl": "B1",
+  "exf": "Ohje on selkeä.",
+  "exe": "The instruction is clear."
+ },
+ {
+  "fi": "luotettava",
+  "en": "reliable",
+  "t": "adj",
+  "lvl": "B1",
+  "exf": "Kollega on luotettava.",
+  "exe": "The colleague is reliable."
+ },
+ {
+  "fi": "joustava",
+  "en": "flexible",
+  "t": "adj",
+  "lvl": "B1",
+  "exf": "Työaika on joustava.",
+  "exe": "The working hours are flexible."
+ },
+ {
+  "fi": "tarkka",
+  "en": "precise / accurate",
+  "t": "adj",
+  "lvl": "B1",
+  "exf": "Käännös on tarkka.",
+  "exe": "The translation is precise."
+ },
+ {
+  "fi": "huolellinen",
+  "en": "careful",
+  "t": "adj",
+  "lvl": "B1",
+  "exf": "Ole huolellinen lomakkeen kanssa.",
+  "exe": "Be careful with the form."
+ },
+ {
+  "fi": "vastuullinen",
+  "en": "responsible",
+  "t": "adj",
+  "lvl": "B1",
+  "exf": "Työntekijä on vastuullinen.",
+  "exe": "The employee is responsible."
+ },
+ {
+  "fi": "kokenut",
+  "en": "experienced",
+  "t": "adj",
+  "lvl": "B1",
+  "exf": "Hän on kokenut opettaja.",
+  "exe": "She is an experienced teacher."
+ },
+ {
+  "fi": "ammattitaitoinen",
+  "en": "skilled / professional",
+  "t": "adj",
+  "lvl": "B1",
+  "exf": "Hakija on ammattitaitoinen.",
+  "exe": "The applicant is skilled."
+ },
+ {
+  "fi": "kansainvälinen",
+  "en": "international",
+  "t": "adj",
+  "lvl": "B1",
+  "exf": "Yritys on kansainvälinen.",
+  "exe": "The company is international."
+ },
+ {
+  "fi": "paikallinen",
+  "en": "local",
+  "t": "adj",
+  "lvl": "B1",
+  "exf": "Paikallinen lehti kertoi asiasta.",
+  "exe": "The local paper reported the matter."
+ },
+ {
+  "fi": "yleinen",
+  "en": "common / general",
+  "t": "adj",
+  "lvl": "B1",
+  "exf": "Tämä virhe on hyvin yleinen.",
+  "exe": "This mistake is very common."
+ },
+ {
+  "fi": "merkittävä",
+  "en": "significant",
+  "t": "adj",
+  "lvl": "B1",
+  "exf": "Muutos oli merkittävä.",
+  "exe": "The change was significant."
+ },
+ {
+  "fi": "riittävä",
+  "en": "sufficient",
+  "t": "adj",
+  "lvl": "B1",
+  "exf": "Aika ei ollut riittävä.",
+  "exe": "The time was not sufficient."
+ },
+ {
+  "fi": "sopiva",
+  "en": "suitable",
+  "t": "adj",
+  "lvl": "B1",
+  "exf": "Tämä koko on sopiva.",
+  "exe": "This size is suitable."
+ },
+ {
+  "fi": "välttämätön",
+  "en": "necessary",
+  "t": "adj",
+  "lvl": "B1",
+  "exf": "Kielitaito on välttämätön työssä.",
+  "exe": "Language skill is necessary at work."
+ },
+ {
+  "fi": "mahdoton",
+  "en": "impossible",
+  "t": "adj",
+  "lvl": "B1",
+  "exf": "Tehtävä ei ole mahdoton.",
+  "exe": "The task is not impossible."
+ },
+ {
+  "fi": "itsenäinen",
+  "en": "independent",
+  "t": "adj",
+  "lvl": "B1",
+  "exf": "Hän on itsenäinen työntekijä.",
+  "exe": "He is an independent worker."
+ },
+ {
+  "fi": "aktiivinen",
+  "en": "active",
+  "t": "adj",
+  "lvl": "A2",
+  "exf": "Ole aktiivinen tunnilla.",
+  "exe": "Be active in class."
+ },
+ {
+  "fi": "positiivinen",
+  "en": "positive",
+  "t": "adj",
+  "lvl": "A2",
+  "exf": "Palaute oli positiivinen.",
+  "exe": "The feedback was positive."
+ },
+ {
+  "fi": "haaste",
+  "en": "challenge",
+  "t": "abst",
+  "lvl": "B2",
+  "exf": "Uusi kieli on iso haaste.",
+  "exe": "A new language is a big challenge."
+ },
+ {
+  "fi": "peruste",
+  "en": "grounds/reason",
+  "t": "abst",
+  "lvl": "B2",
+  "exf": "Anna perustelu mielipiteellesi.",
+  "exe": "Give a justification for your opinion."
+ },
+ {
+  "fi": "edellytys",
+  "en": "precondition",
+  "t": "abst",
+  "lvl": "B2",
+  "exf": "Kielitaito on työn edellytys.",
+  "exe": "Language skill is a precondition for the job."
+ },
+ {
+  "fi": "suhtautuminen",
+  "en": "attitude/approach",
+  "t": "abst",
+  "lvl": "C1",
+  "exf": "Hänen suhtautumisensa on myönteinen.",
+  "exe": "His attitude is positive."
+ },
+ {
+  "fi": "ilmiö",
+  "en": "phenomenon",
+  "t": "abst",
+  "lvl": "C1",
+  "exf": "Tämä on yleinen ilmiö.",
+  "exe": "This is a common phenomenon."
+ },
+ {
+  "fi": "käsitys",
+  "en": "conception/notion",
+  "t": "abst",
+  "lvl": "C1",
+  "exf": "Minulla on selkeä käsitys asiasta.",
+  "exe": "I have a clear conception of the matter."
+ },
+ {
+  "fi": "ulottuvuus",
+  "en": "dimension",
+  "t": "abst",
+  "lvl": "C1",
+  "exf": "Asialla on monta ulottuvuutta.",
+  "exe": "The matter has many dimensions."
+ },
+ {
+  "fi": "vuorovaikutus",
+  "en": "interaction",
+  "t": "abst",
+  "lvl": "C1",
+  "exf": "Oppiminen vaatii vuorovaikutusta.",
+  "exe": "Learning requires interaction."
+ },
+ {
+  "fi": "kuitenkin",
+  "en": "however",
+  "t": "abst",
+  "lvl": "B2",
+  "exf": "Se on vaikeaa; kuitenkin yritän.",
+  "exe": "It's hard; however, I'll try."
+ },
+ {
+  "fi": "toisaalta",
+  "en": "on the other hand",
+  "t": "abst",
+  "lvl": "B2",
+  "exf": "Toisaalta se on hyödyllistä.",
+  "exe": "On the other hand, it's useful."
+ },
+ {
+  "fi": "siitä huolimatta",
+  "en": "in spite of that",
+  "t": "abst",
+  "lvl": "B2",
+  "exf": "Sataa; siitä huolimatta lähden.",
+  "exe": "It's raining; in spite of that I'll go."
+ },
+ {
+  "fi": "näin ollen",
+  "en": "therefore/thus",
+  "t": "abst",
+  "lvl": "C1",
+  "exf": "Näin ollen päätös on selvä.",
+  "exe": "Therefore the decision is clear."
+ },
+ {
+  "fi": "toisin sanoen",
+  "en": "in other words",
+  "t": "abst",
+  "lvl": "C1",
+  "exf": "Toisin sanoen se ei toimi.",
+  "exe": "In other words, it doesn't work."
+ },
+ {
+  "fi": "sen sijaan",
+  "en": "instead",
+  "t": "abst",
+  "lvl": "B2",
+  "exf": "Sen sijaan valitsin toisen.",
+  "exe": "Instead, I chose the other."
+ },
+ {
+  "fi": "ennen kaikkea",
+  "en": "above all",
+  "t": "abst",
+  "lvl": "B2",
+  "exf": "Ennen kaikkea tarvitaan aikaa.",
+  "exe": "Above all, time is needed."
+ },
+ {
+  "fi": "esimerkiksi",
+  "en": "for example",
+  "t": "abst",
+  "lvl": "B1",
+  "exf": "Esimerkiksi tämä sana on vaikea.",
+  "exe": "For example, this word is difficult."
+ },
+ {
+  "fi": "lisäksi",
+  "en": "in addition",
+  "t": "abst",
+  "lvl": "B1",
+  "exf": "Lisäksi tarvitsen apua.",
+  "exe": "In addition, I need help."
+ },
+ {
+  "fi": "vaikka",
+  "en": "although",
+  "t": "abst",
+  "lvl": "B1",
+  "exf": "Vaikka on kylmä, ulkoilen.",
+  "exe": "Although it's cold, I go outside."
+ },
+ {
+  "fi": "arvioida",
+  "en": "to evaluate",
+  "t": "verb",
+  "lvl": "B2",
+  "exf": "Opettaja arvioi tekstit.",
+  "exe": "The teacher evaluates the texts."
+ },
+ {
+  "fi": "edistää",
+  "en": "to promote/advance",
+  "t": "verb",
+  "lvl": "B2",
+  "exf": "Liikunta edistää terveyttä.",
+  "exe": "Exercise promotes health."
+ },
+ {
+  "fi": "hyödyntää",
+  "en": "to utilise",
+  "t": "verb",
+  "lvl": "B2",
+  "exf": "Hyödynnän kokemustani.",
+  "exe": "I utilise my experience."
+ },
+ {
+  "fi": "korostaa",
+  "en": "to emphasise",
+  "t": "verb",
+  "lvl": "B2",
+  "exf": "Opettaja korostaa kielioppia.",
+  "exe": "The teacher emphasises grammar."
+ },
+ {
+  "fi": "edellyttää",
+  "en": "to require",
+  "t": "verb",
+  "lvl": "C1",
+  "exf": "Työ edellyttää suomen taitoa.",
+  "exe": "The job requires Finnish skills."
+ },
+ {
+  "fi": "ilmetä",
+  "en": "to appear/emerge",
+  "t": "verb",
+  "lvl": "C1",
+  "exf": "Ongelma ilmeni myöhemmin.",
+  "exe": "The problem emerged later."
+ },
+ {
+  "fi": "tarkastella",
+  "en": "to examine",
+  "t": "verb",
+  "lvl": "C1",
+  "exf": "Tarkastelemme asiaa tarkasti.",
+  "exe": "We examine the matter closely."
+ },
+ {
+  "fi": "perustua",
+  "en": "to be based on",
+  "t": "verb",
+  "lvl": "B2",
+  "exf": "Väite perustuu tutkimukseen.",
+  "exe": "The claim is based on research."
+ },
+ {
+  "fi": "olennainen",
+  "en": "essential",
+  "t": "adj",
+  "lvl": "B2",
+  "exf": "Tämä on olennainen ero.",
+  "exe": "This is an essential difference."
+ },
+ {
+  "fi": "ristiriitainen",
+  "en": "contradictory",
+  "t": "adj",
+  "lvl": "C1",
+  "exf": "Tiedot ovat ristiriitaisia.",
+  "exe": "The information is contradictory."
+ },
+ {
+  "fi": "kattava",
+  "en": "comprehensive",
+  "t": "adj",
+  "lvl": "C1",
+  "exf": "Tämä on kattava selitys.",
+  "exe": "This is a comprehensive explanation."
+ },
+ {
+  "fi": "perusteellinen",
+  "en": "thorough",
+  "t": "adj",
+  "lvl": "C1",
+  "exf": "Hän teki perusteellisen työn.",
+  "exe": "She did a thorough job."
+ },
+ {
+  "fi": "johdonmukainen",
+  "en": "consistent/logical",
+  "t": "adj",
+  "lvl": "C1",
+  "exf": "Argumentti on johdonmukainen.",
+  "exe": "The argument is consistent."
+ },
+ {
+  "fi": "todennäköinen",
+  "en": "likely/probable",
+  "t": "adj",
+  "lvl": "B2",
+  "exf": "Se on todennäköinen tulos.",
+  "exe": "It's a likely outcome."
+ },
+ {
+  "fi": "huomattava",
+  "en": "considerable",
+  "t": "adj",
+  "lvl": "B2",
+  "exf": "Ero on huomattava.",
+  "exe": "The difference is considerable."
+ },
+ {
+  "fi": "keskeinen",
+  "en": "central/key",
+  "t": "adj",
+  "lvl": "B2",
+  "exf": "Se on keskeinen kysymys.",
+  "exe": "It's a key question."
+ }
+]
