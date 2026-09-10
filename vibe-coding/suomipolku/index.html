@@ -10228,6 +10228,27 @@ body{font-size:16px;line-height:1.5;background:${C.bg};color:${C.ink};font-famil
 .cmailrow b{font-family:ui-monospace,monospace;font-size:14.5px;color:${C.ink};word-break:break-all}
 .cmini{border:1px solid ${C.line};background:#fff;border-radius:8px;padding:6px 11px;font-size:13px;font-weight:700;color:${C.fi};cursor:pointer;white-space:nowrap}
 .cmini:hover{border-color:${C.fi}}
+.nlin{width:100%;box-sizing:border-box;border:2px solid ${C.grammar};border-radius:12px;padding:14px 15px;font-size:26px;font-weight:800;font-family:ui-monospace,monospace;color:${C.ink};background:#fff;text-align:center;letter-spacing:.04em}
+.nlin:focus{outline:none;box-shadow:0 0 0 4px ${C.grammar}22}
+.nlnum{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.nlnum>div{flex:1;min-width:130px;background:${C.bg};border:1px solid ${C.line};border-radius:12px;padding:10px 13px}
+.nlbig{font-family:ui-monospace,monospace;font-size:23px;font-weight:800;letter-spacing:.02em;margin-top:2px}
+.nlrow{border:1px solid ${C.line};border-radius:12px;padding:12px 13px;margin-bottom:10px;background:#fff}
+.nllbl{font-size:12.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:${C.grammar};margin-bottom:8px}
+.nlcell{padding:7px 0}
+.nlcell+.nlcell{border-top:1px dashed ${C.line}}
+.nlcap{font-size:11.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:${C.sub}}
+.nlword{font-size:19px;font-weight:700;color:${C.ink};line-height:1.35;margin-top:3px;word-break:break-word}
+.nlword.spoken{color:${C.sent}}
+.nlsyl{font-family:ui-monospace,monospace;font-size:13px;color:${C.sub};margin-top:3px;word-break:break-word}
+.nlsec{font-size:12.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:${C.grammar};margin:16px 0 8px}
+.nlblocks{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.nlblock{display:inline-flex;flex-direction:column;background:${C.bg};border:1px solid ${C.line};border-radius:10px;padding:6px 11px}
+.nlblock b{font-size:15.5px;color:${C.ink}}
+.nlblock i{font-style:normal;font-size:12px;color:${C.sub};font-family:ui-monospace,monospace}
+.nlplus{color:${C.sub};font-weight:800;font-size:15px}
+.nlnotes{margin:0;padding-left:20px}
+.nlnotes li{font-size:15px;line-height:1.55;color:${C.ink};margin:6px 0}
 .selwrap{position:relative;margin:2px 0 2px}
 .selwrap::after{content:"\\25BE";position:absolute;right:14px;top:50%;transform:translateY(-50%);pointer-events:none;color:${C.sub};font-size:13px}
 .selbox{width:100%;box-sizing:border-box;appearance:none;-webkit-appearance:none;-moz-appearance:none;border:1px solid ${C.line};border-radius:11px;padding:13px 38px 13px 13px;font-size:16px;font-weight:600;color:${C.ink};background:#fff;font-family:inherit;line-height:1.3;cursor:pointer}
@@ -11119,6 +11140,326 @@ function ChapterExercise({
     }
   }, i + 1 >= items.length ? P(lang, "Valmis", "Finish") : P(lang, "Seuraava", "Next")));
 }
+// ===== Finnish number engine (Chapter: Numbers & partitive) =====
+var NL_CARD_U = ["nolla", "yksi", "kaksi", "kolme", "neljä", "viisi", "kuusi", "seitsemän", "kahdeksan", "yhdeksän"];
+var NL_ORD_T = ["nollas", "ensimmäinen", "toinen", "kolmas", "neljäs", "viides", "kuudes", "seitsemäs", "kahdeksas", "yhdeksäs"];
+var NL_ORD_P = ["nolla", "yhdes", "kahdes", "kolmas", "neljäs", "viides", "kuudes", "seitsemäs", "kahdeksas", "yhdeksäs"];
+var NL_SPK_U = ["nolla", "yks", "kaks", "kolme", "neljä", "viis", "kuus", "seittemän", "kaheksan", "yheksän"];
+var NL_SPK_TP = ["", "", "kaks", "kol", "nel", "viis", "kuus", "seittemän", "kaheksan", "yheksän"];
+var NL_SPK_OT = ["nollas", "eka", "toka", "kolmas", "neljäs", "viies", "kuues", "seittemäs", "kaheksas", "yheksäs"];
+var NL_SPK_OP = ["nolla", "yhes", "kahes", "kolmas", "neljäs", "viies", "kuues", "seittemäs", "kaheksas", "yheksäs"];
+function nlCard(n) {
+  if (n === 0) return "nolla";
+  if (n < 10) return NL_CARD_U[n];
+  if (n === 10) return "kymmenen";
+  if (n < 20) return NL_CARD_U[n - 10] + "toista";
+  if (n < 100) {
+    var t = Math.floor(n / 10),
+      r = n % 10;
+    return NL_CARD_U[t] + "kymmentä" + (r ? nlCard(r) : "");
+  }
+  if (n < 1000) {
+    var h = Math.floor(n / 100),
+      r2 = n % 100;
+    return (h === 1 ? "sata" : NL_CARD_U[h] + "sataa") + (r2 ? nlCard(r2) : "");
+  }
+  if (n < 1e6) {
+    var th = Math.floor(n / 1000),
+      r3 = n % 1000;
+    return (th === 1 ? "tuhat" : nlCard(th) + "tuhatta") + (r3 ? nlCard(r3) : "");
+  }
+  if (n < 1e9) {
+    var m = Math.floor(n / 1e6),
+      r4 = n % 1e6;
+    return (m === 1 ? "miljoona" : nlCard(m) + " miljoonaa") + (r4 ? " " + nlCard(r4) : "");
+  }
+  var b = Math.floor(n / 1e9),
+    r5 = n % 1e9;
+  return (b === 1 ? "miljardi" : nlCard(b) + " miljardia") + (r5 ? " " + nlCard(r5) : "");
+}
+function nlOrd(n, term) {
+  if (term === undefined) term = true;
+  if (n < 10) return term ? NL_ORD_T[n] : NL_ORD_P[n];
+  if (n === 10) return "kymmenes";
+  if (n < 20) return NL_ORD_P[n - 10] + "toista";
+  if (n < 100) {
+    var t = Math.floor(n / 10),
+      r = n % 10;
+    return NL_ORD_P[t] + "kymmenes" + (r ? nlOrd(r, term) : "");
+  }
+  if (n < 1000) {
+    var h = Math.floor(n / 100),
+      r2 = n % 100;
+    return (h === 1 ? "sadas" : NL_ORD_P[h] + "sadas") + (r2 ? nlOrd(r2, term) : "");
+  }
+  if (n < 1e6) {
+    var th = Math.floor(n / 1000),
+      r3 = n % 1000;
+    return (th === 1 ? "tuhannes" : nlOrd(th, false) + "tuhannes") + (r3 ? nlOrd(r3, term) : "");
+  }
+  if (n < 1e9) {
+    var m = Math.floor(n / 1e6),
+      r4 = n % 1e6;
+    return (m === 1 ? "miljoonas" : nlOrd(m, false) + " miljoonas") + (r4 ? " " + nlOrd(r4, term) : "");
+  }
+  var b = Math.floor(n / 1e9),
+    r5 = n % 1e9;
+  return (b === 1 ? "miljardis" : nlOrd(b, false) + " miljardis") + (r5 ? " " + nlOrd(r5, term) : "");
+}
+function nlCardSpk(n) {
+  if (n === 0) return "nolla";
+  if (n < 10) return NL_SPK_U[n];
+  if (n === 10) return "kymmenen";
+  if (n < 20) return NL_SPK_U[n - 10] + "toist";
+  if (n < 100) {
+    var t = Math.floor(n / 10),
+      r = n % 10;
+    return NL_SPK_TP[t] + "kyt" + (r ? nlCardSpk(r) : "");
+  }
+  if (n < 1000) {
+    var h = Math.floor(n / 100),
+      r2 = n % 100;
+    return (h === 1 ? "sata" : NL_SPK_U[h] + "sataa") + (r2 ? nlCardSpk(r2) : "");
+  }
+  if (n < 1e6) {
+    var th = Math.floor(n / 1000),
+      r3 = n % 1000;
+    return (th === 1 ? "tuhat" : nlCardSpk(th) + "tuhatta") + (r3 ? nlCardSpk(r3) : "");
+  }
+  if (n < 1e9) {
+    var m = Math.floor(n / 1e6),
+      r4 = n % 1e6;
+    return (m === 1 ? "miljoona" : nlCardSpk(m) + " miljoonaa") + (r4 ? " " + nlCardSpk(r4) : "");
+  }
+  var b = Math.floor(n / 1e9),
+    r5 = n % 1e9;
+  return (b === 1 ? "miljardi" : nlCardSpk(b) + " miljardia") + (r5 ? " " + nlCardSpk(r5) : "");
+}
+function nlOrdSpk(n, term) {
+  if (term === undefined) term = true;
+  if (n < 10) return term ? NL_SPK_OT[n] : NL_SPK_OP[n];
+  if (n === 10) return "kymmenes";
+  if (n < 20) return NL_SPK_OP[n - 10] + "toista";
+  if (n < 100) {
+    var t = Math.floor(n / 10),
+      r = n % 10;
+    if (r) return NL_SPK_TP[t] + "kyt" + nlOrdSpk(r, term);
+    return NL_SPK_OP[t] + "kymmenes";
+  }
+  if (n < 1000) {
+    var h = Math.floor(n / 100),
+      r2 = n % 100;
+    return (h === 1 ? "sadas" : NL_SPK_OP[h] + "sadas") + (r2 ? nlOrdSpk(r2, term) : "");
+  }
+  if (n < 1e6) {
+    var th = Math.floor(n / 1000),
+      r3 = n % 1000;
+    return (th === 1 ? "tuhannes" : nlOrdSpk(th, false) + "tuhannes") + (r3 ? nlOrdSpk(r3, term) : "");
+  }
+  return nlOrd(n, term);
+}
+var NL_V = "aeiouyäö";
+var NL_DIPH = {
+  ai: 1, ei: 1, oi: 1, ui: 1, yi: 1, "äi": 1, "öi": 1, au: 1, eu: 1, iu: 1,
+  ou: 1, ey: 1, iy: 1, "äy": 1, "öy": 1, ie: 1, uo: 1, "yö": 1
+};
+var NL_LONG = {
+  aa: 1, ee: 1, ii: 1, oo: 1, uu: 1, yy: 1, "ää": 1, "öö": 1
+};
+function nlIsV(ch) {
+  return NL_V.indexOf(String(ch).toLowerCase()) >= 0;
+}
+function nlSyllables(word) {
+  if (!word) return [];
+  var out = [],
+    cur = "",
+    seenV = false,
+    w = String(word);
+  for (var i = 0; i < w.length; i++) {
+    var ch = w[i];
+    if (i > 0) {
+      var prev = w[i - 1],
+        brk = false;
+      if (nlIsV(prev) && nlIsV(ch)) {
+        var pair = (prev + ch).toLowerCase();
+        if (!NL_DIPH[pair] && !NL_LONG[pair]) brk = true;
+      } else if (!nlIsV(ch) && i + 1 < w.length && nlIsV(w[i + 1]) && seenV) {
+        brk = true;
+      }
+      if (brk) {
+        out.push(cur);
+        cur = "";
+        seenV = false;
+      }
+    }
+    cur += ch;
+    if (nlIsV(ch)) seenV = true;
+  }
+  if (cur) out.push(cur);
+  return out;
+}
+function nlSyl(word) {
+  return String(word).split(" ").map(function (w) {
+    return nlSyllables(w).join("-");
+  }).join(" · ");
+}
+function nlBreakdown(n) {
+  if (n === 0) return [{ w: "nolla", f: "0", e: "0" }];
+  var out = [];
+  function go(n) {
+    if (n < 10) { out.push({ w: NL_CARD_U[n], f: String(n), e: String(n) }); return; }
+    if (n === 10) { out.push({ w: "kymmenen", f: "10", e: "10" }); return; }
+    if (n < 20) {
+      out.push({ w: NL_CARD_U[n - 10], f: String(n - 10), e: String(n - 10) });
+      out.push({ w: "toista", f: "+10", e: "+10" });
+      return;
+    }
+    if (n < 100) {
+      var t = Math.floor(n / 10), r = n % 10;
+      out.push({ w: NL_CARD_U[t], f: String(t), e: String(t) });
+      out.push({ w: "kymmentä", f: "× 10", e: "× 10" });
+      if (r) go(r);
+      return;
+    }
+    if (n < 1000) {
+      var h = Math.floor(n / 100), r2 = n % 100;
+      if (h === 1) out.push({ w: "sata", f: "100", e: "100" });
+      else {
+        out.push({ w: NL_CARD_U[h], f: String(h), e: String(h) });
+        out.push({ w: "sataa", f: "× 100", e: "× 100" });
+      }
+      if (r2) go(r2);
+      return;
+    }
+    if (n < 1e6) {
+      var th = Math.floor(n / 1000), r3 = n % 1000;
+      if (th === 1) out.push({ w: "tuhat", f: "1000", e: "1000" });
+      else { go(th); out.push({ w: "tuhatta", f: "× 1000", e: "× 1000" }); }
+      if (r3) go(r3);
+      return;
+    }
+    var m = Math.floor(n / 1e6), r4 = n % 1e6;
+    if (m === 1) out.push({ w: "miljoona", f: "10⁶", e: "10⁶" });
+    else { go(m); out.push({ w: "miljoonaa", f: "× 10⁶", e: "× 10⁶" }); }
+    if (r4) go(r4);
+  }
+  go(n);
+  return out;
+}
+function nlNotes(n) {
+  var out = [];
+  if (n === 1) out.push({ f: "Yksi + yksikön nominatiivi: yksi euro, yksi talo.", e: "After ‘yksi’ the noun stays in the nominative: yksi euro, yksi talo." });
+  else if (n > 1) out.push({ f: "Luvun (paitsi yksi) jälkeen sana on yksikön partitiivissa: " + n + " euroa, " + n + " taloa.", e: "After any number except ‘one’ the noun is in the singular partitive: " + n + " euroa, " + n + " taloa." });
+  if (n >= 11 && n <= 19) out.push({ f: "11–19: yksikkö + toista (yksitoista = 1 + toista).", e: "11–19 are built as unit + ‘toista’ (yksitoista = 1 + toista, ‘one of the second ten’)." });
+  if (n >= 20 && n < 100) out.push({ f: "Kymmenissä partitiivi kymmentä (kaksikymmentä), ei kymmenen.", e: "Tens use the partitive ‘kymmentä’ (kaksikymmentä), not ‘kymmenen’." });
+  if (n >= 200 && n < 1000) out.push({ f: "Sadoissa partitiivi sataa: kaksisataa. Pelkkä 100 on sata.", e: "Hundreds take the partitive ‘sataa’: kaksisataa. Plain 100 is ‘sata’." });
+  if (n >= 2000 && n < 1e6) out.push({ f: "Tuhansissa partitiivi tuhatta: kaksituhatta. Pelkkä 1000 on tuhat.", e: "Thousands take the partitive ‘tuhatta’: kaksituhatta. Plain 1000 is ‘tuhat’." });
+  if (n >= 1e6) out.push({ f: "Miljoona ja miljardi kirjoitetaan erillisiksi sanoiksi: kaksi miljoonaa.", e: "‘Miljoona’ and ‘miljardi’ are written as separate words: kaksi miljoonaa." });
+  if (n >= 11 && n < 1e6) out.push({ f: "Alle miljoonan luvut kirjoitetaan yhteen yhdeksi sanaksi.", e: "Numbers below a million are written together as one single word." });
+  if (n === 1 || n === 2) out.push({ f: "Järjestysluvut 1. ja 2. ovat epäsäännöllisiä: ensimmäinen, toinen.", e: "The 1st and 2nd ordinals are irregular: ensimmäinen, toinen." });
+  if (n >= 20 && n % 10 !== 0) out.push({ f: "Järjestysluvussa jokainen osa taipuu: " + nlOrd(n) + ", ei ‘" + nlCard(n) + "s’.", e: "In an ordinal every part becomes ordinal: " + nlOrd(n) + ", not ‘" + nlCard(n) + "s’." });
+  out.push({ f: "Paino on aina ensimmäisellä tavulla.", e: "Stress always falls on the first syllable." });
+  return out;
+}
+function nlGroup(n) {
+  return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+}
+function NumberLab({ lang }) {
+  const [raw, setRaw] = useState("25");
+  const digits = raw.replace(/[^0-9]/g, "").slice(0, 12);
+  const n = digits === "" ? null : parseInt(digits, 10);
+  const valid = n !== null && !isNaN(n);
+  const A = C.grammar;
+  const quick = [0, 1, 2, 7, 11, 17, 25, 100, 1000, 2026];
+  const row = (labelFi, labelEn, formal, spoken) => /*#__PURE__*/React.createElement("div", {
+    className: "nlrow"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "nllbl"
+  }, P(lang, labelFi, labelEn)), /*#__PURE__*/React.createElement("div", {
+    className: "nlcell"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "nlcap"
+  }, P(lang, "Muodollinen", "Formal")), /*#__PURE__*/React.createElement("div", {
+    className: "nlword spkrow"
+  }, formal, " ", /*#__PURE__*/React.createElement(SpeakBtn, {
+    text: formal,
+    size: "sm"
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "nlsyl"
+  }, nlSyl(formal))), /*#__PURE__*/React.createElement("div", {
+    className: "nlcell"
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "nlcap"
+  }, P(lang, "Puhekieli", "Spoken")), /*#__PURE__*/React.createElement("div", {
+    className: "nlword spoken spkrow"
+  }, spoken, " ", /*#__PURE__*/React.createElement(SpeakBtn, {
+    text: spoken,
+    size: "sm"
+  })), /*#__PURE__*/React.createElement("div", {
+    className: "nlsyl"
+  }, nlSyl(spoken))));
+  return /*#__PURE__*/React.createElement("div", {
+    className: "card",
+    style: { marginTop: 12, color: C.ink }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "lab",
+    style: { color: A }
+  }, "🔢 ", P(lang, "Numerolaskin", "Number calculator")), /*#__PURE__*/React.createElement("div", {
+    className: "sub",
+    style: { marginBottom: 10 }
+  }, P(lang, "Kirjoita numero, niin kaikki muodot näkyvät automaattisesti.", "Type a number and every form appears automatically.")), /*#__PURE__*/React.createElement("input", {
+    className: "nlin",
+    inputMode: "numeric",
+    value: raw,
+    placeholder: "25",
+    "aria-label": P(lang, "Numero", "Number"),
+    onChange: e => setRaw(e.target.value.replace(/[^0-9]/g, "").slice(0, 12))
+  }), /*#__PURE__*/React.createElement("div", {
+    className: "row wrap",
+    style: { gap: 6, marginTop: 8 }
+  }, quick.map(q => /*#__PURE__*/React.createElement("button", {
+    key: q,
+    className: "chip" + (String(q) === digits ? " on" : ""),
+    style: String(q) === digits ? { background: A, borderColor: A, color: "#fff" } : {},
+    onClick: () => setRaw(String(q))
+  }, q))), !valid && /*#__PURE__*/React.createElement("div", {
+    className: "note",
+    style: { marginTop: 12 }
+  }, P(lang, "Kirjoita numero (0–999 999 999 999).", "Type a number (0–999,999,999,999).")), valid && /*#__PURE__*/React.createElement("div", {
+    style: { marginTop: 14 }
+  }, /*#__PURE__*/React.createElement("div", {
+    className: "nlnum"
+  }, /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "nlcap"
+  }, P(lang, "Numero", "Number")), /*#__PURE__*/React.createElement("div", {
+    className: "nlbig",
+    style: { color: A }
+  }, nlGroup(n))), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
+    className: "nlcap"
+  }, P(lang, "Järjestysluku numeroin", "Ordinal in digits")), /*#__PURE__*/React.createElement("div", {
+    className: "nlbig",
+    style: { color: A }
+  }, nlGroup(n) + "."))), row("Perusluku", "Cardinal form", nlCard(n), nlCardSpk(n)), row("Järjestysluku", "Ordinal form", nlOrd(n), nlOrdSpk(n)), /*#__PURE__*/React.createElement("div", {
+    className: "nlsec"
+  }, P(lang, "Rakennuspalikat", "Building blocks")), /*#__PURE__*/React.createElement("div", {
+    className: "nlblocks"
+  }, nlBreakdown(n).map((b, i) => /*#__PURE__*/React.createElement(React.Fragment, {
+    key: i
+  }, i > 0 && /*#__PURE__*/React.createElement("span", {
+    className: "nlplus"
+  }, "+"), /*#__PURE__*/React.createElement("span", {
+    className: "nlblock"
+  }, /*#__PURE__*/React.createElement("b", null, b.w), /*#__PURE__*/React.createElement("i", null, P(lang, b.f, b.e)))))), /*#__PURE__*/React.createElement("div", {
+    className: "nlsec"
+  }, P(lang, "Muistettavaa", "Things to remember")), /*#__PURE__*/React.createElement("ul", {
+    className: "nlnotes"
+  }, nlNotes(n).map((x, i) => /*#__PURE__*/React.createElement("li", {
+    key: i
+  }, P(lang, x.f, x.e)))), /*#__PURE__*/React.createElement("div", {
+    className: "note",
+    style: { marginTop: 10 }
+  }, P(lang, "Puhekielen muodot vaihtelevat alueittain; tässä on yleisin yleispuhekielinen muoto.", "Spoken forms vary by region; the most common general-colloquial form is shown."))));
+}
 function GCard({
   lang,
   setLang,
@@ -11228,7 +11569,9 @@ function GCard({
     className: "e"
   }, TR(lang, e.e))))), /*#__PURE__*/React.createElement("div", {
     className: "mn"
-  }, "💡 ", P(lang, c.mf, c.me))), c.rich && c.rich.sections && /*#__PURE__*/React.createElement("div", {
+  }, "💡 ", P(lang, c.mf, c.me))), c.id === "numbers" && /*#__PURE__*/React.createElement(NumberLab, {
+    lang: lang
+  }), c.rich && c.rich.sections && /*#__PURE__*/React.createElement("div", {
     className: "card",
     style: {
       color: C.ink,
