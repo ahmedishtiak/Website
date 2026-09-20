@@ -1713,12 +1713,31 @@ function normaliseOpenSky(state) {
 }
 
 async function fetchAdsbFiPoint(lat, lon, distNm) {
-  // ADSB.fi: /v2/lat/{lat}/lon/{lon}/dist/{nm} — radius up to 250 NM
-  const url = `https://opendata.adsb.fi/api/v2/lat/${lat.toFixed(4)}/lon/${lon.toFixed(4)}/dist/${Math.min(distNm, 250)}`;
-  const res = await fetch(url, { method: 'GET', mode: 'cors' });
-  if (!res.ok) throw new Error(`ADSB.fi HTTP ${res.status}`);
+  // adsb.fi geographic lookup. v3 is the current public endpoint; the old
+  // v2/lat/lon/dist is deprecated (and returned a different shape), so try
+  // v3 first and fall back to v2 only if v3 is unavailable.
+  const dist = Math.max(1, Math.round(Math.min(distNm, 250)));
+  const base = `https://opendata.adsb.fi/api`;
+  const path = `/lat/${lat.toFixed(4)}/lon/${lon.toFixed(4)}/dist/${dist}`;
+
+  let res, lastErr;
+  for (const ver of ['v3', 'v2']) {
+    try {
+      res = await fetch(`${base}/${ver}${path}`, { method: 'GET', mode: 'cors' });
+    } catch (e) { lastErr = e; res = null; }
+    if (res && res.ok) break;
+    if (res && !res.ok) lastErr = new Error(`ADSB.fi HTTP ${res.status}`);
+    res = null;
+  }
+  if (!res) throw (lastErr || new Error('ADSB.fi unreachable'));
+
   const data = await res.json();
-  return (data.ac || []).map(normaliseAdsbFi);
+  // Accept every shape adsb.fi has used: {ac:[…]}, {aircraft:[…]} or a bare array.
+  const list = Array.isArray(data) ? data
+             : Array.isArray(data.ac) ? data.ac
+             : Array.isArray(data.aircraft) ? data.aircraft
+             : [];
+  return list.map(normaliseAdsbFi);
 }
 
 async function fetchAdsbFiCallsign(callsign) {
@@ -1927,7 +1946,7 @@ function handleFetchError(tab, e, source) {
   if (isNoWorker) {
     msg = `<b>OpenSky selected but no Worker URL configured.</b> Either switch to ADSB.fi via <b>⚙ Source</b>, or add a Worker URL via <b>⚙ Worker URL</b>.`;
   } else if (source === 'adsbfi' && isNetwork) {
-    msg = `<b>ADSB.fi unreachable.</b> The community feed may be down or your network is blocking it. Try switching to OpenSky via <b>⚙ Source</b>, or check <a href="https://adsb.fi" target="_blank">adsb.fi</a>.`;
+    msg = `<b>ADSB.fi unreachable.</b> Most often this is an ad-blocker or privacy extension blocking the request, or the feed is momentarily down. Also note the feed only sees aircraft over land — an ocean route like JFK→LHR will look empty even when it works. Try a route over land (e.g. HEL→LHR), disable blockers for this page, or check <a href="https://adsb.fi" target="_blank">adsb.fi</a>.`;
   } else if (source === 'opensky' && isNetwork) {
     msg = `<b>Worker unreachable.</b> Check the URL and Worker deployment.`;
   } else if (is429) {
