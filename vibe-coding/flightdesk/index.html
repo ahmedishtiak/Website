@@ -414,6 +414,7 @@
         <h3><span class="pulse" id="live-pulse"></span>Live aircraft · OpenSky Network</h3>
         <div class="live-meta">
           <span id="live-updated">not yet loaded</span>
+          <button class="refresh-btn" onclick="openWorkerSettings()">⚙ Worker URL</button>
           <button class="refresh-btn" onclick="refreshLive()">↻ Refresh now</button>
         </div>
       </div>
@@ -548,7 +549,7 @@
     <a class="legal-link" onclick="openModal('terms')">Terms</a>
     <a class="legal-link" onclick="openModal('privacy')">Privacy</a>
     <a class="legal-link" onclick="openModal('disclaimer')">Disclaimer</a>
-    · v3.2
+    · v3.3
   </div>
 </footer>
 
@@ -1632,11 +1633,21 @@ function bboxAround(aLat, aLon, bLat, bLon, paddingKm) {
 }
 
 async function fetchOpenSky(bbox) {
-  const url = bbox
-    ? `https://opensky-network.org/api/states/all?lamin=${bbox.lamin}&lomin=${bbox.lomin}&lamax=${bbox.lamax}&lomax=${bbox.lomax}`
-    : `https://opensky-network.org/api/states/all`;
-  const res = await fetch(url, { method:'GET', mode:'cors' });
-  if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  const workerUrl = localStorage.getItem('fd_worker_url');
+  if (!workerUrl) {
+    const err = new Error('NO_WORKER');
+    err.friendly = 'no_worker';
+    throw err;
+  }
+  const path = bbox
+    ? `states/all?lamin=${bbox.lamin}&lomin=${bbox.lomin}&lamax=${bbox.lamax}&lomax=${bbox.lomax}`
+    : `states/all`;
+  const url = workerUrl.replace(/\/$/, '') + '/opensky/' + path;
+  const res = await fetch(url, { method: 'GET', mode: 'cors' });
+  if (!res.ok) {
+    const body = await res.text().catch(() => '');
+    throw new Error(`HTTP ${res.status}${body ? ': ' + body.slice(0, 120) : ''}`);
+  }
   return await res.json();
 }
 
@@ -1750,12 +1761,16 @@ async function loadRouteTraffic() {
     updateStamp(); markPulse('ok');
   } catch (e) {
     markPulse('error');
-    if (e.message.includes('Failed to fetch') || e.message.includes('NetworkError') || e.name === 'TypeError') {
-      setLiveStatus('route', `<b>CORS blocked.</b> Browsers block API calls from <code>file://</code> pages. Fix: run <code>python3 -m http.server</code> in the file's folder and open <code>http://localhost:8000/flight-dashboard.html</code>. Or host on GitHub Pages / Netlify.`, 'err');
+    if (e.friendly === 'no_worker') {
+      setLiveStatus('route', `<b>Worker URL not configured.</b> Live data needs a Cloudflare Worker proxy (OpenSky removed anonymous browser access in March 2026). Click <b>⚙ Worker URL</b> above to add yours, or ask Claude for the 20-minute setup guide.`, 'err');
+    } else if (e.message.includes('Failed to fetch') || e.message.includes('NetworkError') || e.name === 'TypeError') {
+      setLiveStatus('route', `<b>Worker unreachable.</b> Check the URL is correct and the Worker is deployed. Test it by opening <code>[your-worker-url]/health</code> in a new tab — it should return <code>{"ok":true}</code>.`, 'err');
     } else if (e.message.includes('429')) {
-      setLiveStatus('route', `<b>Rate-limited.</b> OpenSky's anonymous tier allows ~400 requests/day. Wait a few minutes or register at opensky-network.org for a higher quota.`, 'err');
+      setLiveStatus('route', `<b>Rate-limited.</b> OpenSky registered accounts get 4,000 credits/day. If you've hit the limit, wait or upgrade to a data-contributor account.`, 'err');
+    } else if (e.message.includes('401') || e.message.includes('403')) {
+      setLiveStatus('route', `<b>Auth error.</b> The Worker's OpenSky credentials are wrong or expired. In the Cloudflare dashboard, check the <code>OPENSKY_CLIENT_ID</code> and <code>OPENSKY_CLIENT_SECRET</code> secrets.`, 'err');
     } else {
-      setLiveStatus('route', `<b>OpenSky error:</b> ${e.message}. Try again in a moment.`, 'err');
+      setLiveStatus('route', `<b>Error:</b> ${e.message}. Try again in a moment.`, 'err');
     }
     document.getElementById('live-results-route').innerHTML = '';
   }
@@ -1803,12 +1818,16 @@ async function loadFlightLookup() {
     updateStamp(); markPulse('ok');
   } catch (e) {
     markPulse('error');
-    if (e.message.includes('Failed to fetch') || e.message.includes('NetworkError') || e.name === 'TypeError') {
-      setLiveStatus('flight', `<b>CORS blocked.</b> Browsers block API calls from <code>file://</code> pages. Fix: run <code>python3 -m http.server</code> in the file's folder and open <code>http://localhost:8000/flight-dashboard.html</code>.`, 'err');
+    if (e.friendly === 'no_worker') {
+      setLiveStatus('flight', `<b>Worker URL not configured.</b> Click <b>⚙ Worker URL</b> above to add yours.`, 'err');
+    } else if (e.message.includes('Failed to fetch') || e.message.includes('NetworkError') || e.name === 'TypeError') {
+      setLiveStatus('flight', `<b>Worker unreachable.</b> Check the URL and that the Worker is deployed.`, 'err');
     } else if (e.message.includes('429')) {
       setLiveStatus('flight', `<b>Rate-limited.</b> Wait a few minutes.`, 'err');
+    } else if (e.message.includes('401') || e.message.includes('403')) {
+      setLiveStatus('flight', `<b>Auth error.</b> Check the Worker's OpenSky credentials in Cloudflare.`, 'err');
     } else {
-      setLiveStatus('flight', `<b>OpenSky error:</b> ${e.message}.`, 'err');
+      setLiveStatus('flight', `<b>Error:</b> ${e.message}.`, 'err');
     }
     document.getElementById('live-results-flight').innerHTML = '';
   }
@@ -1837,6 +1856,48 @@ function startLiveAutoRefresh() {
   liveState.timer = setInterval(() => {
     if (liveState.lastArgs) refreshLive();
   }, 30000);
+}
+
+/* ---------- Worker URL settings modal ---------- */
+function openWorkerSettings() {
+  document.getElementById('worker-url-input').value = localStorage.getItem('fd_worker_url') || '';
+  document.getElementById('worker-test-status').innerHTML = '';
+  document.getElementById('worker-modal-backdrop').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeWorkerSettings() {
+  document.getElementById('worker-modal-backdrop').classList.remove('open');
+  document.body.style.overflow = '';
+}
+async function testWorkerUrl() {
+  const raw = document.getElementById('worker-url-input').value.trim();
+  const status = document.getElementById('worker-test-status');
+  if (!raw) {
+    localStorage.removeItem('fd_worker_url');
+    status.innerHTML = '<span style="color:var(--muted);">Cleared. Live panel disabled.</span>';
+    setTimeout(closeWorkerSettings, 900);
+    return;
+  }
+  if (!/^https?:\/\//.test(raw)) {
+    status.innerHTML = '<span style="color:var(--crimson);">URL must start with https:// or http://</span>';
+    return;
+  }
+  const cleaned = raw.replace(/\/$/, '');
+  status.innerHTML = '<span style="color:var(--muted);">Testing worker…</span>';
+  try {
+    const res = await fetch(cleaned + '/health', { method: 'GET', mode: 'cors' });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    if (data.ok) {
+      localStorage.setItem('fd_worker_url', cleaned);
+      status.innerHTML = '<span style="color:var(--ok);">✓ Worker reachable. Saved. Loading live data…</span>';
+      setTimeout(() => { closeWorkerSettings(); refreshLive(); }, 1200);
+    } else {
+      status.innerHTML = '<span style="color:var(--crimson);">Reached URL but response wasn\'t recognised. Check the Worker code matches the setup guide.</span>';
+    }
+  } catch (e) {
+    status.innerHTML = `<span style="color:var(--crimson);">Could not reach the Worker: ${e.message}. Verify the URL is correct and the Worker is deployed.</span>`;
+  }
 }
 
 /* ====================== LEGAL MODAL + CONSENT ====================== */
@@ -1965,5 +2026,27 @@ function setConsent(accepted) {
   startLiveAutoRefresh();
 })();
 </script>
+<!-- Worker settings modal -->
+<div class="modal-backdrop" id="worker-modal-backdrop" onclick="if(event.target===this)closeWorkerSettings()">
+  <div class="modal">
+    <button class="close-x" onclick="closeWorkerSettings()" aria-label="Close">×</button>
+    <h2>OpenSky Worker URL</h2>
+    <p class="updated">Live aircraft data source</p>
+    <p>OpenSky Network removed anonymous browser access in March 2026. To use the live-traffic panel, you need a small proxy — the setup guide is at <a href="https://github.com/ishtiakahmed" target="_blank" rel="noopener" style="color:var(--amber-deep);">the FlightDesk repo</a> (or ask Claude for the 20-min walkthrough).</p>
+    <p>Once your Cloudflare Worker is deployed, paste its URL below:</p>
+    <div style="margin: 18px 0;">
+      <input type="text" id="worker-url-input" placeholder="https://flightdesk-opensky.your-account.workers.dev" style="width:100%; padding:10px 12px; border:1px solid var(--line-soft); font-family: 'JetBrains Mono', monospace; font-size:13px; border-radius:2px; background: var(--paper-2);">
+    </div>
+    <div style="display:flex; gap:10px; justify-content:flex-end;">
+      <button onclick="closeWorkerSettings()" style="padding:10px 18px; background:transparent; border:1px solid var(--line-soft); font-family:inherit; font-size:12px; text-transform:uppercase; letter-spacing:0.1em; cursor:pointer; border-radius:2px;">Cancel</button>
+      <button onclick="testWorkerUrl()" style="padding:10px 18px; background:var(--ink); color:var(--paper); border:none; font-family:inherit; font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; cursor:pointer; border-radius:2px;">Test & save</button>
+    </div>
+    <div id="worker-test-status" style="margin-top:14px; font-size:12px;"></div>
+    <h3 style="margin-top:24px;">How this works</h3>
+    <p style="font-size:12px;">Your Worker URL is stored only in your browser's localStorage — never sent anywhere except to OpenSky (via your Worker). The Worker holds your OpenSky OAuth2 credentials on Cloudflare's side, so nothing sensitive ever appears in the dashboard's code.</p>
+    <p style="font-size:12px;">Free tier limits: Cloudflare Workers give 100,000 requests/day; OpenSky registered accounts give 4,000 API credits/day. At 30-second auto-refresh that's ~2,880 requests/day — comfortably within both.</p>
+  </div>
+</div>
+
 </body>
 </html>
