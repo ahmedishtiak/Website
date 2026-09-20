@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=1280, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>FlightDesk · Personal Travel Dashboard</title>
+<meta name="description" content="A Helsinki-based flight search dashboard: a price heat-map by weekday and week, a flexible-dates playbook, a multi-city trip builder, live aircraft tracking, and deep links into Google Flights, Skyscanner, Kayak and Momondo.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -303,6 +304,34 @@
     .multi-leg-row { grid-template-columns: 1fr 1fr !important; }
     .compare-row, .deals, .anywhere-grid { grid-template-columns: repeat(2, 1fr); }
   }
+
+  /* --- live-result tables: scroll instead of squashing --- */
+  #live-results-route, #live-results-flight { overflow-x: auto; }
+  #live-results-route .aircraft-header, #live-results-route .aircraft-row,
+  #live-results-flight .aircraft-header, #live-results-flight .aircraft-row { min-width: 560px; }
+
+  /* --- phones: one column, nothing clipped --- */
+  @media (max-width: 720px) {
+    .topbar { flex-direction: column; align-items: flex-start; gap: 10px; padding: 14px 18px; }
+    .top-meta { flex-wrap: wrap; gap: 12px; }
+    .brand .logo { font-size: 23px; }
+    .hero { padding: 26px 18px 18px; }
+    h1 { font-size: 30px; }
+    main { padding: 20px 18px 64px; gap: 24px; }
+    .compare-row, .deals, .anywhere-grid, .mini-grid { grid-template-columns: 1fr !important; }
+    .leg-row, .multi-leg-row, .route, .flight, .multi-footer,
+    .oneway-flex, .oneway-fixed, .oneway-any,
+    .rt-flex, .rt-fixed, .rt-any,
+    .flex-style, .any-style { grid-template-columns: 1fr !important; }
+    .result-row { grid-template-columns: 1fr !important; gap: 8px; }
+    .multi-leg-summary { grid-template-columns: 1fr !important; gap: 6px; }
+    .flex-grid-wrap { padding: 14px; }
+    .section-head { flex-direction: column; align-items: flex-start; gap: 4px; }
+    .modal { width: auto; max-width: calc(100vw - 24px); margin: 12px; }
+    .cookie-banner { left: 10px; right: 10px; bottom: 10px; padding: 14px 16px;
+                     flex-direction: column; align-items: stretch; gap: 12px; }
+    .cookie-banner .actions { justify-content: flex-end; }
+  }
 </style>
 </head>
 <body>
@@ -411,9 +440,10 @@
     <!-- LIVE TRAFFIC PANEL (OpenSky) -->
     <div class="live-panel">
       <div class="live-header">
-        <h3><span class="pulse" id="live-pulse"></span>Live aircraft · OpenSky Network</h3>
+        <h3><span class="pulse" id="live-pulse"></span>Live aircraft · <span id="live-source-label">ADSB.fi</span></h3>
         <div class="live-meta">
           <span id="live-updated">not yet loaded</span>
+          <button class="refresh-btn" onclick="openSourceSettings()">⚙ Source</button>
           <button class="refresh-btn" onclick="openWorkerSettings()">⚙ Worker URL</button>
           <button class="refresh-btn" onclick="refreshLive()">↻ Refresh now</button>
         </div>
@@ -468,7 +498,7 @@
         <div id="live-results-flight"></div>
       </div>
 
-      <div class="live-attribution">Data source: <a href="https://opensky-network.org" target="_blank" rel="noopener">The OpenSky Network</a> · used under their non-commercial terms · positions may lag 5–15 seconds behind real time</div>
+      <div class="live-attribution">Data sources: <a href="https://adsb.fi" target="_blank" rel="noopener">ADSB.fi</a> (primary, community feed) · <a href="https://opensky-network.org" target="_blank" rel="noopener">OpenSky Network</a> (via your Worker) · positions may lag 5–15 seconds behind real time</div>
     </div>
 
     <!-- COMPARE -->
@@ -549,7 +579,7 @@
     <a class="legal-link" onclick="openModal('terms')">Terms</a>
     <a class="legal-link" onclick="openModal('privacy')">Privacy</a>
     <a class="legal-link" onclick="openModal('disclaimer')">Disclaimer</a>
-    · v3.3
+    · v3.4
   </div>
 </footer>
 
@@ -561,7 +591,7 @@
 <!-- Cookie / consent banner (EU) -->
 <div class="cookie-banner" id="cookie-banner">
   <div class="text">
-    <b>Local storage notice.</b> FlightDesk stores your watchlist and consent choice in your browser's local storage. No data is transmitted to any server or third party. External booking-engine links open in a new tab and are governed by their own privacy policies.
+    <b>Local storage notice.</b> FlightDesk stores your watchlist, home base, currency and consent choice in your browser's local storage. Live aircraft tracking requests public flight data from ADSB.fi — or from your own OpenSky worker if you configure one. It stays switched off until you accept below, and declining keeps it off. No personal data is sent, and nothing else leaves your browser. External booking-engine links open in a new tab and are governed by their own privacy policies.
     <a onclick="openModal('privacy')">Read the privacy notice.</a>
   </div>
   <div class="actions">
@@ -1632,7 +1662,74 @@ function bboxAround(aLat, aLon, bLat, bLon, paddingKm) {
   };
 }
 
-async function fetchOpenSky(bbox) {
+/* ---------- Data source layer ---------- */
+// Two sources: ADSB.fi (community, no auth, CORS-enabled, primary) and OpenSky via Worker (fallback).
+// Field names differ — normaliseAircraft() converts both to a common shape.
+
+const DATA_SOURCES = {
+  adsbfi: 'ADSB.fi (community feed)',
+  opensky: 'OpenSky Network (via Worker)',
+};
+
+function getActiveSource() {
+  return localStorage.getItem('fd_data_source') || 'adsbfi';
+}
+function setActiveSource(src) {
+  localStorage.setItem('fd_data_source', src);
+}
+
+// Normalise an aircraft record from either source into: {icao24, callsign, country, lat, lon, altitude(m), onGround, velocity(m/s), heading, source}
+function normaliseAdsbFi(rec) {
+  return {
+    icao24: rec.hex,
+    callsign: (rec.flight || '').trim(),
+    country: '', // adsb.fi doesn't provide origin country per aircraft
+    lat: rec.lat,
+    lon: rec.lon,
+    altitude: rec.alt_baro && rec.alt_baro !== 'ground' ? rec.alt_baro * 0.3048 : null, // ft → m
+    onGround: rec.alt_baro === 'ground',
+    velocity: rec.gs ? rec.gs * 0.5144 : null, // knots → m/s
+    heading: rec.track,
+    source: 'adsb.fi',
+    registration: rec.r || null,
+    aircraftType: rec.t || null,
+  };
+}
+function normaliseOpenSky(state) {
+  return {
+    icao24: state[0],
+    callsign: (state[1] || '').trim(),
+    country: state[2],
+    lon: state[5],
+    lat: state[6],
+    altitude: state[7],
+    onGround: state[8],
+    velocity: state[9],
+    heading: state[10],
+    source: 'opensky',
+    registration: null,
+    aircraftType: null,
+  };
+}
+
+async function fetchAdsbFiPoint(lat, lon, distNm) {
+  // ADSB.fi: /v2/lat/{lat}/lon/{lon}/dist/{nm} — radius up to 250 NM
+  const url = `https://opendata.adsb.fi/api/v2/lat/${lat.toFixed(4)}/lon/${lon.toFixed(4)}/dist/${Math.min(distNm, 250)}`;
+  const res = await fetch(url, { method: 'GET', mode: 'cors' });
+  if (!res.ok) throw new Error(`ADSB.fi HTTP ${res.status}`);
+  const data = await res.json();
+  return (data.ac || []).map(normaliseAdsbFi);
+}
+
+async function fetchAdsbFiCallsign(callsign) {
+  const url = `https://opendata.adsb.fi/api/v2/callsign/${encodeURIComponent(callsign)}`;
+  const res = await fetch(url, { method: 'GET', mode: 'cors' });
+  if (!res.ok) throw new Error(`ADSB.fi HTTP ${res.status}`);
+  const data = await res.json();
+  return (data.ac || []).map(normaliseAdsbFi);
+}
+
+async function fetchOpenSkyViaWorker(bbox) {
   const workerUrl = localStorage.getItem('fd_worker_url');
   if (!workerUrl) {
     const err = new Error('NO_WORKER');
@@ -1646,9 +1743,63 @@ async function fetchOpenSky(bbox) {
   const res = await fetch(url, { method: 'GET', mode: 'cors' });
   if (!res.ok) {
     const body = await res.text().catch(() => '');
-    throw new Error(`HTTP ${res.status}${body ? ': ' + body.slice(0, 120) : ''}`);
+    throw new Error(`Worker HTTP ${res.status}${body ? ': ' + body.slice(0, 120) : ''}`);
   }
-  return await res.json();
+  const data = await res.json();
+  return (data.states || []).map(normaliseOpenSky);
+}
+
+// Unified fetch — takes route params, returns normalised aircraft array. Chooses source, handles fallback.
+async function fetchAircraftForRoute(a, b, widthKm) {
+  const source = getActiveSource();
+  const primary = source === 'opensky' ? 'opensky' : 'adsbfi';
+
+  if (primary === 'adsbfi') {
+    // ADSB.fi uses point+radius. Query midpoint with radius covering half the route + corridor.
+    const midLat = (a.lat + b.lat) / 2;
+    const midLon = (a.lon + b.lon) / 2;
+    const halfRouteKm = haversineKm(a.lat, a.lon, b.lat, b.lon) / 2;
+    const radiusNm = Math.min(250, (halfRouteKm + widthKm) / 1.852);
+    return await fetchAdsbFiPoint(midLat, midLon, radiusNm);
+  } else {
+    const bbox = bboxAround(a.lat, a.lon, b.lat, b.lon, widthKm);
+    return await fetchOpenSkyViaWorker(bbox);
+  }
+}
+
+async function fetchAircraftForFlights(flightInputs) {
+  const source = getActiveSource();
+  if (source === 'adsbfi') {
+    // ADSB.fi supports callsign lookup directly, one at a time (rate-limited to 1/sec)
+    const results = [];
+    for (const input of flightInputs) {
+      // Try both IATA and ICAO forms
+      const cs1 = input.trim().toUpperCase();
+      const cs2 = iataFlightToIcao(input) || cs1;
+      try {
+        const found = await fetchAdsbFiCallsign(cs1);
+        if (found.length) { results.push(...found); continue; }
+        if (cs2 !== cs1) {
+          const found2 = await fetchAdsbFiCallsign(cs2);
+          if (found2.length) { results.push(...found2); continue; }
+        }
+      } catch (e) { /* skip failed lookup, continue with others */ }
+      // gentle rate-limit: 1 req/sec on ADSB.fi
+      await new Promise(r => setTimeout(r, 1050));
+    }
+    return results;
+  } else {
+    // OpenSky: fetch global snapshot, filter locally
+    const all = await fetchOpenSkyViaWorker(null);
+    return all.filter(a => {
+      const cs = a.callsign.toUpperCase().replace(/\s/g, '');
+      return flightInputs.some(input => {
+        const iata = input.trim().toUpperCase();
+        const icao = iataFlightToIcao(input) || iata;
+        return cs === iata || cs === icao;
+      });
+    });
+  }
 }
 
 function setLiveStatus(tab, msg, cls) {
@@ -1673,7 +1824,7 @@ function renderAircraftList(container, aircraft, showRouteInfo) {
   }
   const header = `
     <div class="aircraft-header">
-      <div>Callsign</div><div>Airline / origin</div>
+      <div>Callsign</div><div>Airline / aircraft</div>
       <div style="text-align:right;">Alt</div>
       <div style="text-align:right;">Speed</div>
       <div style="text-align:right;">Heading</div>
@@ -1683,6 +1834,12 @@ function renderAircraftList(container, aircraft, showRouteInfo) {
     const airline = callsignToAirline(a.callsign);
     const altFt = a.altitude ? Math.round(a.altitude * 3.281) : null;
     const spdKt = a.velocity ? Math.round(a.velocity * 1.944) : null;
+    const secondLine = a.registration || a.aircraftType
+      ? `${a.registration || ''}${a.registration && a.aircraftType ? ' · ' : ''}${a.aircraftType || ''}`
+      : (a.country || '—');
+    const trackUrl = a.source === 'adsb.fi'
+      ? `https://globe.adsb.fi/?icao=${a.icao24}`
+      : `https://opensky-network.org/aircraft-profile?icao24=${a.icao24}`;
     return `
       <div class="aircraft-row">
         <div>
@@ -1691,13 +1848,13 @@ function renderAircraftList(container, aircraft, showRouteInfo) {
         </div>
         <div>
           <div>${airline.name}</div>
-          <div class="country">${a.country || '—'}</div>
+          <div class="country">${secondLine}</div>
         </div>
         <div class="num">${altFt !== null ? altFt.toLocaleString('en-US') : '—'}<span class="u">ft</span></div>
         <div class="num">${spdKt !== null ? spdKt : '—'}<span class="u">kt</span></div>
-        <div class="num">${a.heading !== null ? Math.round(a.heading) + '°' : '—'}</div>
+        <div class="num">${a.heading !== null && a.heading !== undefined ? Math.round(a.heading) + '°' : '—'}</div>
         <div class="track-link">
-          <a href="https://opensky-network.org/aircraft-profile?icao24=${a.icao24}" target="_blank" rel="noopener">View</a>
+          <a href="${trackUrl}" target="_blank" rel="noopener">View</a>
         </div>
       </div>`;
   }).join('');
@@ -1718,30 +1875,24 @@ async function loadRouteTraffic() {
   }
 
   liveState.lastArgs = { type:'route', fromCode, toCode, airlinesRaw, widthKm };
-  document.getElementById('live-results-route').innerHTML = '<div class="live-loading">Contacting OpenSky Network…</div>';
+  const source = getActiveSource();
+  document.getElementById('live-results-route').innerHTML = `<div class="live-loading">Contacting ${DATA_SOURCES[source]}…</div>`;
 
   try {
-    const bbox = bboxAround(a.lat, a.lon, b.lat, b.lon, widthKm);
-    const data = await fetchOpenSky(bbox);
-    const states = data.states || [];
+    let aircraft = await fetchAircraftForRoute(a, b, widthKm);
+    aircraft = aircraft.filter(x => x.lat !== null && x.lon !== null && !x.onGround);
+
     const airlineFilter = airlinesRaw ? airlinesRaw.split(',').map(s=>s.trim().toUpperCase()).filter(Boolean) : [];
 
-    const parsed = states.map(s => ({
-      icao24: s[0], callsign: (s[1]||'').trim(), country: s[2],
-      lon: s[5], lat: s[6], altitude: s[7], onGround: s[8],
-      velocity: s[9], heading: s[10],
-    })).filter(x => x.lat !== null && x.lon !== null && !x.onGround);
+    // Corridor filter — cross-track distance from great-circle line
+    let filtered = aircraft.filter(x => crossTrackKm(x.lat, x.lon, a.lat, a.lon, b.lat, b.lon) <= widthKm);
 
-    // apply corridor filter: cross-track distance ≤ widthKm
-    let filtered = parsed.filter(x => crossTrackKm(x.lat, x.lon, a.lat, a.lon, b.lat, b.lon) <= widthKm);
-
-    // apply airline filter — matches IATA (AY) or ICAO (FIN) prefix
+    // Airline filter — match IATA or ICAO callsign prefix
     if (airlineFilter.length) {
       filtered = filtered.filter(x => {
-        const cs = (x.callsign||'').toUpperCase();
+        const cs = (x.callsign || '').toUpperCase();
         return airlineFilter.some(af => {
           if (cs.startsWith(af)) return true;
-          // if user gave IATA, also check ICAO
           for (const [icao, info] of Object.entries(airlineMap)) {
             if (info.iata === af && cs.startsWith(icao)) return true;
           }
@@ -1750,85 +1901,77 @@ async function loadRouteTraffic() {
       });
     }
 
-    // sort: nearest to great-circle midpoint first, so aircraft actively en-route bubble up
+    // Sort: nearest to great-circle midpoint first
     const midLat = (a.lat + b.lat) / 2, midLon = (a.lon + b.lon) / 2;
     filtered.sort((x, y) => haversineKm(x.lat, x.lon, midLat, midLon) - haversineKm(y.lat, y.lon, midLat, midLon));
     filtered = filtered.slice(0, 30);
 
     const totalKm = Math.round(haversineKm(a.lat, a.lon, b.lat, b.lon));
-    setLiveStatus('route', `<b>${filtered.length}</b> aircraft airborne within ${widthKm}km of the ${a.code}→${b.code} great-circle (${totalKm}km total)${airlineFilter.length ? ' · filter: '+airlineFilter.join(', ') : ''}.`, 'ok');
+    setLiveStatus('route', `<b>${filtered.length}</b> aircraft airborne within ${widthKm}km of the ${a.code}→${b.code} great-circle (${totalKm}km total)${airlineFilter.length ? ' · filter: '+airlineFilter.join(', ') : ''} · source: <b>${DATA_SOURCES[source]}</b>`, 'ok');
     renderAircraftList(document.getElementById('live-results-route'), filtered, true);
     updateStamp(); markPulse('ok');
   } catch (e) {
     markPulse('error');
-    if (e.friendly === 'no_worker') {
-      setLiveStatus('route', `<b>Worker URL not configured.</b> Live data needs a Cloudflare Worker proxy (OpenSky removed anonymous browser access in March 2026). Click <b>⚙ Worker URL</b> above to add yours, or ask Claude for the 20-minute setup guide.`, 'err');
-    } else if (e.message.includes('Failed to fetch') || e.message.includes('NetworkError') || e.name === 'TypeError') {
-      setLiveStatus('route', `<b>Worker unreachable.</b> Check the URL is correct and the Worker is deployed. Test it by opening <code>[your-worker-url]/health</code> in a new tab — it should return <code>{"ok":true}</code>.`, 'err');
-    } else if (e.message.includes('429')) {
-      setLiveStatus('route', `<b>Rate-limited.</b> OpenSky registered accounts get 4,000 credits/day. If you've hit the limit, wait or upgrade to a data-contributor account.`, 'err');
-    } else if (e.message.includes('401') || e.message.includes('403')) {
-      setLiveStatus('route', `<b>Auth error.</b> The Worker's OpenSky credentials are wrong or expired. In the Cloudflare dashboard, check the <code>OPENSKY_CLIENT_ID</code> and <code>OPENSKY_CLIENT_SECRET</code> secrets.`, 'err');
-    } else {
-      setLiveStatus('route', `<b>Error:</b> ${e.message}. Try again in a moment.`, 'err');
-    }
+    handleFetchError('route', e, source);
     document.getElementById('live-results-route').innerHTML = '';
   }
+}
+
+function handleFetchError(tab, e, source) {
+  const isNoWorker = e.friendly === 'no_worker';
+  const isNetwork = e.message.includes('Failed to fetch') || e.message.includes('NetworkError') || e.name === 'TypeError';
+  const is429 = e.message.includes('429');
+  const isAuth = e.message.includes('401') || e.message.includes('403');
+
+  let msg;
+  if (isNoWorker) {
+    msg = `<b>OpenSky selected but no Worker URL configured.</b> Either switch to ADSB.fi via <b>⚙ Source</b>, or add a Worker URL via <b>⚙ Worker URL</b>.`;
+  } else if (source === 'adsbfi' && isNetwork) {
+    msg = `<b>ADSB.fi unreachable.</b> The community feed may be down or your network is blocking it. Try switching to OpenSky via <b>⚙ Source</b>, or check <a href="https://adsb.fi" target="_blank">adsb.fi</a>.`;
+  } else if (source === 'opensky' && isNetwork) {
+    msg = `<b>Worker unreachable.</b> Check the URL and Worker deployment.`;
+  } else if (is429) {
+    msg = `<b>Rate-limited.</b> ${source === 'adsbfi' ? 'ADSB.fi allows 1 request/sec — auto-refresh is set to 30s so this is unusual. Wait a moment.' : 'OpenSky quota exceeded — wait or switch to ADSB.fi.'}`;
+  } else if (isAuth) {
+    msg = `<b>Auth error.</b> Check the Worker's OpenSky credentials in Cloudflare secrets.`;
+  } else if (source === 'opensky' && e.message.includes('522')) {
+    msg = `<b>OpenSky timed out (522).</b> OpenSky is blocking Cloudflare Worker IPs. Switch to ADSB.fi via <b>⚙ Source</b> — it doesn't need a proxy.`;
+  } else {
+    msg = `<b>Error:</b> ${e.message}. Try again or switch source.`;
+  }
+  setLiveStatus(tab, msg, 'err');
 }
 
 async function loadFlightLookup() {
   const raw = document.getElementById('live-flightnum').value.trim();
   if (!raw) {
-    setLiveStatus('flight', '<b>Enter one or more flight numbers</b> to look up. Example: <code>AY123, BA745, LH441</code>.', 'err');
+    setLiveStatus('flight', '<b>Enter one or more flight numbers.</b> Example: <code>AY123, BA745, LH441</code>.', 'err');
     return;
   }
   const flights = raw.split(',').map(s => s.trim().toUpperCase()).filter(Boolean);
-  // For each, compute both IATA form and ICAO form so we can match either against the callsign
-  const targets = flights.map(f => ({
-    input: f,
-    icao: iataFlightToIcao(f) || f,
-    iata: f,
-  }));
-
   liveState.lastArgs = { type:'flight', raw };
-  document.getElementById('live-results-flight').innerHTML = '<div class="live-loading">Scanning ~15,000 airborne aircraft worldwide…</div>';
+  const source = getActiveSource();
+  document.getElementById('live-results-flight').innerHTML = `<div class="live-loading">Looking up ${flights.length} flight(s) via ${DATA_SOURCES[source]}${source === 'adsbfi' && flights.length > 1 ? ' (1 req/sec, please wait)' : ''}…</div>`;
 
   try {
-    const data = await fetchOpenSky(null); // global fetch
-    const states = data.states || [];
-    const parsed = states.map(s => ({
-      icao24: s[0], callsign: (s[1]||'').trim().toUpperCase(), country: s[2],
-      lon: s[5], lat: s[6], altitude: s[7], onGround: s[8],
-      velocity: s[9], heading: s[10],
-    })).filter(x => x.callsign);
-
-    const found = [];
-    const notFound = [];
-    targets.forEach(t => {
-      const match = parsed.find(x => x.callsign === t.icao || x.callsign === t.iata || x.callsign.replace(/\s/g,'') === t.icao || x.callsign.replace(/\s/g,'') === t.iata);
-      if (match) found.push(match);
-      else notFound.push(t.input);
+    const found = await fetchAircraftForFlights(flights);
+    const foundCallsigns = new Set(found.map(f => f.callsign.replace(/\s/g,'').toUpperCase()));
+    const notFound = flights.filter(input => {
+      const iata = input.toUpperCase();
+      const icao = (iataFlightToIcao(input) || iata).toUpperCase();
+      return !foundCallsigns.has(iata) && !foundCallsigns.has(icao);
     });
 
     let msg = '';
     if (found.length) msg += `<b>${found.length} airborne:</b> ${found.map(f => f.callsign).join(', ')}. `;
-    if (notFound.length) msg += `<b>${notFound.length} not currently airborne:</b> ${notFound.join(', ')} — either not in the air right now, uses a different callsign, or isn't transmitting ADS-B.`;
+    if (notFound.length) msg += `<b>${notFound.length} not currently airborne:</b> ${notFound.join(', ')} — either not in the air right now, uses a different callsign, or isn't in the ADS-B feed.`;
+    msg += ` · source: <b>${DATA_SOURCES[source]}</b>`;
     setLiveStatus('flight', msg || 'No matches.', found.length ? 'ok' : 'err');
     renderAircraftList(document.getElementById('live-results-flight'), found, false);
     updateStamp(); markPulse('ok');
   } catch (e) {
     markPulse('error');
-    if (e.friendly === 'no_worker') {
-      setLiveStatus('flight', `<b>Worker URL not configured.</b> Click <b>⚙ Worker URL</b> above to add yours.`, 'err');
-    } else if (e.message.includes('Failed to fetch') || e.message.includes('NetworkError') || e.name === 'TypeError') {
-      setLiveStatus('flight', `<b>Worker unreachable.</b> Check the URL and that the Worker is deployed.`, 'err');
-    } else if (e.message.includes('429')) {
-      setLiveStatus('flight', `<b>Rate-limited.</b> Wait a few minutes.`, 'err');
-    } else if (e.message.includes('401') || e.message.includes('403')) {
-      setLiveStatus('flight', `<b>Auth error.</b> Check the Worker's OpenSky credentials in Cloudflare.`, 'err');
-    } else {
-      setLiveStatus('flight', `<b>Error:</b> ${e.message}.`, 'err');
-    }
+    handleFetchError('flight', e, source);
     document.getElementById('live-results-flight').innerHTML = '';
   }
 }
@@ -1851,11 +1994,53 @@ function setLiveTab(tab) {
   document.getElementById('live-body-flight').classList.toggle('hidden', tab !== 'flight');
 }
 
+/* Live traffic contacts ADSB.fi, so it must wait for the consent choice.
+   Default (no choice yet) and "Decline" both keep it switched off. */
+function liveConsentOk() {
+  try { return localStorage.getItem('fd_consent') === 'accepted'; } catch (e) { return false; }
+}
+function stopLiveAutoRefresh() {
+  if (liveState.timer) { clearInterval(liveState.timer); liveState.timer = null; }
+}
+function startLiveIfAllowed() {
+  if (!liveConsentOk()) {
+    stopLiveAutoRefresh();
+    setLiveStatus('route', '<b>Live tracking is off.</b> It requests public flight data from ADSB.fi, so it starts only once you accept the storage &amp; data notice.', '');
+    setLiveStatus('flight', '<b>Live tracking is off.</b> It requests public flight data from ADSB.fi, so it starts only once you accept the storage &amp; data notice.', '');
+    return;
+  }
+  loadRouteTraffic();
+  startLiveAutoRefresh();
+}
 function startLiveAutoRefresh() {
   if (liveState.timer) clearInterval(liveState.timer);
   liveState.timer = setInterval(() => {
     if (liveState.lastArgs) refreshLive();
   }, 30000);
+}
+
+/* ---------- Data source selection modal ---------- */
+function openSourceSettings() {
+  const current = getActiveSource();
+  document.getElementById('src-adsbfi').checked = current === 'adsbfi';
+  document.getElementById('src-opensky').checked = current === 'opensky';
+  document.getElementById('source-modal-backdrop').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeSourceSettings() {
+  document.getElementById('source-modal-backdrop').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function saveSourceSelection() {
+  const chosen = document.querySelector('input[name="datasrc"]:checked')?.value || 'adsbfi';
+  setActiveSource(chosen);
+  updateSourceLabel();
+  closeSourceSettings();
+  refreshLive();
+}
+function updateSourceLabel() {
+  const src = getActiveSource();
+  document.getElementById('live-source-label').textContent = src === 'adsbfi' ? 'ADSB.fi' : 'OpenSky Network';
 }
 
 /* ---------- Worker URL settings modal ---------- */
@@ -1982,6 +2167,7 @@ function checkConsent() {
 function setConsent(accepted) {
   localStorage.setItem('fd_consent', accepted ? 'accepted' : 'declined');
   document.getElementById('cookie-banner').classList.remove('show');
+  if (accepted) { startLiveIfAllowed(); } else { stopLiveAutoRefresh(); }
   if (!accepted) {
     // if declined, clear any non-essential stored state (keep the consent flag itself)
     localStorage.removeItem('flightdesk_watchlist');
@@ -2021,9 +2207,9 @@ function setConsent(accepted) {
   renderWatchlist();
   runSearch();
   checkConsent();
-  // Live traffic: try initial fetch and start 30s auto-refresh
-  loadRouteTraffic();
-  startLiveAutoRefresh();
+  updateSourceLabel();
+  // Live traffic: only after the visitor has accepted the data notice
+  startLiveIfAllowed();
 })();
 </script>
 <!-- Worker settings modal -->
@@ -2045,6 +2231,35 @@ function setConsent(accepted) {
     <h3 style="margin-top:24px;">How this works</h3>
     <p style="font-size:12px;">Your Worker URL is stored only in your browser's localStorage — never sent anywhere except to OpenSky (via your Worker). The Worker holds your OpenSky OAuth2 credentials on Cloudflare's side, so nothing sensitive ever appears in the dashboard's code.</p>
     <p style="font-size:12px;">Free tier limits: Cloudflare Workers give 100,000 requests/day; OpenSky registered accounts give 4,000 API credits/day. At 30-second auto-refresh that's ~2,880 requests/day — comfortably within both.</p>
+  </div>
+</div>
+
+<!-- Data source selection modal -->
+<div class="modal-backdrop" id="source-modal-backdrop" onclick="if(event.target===this)closeSourceSettings()">
+  <div class="modal">
+    <button class="close-x" onclick="closeSourceSettings()" aria-label="Close">×</button>
+    <h2>Live data source</h2>
+    <p class="updated">Choose where FlightDesk pulls live aircraft positions from</p>
+    <div style="display:flex; flex-direction:column; gap:12px; margin-top:16px;">
+      <label style="display:flex; gap:12px; align-items:flex-start; padding:14px; border:1px solid var(--line-soft); border-radius:3px; cursor:pointer;" onclick="event.preventDefault(); document.getElementById('src-adsbfi').checked = true;">
+        <input type="radio" name="datasrc" id="src-adsbfi" value="adsbfi" style="margin-top:3px;">
+        <div>
+          <div style="font-weight:600; font-family:'Fraunces',serif; font-size:16px;">ADSB.fi <span style="font-size:11px; color:var(--ok); background:#E8F1E6; padding:2px 6px; border-radius:2px; margin-left:6px;">RECOMMENDED</span></div>
+          <div style="font-size:12px; color:var(--muted); margin-top:4px;">Finnish community ADS-B network. No auth, no proxy, no API key. Works directly from your browser. Includes aircraft registration and type. Rate limit: 1 request/second (well within our 30s auto-refresh). Coverage strong over Europe and Nordic region.</div>
+        </div>
+      </label>
+      <label style="display:flex; gap:12px; align-items:flex-start; padding:14px; border:1px solid var(--line-soft); border-radius:3px; cursor:pointer;" onclick="event.preventDefault(); document.getElementById('src-opensky').checked = true;">
+        <input type="radio" name="datasrc" id="src-opensky" value="opensky" style="margin-top:3px;">
+        <div>
+          <div style="font-weight:600; font-family:'Fraunces',serif; font-size:16px;">OpenSky Network <span style="font-size:11px; color:var(--muted); background:var(--paper-2); padding:2px 6px; border-radius:2px; margin-left:6px;">VIA WORKER</span></div>
+          <div style="font-size:12px; color:var(--muted); margin-top:4px;">Requires a Cloudflare Worker proxy (⚙ Worker URL). OpenSky sometimes blocks Cloudflare IPs at the network level — if you see 522 timeouts, switch to ADSB.fi.</div>
+        </div>
+      </label>
+    </div>
+    <div style="display:flex; gap:10px; justify-content:flex-end; margin-top:20px;">
+      <button onclick="closeSourceSettings()" style="padding:10px 18px; background:transparent; border:1px solid var(--line-soft); font-family:inherit; font-size:12px; text-transform:uppercase; letter-spacing:0.1em; cursor:pointer; border-radius:2px;">Cancel</button>
+      <button onclick="saveSourceSelection()" style="padding:10px 18px; background:var(--ink); color:var(--paper); border:none; font-family:inherit; font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:0.1em; cursor:pointer; border-radius:2px;">Save</button>
+    </div>
   </div>
 </div>
 
