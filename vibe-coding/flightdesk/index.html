@@ -1615,13 +1615,17 @@ function callsignToAirline(callsign) {
 }
 
 function iataFlightToIcao(input) {
-  // "AY123" → "FIN123", "BA745" → "BAW745"
+  // "AY123" → "FIN123", "BA745" → "BAW745", "U2 32MN" → "EZY32MN".
+  // Flight numbers start with a digit and may end in letters (EZY32MN, RYR22SA).
   const cleaned = input.trim().toUpperCase().replace(/\s+/g,'');
-  const m = cleaned.match(/^([A-Z]{2,3})(\d+[A-Z]?)$/);
+  // ICAO form: three letters + flight number
+  let m = cleaned.match(/^([A-Z]{3})([0-9][0-9A-Z]*)$/);
+  if (m) return m[1] + m[2];
+  // IATA form: two-character designator, which may contain a digit (U2, W6)
+  m = cleaned.match(/^([A-Z0-9]{2})([0-9][0-9A-Z]*)$/);
   if (!m) return null;
   const [, prefix, num] = m;
-  if (prefix.length === 3) return prefix + num; // already ICAO
-  // find ICAO for this IATA
+  if (!/[A-Z]/.test(prefix)) return null;       // "12…" is not an airline
   for (const [icao, info] of Object.entries(airlineMap)) {
     if (info.iata === prefix) return icao + num;
   }
@@ -1712,6 +1716,15 @@ function normaliseOpenSky(state) {
   };
 }
 
+/* adsb.fi has returned several shapes over time: {ac:[…]}, {aircraft:[…]}
+   or a bare array. Its docs note the geo endpoint used a different format from
+   the other v2 endpoints, so every adsb.fi call goes through this one parser. */
+function adsbList(data) {
+  if (Array.isArray(data)) return data;
+  if (data && Array.isArray(data.ac)) return data.ac;
+  if (data && Array.isArray(data.aircraft)) return data.aircraft;
+  return [];
+}
 async function fetchAdsbFiPoint(lat, lon, distNm) {
   // adsb.fi geographic lookup. v3 is the current public endpoint; the old
   // v2/lat/lon/dist is deprecated (and returned a different shape), so try
@@ -1731,21 +1744,15 @@ async function fetchAdsbFiPoint(lat, lon, distNm) {
   }
   if (!res) throw (lastErr || new Error('ADSB.fi unreachable'));
 
-  const data = await res.json();
-  // Accept every shape adsb.fi has used: {ac:[…]}, {aircraft:[…]} or a bare array.
-  const list = Array.isArray(data) ? data
-             : Array.isArray(data.ac) ? data.ac
-             : Array.isArray(data.aircraft) ? data.aircraft
-             : [];
-  return list.map(normaliseAdsbFi);
+  return adsbList(await res.json()).map(normaliseAdsbFi);
 }
 
 async function fetchAdsbFiCallsign(callsign) {
   const url = `https://opendata.adsb.fi/api/v2/callsign/${encodeURIComponent(callsign)}`;
   const res = await fetch(url, { method: 'GET', mode: 'cors' });
+  if (res.status === 404) return [];            // no such callsign airborne
   if (!res.ok) throw new Error(`ADSB.fi HTTP ${res.status}`);
-  const data = await res.json();
-  return (data.ac || []).map(normaliseAdsbFi);
+  return adsbList(await res.json()).map(normaliseAdsbFi);
 }
 
 async function fetchOpenSkyViaWorker(bbox) {
@@ -1971,6 +1978,7 @@ async function loadFlightLookup() {
   liveState.lastArgs = { type:'flight', raw };
   const source = getActiveSource();
   document.getElementById('live-results-flight').innerHTML = `<div class="live-loading">Looking up ${flights.length} flight(s) via ${DATA_SOURCES[source]}${source === 'adsbfi' && flights.length > 1 ? ' (1 req/sec, please wait)' : ''}…</div>`;
+  setLiveStatus('flight', `Searching for <b>${flights.join(', ')}</b>…`, '');
 
   try {
     const found = await fetchAircraftForFlights(flights);
