@@ -484,9 +484,9 @@
       <div class="live-body hidden" id="live-body-flight">
         <div class="live-controls flight">
           <div class="lf">
-            <label>Flight number(s)</label>
-            <input type="text" id="live-flightnum" placeholder="AY123, BA745, LH441">
-            <span class="helper">Enter one or several, comma-separated. IATA (AY123) or ICAO (FIN123) both work.</span>
+            <label>Flight number, hex code or registration</label>
+            <input type="text" id="live-flightnum" placeholder="UA2268, A76F87, G-UZHW">
+            <span class="helper">Comma-separate several. Flight number as IATA (UA2268) or ICAO (UAL2268), the 6-character hex code shown on adsb.fi (A76F87), or a registration (N57870, G-UZHW).</span>
           </div>
           <div class="lf">
             <label>&nbsp;</label>
@@ -1583,6 +1583,9 @@ const airlineMap = {
   AUA:{iata:'OS', name:'Austrian'}, LOT:{iata:'LO', name:'LOT Polish'},
   CSA:{iata:'OK', name:'Czech Airlines'}, ICE:{iata:'FI', name:'Icelandair'},
   QFA:{iata:'QF', name:'Qantas'}, ETH:{iata:'ET', name:'Ethiopian'},
+  JBU:{iata:'B6', name:'JetBlue'}, ASA:{iata:'AS', name:'Alaska Airlines'},
+  FFT:{iata:'F9', name:'Frontier'}, SWA:{iata:'WN', name:'Southwest'},
+  EXS:{iata:'LS', name:'Jet2'}, WZZ:{iata:'W6', name:'Wizz Air'},
 };
 
 const liveState = {
@@ -1747,6 +1750,42 @@ async function fetchAdsbFiPoint(lat, lon, distNm) {
   return adsbList(await res.json()).map(normaliseAdsbFi);
 }
 
+async function fetchAdsbFiHex(hex) {
+  const url = `https://opendata.adsb.fi/api/v2/hex/${encodeURIComponent(hex.toLowerCase())}`;
+  const res = await fetch(url, { method: 'GET', mode: 'cors' });
+  if (res.status === 404) return [];
+  if (!res.ok) throw new Error(`ADSB.fi HTTP ${res.status}`);
+  return adsbList(await res.json()).map(normaliseAdsbFi);
+}
+async function fetchAdsbFiReg(reg) {
+  const url = `https://opendata.adsb.fi/api/v2/registration/${encodeURIComponent(reg)}`;
+  const res = await fetch(url, { method: 'GET', mode: 'cors' });
+  if (res.status === 404) return [];
+  if (!res.ok) throw new Error(`ADSB.fi HTTP ${res.status}`);
+  return adsbList(await res.json()).map(normaliseAdsbFi);
+}
+/* What kind of identifier did the user type?
+   hex  — 6 hex digits, the transponder address shown as "Hex" on adsb.fi (A76F87)
+   reg  — a registration: has a dash (G-UZHW, OH-LWA) or is a US N-number (N57870)
+   Anything can also be a callsign, so callsign is always tried as well. */
+function idKinds(raw) {
+  const s = raw.trim().toUpperCase().replace(/\s+/g, '');
+  return {
+    s,
+    hex: /^[0-9A-F]{6}$/.test(s),
+    reg: /^[A-Z0-9]{1,3}-[A-Z0-9]{1,5}$/.test(s) || /^N[0-9][0-9A-Z]{0,4}$/.test(s),
+  };
+}
+/* Does this aircraft answer to what the user typed? */
+function aircraftMatches(a, raw) {
+  const k = idKinds(raw);
+  const cs = (a.callsign || '').replace(/\s/g, '').toUpperCase();
+  const icao = (iataFlightToIcao(raw) || k.s).toUpperCase();
+  if (cs && (cs === k.s || cs === icao)) return true;
+  if (a.icao24 && a.icao24.toUpperCase() === k.s) return true;
+  if (a.registration && a.registration.replace(/-/g, '').toUpperCase() === k.s.replace(/-/g, '')) return true;
+  return false;
+}
 async function fetchAdsbFiCallsign(callsign) {
   const url = `https://opendata.adsb.fi/api/v2/callsign/${encodeURIComponent(callsign)}`;
   const res = await fetch(url, { method: 'GET', mode: 'cors' });
@@ -1796,35 +1835,38 @@ async function fetchAircraftForRoute(a, b, widthKm) {
 async function fetchAircraftForFlights(flightInputs) {
   const source = getActiveSource();
   if (source === 'adsbfi') {
-    // ADSB.fi supports callsign lookup directly, one at a time (rate-limited to 1/sec)
+    // adsb.fi allows about one request per second, so space every call out.
     const results = [];
+    let last = 0;
+    const paced = async (fn) => {
+      const wait = 1050 - (Date.now() - last);
+      if (last && wait > 0) await new Promise(r => setTimeout(r, wait));
+      last = Date.now();
+      return fn();
+    };
     for (const input of flightInputs) {
-      // Try both IATA and ICAO forms
-      const cs1 = input.trim().toUpperCase();
-      const cs2 = iataFlightToIcao(input) || cs1;
-      try {
-        const found = await fetchAdsbFiCallsign(cs1);
-        if (found.length) { results.push(...found); continue; }
-        if (cs2 !== cs1) {
-          const found2 = await fetchAdsbFiCallsign(cs2);
-          if (found2.length) { results.push(...found2); continue; }
-        }
-      } catch (e) { /* skip failed lookup, continue with others */ }
-      // gentle rate-limit: 1 req/sec on ADSB.fi
-      await new Promise(r => setTimeout(r, 1050));
+      const k = idKinds(input);
+      const icao = iataFlightToIcao(input) || k.s;
+      // Most specific first: a hex code or registration identifies one aircraft.
+      const attempts = [];
+      if (k.hex) attempts.push(() => fetchAdsbFiHex(k.s));
+      if (k.reg) attempts.push(() => fetchAdsbFiReg(k.s));
+      attempts.push(() => fetchAdsbFiCallsign(k.s));
+      if (icao !== k.s) attempts.push(() => fetchAdsbFiCallsign(icao));
+      for (const attempt of attempts) {
+        try {
+          const found = await paced(attempt);
+          if (found.length) { results.push(...found); break; }
+        } catch (e) { /* try the next form */ }
+      }
     }
-    return results;
+    // the same aircraft can match two inputs — keep one copy
+    const seen = new Set();
+    return results.filter(a => { const id = a.icao24 || a.callsign; if (seen.has(id)) return false; seen.add(id); return true; });
   } else {
     // OpenSky: fetch global snapshot, filter locally
     const all = await fetchOpenSkyViaWorker(null);
-    return all.filter(a => {
-      const cs = a.callsign.toUpperCase().replace(/\s/g, '');
-      return flightInputs.some(input => {
-        const iata = input.trim().toUpperCase();
-        const icao = iataFlightToIcao(input) || iata;
-        return cs === iata || cs === icao;
-      });
-    });
+    return all.filter(a => flightInputs.some(input => aircraftMatches(a, input)));
   }
 }
 
@@ -1845,7 +1887,9 @@ function updateStamp() {
 
 function renderAircraftList(container, aircraft, showRouteInfo) {
   if (aircraft.length === 0) {
-    container.innerHTML = '<div class="live-empty">No airborne aircraft matched. Try widening the corridor, removing the airline filter, or the flight may not be in the air right now.</div>';
+    container.innerHTML = showRouteInfo
+      ? '<div class="live-empty">No airborne aircraft matched. Try widening the corridor, removing the airline filter, or the flight may not be in the air right now.</div>'
+      : '<div class="live-empty">Nothing matched. Check the identifier, or look the aircraft up on <a href="https://globe.adsb.fi" target="_blank" rel="noopener">globe.adsb.fi</a> and paste its callsign or hex code here.</div>';
     return;
   }
   const header = `
@@ -1982,16 +2026,11 @@ async function loadFlightLookup() {
 
   try {
     const found = await fetchAircraftForFlights(flights);
-    const foundCallsigns = new Set(found.map(f => f.callsign.replace(/\s/g,'').toUpperCase()));
-    const notFound = flights.filter(input => {
-      const iata = input.toUpperCase();
-      const icao = (iataFlightToIcao(input) || iata).toUpperCase();
-      return !foundCallsigns.has(iata) && !foundCallsigns.has(icao);
-    });
+    const notFound = flights.filter(input => !found.some(a => aircraftMatches(a, input)));
 
     let msg = '';
     if (found.length) msg += `<b>${found.length} airborne:</b> ${found.map(f => f.callsign).join(', ')}. `;
-    if (notFound.length) msg += `<b>${notFound.length} not currently airborne:</b> ${notFound.join(', ')} — either not in the air right now, uses a different callsign, or isn't in the ADS-B feed.`;
+    if (notFound.length) msg += `<b>${notFound.length} not found:</b> ${notFound.join(', ')} — not airborne right now, flying under a different callsign, or outside receiver coverage (mostly over oceans).`;
     msg += ` · source: <b>${DATA_SOURCES[source]}</b>`;
     setLiveStatus('flight', msg || 'No matches.', found.length ? 'ok' : 'err');
     renderAircraftList(document.getElementById('live-results-flight'), found, false);
