@@ -329,6 +329,8 @@ thead th{background:var(--surface3);text-align:left;font-weight:650;font-size:12
 /* the English gloss under a Finnish column heading, in FI+EN mode */
 thead th .the{display:block;margin-top:2px;font-family:var(--fs);font-size:11px;font-weight:500;
   letter-spacing:0;text-transform:none;color:var(--ink3)}
+/* the English gloss under a descriptive Finnish table cell, in FI+EN mode */
+tbody td .tde{display:block;margin-top:2px;font-family:var(--fs);font-size:12px;font-weight:400;color:var(--ink3)}
 tbody td{padding:10px 14px;border-bottom:1px solid var(--line2);vertical-align:top}
 tbody tr:last-child td{border-bottom:0}
 tbody tr:hover{background:var(--surface2)}
@@ -4195,10 +4197,10 @@ const GRAMMAR_A = [
      cf:"Sana talo saa päätteitä", ce:"The word talo, layer by layer",
      head:["Sana","Mitä lisättiin","Merkitys"],
      rows:[
-       ["talo","perusmuoto","house"],
-       ["talo*ssa","-ssa = sisällä","in the house"],
-       ["talossa*ni","-ni = minun","in my house"],
-       ["talossani*kin","-kin = myös","in my house too"]
+       ["talo",{f:"perusmuoto",e:"base form"},"house"],
+       ["talo*ssa",{f:"-ssa = sisällä",e:"-ssa = inside"},"in the house"],
+       ["talossa*ni",{f:"-ni = minun",e:"-ni = my"},"in my house"],
+       ["talossani*kin",{f:"-kin = myös",e:"-kin = too"},"in my house too"]
      ],
      nf:"Järjestys on aina sama: vartalo, sija, omistus, liitepartikkeli.",
      ne:"The order is fixed: stem, then number, then case, then possessive, then clitic. English needs five words for that last form; Finnish needs one. Nobody is showing off here — this is simply where the grammar lives."},
@@ -4210,11 +4212,11 @@ const GRAMMAR_A = [
      cf:"Englanti ja suomi", ce:"Things English has that Finnish does not",
      head:["Englannissa","Suomessa","Esimerkki"],
      rows:[
-       ["a / the","ei artikkeleita","talo = a house tai the house"],
-       ["he / she","hän, sama molemmille","Hän on lääkäri."],
-       ["will go","preesens riittää","Menen huomenna."],
-       ["I have","olla + -lla","Minulla on auto."],
-       ["in, on, at, from","sijapäätteet","talo*ssa, pöydä*llä"]
+       ["a / the",{f:"ei artikkeleita",e:"no articles"},{f:"talo = a house tai the house",e:"talo = a house or the house"}],
+       ["he / she",{f:"hän, sama molemmille",e:"hän — one word for both"},"Hän on lääkäri."],
+       ["will go",{f:"preesens riittää",e:"the present tense is enough"},"Menen huomenna."],
+       ["I have",{f:"olla + -lla",e:"olla + -lla — no verb for ‘have’"},"Minulla on auto."],
+       ["in, on, at, from",{f:"sijapäätteet",e:"case endings"},"talo*ssa, pöydä*llä"]
      ],
      nf:"Suomessa ei ole myöskään kieliopillista sukua.",
      ne:"There is also no grammatical gender anywhere in the language, not on nouns, not on adjectives, not on pronouns. A Finnish sentence can be entirely neutral about whether the person in it is a man or a woman, and often is."},
@@ -4273,9 +4275,9 @@ const GRAMMAR_A = [
      cf:"Suomen aakkoset", ce:"The Finnish alphabet",
      head:["Ryhmä","Kirjaimet","Huomio"],
      rows:[
-       ["Vokaalit","a e i o u y ä ö","kahdeksan vokaalia"],
-       ["Konsonantit","d h j k l m n p r s t v","suomen omat konsonantit"],
-       ["Lainakirjaimet","b c f g q w x z å š ž","lähes vain lainasanoissa"]
+       [{f:"Vokaalit",e:"Vowels"},"a e i o u y ä ö",{f:"kahdeksan vokaalia",e:"eight vowels"}],
+       [{f:"Konsonantit",e:"Consonants"},"d h j k l m n p r s t v",{f:"suomen omat konsonantit",e:"native Finnish consonants"}],
+       [{f:"Lainakirjaimet",e:"Loan letters"},"b c f g q w x z å š ž",{f:"lähes vain lainasanoissa",e:"almost only in loanwords"}]
      ],
      nf:"Kirjain g esiintyy omaperäisissä sanoissa vain yhdistelmässä ng.",
      ne:"Two details matter. The letter g appears in native words only inside the cluster ng (Helsingissä), never alone. And å is called ruotsalainen o, the Swedish o: it exists in the alphabet for Swedish names and occurs in no Finnish word."},
@@ -4290,10 +4292,10 @@ const GRAMMAR_A = [
      cf:"Neljä sanaa, neljä pituutta", ce:"Four shapes from the same letters",
      head:["Sana","Mikä on pitkä","Merkitys"],
      rows:[
-       ["tuli","ei mikään","fire"],
-       ["tuuli","vokaali uu","wind"],
-       ["tulli","konsonantti ll","customs"],
-       ["tuulli","sekä uu että ll","ei ole sana suomessa"]
+       ["tuli",{f:"ei mikään",e:"nothing"},"fire"],
+       ["tuuli",{f:"vokaali uu",e:"the vowel uu"},"wind"],
+       ["tulli",{f:"konsonantti ll",e:"the consonant ll"},"customs"],
+       ["tuulli",{f:"sekä uu että ll",e:"both uu and ll"},{f:"ei ole sana suomessa",e:"not a word in Finnish"}]
     ],
      nf:"Sana tuulli ei ole suomen sana, mutta se on täysin lausuttavissa.",
      ne:"The fourth row is the point of the table: tuulli is not a Finnish word, but it is a perfectly well-formed one. Vowel length and consonant length are two independent switches, and the system allows all four combinations even where the dictionary happens not to fill one in."},
@@ -4421,9 +4423,9 @@ const GRAMMAR_A = [
        ["työpaikka","työ + paikka","työpaika*ssa"],
        ["kesäkuu","kesä + kuu","kesäkuu*ssa"],
        ["pääkaupunki","pää + kaupunki","pääkaupungi*ssa"],
-       ["amatööri","lainasana","amatööri*ssä"],
-       ["miljonääri","lainasana","miljonääri*llä"],
-       ["tsunami","lainasana","tsunami*ssa"]
+       ["amatööri",{f:"lainasana",e:"loanword"},"amatööri*ssä"],
+       ["miljonääri",{f:"lainasana",e:"loanword"},"miljonääri*llä"],
+       ["tsunami",{f:"lainasana",e:"loanword"},"tsunami*ssa"]
      ],
      nf:"Yhdyssanassa jälkiosa ratkaisee. Lainasanassa ratkaisee viimeinen a, o, u, ä, ö tai y.",
      ne:"Compounds are two words glued together, and each half keeps its own vowels — that is why yliopisto and kesäkuu contain both camps. The ending then follows the last part only: opisto is back, so yliopistossa; kuu is back, so kesäkuussa. In loanwords the deciding factor is the last non-neutral vowel in the word: amatööri ends its harmony run on ö, so amatöörissä; tsunami has a and u, so tsunamissa."},
@@ -4477,12 +4479,12 @@ const GRAMMAR_A = [
      cf:"Kolme tärkeintä sijaa", ce:"The three forms you actually need",
      head:["Persoona","Nominatiivi","Genetiivi","Partitiivi"],
      rows:[
-       ["1. yksikkö","minä","minu*n","minu*a"],
-       ["2. yksikkö","sinä","sinu*n","sinu*a"],
-       ["3. yksikkö","hän","häne*n","hän*tä"],
-       ["1. monikko","me","meidä*n","mei*tä"],
-       ["2. monikko","te","teidä*n","tei*tä"],
-       ["3. monikko","he","heidä*n","hei*tä"]
+       [{f:"1. yksikkö",e:"1st singular"},"minä","minu*n","minu*a"],
+       [{f:"2. yksikkö",e:"2nd singular"},"sinä","sinu*n","sinu*a"],
+       [{f:"3. yksikkö",e:"3rd singular"},"hän","häne*n","hän*tä"],
+       [{f:"1. monikko",e:"1st plural"},"me","meidä*n","mei*tä"],
+       [{f:"2. monikko",e:"2nd plural"},"te","teidä*n","tei*tä"],
+       [{f:"3. monikko",e:"3rd plural"},"he","heidä*n","hei*tä"]
      ],
      nf:"Genetiivi on omistusmuoto: minun kirjani.",
      ne:"The genitive is the possessive form and it is normally paired with a possessive suffix on the noun: minun kirjani, sinun autosi, heidän talonsa. The partitive is what verbs like rakastaa, odottaa and auttaa demand, and what negation produces."},
@@ -4511,12 +4513,12 @@ const GRAMMAR_A = [
      cf:"Pronominin pois jättäminen", ce:"Dropping the subject pronoun",
      head:["Täysi lause","Ilman pronominia","Käykö?"],
      rows:[
-       ["Minä puhun suomea.","Puhun suomea.","kyllä"],
-       ["Sinä asut Espoossa.","Asut Espoossa.","kyllä"],
-       ["Me menemme kotiin.","Menemme kotiin.","kyllä"],
-       ["Te olette myöhässä.","Olette myöhässä.","kyllä"],
-       ["Hän puhuu suomea.","Puhuu suomea.","ei"],
-       ["He ovat täällä.","Ovat täällä.","ei"]
+       ["Minä puhun suomea.","Puhun suomea.",{f:"kyllä",e:"yes"}],
+       ["Sinä asut Espoossa.","Asut Espoossa.",{f:"kyllä",e:"yes"}],
+       ["Me menemme kotiin.","Menemme kotiin.",{f:"kyllä",e:"yes"}],
+       ["Te olette myöhässä.","Olette myöhässä.",{f:"kyllä",e:"yes"}],
+       ["Hän puhuu suomea.","Puhuu suomea.",{f:"ei",e:"no"}],
+       ["He ovat täällä.","Ovat täällä.",{f:"ei",e:"no"}]
      ],
      nf:"Päätteet -n, -t, -mme ja -tte ovat yksiselitteisiä. Kolmas persoona ei ole.",
      ne:"The endings -n, -t, -mme and -tte belong to exactly one person each, so the pronoun adds nothing and is routinely dropped in writing. The third person endings do not identify anybody: puhuu could have any subject in the language. So hän and he must stay unless some other subject is present."},
@@ -4615,8 +4617,8 @@ const GRAMMAR_A = [
        ["Minulla on auto.","I have a car.","minu*lla + on + auto"],
        ["Sinulla on koira.","You have a dog.","sinu*lla + on + koira"],
        ["Annalla on kiire.","Anna is in a hurry.","Anna*lla + on + kiire"],
-       ["Meillä on kaksi lasta.","We have two children.","mei*llä + on + partitiivi"],
-       ["Minulla ei ole autoa.","I do not have a car.","kielto → partitiivi"]
+       ["Meillä on kaksi lasta.","We have two children.",{f:"mei*llä + on + partitiivi",e:"mei*llä + on + partitive"}],
+       ["Minulla ei ole autoa.","I do not have a car.",{f:"kielto → partitiivi",e:"negation → partitive"}]
      ],
      nf:"Verbi on pysyy samana, vaikka omistettuja asioita olisi monta.",
      ne:"The verb stays singular on in ordinary have-sentences even when several things are owned: Minulla on kolme siskoa. Notice also that after a number above one the noun goes to the singular partitive, which is why it is lasta and siskoa rather than lapset and siskot."},
@@ -4680,10 +4682,10 @@ const GRAMMAR_A = [
      cf:"Neutraali järjestys", ce:"The neutral slots",
      head:["Paikka","Osa","Esimerkki"],
      rows:[
-       ["1","subjekti","Mies"],
-       ["2","verbi","lukee"],
-       ["3","objekti","lehteä"],
-       ["4","paikka tai aika","keittiössä"]
+       ["1",{f:"subjekti",e:"subject"},"Mies"],
+       ["2",{f:"verbi",e:"verb"},"lukee"],
+       ["3",{f:"objekti",e:"object"},"lehteä"],
+       ["4",{f:"paikka tai aika",e:"place or time"},"keittiössä"]
      ],
      nf:"Koko lause: Mies lukee lehteä keittiössä.",
      ne:"Put together: Mies lukee lehteä keittiössä, the man is reading the paper in the kitchen. This is the order you use when nothing in particular is being emphasised — a plain statement of fact."},
@@ -4941,10 +4943,10 @@ const GRAMMAR_A = [
      cf:"Kielteinen käsky", ce:"The negative imperative",
      head:["Kenelle","Rakenne","Esimerkki"],
      rows:[
-       ["sinä","älä + vartalo","Älä mene!"],
-       ["sinä","älä + vartalo","Älä puhu niin nopeasti!"],
-       ["te","älkää + vartalo + -ko/-kö","Älkää menkö!"],
-       ["te","älkää + vartalo + -ko/-kö","Älkää puhuko!"]
+       ["sinä",{f:"älä + vartalo",e:"älä + stem"},"Älä mene!"],
+       ["sinä",{f:"älä + vartalo",e:"älä + stem"},"Älä puhu niin nopeasti!"],
+       ["te",{f:"älkää + vartalo + -ko/-kö",e:"älkää + stem + -ko/-kö"},"Älkää menkö!"],
+       ["te",{f:"älkää + vartalo + -ko/-kö",e:"älkää + stem + -ko/-kö"},"Älkää puhuko!"]
      ],
      nf:"Käskyissä kieltoverbi on älä ja älkää, ei en ja ette.",
      ne:"Commands use a separate negative stem: älä to one person, älkää to several or to someone you address formally. The plural form additionally puts -ko/-kö on the main verb — menkö, puhuko — which is a leftover of an old imperative ending and simply has to be memorised."},
@@ -5117,7 +5119,7 @@ const GRAMMAR_A = [
        ["kk","k","pankki – panki*n"],
        ["pp","p","kauppa – kaupa*n"],
        ["tt","t","tyttö – tytö*n"],
-       ["k","katoaa","jalka – jala*n"],
+       ["k",{f:"katoaa",e:"disappears"},"jalka – jala*n"],
        ["p","v","leipä – leivä*n"],
        ["t","d","katu – kadu*n"],
        ["nk","ng","Helsinki – Helsingi*n"],
@@ -5136,10 +5138,10 @@ const GRAMMAR_A = [
      cf:"Sijat ja aste", ce:"Strong and weak cases, using pankki",
      head:["Aste","Sijat","Esimerkki"],
      rows:[
-       ["Vahva","nominatiivi, partitiivi, essiivi, illatiivi","pankki, pankki*a, pankki*na, pankki*in"],
-       ["Heikko","genetiivi, inessiivi, elatiivi","panki*n, panki*ssa, panki*sta"],
-       ["Heikko","adessiivi, ablatiivi, allatiivi","panki*lla, panki*lta, panki*lle"],
-       ["Heikko","translatiivi, monikon nominatiivi","panki*ksi, panki*t"]
+       [{f:"Vahva",e:"Strong"},{f:"nominatiivi, partitiivi, essiivi, illatiivi",e:"nominative, partitive, essive, illative"},"pankki, pankki*a, pankki*na, pankki*in"],
+       [{f:"Heikko",e:"Weak"},{f:"genetiivi, inessiivi, elatiivi",e:"genitive, inessive, elative"},"panki*n, panki*ssa, panki*sta"],
+       [{f:"Heikko",e:"Weak"},{f:"adessiivi, ablatiivi, allatiivi",e:"adessive, ablative, allative"},"panki*lla, panki*lta, panki*lle"],
+       [{f:"Heikko",e:"Weak"},{f:"translatiivi, monikon nominatiivi",e:"translative, plural nominative"},"panki*ksi, panki*t"]
      ],
      nf:"Muista: monikon nominatiivin -t sulkee tavun, joten se on heikko.",
      ne:"The plural -t catches people out: pankki becomes pankit, kauppa becomes kaupat, tyttö becomes tytöt. Meanwhile the illative keeps the strong grade even though it looks long: pankkiin, kauppaan, tyttöön. Partitive and essive are the other two reliably strong cases."},
@@ -5171,8 +5173,8 @@ const GRAMMAR_A = [
        ["kuunnella","kuuntele*n","nn – nt"],
        ["tavata","tapaa*n","v – p"],
        ["hakata","hakkaa*n","k – kk"],
-       ["pelätä","pelkää*n","katoaa – k"],
-       ["paeta","pakene*n","katoaa – k"],
+       ["pelätä","pelkää*n",{f:"katoaa – k",e:"(none) – k"}],
+       ["paeta","pakene*n",{f:"katoaa – k",e:"(none) – k"}],
        ["lämmetä","lämpene*n","mm – mp"]
      ],
      nf:"Verbityypin 5 verbit (tarvita, valita) eivät yleensä vaihtele lainkaan.",
@@ -5235,12 +5237,12 @@ const GRAMMAR_A = [
      cf:"Tyyppi, tunnus ja vartalo", ce:"How each type builds its stem",
      head:["Tyyppi","Infinitiivin loppu","Miten vartalo saadaan","Esimerkki"],
      rows:[
-       ["1","kaksi vokaalia: -a, -ä","poista -a/-ä","puhua → puhu-"],
-       ["2","-da / -dä","poista -da/-dä","juoda → juo-"],
-       ["3","-la, -lä, -na, -nä, -ra, -rä, -sta, -stä","poista kaksi kirjainta, lisää -e-","tulla → tule-"],
-       ["4","-ata, -ätä, -ota, -ötä, -uta, -ytä","poista -ta/-tä, lisää -a-/-ä-","haluta → halua-"],
-       ["5","-ita / -itä","poista -ta/-tä, lisää -tse-","tarvita → tarvitse-"],
-       ["6","-eta / -etä","poista -ta/-tä, lisää -ne-","vanheta → vanhene-"]
+       ["1",{f:"kaksi vokaalia: -a, -ä",e:"two vowels: -a, -ä"},{f:"poista -a/-ä",e:"drop -a/-ä"},"puhua → puhu-"],
+       ["2","-da / -dä",{f:"poista -da/-dä",e:"drop -da/-dä"},"juoda → juo-"],
+       ["3","-la, -lä, -na, -nä, -ra, -rä, -sta, -stä",{f:"poista kaksi kirjainta, lisää -e-",e:"drop two letters, add -e-"},"tulla → tule-"],
+       ["4","-ata, -ätä, -ota, -ötä, -uta, -ytä",{f:"poista -ta/-tä, lisää -a-/-ä-",e:"drop -ta/-tä, add -a-/-ä-"},"haluta → halua-"],
+       ["5","-ita / -itä",{f:"poista -ta/-tä, lisää -tse-",e:"drop -ta/-tä, add -tse-"},"tarvita → tarvitse-"],
+       ["6","-eta / -etä",{f:"poista -ta/-tä, lisää -ne-",e:"drop -ta/-tä, add -ne-"},"vanheta → vanhene-"]
      ],
      nf:"Tyypit 4, 5 ja 6 päättyvät kaikki -ta/-tä. Ratkaisee vokaali sen edessä.",
      ne:"Types 1 and 2 are easy to spot. Type 3 is the group whose infinitive ends in a consonant plus a or ä. Types 4, 5 and 6 all end in -ta/-tä and are separated only by the vowel sitting in front of it, which is why they are worth learning as a block."},
@@ -5339,15 +5341,15 @@ const GRAMMAR_A = [
        ["-o, -u, -y, -ö","katu","kadu*n","katu*a"],
        ["-a, -ä","kala","kala*n","kala*a"],
        ["-a, -ä","kylä","kylä*n","kylä*ä"],
-       ["-i, uusi lainasana","hotelli","hotelli*n","hotelli*a"],
-       ["-i, vanha sana","nimi","nime*n","nime*ä"],
-       ["-i, vanha, konsonanttivartalo","kieli","kiele*n","kiel*tä"],
+       [{f:"-i, uusi lainasana",e:"-i, new loanword"},"hotelli","hotelli*n","hotelli*a"],
+       [{f:"-i, vanha sana",e:"-i, old native word"},"nimi","nime*n","nime*ä"],
+       [{f:"-i, vanha, konsonanttivartalo",e:"-i, old word, consonant stem"},"kieli","kiele*n","kiel*tä"],
        ["-e","huone","huonee*n","huone*tta"],
        ["-nen","nainen","naise*n","nais*ta"],
        ["-si","vesi","vede*n","vet*tä"],
        ["-in","puhelin","puhelime*n","puhelin*ta"],
-       ["-us, -ys verbistä","vastaus","vastaukse*n","vastaus*ta"],
-       ["-uus, -yys adjektiivista","totuus","totuude*n","totuut*ta"]
+       [{f:"-us, -ys verbistä",e:"-us, -ys, from a verb"},"vastaus","vastaukse*n","vastaus*ta"],
+       [{f:"-uus, -yys adjektiivista",e:"-uus, -yys, from an adjective"},"totuus","totuude*n","totuut*ta"]
      ],
      nf:"Astevaihtelu toimii näiden päällä: katu – kadun, mutta partitiivissa katua.",
      ne:"Gradation operates on top of these patterns, not instead of them. katu has the stem katu- but the genitive weakens it to kadun, while the partitive katua keeps the strong grade. Think of type and gradation as two separate layers applied in order."},
@@ -5359,15 +5361,15 @@ const GRAMMAR_A = [
      cf:"i-sanat", ce:"Words ending in -i",
      head:["Sana","Genetiivi","Partitiivi","Ryhmä"],
      rows:[
-       ["nimi","nime*n","nime*ä","vanha, i → e"],
-       ["järvi","järve*n","järve*ä","vanha, i → e"],
-       ["ovi","ove*n","ove*a","vanha, i → e"],
-       ["kieli","kiele*n","kiel*tä","vanha, konsonanttivartalo"],
-       ["suuri","suure*n","suur*ta","vanha, konsonanttivartalo"],
-       ["pieni","piene*n","pien*tä","vanha, konsonanttivartalo"],
-       ["hotelli","hotelli*n","hotelli*a","uusi laina"],
-       ["banaani","banaani*n","banaani*a","uusi laina"],
-       ["pankki","panki*n","pankki*a","uusi laina, astevaihtelu"]
+       ["nimi","nime*n","nime*ä",{f:"vanha, i → e",e:"old word, i → e"}],
+       ["järvi","järve*n","järve*ä",{f:"vanha, i → e",e:"old word, i → e"}],
+       ["ovi","ove*n","ove*a",{f:"vanha, i → e",e:"old word, i → e"}],
+       ["kieli","kiele*n","kiel*tä",{f:"vanha, konsonanttivartalo",e:"old word, consonant stem"}],
+       ["suuri","suure*n","suur*ta",{f:"vanha, konsonanttivartalo",e:"old word, consonant stem"}],
+       ["pieni","piene*n","pien*tä",{f:"vanha, konsonanttivartalo",e:"old word, consonant stem"}],
+       ["hotelli","hotelli*n","hotelli*a",{f:"uusi laina",e:"new loanword"}],
+       ["banaani","banaani*n","banaani*a",{f:"uusi laina",e:"new loanword"}],
+       ["pankki","panki*n","pankki*a",{f:"uusi laina, astevaihtelu",e:"new loanword, consonant gradation"}]
      ],
      nf:"Konsonanttivartalo syntyy, kun vartalo päättyy l-, n- tai r-äänteeseen.",
      ne:"The old -i words that also have a consonant stem are those whose stem ends in l, n or r: kieli, tuuli, nuori, suuri, pieni, mieli. They take the partitive -ta/-tä directly on that consonant, giving kieltä, tuulta, nuorta, mieltä. The rest take -a/-ä on the vowel stem: nimeä, järveä, ovea."},
@@ -5394,12 +5396,12 @@ const GRAMMAR_A = [
      cf:"-us- ja -uus-sanat", ce:"Two families that look alike",
      head:["Sana","Mistä johdettu","Genetiivi","Partitiivi"],
      rows:[
-       ["vastaus","verbistä vastata","vastaukse*n","vastaus*ta"],
-       ["rakennus","verbistä rakentaa","rakennukse*n","rakennus*ta"],
-       ["kysymys","verbistä kysyä","kysymykse*n","kysymys*tä"],
-       ["totuus","adjektiivista tosi","totuude*n","totuut*ta"],
-       ["mahdollisuus","adjektiivista mahdollinen","mahdollisuude*n","mahdollisuut*ta"],
-       ["rakkaus","adjektiivista rakas","rakkaude*n","rakkaut*ta"]
+       ["vastaus",{f:"verbistä vastata",e:"from the verb vastata"},"vastaukse*n","vastaus*ta"],
+       ["rakennus",{f:"verbistä rakentaa",e:"from the verb rakentaa"},"rakennukse*n","rakennus*ta"],
+       ["kysymys",{f:"verbistä kysyä",e:"from the verb kysyä"},"kysymykse*n","kysymys*tä"],
+       ["totuus",{f:"adjektiivista tosi",e:"from the adjective tosi"},"totuude*n","totuut*ta"],
+       ["mahdollisuus",{f:"adjektiivista mahdollinen",e:"from the adjective mahdollinen"},"mahdollisuude*n","mahdollisuut*ta"],
+       ["rakkaus",{f:"adjektiivista rakas",e:"from the adjective rakas"},"rakkaude*n","rakkaut*ta"]
      ],
      nf:"Verbistä johdettu: -ukse-. Adjektiivista johdettu: -ude-.",
      ne:"Read the middle column and the pattern is clean. Action nouns from verbs go to -ukse-/-ykse-; quality nouns from adjectives go to -ude-/-yde-. Both keep the bare -s form as their consonant stem in the partitive, which is why vastausta and totuutta both end in a partitive built on a consonant."},
@@ -5466,11 +5468,11 @@ const GRAMMAR_EXEMPLAR = [
      cf:"Partitiivin päätteet", ce:"Choosing the partitive ending",
      head:["Sana päättyy","Pääte","Esimerkki"],
      rows:[
-       ["yksi vokaali (talo, kylä)","-a / -ä","talo*a · kylä*ä"],
-       ["kaksi vokaalia (maa, työ)","-ta / -tä","maa*ta · työ*tä"],
-       ["konsonantti (mies, kaunis)","-ta / -tä","mies*tä · kaunis*ta"],
+       [{f:"yksi vokaali (talo, kylä)",e:"one vowel (talo, kylä)"},"-a / -ä","talo*a · kylä*ä"],
+       [{f:"kaksi vokaalia (maa, työ)",e:"two vowels (maa, työ)"},"-ta / -tä","maa*ta · työ*tä"],
+       [{f:"konsonantti (mies, kaunis)",e:"a consonant (mies, kaunis)"},"-ta / -tä","mies*tä · kaunis*ta"],
        ["-e (huone, perhe)","-tta / -ttä","huone*tta · perhe*ttä"],
-       ["-i vieras sana (banaani)","-a / -ä","banaani*a"]
+       [{f:"-i vieras sana (banaani)",e:"-i, loanword (banaani)"},"-a / -ä","banaani*a"]
      ],
      nf:"Vokaalisointu ratkaisee, tuleeko a vai ä.",
      ne:"Vowel harmony decides a versus ä, exactly as it does everywhere else."},
@@ -5482,11 +5484,11 @@ const GRAMMAR_EXEMPLAR = [
      cf:"Neljä laukaisijaa", ce:"Four triggers",
      head:["Laukaisija","Esimerkki","Miksi"],
      rows:[
-       ["Määrä / massa","Ostan leipä*ä.","Some bread, not a whole loaf"],
-       ["Tekeminen kesken","Luen kirja*a.","I'm in the middle of the book"],
-       ["Kielto","En juo kahvi*a.","Negation always takes the partitive object"],
-       ["Numerot yli yhden","kaksi omena*a","After 2, 3, 4 … the noun stays singular partitive"],
-       ["Tunneverbit","Rakastan sinu*a.","rakastaa, pitää, odottaa, auttaa always take it"]
+       [{f:"Määrä / massa",e:"Amount / mass"},"Ostan leipä*ä.","Some bread, not a whole loaf"],
+       [{f:"Tekeminen kesken",e:"Unfinished action"},"Luen kirja*a.","I'm in the middle of the book"],
+       [{f:"Kielto",e:"Negation"},"En juo kahvi*a.","Negation always takes the partitive object"],
+       [{f:"Numerot yli yhden",e:"Numbers above one"},"kaksi omena*a","After 2, 3, 4 … the noun stays singular partitive"],
+       [{f:"Tunneverbit",e:"Emotion verbs"},"Rakastan sinu*a.","rakastaa, pitää, odottaa, auttaa always take it"]
      ]},
     {k:"pair",
      cf:"Sama verbi, eri sija", ce:"Same verb, different case, different meaning",
@@ -5565,21 +5567,21 @@ const GRAMMAR_B = [
      cf:"Kaikki 15 sijaa", ce:"All fifteen cases at a glance",
      head:["Sija","Pääte","Merkitys","Esimerkki"],
      rows:[
-       ["Nominatiivi","—","perusmuoto, subjekti","talo — Talo on iso."],
-       ["Genetiivi","-n","kenen, omistus","talo*n ovi — the door of the house"],
-       ["Akkusatiivi","-n / -t / —","kokonainen objekti","Ostin talo*n. — I bought the house."],
-       ["Partitiivi","-a/-ä, -ta/-tä, -tta/-ttä","osa, kesken, kielto","talo*a — some of the house"],
-       ["Inessiivi","-ssa / -ssä","sisällä","talo*ssa — in the house"],
-       ["Elatiivi","-sta / -stä","sisältä pois","talo*sta — out of the house"],
-       ["Illatiivi","-Vn, -hVn, -seen","sisään","talo*on — into the house"],
-       ["Adessiivi","-lla / -llä","päällä, omistus, väline","talo*lla — at the house"],
-       ["Ablatiivi","-lta / -ltä","päältä pois","talo*lta — from the house"],
-       ["Allatiivi","-lle","päälle, jollekin","talo*lle — to the house"],
-       ["Essiivi","-na / -nä","roolissa, tilassa","opettaja*na — as a teacher"],
-       ["Translatiivi","-ksi","muutos, tavoite","opettaja*ksi — into a teacher"],
-       ["Abessiivi","-tta / -ttä","ilman","raha*tta — without money"],
-       ["Komitatiivi","-ine-","jonkun kanssa","perhe*ineen — with his family"],
-       ["Instruktiivi","-in","millä tavalla","omin käsi*n — with one's own hands"]
+       [{f:"Nominatiivi",e:"Nominative"},"—",{f:"perusmuoto, subjekti",e:"base form, subject"},"talo — Talo on iso."],
+       [{f:"Genetiivi",e:"Genitive"},"-n",{f:"kenen, omistus",e:"whose, possession"},"talo*n ovi — the door of the house"],
+       [{f:"Akkusatiivi",e:"Accusative"},"-n / -t / —",{f:"kokonainen objekti",e:"whole object"},"Ostin talo*n. — I bought the house."],
+       [{f:"Partitiivi",e:"Partitive"},"-a/-ä, -ta/-tä, -tta/-ttä",{f:"osa, kesken, kielto",e:"part, unfinished, negation"},"talo*a — some of the house"],
+       [{f:"Inessiivi",e:"Inessive"},"-ssa / -ssä",{f:"sisällä",e:"inside"},"talo*ssa — in the house"],
+       [{f:"Elatiivi",e:"Elative"},"-sta / -stä",{f:"sisältä pois",e:"out of"},"talo*sta — out of the house"],
+       [{f:"Illatiivi",e:"Illative"},"-Vn, -hVn, -seen",{f:"sisään",e:"into"},"talo*on — into the house"],
+       [{f:"Adessiivi",e:"Adessive"},"-lla / -llä",{f:"päällä, omistus, väline",e:"on, possession, instrument"},"talo*lla — at the house"],
+       [{f:"Ablatiivi",e:"Ablative"},"-lta / -ltä",{f:"päältä pois",e:"off, from"},"talo*lta — from the house"],
+       [{f:"Allatiivi",e:"Allative"},"-lle",{f:"päälle, jollekin",e:"onto, to someone"},"talo*lle — to the house"],
+       [{f:"Essiivi",e:"Essive"},"-na / -nä",{f:"roolissa, tilassa",e:"in a role or state"},"opettaja*na — as a teacher"],
+       [{f:"Translatiivi",e:"Translative"},"-ksi",{f:"muutos, tavoite",e:"change, goal"},"opettaja*ksi — into a teacher"],
+       [{f:"Abessiivi",e:"Abessive"},"-tta / -ttä",{f:"ilman",e:"without"},"raha*tta — without money"],
+       [{f:"Komitatiivi",e:"Comitative"},"-ine-",{f:"jonkun kanssa",e:"together with"},"perhe*ineen — with his family"],
+       [{f:"Instruktiivi",e:"Instructive"},"-in",{f:"millä tavalla",e:"by what means"},"omin käsi*n — with one's own hands"]
      ],
      nf:"Kolme viimeistä ovat harvinaisia. Älä opettele niitä ensin.",
      ne:"The last three are rare in speech and uncommon even in writing. Recognise them, do not drill them. The first twelve are the working system."},
@@ -5670,11 +5672,11 @@ const GRAMMAR_B = [
      cf:"Predikatiivi yksikössä ja monikossa", ce:"Predicate complement, singular and plural",
      head:["Subjekti","Predikatiivi","Sija"],
      rows:[
-       ["Talo on","iso","nominatiivi"],
-       ["Talot ovat","iso*ja","monikon partitiivi"],
-       ["Hän on","opettaja","nominatiivi"],
-       ["He ovat","opettaj*ia","monikon partitiivi"],
-       ["Kahvi on","kuuma*a","partitiivi — ainesana"]
+       ["Talo on","iso",{f:"nominatiivi",e:"nominative"}],
+       ["Talot ovat","iso*ja",{f:"monikon partitiivi",e:"plural partitive"}],
+       ["Hän on","opettaja",{f:"nominatiivi",e:"nominative"}],
+       ["He ovat","opettaj*ia",{f:"monikon partitiivi",e:"plural partitive"}],
+       ["Kahvi on","kuuma*a",{f:"partitiivi — ainesana",e:"partitive — mass noun"}]
      ],
      nf:"Ainesanat (kahvi, vesi, maito) saavat partitiivin myös yksikössä.",
      ne:"Mass nouns take the partitive even in the singular, because you are describing an unbounded substance: Kahvi on kuumaa, Vesi on kylmää."},
@@ -5686,11 +5688,11 @@ const GRAMMAR_B = [
      cf:"Kolme tyyppiä", ce:"Three environments for the nominative object",
      head:["Tyyppi","Esimerkki","Vertaa"],
      rows:[
-       ["Imperatiivi","Osta auto!","Ostin auto*n."],
-       ["Täytyy-lause","Minun täytyy ostaa auto.","Ostan auto*n."],
-       ["Passiivi","Auto ostetaan huomenna.","Ostamme auto*n huomenna."],
-       ["On pakko","Meidän on pakko myydä talo.","Myymme talo*n."],
-       ["Kannattaa / voi","Kannattaa lukea kirja loppuun.","Luin kirja*n loppuun."]
+       [{f:"Imperatiivi",e:"Imperative"},"Osta auto!","Ostin auto*n."],
+       [{f:"Täytyy-lause",e:"täytyy clause"},"Minun täytyy ostaa auto.","Ostan auto*n."],
+       [{f:"Passiivi",e:"Passive"},"Auto ostetaan huomenna.","Ostamme auto*n huomenna."],
+       [{f:"On pakko",e:"on pakko (have to)"},"Meidän on pakko myydä talo.","Myymme talo*n."],
+       [{f:"Kannattaa / voi",e:"kannattaa / voi (worth it / can)"},"Kannattaa lukea kirja loppuun.","Luin kirja*n loppuun."]
      ],
      nf:"Monikossa objekti on aina -t: Osta autot!",
      ne:"In the plural the total object is -t in every environment, so the plural hides the whole problem: Osta autot, Ostin autot, Autot ostetaan."},
@@ -5772,11 +5774,11 @@ const GRAMMAR_B = [
      cf:"Genetiivin käyttö", ce:"Where else the genitive turns up",
      head:["Tehtävä","Esimerkki","Selitys"],
      rows:[
-       ["Objekti","Ostin auto*n.","Total object: the whole car, the deal is done"],
-       ["Postpositio","talo*n edessä","Most postpositions demand the genitive before them"],
-       ["Täytyy-lause","Minu*n täytyy mennä.","The person who must is in the genitive"],
-       ["Yhdyssana","työ*n|antaja","The first part of many compounds is a genitive"],
-       ["Mitta","kahde*n tunnin matka","A two-hour journey: measure phrases use it too"]
+       [{f:"Objekti",e:"Object"},"Ostin auto*n.","Total object: the whole car, the deal is done"],
+       [{f:"Postpositio",e:"Postposition"},"talo*n edessä","Most postpositions demand the genitive before them"],
+       [{f:"Täytyy-lause",e:"täytyy clause"},"Minu*n täytyy mennä.","The person who must is in the genitive"],
+       [{f:"Yhdyssana",e:"Compound word"},"työ*n|antaja","The first part of many compounds is a genitive"],
+       [{f:"Mitta",e:"Measure"},"kahde*n tunnin matka","A two-hour journey: measure phrases use it too"]
      ]},
     {k:"p",
      f:"Postpositiot tulevat genetiivin jälkeen: talon edessä, kaupan takana, tunnin jälkeen, minun kanssani. Sanajärjestys on päinvastainen kuin englannissa.",
@@ -5837,8 +5839,8 @@ const GRAMMAR_B = [
      cf:"Kuusi paikallissijaa", ce:"The full grid",
      head:["","Mistä? (from)","Missä? (at)","Mihin? (to)"],
      rows:[
-       ["Sisällä (inner)","-sta / -stä  talo*sta","-ssa / -ssä  talo*ssa","-Vn  talo*on"],
-       ["Päällä (outer)","-lta / -ltä  talo*lta","-lla / -llä  talo*lla","-lle  talo*lle"]
+       [{f:"Sisällä (inner)",e:"Inner (inside)"},"-sta / -stä  talo*sta","-ssa / -ssä  talo*ssa","-Vn  talo*on"],
+       [{f:"Päällä (outer)",e:"Outer (on the surface)"},"-lta / -ltä  talo*lta","-lla / -llä  talo*lla","-lle  talo*lle"]
      ],
      nf:"Vokaalisointu valitsee a:n tai ä:n. -lle ei muutu koskaan.",
      ne:"Vowel harmony chooses between a and ä everywhere except -lle, which has no back-vowel variant at all. That single irregularity is a gift: allative is always -lle."},
@@ -5931,9 +5933,9 @@ const GRAMMAR_B = [
      cf:"Kolme sisäsijaa", ce:"The inner three",
      head:["Sija","Pääte","Kysymys","Esimerkki"],
      rows:[
-       ["Inessiivi","-ssa / -ssä","missä?","talo*ssa, kaupa*ssa, Helsingi*ssä"],
-       ["Elatiivi","-sta / -stä","mistä?","talo*sta, kaupa*sta, Helsingi*stä"],
-       ["Illatiivi","-Vn, -hVn, -seen","mihin?","talo*on, kauppa*an, Helsinki*in"]
+       [{f:"Inessiivi",e:"Inessive"},"-ssa / -ssä","missä?","talo*ssa, kaupa*ssa, Helsingi*ssä"],
+       [{f:"Elatiivi",e:"Elative"},"-sta / -stä","mistä?","talo*sta, kaupa*sta, Helsingi*stä"],
+       [{f:"Illatiivi",e:"Illative"},"-Vn, -hVn, -seen","mihin?","talo*on, kauppa*an, Helsinki*in"]
      ],
      nf:"Inessiivi ja elatiivi käyttävät heikkoa vartaloa, illatiivi vahvaa.",
      ne:"Notice the grade: kaupassa and kaupasta weaken, kauppaan does not. The illative is one of the three cases that keep the strong grade, together with the partitive and the essive."},
@@ -5952,11 +5954,11 @@ const GRAMMAR_B = [
      cf:"Elatiivin kolme merkitystä", ce:"Three jobs for -sta",
      head:["Merkitys","Esimerkki","Englanti"],
      rows:[
-       ["Mistä pois","Tulin kaupa*sta.","I came from the shop"],
-       ["Aihe","Puhumme sää*stä.","We are talking about the weather"],
-       ["Mielipide","Pidän tä*stä musiikista.","I like this music"],
-       ["Materiaali","Sormus on kulla*sta.","The ring is made of gold"],
-       ["Aika alkaa","maanantai*sta alkaen","starting from Monday"]
+       [{f:"Mistä pois",e:"Moving out of"},"Tulin kaupa*sta.","I came from the shop"],
+       [{f:"Aihe",e:"Topic"},"Puhumme sää*stä.","We are talking about the weather"],
+       [{f:"Mielipide",e:"Opinion"},"Pidän tä*stä musiikista.","I like this music"],
+       [{f:"Materiaali",e:"Material"},"Sormus on kulla*sta.","The ring is made of gold"],
+       [{f:"Aika alkaa",e:"Starting point in time"},"maanantai*sta alkaen","starting from Monday"]
      ]},
     {k:"p",
      f:"Illatiivissa on kolme päätettä. Katso, mihin vartalo päättyy, ja valitse.",
@@ -5973,18 +5975,18 @@ const GRAMMAR_B = [
      cf:"Illatiivi käytännössä", ce:"The illative in practice",
      head:["Sana","Sääntö","Illatiivi"],
      rows:[
-       ["talo","1 — yksi vokaali","talo*on"],
-       ["kauppa","1 — vahva aste","kauppa*an"],
-       ["Helsinki","1 — vahva aste","Helsinki*in"],
+       ["talo",{f:"1 — yksi vokaali",e:"1 — one vowel"},"talo*on"],
+       ["kauppa",{f:"1 — vahva aste",e:"1 — strong grade"},"kauppa*an"],
+       ["Helsinki",{f:"1 — vahva aste",e:"1 — strong grade"},"Helsinki*in"],
        ["kylä","1","kylä*än"],
-       ["maa","2 — yksitavuinen","maa*han"],
-       ["työ","2 — diftongi","työ*hön"],
+       ["maa",{f:"2 — yksitavuinen",e:"2 — one syllable"},"maa*han"],
+       ["työ",{f:"2 — diftongi",e:"2 — diphthong"},"työ*hön"],
        ["tie","2","tie*hen"],
-       ["Espoo","3 — kaksitavuinen pitkä vokaali","Espoo*seen"],
-       ["huone","3 — e-sana","huonee*seen"],
+       ["Espoo",{f:"3 — kaksitavuinen pitkä vokaali",e:"3 — two syllables, long vowel"},"Espoo*seen"],
+       ["huone",{f:"3 — e-sana",e:"3 — word ending in -e"},"huonee*seen"],
        ["perhe","3","perhee*seen"],
-       ["mies","1 — vartalo miehe-","miehe*en"],
-       ["vesi","1 — vartalo vete-","vete*en"]
+       ["mies",{f:"1 — vartalo miehe-",e:"1 — stem miehe-"},"miehe*en"],
+       ["vesi",{f:"1 — vartalo vete-",e:"1 — stem vete-"},"vete*en"]
      ],
      nf:"Huomaa: kauppaan, ei kaupaan. Illatiivi ei heikennä.",
      ne:"The single most common illative error is weakening the stem. It is kauppaan, Helsinkiin, katuun — strong grade throughout."},
@@ -6039,9 +6041,9 @@ const GRAMMAR_B = [
      cf:"Kolme ulkosijaa", ce:"The outer three",
      head:["Sija","Pääte","Kysymys","Esimerkki"],
      rows:[
-       ["Adessiivi","-lla / -llä","millä? kenellä?","pöydä*llä, minu*lla, bussi*lla"],
-       ["Ablatiivi","-lta / -ltä","mistä? keneltä?","pöydä*ltä, äidi*ltä, tori*lta"],
-       ["Allatiivi","-lle","mihin? kenelle?","pöydä*lle, sinu*lle, tori*lle"]
+       [{f:"Adessiivi",e:"Adessive"},"-lla / -llä","millä? kenellä?","pöydä*llä, minu*lla, bussi*lla"],
+       [{f:"Ablatiivi",e:"Ablative"},"-lta / -ltä","mistä? keneltä?","pöydä*ltä, äidi*ltä, tori*lta"],
+       [{f:"Allatiivi",e:"Allative"},"-lle","mihin? kenelle?","pöydä*lle, sinu*lle, tori*lle"]
      ],
      nf:"Allatiivi on aina -lle. Vokaalisointu ei koske sitä.",
      ne:"The allative has no front-vowel variant: it is -lle after every stem, back or front. kylälle, talolle, Tampereelle."},
@@ -6049,12 +6051,12 @@ const GRAMMAR_B = [
      cf:"Mitä -lla tekee", ce:"What -lla is doing in a given sentence",
      head:["Tehtävä","Esimerkki","Englanti"],
      rows:[
-       ["Pinta","Kirja on pöydä*llä.","on the table"],
-       ["Avoin paikka","Olen tori*lla.","at the market square"],
-       ["Omistus","Minu*lla on auto.","I have a car"],
-       ["Väline","Kirjoitan kynä*llä.","I write with a pen"],
-       ["Kulkuväline","Tulen bussi*lla.","I come by bus"],
-       ["Aika (viikko, vuodenaika)","ensi viiko*lla, kesä*llä","next week, in summer"]
+       [{f:"Pinta",e:"Surface"},"Kirja on pöydä*llä.","on the table"],
+       [{f:"Avoin paikka",e:"Open place"},"Olen tori*lla.","at the market square"],
+       [{f:"Omistus",e:"Possession"},"Minu*lla on auto.","I have a car"],
+       [{f:"Väline",e:"Instrument"},"Kirjoitan kynä*llä.","I write with a pen"],
+       [{f:"Kulkuväline",e:"Means of transport"},"Tulen bussi*lla.","I come by bus"],
+       [{f:"Aika (viikko, vuodenaika)",e:"Time (week, season)"},"ensi viiko*lla, kesä*llä","next week, in summer"]
      ]},
     {k:"p",
      f:"Suomessa ei ole verbiä 'have'. Omistus sanotaan adessiivilla: minulla on, sinulla on, Matilla on.",
@@ -6072,11 +6074,11 @@ const GRAMMAR_B = [
      cf:"Ablatiivin käyttö", ce:"Where -lta shows up",
      head:["Merkitys","Esimerkki","Huomio"],
      rows:[
-       ["Pinnalta pois","Otin kirjan pöydä*ltä.","physical removal"],
-       ["Ihmiseltä","Sain kirjeen äidi*ltä.","the source person"],
-       ["Kysyminen","Kysyin naapuri*lta.","kysyä always takes -lta"],
-       ["Kellonaika","Tulen kotiin viide*ltä.","at five o'clock"],
-       ["Vaikutelma","Se kuulostaa hyvä*ltä.","sounds, tastes, feels, looks"]
+       [{f:"Pinnalta pois",e:"Off a surface"},"Otin kirjan pöydä*ltä.","physical removal"],
+       [{f:"Ihmiseltä",e:"From a person"},"Sain kirjeen äidi*ltä.","the source person"],
+       [{f:"Kysyminen",e:"Asking"},"Kysyin naapuri*lta.","kysyä always takes -lta"],
+       [{f:"Kellonaika",e:"Clock time"},"Tulen kotiin viide*ltä.","at five o'clock"],
+       [{f:"Vaikutelma",e:"Impression"},"Se kuulostaa hyvä*ltä.","sounds, tastes, feels, looks"]
      ],
      nf:"Puhekielessä kuulee 'maistuu hyvälle'. Kirjakielessä se on 'hyvältä'.",
      ne:"Colloquial and dialectal Finnish often uses -lle with these impression verbs — maistuu hyvälle. The written standard is -lta, and that is what YKI expects."},
@@ -6093,13 +6095,13 @@ const GRAMMAR_B = [
      cf:"Ajanilmaukset", ce:"Time expressions by unit",
      head:["Yksikkö","Sija","Esimerkki"], hE:["Unit","",""],
      rows:[
-       ["Viikonpäivä","essiivi -na","maanantai*na, perjantai*na"],
-       ["Viikko","adessiivi -lla","ensi viiko*lla, tällä viiko*lla"],
-       ["Vuodenaika","adessiivi -lla","kesä*llä, talve*lla, syksy*llä"],
-       ["Vuorokaudenaika","adessiivi -lla","aamu*lla, illa*lla, yö*llä"],
-       ["Kuukausi","inessiivi -ssa","tammikuu*ssa, ensi kuu*ssa"],
-       ["Vuosi","essiivi -na","vuon*na 2025"],
-       ["Kellonaika","ablatiivi -lta","viide*ltä, kahdeksa*lta"]
+       [{f:"Viikonpäivä",e:"Day of the week"},{f:"essiivi -na",e:"essive -na"},"maanantai*na, perjantai*na"],
+       [{f:"Viikko",e:"Week"},{f:"adessiivi -lla",e:"adessive -lla"},"ensi viiko*lla, tällä viiko*lla"],
+       [{f:"Vuodenaika",e:"Season"},{f:"adessiivi -lla",e:"adessive -lla"},"kesä*llä, talve*lla, syksy*llä"],
+       [{f:"Vuorokaudenaika",e:"Time of day"},{f:"adessiivi -lla",e:"adessive -lla"},"aamu*lla, illa*lla, yö*llä"],
+       [{f:"Kuukausi",e:"Month"},{f:"inessiivi -ssa",e:"inessive -ssa"},"tammikuu*ssa, ensi kuu*ssa"],
+       [{f:"Vuosi",e:"Year"},{f:"essiivi -na",e:"essive -na"},"vuon*na 2025"],
+       [{f:"Kellonaika",e:"Clock time"},{f:"ablatiivi -lta",e:"ablative -lta"},"viide*ltä, kahdeksa*lta"]
      ],
      nf:"Viikonpäivä saa -na, mutta viikko, vuodenaika ja vuorokaudenaika saavat -lla.",
      ne:"Memorise the first two rows as a pair, because they look interchangeable and are not. A named day takes the essive: maanantaina, sunnuntaina, jouluna. A week, a season or a part of the day takes the adessive: tällä viikolla, kesällä, aamulla. Months take the inessive, tammikuussa, and years the essive, vuonna 2025."},
@@ -6174,12 +6176,12 @@ const GRAMMAR_B = [
      cf:"Translatiivi -ksi", ce:"The four jobs of -ksi",
      head:["Merkitys","Esimerkki","Englanti"],
      rows:[
-       ["Muutos","Hän tuli iloise*ksi.","He became happy"],
-       ["Tavoite","Opiskelen insinööri*ksi.","I am studying to be an engineer"],
-       ["Kieli","Sano se suome*ksi.","Say it in Finnish"],
-       ["Määräaika","Tulen kotiin illa*ksi.","I'll come home by evening"],
-       ["Ajanjakso","Muutin Suomeen kahde*ksi vuodeksi.","I moved to Finland for two years"],
-       ["Valmiiksi","Sain raportin valmii*ksi.","I got the report finished"]
+       [{f:"Muutos",e:"Change"},"Hän tuli iloise*ksi.","He became happy"],
+       [{f:"Tavoite",e:"Goal"},"Opiskelen insinööri*ksi.","I am studying to be an engineer"],
+       [{f:"Kieli",e:"Language"},"Sano se suome*ksi.","Say it in Finnish"],
+       [{f:"Määräaika",e:"Deadline"},"Tulen kotiin illa*ksi.","I'll come home by evening"],
+       [{f:"Ajanjakso",e:"Length of time"},"Muutin Suomeen kahde*ksi vuodeksi.","I moved to Finland for two years"],
+       [{f:"Valmiiksi",e:"Completion"},"Sain raportin valmii*ksi.","I got the report finished"]
      ],
      nf:"Kielten nimet ovat aina translatiivissa: suomeksi, englanniksi, bengaliksi.",
      ne:"Language names in the sense of in that language are always translative: suomeksi, englanniksi, ruotsiksi. The name of the language itself is the plain noun: suomi, englanti."},
@@ -6257,13 +6259,13 @@ const GRAMMAR_B = [
      cf:"Totaaliobjektin muoto", ce:"Choosing the shape of a total object",
      head:["Tilanne","Muoto","Esimerkki"],
      rows:[
-       ["Tavallinen lause, yksikkö","-n","Ostin auto*n."],
-       ["Monikko","-t","Ostin auto*t."],
-       ["Imperatiivi","nominatiivi","Osta auto!"],
-       ["Täytyy / pitää / on pakko","nominatiivi","Minun täytyy ostaa auto."],
-       ["Passiivi","nominatiivi","Auto ostetaan huomenna."],
-       ["Persoonapronomini","-t","Näin sinu*t eilen."],
-       ["Kysymyssana kuka","kenet","Kene*t näit?"]
+       [{f:"Tavallinen lause, yksikkö",e:"Ordinary sentence, singular"},"-n","Ostin auto*n."],
+       [{f:"Monikko",e:"Plural"},"-t","Ostin auto*t."],
+       [{f:"Imperatiivi",e:"Imperative"},{f:"nominatiivi",e:"nominative"},"Osta auto!"],
+       [{f:"Täytyy / pitää / on pakko",e:"täytyy / pitää / on pakko (must)"},{f:"nominatiivi",e:"nominative"},"Minun täytyy ostaa auto."],
+       [{f:"Passiivi",e:"Passive"},{f:"nominatiivi",e:"nominative"},"Auto ostetaan huomenna."],
+       [{f:"Persoonapronomini",e:"Personal pronoun"},"-t","Näin sinu*t eilen."],
+       [{f:"Kysymyssana kuka",e:"Question word kuka"},"kenet","Kene*t näit?"]
      ],
      nf:"Monikossa -t pysyy aina, myös imperatiivissa ja passiivissa.",
      ne:"The plural is the easy case: Osta autot, Ostin autot, Autot ostetaan — the -t never changes."},
@@ -6358,12 +6360,12 @@ const GRAMMAR_B = [
      cf:"Kaksi tunnusta", ce:"The two markers in one table",
      head:["Sija","Yksikkö","Monikko","Tunnus"],
      rows:[
-       ["Nominatiivi","talo","talo*t","-t"],
-       ["Genetiivi","talo*n","talo*jen","-i- → j"],
-       ["Partitiivi","talo*a","talo*ja","-i- → j"],
-       ["Inessiivi","talo*ssa","talo*issa","-i-"],
-       ["Adessiivi","talo*lla","talo*illa","-i-"],
-       ["Allatiivi","talo*lle","talo*ille","-i-"]
+       [{f:"Nominatiivi",e:"Nominative"},"talo","talo*t","-t"],
+       [{f:"Genetiivi",e:"Genitive"},"talo*n","talo*jen","-i- → j"],
+       [{f:"Partitiivi",e:"Partitive"},"talo*a","talo*ja","-i- → j"],
+       [{f:"Inessiivi",e:"Inessive"},"talo*ssa","talo*issa","-i-"],
+       [{f:"Adessiivi",e:"Adessive"},"talo*lla","talo*illa","-i-"],
+       [{f:"Allatiivi",e:"Allative"},"talo*lle","talo*ille","-i-"]
      ]},
     {k:"p",
      f:"Monikon -t tulee heikkoon vartaloon, aivan kuten genetiivin -n. Jos osaat genetiivin, osaat monikon nominatiivin: kaupan — kaupat, kadun — kadut, pojan — pojat.",
@@ -6380,12 +6382,12 @@ const GRAMMAR_B = [
      cf:"Mitä vartalolle tapahtuu", ce:"What happens to the stem vowel before -i-",
      head:["Vartalo päättyy","Muutos","Esimerkki"],
      rows:[
-       ["o, u, y, ö","ei muutosta","talo → talo*issa · koulu → koulu*issa"],
-       ["a (2 tavua, 1. tavussa a, e tai i)","a → o","kala → kalo*issa · kirja → kirjo*issa"],
-       ["a (muut) tai ä","katoaa","kukka → kuk*issa · kylä → kyl*issä"],
-       ["e","katoaa","huone → huone*issa (huonee- → huonei-)"],
-       ["i","i → e, sitten katoaa","kieli → kiel*issä · pieni → pien*issä"],
-       ["pitkä vokaali tai diftongi","lyhenee","maa → ma*issa · työ → tö*issä"]
+       ["o, u, y, ö",{f:"ei muutosta",e:"no change"},"talo → talo*issa · koulu → koulu*issa"],
+       [{f:"a (2 tavua, 1. tavussa a, e tai i)",e:"a (2 syllables; a, e or i in the first)"},"a → o","kala → kalo*issa · kirja → kirjo*issa"],
+       [{f:"a (muut) tai ä",e:"a (others) or ä"},{f:"katoaa",e:"disappears"},"kukka → kuk*issa · kylä → kyl*issä"],
+       ["e",{f:"katoaa",e:"disappears"},"huone → huone*issa (huonee- → huonei-)"],
+       ["i",{f:"i → e, sitten katoaa",e:"i → e, then disappears"},"kieli → kiel*issä · pieni → pien*issä"],
+       [{f:"pitkä vokaali tai diftongi",e:"long vowel or diphthong"},{f:"lyhenee",e:"shortens"},"maa → ma*issa · työ → tö*issä"]
      ],
      nf:"Kolmitavuiset -a-sanat saavat -oi-: ikkuna → ikkunoissa.",
      ne:"Three-syllable nouns in -a or -ä take -oi-/-öi-: ikkuna gives ikkunoissa, ravintola gives ravintoloissa."},
@@ -6396,11 +6398,11 @@ const GRAMMAR_B = [
      cf:"i muuttuu j:ksi", ce:"Where i becomes j",
      head:["Rakenne","Tulos","Sana"],
      rows:[
-       ["talo + i + a","talo*ja","partitiivi"],
-       ["talo + i + en","talo*jen","genetiivi"],
-       ["kala + i + a","kalo*ja","a → o, sitten j"],
-       ["talo + i + ssa","talo*issa","konsonantti seuraa, i säilyy"],
-       ["kylä + i + ä","kyl*iä","ä katoaa, i on konsonantin jäljessä"]
+       ["talo + i + a","talo*ja",{f:"partitiivi",e:"partitive"}],
+       ["talo + i + en","talo*jen",{f:"genetiivi",e:"genitive"}],
+       ["kala + i + a","kalo*ja",{f:"a → o, sitten j",e:"a → o, then j"}],
+       ["talo + i + ssa","talo*issa",{f:"konsonantti seuraa, i säilyy",e:"a consonant follows, so i stays"}],
+       ["kylä + i + ä","kyl*iä",{f:"ä katoaa, i on konsonantin jäljessä",e:"ä disappears; i follows a consonant"}]
      ],
      nf:"Kun i:n jälkeen tulee konsonantti, i pysyy i:nä.",
      ne:"The j only appears before a vowel. Before -ssa, -lla, -sta and the rest, the -i- stays an i."},
@@ -6456,20 +6458,20 @@ const GRAMMAR_B = [
      cf:"talo — yksikkö ja monikko", ce:"The complete paradigm of talo",
      head:["Sija","Yksikkö","Monikko"],
      rows:[
-       ["Nominatiivi","talo","talo*t"],
-       ["Genetiivi","talo*n","talo*jen"],
-       ["Partitiivi","talo*a","talo*ja"],
-       ["Inessiivi","talo*ssa","talo*issa"],
-       ["Elatiivi","talo*sta","talo*ista"],
-       ["Illatiivi","talo*on","talo*ihin"],
-       ["Adessiivi","talo*lla","talo*illa"],
-       ["Ablatiivi","talo*lta","talo*ilta"],
-       ["Allatiivi","talo*lle","talo*ille"],
-       ["Essiivi","talo*na","talo*ina"],
-       ["Translatiivi","talo*ksi","talo*iksi"],
-       ["Abessiivi","talo*tta","talo*itta"],
-       ["Komitatiivi","—","talo*ineen"],
-       ["Instruktiivi","—","talo*in"]
+       [{f:"Nominatiivi",e:"Nominative"},"talo","talo*t"],
+       [{f:"Genetiivi",e:"Genitive"},"talo*n","talo*jen"],
+       [{f:"Partitiivi",e:"Partitive"},"talo*a","talo*ja"],
+       [{f:"Inessiivi",e:"Inessive"},"talo*ssa","talo*issa"],
+       [{f:"Elatiivi",e:"Elative"},"talo*sta","talo*ista"],
+       [{f:"Illatiivi",e:"Illative"},"talo*on","talo*ihin"],
+       [{f:"Adessiivi",e:"Adessive"},"talo*lla","talo*illa"],
+       [{f:"Ablatiivi",e:"Ablative"},"talo*lta","talo*ilta"],
+       [{f:"Allatiivi",e:"Allative"},"talo*lle","talo*ille"],
+       [{f:"Essiivi",e:"Essive"},"talo*na","talo*ina"],
+       [{f:"Translatiivi",e:"Translative"},"talo*ksi","talo*iksi"],
+       [{f:"Abessiivi",e:"Abessive"},"talo*tta","talo*itta"],
+       [{f:"Komitatiivi",e:"Comitative"},"—","talo*ineen"],
+       [{f:"Instruktiivi",e:"Instructive"},"—","talo*in"]
      ],
      nf:"Huomaa, että monikon muoto on lähes aina yksikön muoto + i.",
      ne:"Read the two columns side by side: with the exception of the nominative and the genitive, every plural is simply the singular with an -i- slipped in front of the ending. That is the whole system in one picture."},
@@ -6480,10 +6482,10 @@ const GRAMMAR_B = [
      cf:"Monikon partitiivin muodot", ce:"The four surface shapes",
      head:["Muoto","Milloin","Esimerkki"],
      rows:[
-       ["-ja / -jä","i jää vokaalien väliin","talo*ja · koulu*ja · kirjo*ja"],
-       ["-a / -ä","i on konsonantin jäljessä","kyl*iä · kukk*ia · koir*ia"],
-       ["-ita / -itä","pitkä vokaali tai kolmitavuinen","ma*ita · huone*ita · ikkuno*ita"],
-       ["-ta / -tä","harvinainen, e-vartalot","perhe*itä · osoitte*ita"]
+       ["-ja / -jä",{f:"i jää vokaalien väliin",e:"i ends up between vowels"},"talo*ja · koulu*ja · kirjo*ja"],
+       ["-a / -ä",{f:"i on konsonantin jäljessä",e:"i follows a consonant"},"kyl*iä · kukk*ia · koir*ia"],
+       ["-ita / -itä",{f:"pitkä vokaali tai kolmitavuinen",e:"long vowel, or three syllables"},"ma*ita · huone*ita · ikkuno*ita"],
+       ["-ta / -tä",{f:"harvinainen, e-vartalot",e:"rare; e-stems"},"perhe*itä · osoitte*ita"]
      ],
      nf:"Vartalon vokaali katoaa ennen i:tä: kylä → kyliä, kukka → kukkia.",
      ne:"In row two the stem vowel drops out and the -i- sits directly against the consonant, taking the bare -a or -ä: kyliä, kukkia, koiria, pieniä. Note that the plural partitive keeps the strong grade, so it is kukkia, not kukia."},
@@ -6494,10 +6496,10 @@ const GRAMMAR_B = [
      cf:"Monikon genetiivin päätteet", ce:"The four plural genitive endings",
      head:["Pääte","Milloin","Esimerkki"],
      rows:[
-       ["-jen","i vokaalien välissä","talo*jen · kirjo*jen · koulu*jen"],
-       ["-ien","i konsonantin jäljessä","kaupunk*ien · kiel*ien · pien*ien"],
-       ["-ten","konsonanttivartalo","nais*ten · mies*ten · las*ten · kiel*ten"],
-       ["-den / -tten","pitkä i-vartalo","ma*iden · huone*iden · ikkuno*iden · tö*iden"]
+       ["-jen",{f:"i vokaalien välissä",e:"i between vowels"},"talo*jen · kirjo*jen · koulu*jen"],
+       ["-ien",{f:"i konsonantin jäljessä",e:"i after a consonant"},"kaupunk*ien · kiel*ien · pien*ien"],
+       ["-ten",{f:"konsonanttivartalo",e:"consonant stem"},"nais*ten · mies*ten · las*ten · kiel*ten"],
+       ["-den / -tten",{f:"pitkä i-vartalo",e:"long i-stem"},"ma*iden · huone*iden · ikkuno*iden · tö*iden"]
      ],
      nf:"Moni sana sallii kaksi muotoa: kielien ja kielten ovat molemmat oikein.",
      ne:"The -ien ending appears where the plural -i- sits after a consonant: kaupunkien, banaanien. Many of those words also allow a -ten form, and both are correct: kielien or kielten, pienien or pienten, nuorien or nuorten."},
@@ -6712,19 +6714,19 @@ const GRAMMAR_B = [
      cf:"Ablatiivi ja allatiivi", ce:"Taking from and giving to",
      head:["Verbi","Sija","Esimerkki"],
      rows:[
-       ["kysyä","ablatiivi","Kysyin opettaja*lta."],
-       ["pyytää","ablatiivi","Pyysin naapuri*lta apua."],
-       ["saada","ablatiivi","Sain kirjeen äidi*ltä."],
-       ["ostaa","ablatiivi","Ostin auton naapuri*lta."],
-       ["lainata (borrow)","ablatiivi","Lainasin kirjan kaveri*lta."],
-       ["kuulostaa / tuntua / maistua","ablatiivi","Se kuulostaa hyvä*ltä."],
-       ["antaa","allatiivi","Annoin avaimet naapuri*lle."],
-       ["soittaa","allatiivi","Soitan sinu*lle illalla."],
-       ["kertoa (jollekulle)","allatiivi","Kerroin asian pomo*lle."],
-       ["näyttää (show)","allatiivi","Näytin kuvan ystävä*lle."],
-       ["sopia (suit)","allatiivi","Aika sopii minu*lle."],
-       ["suuttua","allatiivi","Suutuin häne*lle."],
-       ["lainata (lend)","allatiivi","Lainasin kirjan kaveri*lle."]
+       ["kysyä",{f:"ablatiivi",e:"ablative"},"Kysyin opettaja*lta."],
+       ["pyytää",{f:"ablatiivi",e:"ablative"},"Pyysin naapuri*lta apua."],
+       ["saada",{f:"ablatiivi",e:"ablative"},"Sain kirjeen äidi*ltä."],
+       ["ostaa",{f:"ablatiivi",e:"ablative"},"Ostin auton naapuri*lta."],
+       ["lainata (borrow)",{f:"ablatiivi",e:"ablative"},"Lainasin kirjan kaveri*lta."],
+       ["kuulostaa / tuntua / maistua",{f:"ablatiivi",e:"ablative"},"Se kuulostaa hyvä*ltä."],
+       ["antaa",{f:"allatiivi",e:"allative"},"Annoin avaimet naapuri*lle."],
+       ["soittaa",{f:"allatiivi",e:"allative"},"Soitan sinu*lle illalla."],
+       [{f:"kertoa (jollekulle)",e:"kertoa (to someone)"},{f:"allatiivi",e:"allative"},"Kerroin asian pomo*lle."],
+       ["näyttää (show)",{f:"allatiivi",e:"allative"},"Näytin kuvan ystävä*lle."],
+       ["sopia (suit)",{f:"allatiivi",e:"allative"},"Aika sopii minu*lle."],
+       ["suuttua",{f:"allatiivi",e:"allative"},"Suutuin häne*lle."],
+       ["lainata (lend)",{f:"allatiivi",e:"allative"},"Lainasin kirjan kaveri*lle."]
      ],
      nf:"Sama verbi lainata tarkoittaa eri asiaa eri sijassa.",
      ne:"lainata is the neat demonstration of the whole chapter: with -lta it means borrow, with -lle it means lend. The verb is identical; the case carries the direction."},
@@ -6732,17 +6734,17 @@ const GRAMMAR_B = [
      cf:"Partitiivi ja translatiivi", ce:"Two more government patterns",
      head:["Verbi","Sija","Esimerkki"],
      rows:[
-       ["odottaa","partitiivi","Odotan bussi*a."],
-       ["auttaa","partitiivi","Autan sinu*a."],
-       ["rakastaa","partitiivi","Rakastan sinu*a."],
-       ["tarvita","partitiivi","Tarvitsen apu*a."],
-       ["pelätä","partitiivi","Pelkään koir*ia."],
-       ["ajatella","partitiivi","Ajattelen sinu*a."],
-       ["harrastaa","partitiivi","Harrastan uinti*a."],
-       ["valmistua","translatiivi","Valmistuin insinööri*ksi."],
-       ["opiskella","translatiivi","Opiskelen opettaja*ksi."],
-       ["muuttua","translatiivi","Vesi muuttui jää*ksi."],
-       ["tulla","translatiivi","Hän tuli sairaa*ksi."]
+       ["odottaa",{f:"partitiivi",e:"partitive"},"Odotan bussi*a."],
+       ["auttaa",{f:"partitiivi",e:"partitive"},"Autan sinu*a."],
+       ["rakastaa",{f:"partitiivi",e:"partitive"},"Rakastan sinu*a."],
+       ["tarvita",{f:"partitiivi",e:"partitive"},"Tarvitsen apu*a."],
+       ["pelätä",{f:"partitiivi",e:"partitive"},"Pelkään koir*ia."],
+       ["ajatella",{f:"partitiivi",e:"partitive"},"Ajattelen sinu*a."],
+       ["harrastaa",{f:"partitiivi",e:"partitive"},"Harrastan uinti*a."],
+       ["valmistua",{f:"translatiivi",e:"translative"},"Valmistuin insinööri*ksi."],
+       ["opiskella",{f:"translatiivi",e:"translative"},"Opiskelen opettaja*ksi."],
+       ["muuttua",{f:"translatiivi",e:"translative"},"Vesi muuttui jää*ksi."],
+       ["tulla",{f:"translatiivi",e:"translative"},"Hän tuli sairaa*ksi."]
      ],
      nf:"Partitiiviverbit ovat kestoltaan avoimia: odottaminen ja rakastaminen eivät lopu.",
      ne:"The partitive verbs share a semantic core: the activity has no natural endpoint. Waiting, loving, helping, fearing and pursuing a hobby are all open-ended, so the object is never total."},
@@ -6824,7 +6826,7 @@ const GRAMMAR_C = [
      rows:[
        ["minä","puhu*n","-n"],
        ["sinä","puhu*t","-t"],
-       ["hän","puhuu","vokaali pitenee"],
+       ["hän","puhuu",{f:"vokaali pitenee",e:"vowel lengthens"}],
        ["me","puhu*mme","-mme"],
        ["te","puhu*tte","-tte"],
        ["he","puhu*vat","-vat / -vät"]
@@ -6838,7 +6840,7 @@ const GRAMMAR_C = [
      cf:"Kuusi verbityyppiä", ce:"The six verb types in the present",
      head:["Tyyppi","Infinitiivi","minä","hän","he"],
      rows:[
-       ["1: kaksi vokaalia","puhua, ottaa","puhu*n · ota*n","puhuu · ottaa","puhu*vat · otta*vat"],
+       [{f:"1: kaksi vokaalia",e:"1: two vowels"},"puhua, ottaa","puhu*n · ota*n","puhuu · ottaa","puhu*vat · otta*vat"],
        ["2: -da / -dä","juoda, syödä","juo*n · syö*n","juo · syö","juo*vat · syö*vät"],
        ["3: -la -na -ra -sta","tulla, mennä, nousta","tule*n · mene*n","tulee · menee","tule*vat · mene*vät"],
        ["4: -ata / -ätä","haluta, tavata","halua*n · tapaa*n","haluaa · tapaa","halua*vat · tapaa*vat"],
@@ -6857,12 +6859,12 @@ const GRAMMAR_C = [
      cf:"Astevaihtelu preesensissä: ottaa", ce:"Consonant gradation inside one paradigm",
      head:["Muoto","Aste","Miksi"],
      rows:[
-       ["ota*n, ota*t","heikko (t)","tavu sulkeutuu: o-tan"],
-       ["ottaa","vahva (tt)","tavu on avoin: ot-taa"],
-       ["ota*mme, ota*tte","heikko (t)","o-tam-me, o-tat-te"],
-       ["otta*vat","vahva (tt)","ot-ta-vat"],
+       ["ota*n, ota*t",{f:"heikko (t)",e:"weak (t)"},{f:"tavu sulkeutuu: o-tan",e:"the syllable closes: o-tan"}],
+       ["ottaa",{f:"vahva (tt)",e:"strong (tt)"},{f:"tavu on avoin: ot-taa",e:"the syllable is open: ot-taa"}],
+       ["ota*mme, ota*tte",{f:"heikko (t)",e:"weak (t)"},"o-tam-me, o-tat-te"],
+       ["otta*vat",{f:"vahva (tt)",e:"strong (tt)"},"ot-ta-vat"],
        ["anta*a → anna*n","nt → nn","antaa, annan, annamme, antavat"],
-       ["luke*a → lue*n","k → tyhja","lukea, luen, luemme, lukevat"],
+       ["luke*a → lue*n",{f:"k → tyhja",e:"k → nothing"},"lukea, luen, luemme, lukevat"],
        ["tietä*ä → tiedä*n","t → d","tietää, tiedän, tiedämme, tietävät"]
      ],
      nf:"Vahva aste on hän- ja he-muodoissa, heikko muissa.",
@@ -6958,11 +6960,11 @@ const GRAMMAR_C = [
      cf:"a:n kaksi kohtaloa", ce:"The two fates of a final -a-",
      head:["Vartalo","Ensitavun vokaali","Imperfekti"],
      rows:[
-       ["anta-, maksa-, jaka-","a, e tai i","a → o: anto*i · makso*i · jako*i"],
-       ["osta-, muista-, nukku-","o tai u","a katoaa: ost*i · muist*i"],
-       ["kirjoitta-, ymmärtä-","kolme tavua","vokaali katoaa: kirjoitt*i"],
-       ["halua-, tapaa- (tyyppi 4)","-","si-tunnus: halu*si*n · tapa*si*n"],
-       ["valitse- (tyyppi 5)","-","valits*i*n · tarvits*i*n"]
+       ["anta-, maksa-, jaka-",{f:"a, e tai i",e:"a, e or i"},"a → o: anto*i · makso*i · jako*i"],
+       ["osta-, muista-, nukku-",{f:"o tai u",e:"o or u"},{f:"a katoaa: ost*i · muist*i",e:"a disappears: ost*i · muist*i"}],
+       ["kirjoitta-, ymmärtä-",{f:"kolme tavua",e:"three syllables"},{f:"vokaali katoaa: kirjoitt*i",e:"vowel disappears: kirjoitt*i"}],
+       [{f:"halua-, tapaa- (tyyppi 4)",e:"halua-, tapaa- (type 4)"},"-",{f:"si-tunnus: halu*si*n · tapa*si*n",e:"si-marker: halu*si*n · tapa*si*n"}],
+       [{f:"valitse- (tyyppi 5)",e:"valitse- (type 5)"},"-","valits*i*n · tarvits*i*n"]
      ],
      nf:"Kaksitavuinen sana: katso ensimmäisen tavun vokaalia.",
      ne:"For two-syllable stems ending in -a, the first syllable decides. If it holds a, e or i, the -a- turns into -o- (antoi, maksoi, jakoi). If it holds o or u, the -a- simply drops (osti, muisti). Longer stems always drop it. Type 4 verbs take a -si- past across the board: halusin, tapasin, pelasin, hyppäsin."},
@@ -7074,10 +7076,10 @@ const GRAMMAR_C = [
      cf:"Neljä aikamuotoa: tehdä", ce:"All four tenses of tehdä side by side",
      head:["Aikamuoto","Myönteinen","Kielteinen"],
      rows:[
-       ["preesens","teen · teemme","en tee · emme tee"],
-       ["imperfekti","tein · teimme","en tehnyt · emme tehneet"],
-       ["perfekti","olen tehnyt · olemme tehneet","en ole tehnyt · emme ole tehneet"],
-       ["pluskvamperfekti","olin tehnyt · olimme tehneet","en ollut tehnyt · emme olleet tehneet"]
+       [{f:"preesens",e:"present"},"teen · teemme","en tee · emme tee"],
+       [{f:"imperfekti",e:"past (imperfect)"},"tein · teimme","en tehnyt · emme tehneet"],
+       [{f:"perfekti",e:"perfect"},"olen tehnyt · olemme tehneet","en ole tehnyt · emme ole tehneet"],
+       [{f:"pluskvamperfekti",e:"pluperfect"},"olin tehnyt · olimme tehneet","en ollut tehnyt · emme olleet tehneet"]
      ],
      nf:"Kielteinen imperfekti ja kielteinen perfekti eroavat vain sanasta ole.",
      ne:"Look closely at the negative column. En tehnyt is the past; en ole tehnyt is the perfect. The only difference is the word ole, and learners drop it constantly. Say the sentence out loud before you decide: if you would say 'I haven't done it (yet)', you need ole."},
@@ -7175,13 +7177,13 @@ const GRAMMAR_C = [
      cf:"Vartalo ennen -isi-", ce:"What the stem does before -isi-",
      head:["Sääntö","Verbi","Konditionaali"],
      rows:[
-       ["e ja i katoavat","lukea, oppia, tulla","luk*isi*n · opp*isi*n · tul*isi*n"],
-       ["a ja ä säilyvät kaksitavuisissa","antaa, ottaa, kysyä","anta*isi*n · otta*isi*n · kysy*isi*n"],
-       ["pitkä vokaali lyhenee","saada, jäädä, myydä","sa*isi*n · jä*isi*n · my*isi*n"],
-       ["diftongi menettää alkuosan","juoda, syödä, viedä, tuoda","jo*isi*n · sö*isi*n · ve*isi*n · to*isi*n"],
-       ["tyyppi 4 pitää vartalonsa","haluta, tavata","halua*isi*n · tapa*isi*n"],
-       ["tyyppi 5 ja 6","valita, tarvita, paeta","valits*isi*n · tarvits*isi*n · paken*isi*n"],
-       ["epäsäännölliset","tehdä, nähdä, käydä","tek*isi*n · näk*isi*n · käv*isi*n"]
+       [{f:"e ja i katoavat",e:"e and i disappear"},"lukea, oppia, tulla","luk*isi*n · opp*isi*n · tul*isi*n"],
+       [{f:"a ja ä säilyvät kaksitavuisissa",e:"a and ä stay in two-syllable verbs"},"antaa, ottaa, kysyä","anta*isi*n · otta*isi*n · kysy*isi*n"],
+       [{f:"pitkä vokaali lyhenee",e:"a long vowel shortens"},"saada, jäädä, myydä","sa*isi*n · jä*isi*n · my*isi*n"],
+       [{f:"diftongi menettää alkuosan",e:"a diphthong loses its first part"},"juoda, syödä, viedä, tuoda","jo*isi*n · sö*isi*n · ve*isi*n · to*isi*n"],
+       [{f:"tyyppi 4 pitää vartalonsa",e:"type 4 keeps its stem"},"haluta, tavata","halua*isi*n · tapa*isi*n"],
+       [{f:"tyyppi 5 ja 6",e:"types 5 and 6"},"valita, tarvita, paeta","valits*isi*n · tarvits*isi*n · paken*isi*n"],
+       [{f:"epäsäännölliset",e:"irregular verbs"},"tehdä, nähdä, käydä","tek*isi*n · näk*isi*n · käv*isi*n"]
      ],
      nf:"Huomaa ero imperfektiin: oppia → opin (imperfekti), mutta oppisin (konditionaali).",
      ne:"The stem rules overlap with the past tense but are not identical. The clearest split is -i-: in the past it merges (oppia gives opin), in the conditional it drops (oppia gives oppisin). And -a- behaves the opposite way: the past turns it to o or deletes it, the conditional simply keeps it, so antaisin, ottaisin, maksaisin."},
@@ -7209,9 +7211,9 @@ const GRAMMAR_C = [
      cf:"Kolme jos-lausetta", ce:"Three kinds of if",
      head:["Tyyppi","Esimerkki","Merkitys"],
      rows:[
-       ["mahdollinen","Jos sataa, jään kotiin.","real: it may well rain"],
-       ["kuvitteellinen","Jos minulla ol*isi* aikaa, luk*isi*n enemmän.","unreal now: I do not have time"],
-       ["mennyt, mahdoton","Jos ol*isi*n tiennyt, ol*isi*n tullut.","unreal past: I did not know, so I did not come"]
+       [{f:"mahdollinen",e:"possible"},"Jos sataa, jään kotiin.","real: it may well rain"],
+       [{f:"kuvitteellinen",e:"hypothetical"},"Jos minulla ol*isi* aikaa, luk*isi*n enemmän.","unreal now: I do not have time"],
+       [{f:"mennyt, mahdoton",e:"past, impossible"},"Jos ol*isi*n tiennyt, ol*isi*n tullut.","unreal past: I did not know, so I did not come"]
      ],
      nf:"Mennyt konditionaali: olisin + nut-partisiippi.",
      ne:"The past conditional is built like the perfect: olla in the conditional plus the NUT-participle. Olisin mennyt, olisimme tulleet, et olisi uskonut. Its negative is en olisi mennyt. Finns use it constantly for regret and for hindsight, which makes it worth active practice rather than recognition only."},
@@ -7286,12 +7288,12 @@ const GRAMMAR_C = [
      cf:"Monikon vartalo tyypeittäin", ce:"Where the plural stem comes from",
      head:["Tyyppi","Infinitiivi","Leikkaus","Monikko"],
      rows:[
-       ["1","puhua, kirjoittaa","poista -a/-ä","puhu*kaa · kirjoitta*kaa"],
-       ["2","juoda, nähdä","poista -da/-dä","juo*kaa · näh*kää"],
-       ["3","tulla, nousta, ajatella","poista -la/-ta","tul*kaa · nous*kaa · ajatel*kaa"],
-       ["4","haluta, tavata","poista -ta/-tä","halut*kaa · tavat*kaa"],
-       ["5","valita, tarvita","poista -ta/-tä","valit*kaa · tarvit*kaa"],
-       ["6","vanheta, paeta","poista -ta/-tä","vanhet*kaa · paet*kaa"]
+       ["1","puhua, kirjoittaa",{f:"poista -a/-ä",e:"drop -a/-ä"},"puhu*kaa · kirjoitta*kaa"],
+       ["2","juoda, nähdä",{f:"poista -da/-dä",e:"drop -da/-dä"},"juo*kaa · näh*kää"],
+       ["3","tulla, nousta, ajatella",{f:"poista -la/-ta",e:"drop -la/-ta"},"tul*kaa · nous*kaa · ajatel*kaa"],
+       ["4","haluta, tavata",{f:"poista -ta/-tä",e:"drop -ta/-tä"},"halut*kaa · tavat*kaa"],
+       ["5","valita, tarvita",{f:"poista -ta/-tä",e:"drop -ta/-tä"},"valit*kaa · tarvit*kaa"],
+       ["6","vanheta, paeta",{f:"poista -ta/-tä",e:"drop -ta/-tä"},"vanhet*kaa · paet*kaa"]
      ],
      nf:"Tyypeissä 4-6 t jää vartaloon: halut-, valit-, paet-.",
      ne:"For types 4, 5 and 6 you only remove the final vowel, so the t stays and you get halutkaa, valitkaa, paetkaa. For type 2 the d goes with the vowel: juokaa, nähkää, tehkää, syökää."},
@@ -7399,11 +7401,11 @@ const GRAMMAR_C = [
      cf:"Passiivin kaikki aikamuodot: tehdä", ce:"Every tense of one verb",
      head:["Aikamuoto","Myönteinen","Kielteinen"],
      rows:[
-       ["preesens","teh*dään","ei tehdä"],
-       ["imperfekti","teh*tiin","ei teh*ty"],
-       ["perfekti","on teh*ty","ei ole teh*ty"],
-       ["pluskvamperfekti","oli teh*ty","ei ollut teh*ty"],
-       ["konditionaali","teh*täisiin","ei teh*täisi"]
+       [{f:"preesens",e:"present"},"teh*dään","ei tehdä"],
+       [{f:"imperfekti",e:"past (imperfect)"},"teh*tiin","ei teh*ty"],
+       [{f:"perfekti",e:"perfect"},"on teh*ty","ei ole teh*ty"],
+       [{f:"pluskvamperfekti",e:"pluperfect"},"oli teh*ty","ei ollut teh*ty"],
+       [{f:"konditionaali",e:"conditional"},"teh*täisiin","ei teh*täisi"]
      ],
      nf:"Perfektissä olla on aina yksikön kolmannessa persoonassa: on tehty.",
      ne:"The passive perfect uses on, never ovat, whatever the object looks like: Kirjat on jo myyty. The TU-participle (tehty, puhuttu, otettu, menty) also works as a plain adjective, which is why you see it on packaging and signs: keitetty, paistettu, kielletty, suljettu."},
@@ -7601,11 +7603,11 @@ const GRAMMAR_C = [
      cf:"Viisi sijamuotoa, viisi merkitystä", ce:"The five case forms and what each one means",
      head:["Muoto","Kysymys","Merkitys","Esimerkki"],
      rows:[
-       ["-maan / -mään","mihin","kohti tekemistä","Menen syö*mään."],
-       ["-massa / -mässä","missä","tekemisen sisällä","Olen syö*mässä."],
-       ["-masta / -mästä","mistä","pois tekemisestä","Tulen syö*mästä."],
-       ["-malla / -mällä","miten","keino","Opin puhu*malla."],
-       ["-matta / -mättä","ilman mitä","ilman tekemistä","Lähdin maksa*matta."]
+       ["-maan / -mään","mihin",{f:"kohti tekemistä",e:"going to do"},"Menen syö*mään."],
+       ["-massa / -mässä","missä",{f:"tekemisen sisällä",e:"in the middle of doing"},"Olen syö*mässä."],
+       ["-masta / -mästä","mistä",{f:"pois tekemisestä",e:"coming from doing"},"Tulen syö*mästä."],
+       ["-malla / -mällä","miten",{f:"keino",e:"by doing (means)"},"Opin puhu*malla."],
+       ["-matta / -mättä","ilman mitä",{f:"ilman tekemistä",e:"without doing"},"Lähdin maksa*matta."]
      ],
      nf:"Kolme ensimmäistä ovat sama sijasarja kuin talo → taloon, talossa, talosta.",
      ne:"The first three are the internal local cases applied to an action instead of a place. Into the eating, in the eating, out of the eating. The fourth, -malla, is the adessive used as an instrument: by speaking, by reading, by asking. The fifth, -matta, is the abessive: without paying, without saying anything."},
@@ -7626,8 +7628,8 @@ const GRAMMAR_C = [
      cf:"Kumpi infinitiivi", ce:"Which infinitive after which verb",
      head:["Pääverbi","Infinitiivi","Esimerkki"],
      rows:[
-       ["haluta, voida, osata, saada, yrittää","perusmuoto","Haluan opiskella. · Osaan uida."],
-       ["täytyä, pitää, aikoa","perusmuoto","Minun täytyy lähteä."],
+       ["haluta, voida, osata, saada, yrittää",{f:"perusmuoto",e:"basic form"},"Haluan opiskella. · Osaan uida."],
+       ["täytyä, pitää, aikoa",{f:"perusmuoto",e:"basic form"},"Minun täytyy lähteä."],
        ["mennä, tulla, lähteä, jäädä","-maan / -mään","Lähden ostamaan maitoa."],
        ["oppia, opettaa, ruveta, pyytää","-maan / -mään","Opin puhumaan suomea."],
        ["olla, käydä","-massa / -mässä","Käyn uimassa. · Olen töissä."],
@@ -7713,11 +7715,11 @@ const GRAMMAR_C = [
      cf:"Myönteinen ja kielteinen", ce:"Positive and negative",
      head:["Myönteinen","Kielteinen","Sija"],
      rows:[
-       ["Minulla on auto.","Minulla ei ole auto*a.","nominatiivi → partitiivi"],
-       ["Minulla on aikaa.","Minulla ei ole aika*a.","partitiivi → partitiivi"],
-       ["Meillä on lapsia.","Meillä ei ole lapsi*a.","partitiivi → partitiivi"],
-       ["Hänellä on rahat.","Hänellä ei ole raho*ja.","monikko → monikon partitiivi"],
-       ["Onko sinulla koira?","Eikö sinulla ole koira*a?","kysymys"]
+       ["Minulla on auto.","Minulla ei ole auto*a.",{f:"nominatiivi → partitiivi",e:"nominative → partitive"}],
+       ["Minulla on aikaa.","Minulla ei ole aika*a.",{f:"partitiivi → partitiivi",e:"partitive → partitive"}],
+       ["Meillä on lapsia.","Meillä ei ole lapsi*a.",{f:"partitiivi → partitiivi",e:"partitive → partitive"}],
+       ["Hänellä on rahat.","Hänellä ei ole raho*ja.",{f:"monikko → monikon partitiivi",e:"plural → plural partitive"}],
+       ["Onko sinulla koira?","Eikö sinulla ole koira*a?",{f:"kysymys",e:"question"}]
      ],
      nf:"Kielto vaatii aina partitiivin. Poikkeuksia ei ole.",
      ne:"Negation is absolute here, as it is with objects. Whatever case the thing had in the positive sentence, ei ole forces the partitive: autoa, koiraa, rahaa, aikaa, lapsia. Minulla ei ole auto is simply not Finnish."},
@@ -7799,11 +7801,11 @@ const GRAMMAR_C = [
      cf:"Kaksi lausetyyppiä", ce:"Two clause types side by side",
      head:["Eksistentiaalilause","Tavallinen lause","Ero"],
      rows:[
-       ["Pöydällä on kirja.","Kirja on pöydällä.","uusi asia / tuttu asia"],
-       ["Kadulla on ihmis*iä.","Ihmiset ovat kadulla.","partitiivi / nominatiivi"],
-       ["Jääkaapissa on maito*a.","Maito on jääkaapissa.","osa / kokonaisuus"],
-       ["Pihalla on lapsi*a.","Lapset ovat pihalla.","verbi on / verbi ovat"],
-       ["Espoossa on paljon metsä*ä.","Metsä on kaunis.","määrä / ominaisuus"]
+       ["Pöydällä on kirja.","Kirja on pöydällä.",{f:"uusi asia / tuttu asia",e:"new information / known thing"}],
+       ["Kadulla on ihmis*iä.","Ihmiset ovat kadulla.",{f:"partitiivi / nominatiivi",e:"partitive / nominative"}],
+       ["Jääkaapissa on maito*a.","Maito on jääkaapissa.",{f:"osa / kokonaisuus",e:"part / whole"}],
+       ["Pihalla on lapsi*a.","Lapset ovat pihalla.",{f:"verbi on / verbi ovat",e:"verb: on / ovat"}],
+       ["Espoossa on paljon metsä*ä.","Metsä on kaunis.",{f:"määrä / ominaisuus",e:"amount / quality"}]
      ],
      nf:"Eksistentiaalilauseen verbi on aina yksikössä: on, oli, ei ole.",
      ne:"The verb of an existential clause never agrees with anything. It is on, oli, ei ole, on ollut, whatever follows it. The ordinary clause on the right does agree: Ihmiset ovat kadulla, Lapset ovat pihalla. Verb agreement is the fastest way to tell which clause type you are reading."},
@@ -7814,12 +7816,12 @@ const GRAMMAR_C = [
      cf:"Milloin partitiivi", ce:"Choosing the case of the subject",
      head:["Tilanne","Esimerkki","Selitys"],
      rows:[
-       ["yksi kokonainen asia","Pöydällä on kirja.","nominatiivi"],
-       ["epämääräinen monikko","Pöydällä on kirjo*ja.","some books"],
-       ["ainesana","Lasissa on vet*tä.","some water"],
-       ["määrän ilmaus","Kaapissa on paljon ruoka*a.","after paljon, vähän"],
-       ["kielto","Kaupassa ei ole leipä*ä.","negation, always"],
-       ["kielto, monikko","Pihalla ei ole lapsi*a.","negation, plural"]
+       [{f:"yksi kokonainen asia",e:"one whole thing"},"Pöydällä on kirja.",{f:"nominatiivi",e:"nominative"}],
+       [{f:"epämääräinen monikko",e:"indefinite plural"},"Pöydällä on kirjo*ja.","some books"],
+       [{f:"ainesana",e:"mass noun"},"Lasissa on vet*tä.","some water"],
+       [{f:"määrän ilmaus",e:"expression of amount"},"Kaapissa on paljon ruoka*a.","after paljon, vähän"],
+       [{f:"kielto",e:"negation"},"Kaupassa ei ole leipä*ä.","negation, always"],
+       [{f:"kielto, monikko",e:"negation, plural"},"Pihalla ei ole lapsi*a.","negation, plural"]
      ],
      nf:"Kielteisessä lauseessa subjekti on aina partitiivissa.",
      ne:"Negation is the one rule with no exceptions. Kaupassa ei ole leipää, Talossa ei ole hissiä, Pihalla ei ole lapsia. A nominative subject after ei ole in an existential clause is always an error."},
@@ -7911,11 +7913,11 @@ const GRAMMAR_C = [
      cf:"Viisi rakennetta", ce:"The five necessive verbs and what each one means",
      head:["Rakenne","Voima","Esimerkki"],
      rows:[
-       ["minun täytyy","vahva pakko","Minun täytyy mennä töihin."],
-       ["minun pitää","pakko, hieman pehmeämpi","Minun pitää soittaa lääkärille."],
-       ["minun on pakko","vahvin, ei vaihtoehtoja","Minun on pakko lähteä nyt."],
-       ["minun kannattaa","kannattaa, ei pakko","Sinun kannattaa varata aika etukäteen."],
-       ["minun tarvitsee","tarve, usein kiellossa","Sinun ei tarvitse tulla."]
+       ["minun täytyy",{f:"vahva pakko",e:"strong obligation"},"Minun täytyy mennä töihin."],
+       ["minun pitää",{f:"pakko, hieman pehmeämpi",e:"obligation, slightly softer"},"Minun pitää soittaa lääkärille."],
+       ["minun on pakko",{f:"vahvin, ei vaihtoehtoja",e:"strongest, no alternative"},"Minun on pakko lähteä nyt."],
+       ["minun kannattaa",{f:"kannattaa, ei pakko",e:"advisable, not required"},"Sinun kannattaa varata aika etukäteen."],
+       ["minun tarvitsee",{f:"tarve, usein kiellossa",e:"need, often negated"},"Sinun ei tarvitse tulla."]
      ],
      nf:"täytyy ja pitää ovat käytännössä synonyymejä.",
      ne:"täytyy and pitää are interchangeable in almost every context; täytyy is marginally more formal. on pakko is the strongest and carries a note of no choice. kannattaa is pure advice, worth its weight to a learner: it is how you give a recommendation without sounding bossy. tarvitsee is used mostly in the negative."},
@@ -7923,10 +7925,10 @@ const GRAMMAR_C = [
      cf:"Kielto ja aikamuodot", ce:"Negatives and tenses",
      head:["Aika","Myönteinen","Kielteinen"], hE:["Tense","",""],
      rows:[
-       ["preesens","Minun täytyy mennä.","Minun ei tarvitse mennä."],
-       ["imperfekti","Minun piti mennä.","Minun ei tarvinnut mennä."],
-       ["konditionaali","Minun pitäisi mennä.","Minun ei pitäisi mennä."],
-       ["perfekti","Minun on täytynyt mennä.","Minun ei ole tarvinnut mennä."]
+       [{f:"preesens",e:"present"},"Minun täytyy mennä.","Minun ei tarvitse mennä."],
+       [{f:"imperfekti",e:"past (imperfect)"},"Minun piti mennä.","Minun ei tarvinnut mennä."],
+       [{f:"konditionaali",e:"conditional"},"Minun pitäisi mennä.","Minun ei pitäisi mennä."],
+       [{f:"perfekti",e:"perfect"},"Minun on täytynyt mennä.","Minun ei ole tarvinnut mennä."]
      ],
      nf:"Verbiä täytyy ei kielletä. Kielto on ei tarvitse.",
      ne:"There is no ei täydy. The negative of minun täytyy is minun ei tarvitse, meaning I do not have to. Watch the trap: minun ei pidä does exist but means I must not, which is a prohibition, not a release. Sinun ei tarvitse tulla is 'you needn't come'; sinun ei pidä tulla is 'you are not to come'."},
@@ -8010,11 +8012,11 @@ const GRAMMAR_C = [
        ["ja","and","Asun Espoossa ja opiskelen suomea."],
        ["sekä ... että","both ... and","Sekä Anna että Matti puhuvat suomea."],
        ["mutta","but","Haluaisin tulla, mutta olen töissä."],
-       ["vaan","but instead (kiellon jälkeen)","En juo kahvia vaan teetä."],
-       ["tai","or (vaihtoehto)","Voit soittaa tai lähettää viestin."],
-       ["vai","or (kysymyksessä)","Otatko kahvia vai teetä?"],
+       ["vaan",{f:"but instead (kiellon jälkeen)",e:"but instead (after a negative)"},"En juo kahvia vaan teetä."],
+       ["tai",{f:"or (vaihtoehto)",e:"or (between alternatives)"},"Voit soittaa tai lähettää viestin."],
+       ["vai",{f:"or (kysymyksessä)",e:"or (in questions)"},"Otatko kahvia vai teetä?"],
        ["eli","that is, in other words","Hän on ekonomi eli kauppatieteiden maisteri."],
-       ["sillä","for, because (kirjallinen)","Lähdin aikaisin, sillä oli myöhä."]
+       ["sillä",{f:"for, because (kirjallinen)",e:"for, because (written)"},"Lähdin aikaisin, sillä oli myöhä."]
      ],
      nf:"vaan vain kiellon jälkeen, vai vain kysymyksessä.",
      ne:"Two pairs to keep apart. mutta versus vaan: vaan only follows a negative and corrects it, so En juo kahvia vaan teetä. Use mutta anywhere else. tai versus vai: vai only appears in questions that offer a choice, so Kahvia vai teetä? but Voit ottaa kahvia tai teetä."},
@@ -8022,14 +8024,14 @@ const GRAMMAR_C = [
      cf:"Alistuskonjunktiot ryhmittäin", ce:"Subordinating, grouped by job",
      head:["Tehtävä","Sanat","Esimerkki"],
      rows:[
-       ["syy","koska, kun, sillä","Menen kauppaan, koska jääkaappi on tyhjä."],
-       ["aika","kun, kunnes, ennen kuin, heti kun","Soitan, kun pääsen töistä."],
-       ["aika, jatkuva","sillä aikaa kun, samalla kun","Luen, sillä aikaa kun ruoka kypsyy."],
-       ["ehto","jos, ellei, mikäli","Jos sataa, jään kotiin."],
-       ["vastakohta","vaikka, mutta, kuitenkin","Vaikka olen väsynyt, menen kuntosalille."],
-       ["tarkoitus","jotta, että","Opiskelen suomea, jotta saisin töitä."],
-       ["sisältö","että","Sanoin, että tulen huomenna."],
-       ["seuraus","joten, niin että","Kurssi loppui, joten minulla on aikaa."]
+       [{f:"syy",e:"reason"},"koska, kun, sillä","Menen kauppaan, koska jääkaappi on tyhjä."],
+       [{f:"aika",e:"time"},"kun, kunnes, ennen kuin, heti kun","Soitan, kun pääsen töistä."],
+       [{f:"aika, jatkuva",e:"time, ongoing"},"sillä aikaa kun, samalla kun","Luen, sillä aikaa kun ruoka kypsyy."],
+       [{f:"ehto",e:"condition"},"jos, ellei, mikäli","Jos sataa, jään kotiin."],
+       [{f:"vastakohta",e:"contrast"},"vaikka, mutta, kuitenkin","Vaikka olen väsynyt, menen kuntosalille."],
+       [{f:"tarkoitus",e:"purpose"},"jotta, että","Opiskelen suomea, jotta saisin töitä."],
+       [{f:"sisältö",e:"reported content"},"että","Sanoin, että tulen huomenna."],
+       [{f:"seuraus",e:"result"},"joten, niin että","Kurssi loppui, joten minulla on aikaa."]
      ],
      nf:"jotta-lauseessa käytetään usein konditionaalia: jotta saisin.",
      ne:"Three notes. jotta takes the conditional when the purpose is not yet achieved: jotta saisin töitä, jotta ymmärtäisit. ellei is 'if not' and swallows the negation: Ellei sada, mennään ulos. And kun does double duty as 'when' and, in speech, as 'because', which is why koska is safer in writing."},
@@ -8056,12 +8058,12 @@ const GRAMMAR_C = [
      cf:"Pilkkusäännöt", ce:"Where the comma goes",
      head:["Tilanne","Pilkku","Esimerkki"],
      rows:[
-       ["sivulause","aina","Menen kotiin, koska olen väsynyt."],
-       ["relatiivilause","aina, molemmin puolin","Mies, joka soitti, oli naapuri."],
-       ["ja/tai, sama subjekti","ei pilkkua","Menen kauppaan ja ostan leipää."],
-       ["ja/tai, eri subjekti","pilkku","Minä menen kauppaan, ja sinä jäät kotiin."],
-       ["mutta, vaan","aina pilkku","Haluaisin tulla, mutta en ehdi."],
-       ["sivulause ensin","pilkku väliin","Jos sataa, jään kotiin."]
+       [{f:"sivulause",e:"subordinate clause"},{f:"aina",e:"always"},"Menen kotiin, koska olen väsynyt."],
+       [{f:"relatiivilause",e:"relative clause"},{f:"aina, molemmin puolin",e:"always, on both sides"},"Mies, joka soitti, oli naapuri."],
+       [{f:"ja/tai, sama subjekti",e:"ja/tai, same subject"},{f:"ei pilkkua",e:"no comma"},"Menen kauppaan ja ostan leipää."],
+       [{f:"ja/tai, eri subjekti",e:"ja/tai, different subject"},{f:"pilkku",e:"comma"},"Minä menen kauppaan, ja sinä jäät kotiin."],
+       ["mutta, vaan",{f:"aina pilkku",e:"always a comma"},"Haluaisin tulla, mutta en ehdi."],
+       [{f:"sivulause ensin",e:"subordinate clause first"},{f:"pilkku väliin",e:"comma between them"},"Jos sataa, jään kotiin."]
      ],
      nf:"Suomen pilkkusäännöt ovat mekaanisia, eivät makuasia.",
      ne:"Finnish comma rules are rules, not taste. English lets you decide whether a clause is essential; Finnish does not. Every subordinate clause is fenced off with commas, including relative clauses in the middle of a sentence, which get a comma on both sides. Conversely, do not put a comma before ja when the two halves share a subject."},
@@ -8119,14 +8121,14 @@ const GRAMMAR_D = [
   body: [
     {k:"p", f:"Partisiippi on verbi, joka toimii kuin adjektiivi. Se taipuu sijoissa ja luvussa, ja se sopii yhteen pääsanansa kanssa. Suomessa on neljä partisiippia.", e:"A participle is a verb wearing an adjective's clothes. It takes case and number endings and agrees with the noun it describes. Finnish has exactly four of them, and between them they cover active and passive, present and past. Two of them you already know without realising it."},
     {k:"box", tone:"key", f:"Kaksi partisiippia on jo tuttua: -nut on perfektistä (olen lukenut) ja -ttu passiivista (on luettu).", e:"You already use two of the four. The NUT participle is the word in 'olen lukenut'; the TU participle is the word in 'on luettu'. Learning participles is mostly learning to use forms you can already produce in a second place: in front of a noun."},
-    {k:"table", cf:"Nimet ja merkitykset", ce:"Names, endings and meanings", head:["Partisiippi","Pääte","Merkitys","Esimerkki"], rows:[["VA (preesens, aktiivi)","-va / -vä","joka tekee","luke*va mies"],["TAVA (preesens, passiivi)","-tava / -ttava","jota tehdään, joka pitää tehdä","lue*ttava kirja"],["NUT (mennyt, aktiivi)","-nut / -nyt","joka teki","luke*nut mies"],["TU (mennyt, passiivi)","-tu / -ttu","joka tehtiin","lue*ttu kirja"]], nf:"Aktiivi = tekijä. Passiivi = kohde.", ne:"Active participles describe the doer (the man who reads). Passive participles describe the thing done to (the book that is read). Present versus past is about time relative to the main verb, not absolute time."},
+    {k:"table", cf:"Nimet ja merkitykset", ce:"Names, endings and meanings", head:["Partisiippi","Pääte","Merkitys","Esimerkki"], rows:[[{f:"VA (preesens, aktiivi)",e:"VA (present, active)"},"-va / -vä",{f:"joka tekee",e:"who / that does"},"luke*va mies"],[{f:"TAVA (preesens, passiivi)",e:"TAVA (present, passive)"},"-tava / -ttava",{f:"jota tehdään, joka pitää tehdä",e:"that is done, or must be done"},"lue*ttava kirja"],[{f:"NUT (mennyt, aktiivi)",e:"NUT (past, active)"},"-nut / -nyt",{f:"joka teki",e:"who / that did"},"luke*nut mies"],[{f:"TU (mennyt, passiivi)",e:"TU (past, passive)"},"-tu / -ttu",{f:"joka tehtiin",e:"that was done"},"lue*ttu kirja"]], nf:"Aktiivi = tekijä. Passiivi = kohde.", ne:"Active participles describe the doer (the man who reads). Passive participles describe the thing done to (the book that is read). Present versus past is about time relative to the main verb, not absolute time."},
     {k:"table", cf:"Verbit ja niiden neljä partisiippia", ce:"One verb, four participles", head:["Verbi","VA","TAVA","NUT","TU"], rows:[["puhua","puhu*va","puhu*ttava","puhu*nut","puhu*ttu"],["lukea","luke*va","lue*ttava","luke*nut","lue*ttu"],["ostaa","osta*va","oste*ttava","osta*nut","oste*ttu"],["tehdä","teke*vä","teh*tävä","teh*nyt","teh*ty"],["syödä","syö*vä","syö*tävä","syö*nyt","syö*ty"],["tulla","tule*va","tul*tava","tul*lut","tul*tu"],["mennä","mene*vä","men*tävä","men*nyt","men*ty"],["tarvita","tarvitse*va","tarvi*ttava","tarvi*nnut","tarvi*ttu"]], nf:"VA: he-muoto ilman -t. NUT: perfektistä. TU: passiivin perfektistä. TAVA: TU-partisiippi + -ava/-ävä.", ne:"Four recipes, each starting from a form you already have. VA: take the he-form (he lukevat) and drop the -t; this works for every verb type. NUT: it is the word you put after olen, plural -neet. TU: it is the word you put after on in the passive perfect. TAVA: take the TU participle and swap its final -u/-y for -ava/-ävä, so luettu gives luettava and tehty gives tehtävä."},
     {k:"p", f:"Englannissa määritys tulee substantiivin jälkeen: 'the man walking on the street'. Suomessa se tulee ennen substantiivia: 'kadulla kävelevä mies'. Kaikki partisiipin määritteet menevät myös eteen.", e:"This is the structural point of the whole chapter. English hangs the description after the noun; Finnish hangs it in front, and everything that belongs to the participle — objects, adverbials, place phrases — goes in front of the participle. The noun is always the last word of the package. Reading Finnish newspapers becomes far easier once you learn to look for the noun at the end and then unpack leftwards."},
     {k:"pair", cf:"Sama asia kahdella tavalla", ce:"The same content, clause versus participle", items:[{a:"mies, joka kävelee kadulla", b:"kadulla kävelevä mies", af:"relatiivilause, puhekielisempi", ae:"relative clause — normal in speech, safe everywhere", bf:"partisiippi, tiiviimpi", be:"participle — compact, and what written Finnish prefers"},{a:"kirja, joka on pöydällä", b:"pöydällä oleva kirja", af:"kaksi lausetta", ae:"two clauses joined by joka", bf:"yksi lause", be:"one clause. Note that oleva, the VA participle of olla, is extremely common"},{a:"perhe, joka muutti Suomeen", b:"Suomeen muuttanut perhe", af:"mennyt aika, joka-lause", ae:"past time, relative clause", bf:"NUT-partisiippi", be:"past active participle. The family did the moving, so the participle is active"},{a:"auto, joka tehtiin Suomessa", b:"Suomessa tehty auto", af:"passiivi, joka-lause", ae:"passive, relative clause", bf:"TU-partisiippi", be:"the car did not do anything; it was made. Passive participle"}]},
     {k:"ex", items:[{f:"Suomea puhuva työntekijä saa työn helpommin.", e:"An employee who speaks Finnish gets a job more easily.", n:"puhua → puhuva, agreeing with työntekijä"},{f:"Junaa odottavat matkustajat seisoivat laiturilla.", e:"The passengers waiting for the train stood on the platform.", n:"plural: odottavat; odottaa takes a partitive object, junaa"},{f:"Eilen saapunut kirje oli pankista.", e:"The letter that arrived yesterday was from the bank.", n:"saapua → saapunut"},{f:"Hyvin kirjoitettu hakemus erottuu joukosta.", e:"A well-written application stands out from the crowd.", n:"kirjoittaa → kirjoitettu"}]},
     {k:"p", f:"TAVA-partisiippi tarkoittaa ensinnäkin 'jota tehdään': myytävä asunto, luettava kirja. Toiseksi se ilmaisee pakkoa: 'Tämä on tehtävä tänään.'", e:"First, it is the ordinary passive present participle: myytävä asunto, an apartment being sold, that is, for sale. Second — and this is the use that surprises people — 'olla' plus the TAVA participle expresses necessity, exactly like täytyy. The person who must act goes in the genitive: Minun on mentävä. Sinun on odotettava."},
     {k:"ex", items:[{f:"Lippu on ostettava etukäteen.", e:"The ticket must be bought in advance.", n:"Necessity, no agent named."},{f:"Minun on mentävä nyt.", e:"I have to go now.", n:"Genitive minun + on + TAVA. Same meaning as Minun täytyy mennä."},{f:"Ikkunasta näkyi myytävä asunto.", e:"An apartment for sale was visible from the window.", n:"Ordinary passive participle use."}]},
-    {k:"table", cf:"Partisiipit taipuvat", ce:"Participles decline like any adjective", head:["Sija","VA","NUT","TU"], rows:[["nominatiivi","luke*va","luke*nut","lue*ttu"],["genetiivi","luke*van","luke*neen","lue*tun"],["partitiivi","luke*vaa","luke*nutta","lue*ttua"],["monikko","luke*vat","luke*neet","lue*tut"],["inessiivi","luke*vassa","luke*neessa","lue*tussa"]], nf:"NUT-partisiipin vartalo on -nee-.", ne:"The NUT participle hides an -nee- stem: lukenut but lukeneen, lukeneet, lukeneessa. This trips up almost everyone the first time. Compare the familiar adjective väsynyt: väsyneet, väsyneenä."},
+    {k:"table", cf:"Partisiipit taipuvat", ce:"Participles decline like any adjective", head:["Sija","VA","NUT","TU"], rows:[[{f:"nominatiivi",e:"nominative"},"luke*va","luke*nut","lue*ttu"],[{f:"genetiivi",e:"genitive"},"luke*van","luke*neen","lue*tun"],[{f:"partitiivi",e:"partitive"},"luke*vaa","luke*nutta","lue*ttua"],[{f:"monikko",e:"plural"},"luke*vat","luke*neet","lue*tut"],[{f:"inessiivi",e:"inessive"},"luke*vassa","luke*neessa","lue*tussa"]], nf:"NUT-partisiipin vartalo on -nee-.", ne:"The NUT participle hides an -nee- stem: lukenut but lukeneen, lukeneet, lukeneessa. This trips up almost everyone the first time. Compare the familiar adjective väsynyt: väsyneet, väsyneenä."},
     {k:"box", tone:"warn", f:"Aktiivi ja passiivi menevät helposti sekaisin. 'Kirjoittava mies' kirjoittaa itse. 'Kirjoitettu kirje' on jonkun kirjoittama.", e:"Learners write 'kirjoittava kirje' for 'a written letter'. Ask one question: does the noun do the action or receive it? The man writes, so kirjoittava mies. The letter is written, so kirjoitettu kirje. The same test sorts lukeva (reading) from luettu (read)."},
     {k:"box", tone:"yki", f:"YKI:n luetun ymmärtämisessä partisiipit ovat joka tekstissä.", e:"In YKI reading at keskitaso, participle modifiers appear in nearly every official text: hakemuksen jättänyt henkilö, ennen 1.1. alkaneet sopimukset. You do not have to produce them to pass, but you must be able to decode them at speed. Practise by turning each one back into a joka-clause in your head."}
   ],
@@ -8157,8 +8159,8 @@ const GRAMMAR_D = [
     {k:"p", f:"Lauseenvastike korvaa sivulauseen. Siinä ei ole persoonamuotoista verbiä eikä konjunktiota. Verbi on partisiippi tai infinitiivi, ja tekijä on genetiivissä tai omistusliitteessä.", e:"A lauseenvastike replaces a subordinate clause. The conjunction (että, kun, jotta) disappears, the finite verb disappears, and what is left is a participle or an infinitive carrying a possessive suffix. The result is dense, formal, and everywhere in written Finnish."},
     {k:"box", tone:"key", f:"Opettele ensin tunnistamaan, vasta sitten tuottamaan.", e:"Learn to recognise these first and to produce them second. Being able to read 'Tultuaan Suomeen hän aloitti opinnot' is worth far more to you than being able to write it. The clause version is never wrong."},
     {k:"box", tone:"spoken", f:"Nämä rakenteet kuuluvat kirjakieleen. Puheessa sanotaan että, kun ja jotta.", e:"Say this plainly to yourself: these belong to written Finnish. In Helsinki nobody says 'Tultuani kotiin'; they say 'Ku mä tulin kotii'. You will meet lauseenvastikkeet in newspapers, contracts, Kela letters and YKI reading texts, and almost never in a conversation."},
-    {k:"table", cf:"Tunnista rakenne", ce:"Recognition table — what you see, what it means", head:["Rakenne","Esimerkki","Sama lauseena","English"], rows:[["Referatiivi, preesens","Sanoin hänen tule*van.","Sanoin, että hän tulee.","I said he was coming."],["Referatiivi, mennyt","Kuulin hänen lähte*neen.","Kuulin, että hän lähti.","I heard he had left."],["Temporaali, samanaikainen","Tul*lessa*ni kotiin","Kun tulin kotiin","When I came home"],["Temporaali, aikaisempi","Teh*tyä*än työn","Kun hän oli tehnyt työn","Having done the work"],["Finaali","ost*aakse*ni maitoa","jotta ostaisin maitoa","in order to buy milk"]], nf:"Genetiivi tai omistusliite kertoo tekijän.", ne:"In every one of these the doer is marked either by a genitive word in front (hänen, lasten) or by a possessive suffix on the form itself (-ni, -an). There is no other subject."},
-    {k:"table", cf:"Referatiivin muodot", ce:"The referative forms of tulla", head:["Tekijä","Preesens","Mennyt"], rows:[["eri tekijä","hänen tule*van","hänen tul*leen"],["minä","tule*va*ni","tul*lee*ni"],["sinä","tule*va*si","tul*lee*si"],["hän, sama tekijä","tule*va*nsa","tul*lee*nsa"],["me","tule*va*mme","tul*lee*mme"]], nf:"Genetiivin -n katoaa omistusliitteen edeltä.", ne:"The genitive -n drops before a possessive suffix: tulevan plus -ni gives tulevani, never tulevanni. To build one: take the VA participle for something simultaneous, the NUT participle for something earlier, put it in the genitive, and put the doer in the genitive in front of it. If the doer is the main clause subject, drop the pronoun and use a possessive suffix instead."},
+    {k:"table", cf:"Tunnista rakenne", ce:"Recognition table — what you see, what it means", head:["Rakenne","Esimerkki","Sama lauseena","English"], rows:[[{f:"Referatiivi, preesens",e:"Referative, present"},"Sanoin hänen tule*van.","Sanoin, että hän tulee.","I said he was coming."],[{f:"Referatiivi, mennyt",e:"Referative, past"},"Kuulin hänen lähte*neen.","Kuulin, että hän lähti.","I heard he had left."],[{f:"Temporaali, samanaikainen",e:"Temporal, at the same time"},"Tul*lessa*ni kotiin","Kun tulin kotiin","When I came home"],[{f:"Temporaali, aikaisempi",e:"Temporal, before"},"Teh*tyä*än työn","Kun hän oli tehnyt työn","Having done the work"],[{f:"Finaali",e:"Final (purpose)"},"ost*aakse*ni maitoa","jotta ostaisin maitoa","in order to buy milk"]], nf:"Genetiivi tai omistusliite kertoo tekijän.", ne:"In every one of these the doer is marked either by a genitive word in front (hänen, lasten) or by a possessive suffix on the form itself (-ni, -an). There is no other subject."},
+    {k:"table", cf:"Referatiivin muodot", ce:"The referative forms of tulla", head:["Tekijä","Preesens","Mennyt"], rows:[[{f:"eri tekijä",e:"different subject"},"hänen tule*van","hänen tul*leen"],["minä","tule*va*ni","tul*lee*ni"],["sinä","tule*va*si","tul*lee*si"],[{f:"hän, sama tekijä",e:"hän, same subject"},"tule*va*nsa","tul*lee*nsa"],["me","tule*va*mme","tul*lee*mme"]], nf:"Genetiivin -n katoaa omistusliitteen edeltä.", ne:"The genitive -n drops before a possessive suffix: tulevan plus -ni gives tulevani, never tulevanni. To build one: take the VA participle for something simultaneous, the NUT participle for something earlier, put it in the genitive, and put the doer in the genitive in front of it. If the doer is the main clause subject, drop the pronoun and use a possessive suffix instead."},
     {k:"ex", items:[{f:"Uskon hänen ymmärtävän asian.", e:"I believe he understands the matter.", n:"Uskon, että hän ymmärtää asian."},{f:"Hän sanoi olevansa väsynyt.", e:"He said he was tired.", n:"Same subject, so a possessive suffix: olevansa."},{f:"Muistan käyneeni siellä kerran.", e:"I remember having been there once.", n:"käynyt to käyneen, plus -ni."},{f:"Kuulin naapurin muuttaneen pois.", e:"I heard that the neighbour had moved away.", n:"Genitive naapurin plus the past participle in the genitive."}]},
     {k:"box", tone:"warn", f:"Kieltoa ei voi panna referatiiviin. Käytä silloin ettei-lausetta.", e:"There is no tidy negative referative. 'I thought he was not coming' has to stay a clause: Luulin, ettei hän tule. The moment negation appears, switch back to että."},
     {k:"table", cf:"Temporaalin muodot", ce:"How the two temporal forms are built", head:["Verbi","Samaan aikaan","Ennen sitä"], rows:[["tulla","tul*lessa*ni","tul*tua*ni"],["syödä","syö*dessä*ni","syö*tyä*ni"],["tehdä","teh*dessä*än","teh*tyä*än"],["puhua","puhu*essa*ni","puhu*ttua*ni"],["lukea","luki*essa*ni","lue*ttua*ni"],["olla","ol*lessa*ni","ol*tua*ni"]], nf:"-essa tulee A-infinitiivistä, -tua TU-partisiipista.", ne:"For the first column take the dictionary form, drop the final -a/-ä and add -essa/-essä; lukea is the one pattern that shifts its stem vowel (luke- becomes luki-). For the second column take the TU participle and add -a/-ä plus the possessive suffix: tehty gives tehtyään. As for meaning: the -essa form says the two events overlap (while, as, when), and the -tua form says the first finished before the second began (after doing, having done)."},
@@ -8193,9 +8195,9 @@ const GRAMMAR_D = [
   body: [
     {k:"p", f:"Suomessa omistaja voidaan merkitä sanan loppuun. Englannissa sanotaan 'my house', suomessa 'taloni'. Liite tulee aina sijapäätteen jälkeen, ihan viimeiseksi.", e:"English marks the owner with a separate word in front. Finnish can mark it with a suffix at the end of the noun. The order inside the word never varies: stem, then case ending, then possessive suffix. Nothing may come after it except a clitic like -kin."},
     {k:"table", cf:"Kuusi liitettä", ce:"The six suffixes", head:["Persoona","Liite","Esimerkki"], rows:[["minä","-ni","kirja*ni"],["sinä","-si","kirja*si"],["hän","-nsa / -nsä","kirja*nsa"],["me","-mme","kirja*mme"],["te","-nne","kirja*nne"],["he","-nsa / -nsä","kirja*nsa"]], nf:"Vain kolmas persoona noudattaa vokaalisointua.", ne:"Only the third person suffix has an a/ä pair. The other four are invariable: -ni, -si, -mme, -nne look the same on every word, front or back vowel."},
-    {k:"table", cf:"talo kaikissa kerroksissa", ce:"One noun, case ending plus suffix", head:["Sija","Ilman liitettä","Liitteen kanssa"], rows:[["nominatiivi","talo","talo*ni"],["genetiivi","talo*n","talo*ni"],["inessiivi","talo*ssa","talo*ssa*ni"],["elatiivi","talo*sta","talo*sta*ni"],["illatiivi","talo*on","talo*oni"],["adessiivi","talo*lla","talo*lla*ni"],["monikon inessiivi","talo*i*ssa","talo*i*ssa*ni"]], nf:"Genetiivin -n ja monikon -t katoavat liitteen edeltä.", ne:"Two endings vanish before a possessive suffix: the genitive -n and the plural nominative -t. That is why taloni can mean my house, of my house, and my houses. Only context tells them apart, and Finns manage perfectly well."},
+    {k:"table", cf:"talo kaikissa kerroksissa", ce:"One noun, case ending plus suffix", head:["Sija","Ilman liitettä","Liitteen kanssa"], rows:[[{f:"nominatiivi",e:"nominative"},"talo","talo*ni"],[{f:"genetiivi",e:"genitive"},"talo*n","talo*ni"],[{f:"inessiivi",e:"inessive"},"talo*ssa","talo*ssa*ni"],[{f:"elatiivi",e:"elative"},"talo*sta","talo*sta*ni"],[{f:"illatiivi",e:"illative"},"talo*on","talo*oni"],[{f:"adessiivi",e:"adessive"},"talo*lla","talo*lla*ni"],[{f:"monikon inessiivi",e:"plural inessive"},"talo*i*ssa","talo*i*ssa*ni"]], nf:"Genetiivin -n ja monikon -t katoavat liitteen edeltä.", ne:"Two endings vanish before a possessive suffix: the genitive -n and the plural nominative -t. That is why taloni can mean my house, of my house, and my houses. Only context tells them apart, and Finns manage perfectly well."},
     {k:"table", cf:"Aste vaihtelee", ce:"Grade with and without the suffix", head:["Sana","Genetiivi","Genetiivi + -ni"], rows:[["poika","poja*n","poika*ni"],["kenkä","kengä*n","kenkä*ni"],["tyttö","tytö*n","tyttö*ni"],["käsi","käde*n","käte*ni"],["lapsi","lapse*n","lapse*ni"]], nf:"Muissa sijoissa aste on normaali: kengässäni, kädessäni.", ne:"In the nominative, genitive and accusative the word takes the strong grade once a possessive suffix is added, because the suffix reopens the final syllable. The genitive of poika is pojan, but my son is poikani. Note käsi: the genitive stem käde- becomes käte- before the suffix, giving käteni. In every other case the normal grade of that case survives: kädessäni, kengässäni."},
-    {k:"table", cf:"hänen", ce:"Third person forms", head:["Sija","Muoto"], rows:[["nominatiivi","auto*nsa"],["genetiivi","auto*nsa"],["inessiivi","auto*ssaan"],["elatiivi","auto*staan"],["allatiivi","auto*lleen"],["partitiivi","auto*aan"]], nf:"Nominatiivissa -nsa, muissa sijoissa pitkä vokaali + n.", ne:"After the nominative or genitive you get -nsa: hänen autonsa, hänen veljensä. After a case ending that already ends in a vowel, the usual form doubles that vowel and adds -n: talossa becomes talossaan, talolta becomes taloltaan. Both talossansa and talossaan are grammatical; only the second sounds current."},
+    {k:"table", cf:"hänen", ce:"Third person forms", head:["Sija","Muoto"], rows:[[{f:"nominatiivi",e:"nominative"},"auto*nsa"],[{f:"genetiivi",e:"genitive"},"auto*nsa"],[{f:"inessiivi",e:"inessive"},"auto*ssaan"],[{f:"elatiivi",e:"elative"},"auto*staan"],[{f:"allatiivi",e:"allative"},"auto*lleen"],[{f:"partitiivi",e:"partitive"},"auto*aan"]], nf:"Nominatiivissa -nsa, muissa sijoissa pitkä vokaali + n.", ne:"After the nominative or genitive you get -nsa: hänen autonsa, hänen veljensä. After a case ending that already ends in a vowel, the usual form doubles that vowel and adds -n: talossa becomes talossaan, talolta becomes taloltaan. Both talossansa and talossaan are grammatical; only the second sounds current."},
     {k:"p", f:"Kirjakielessä pronominin genetiivi vaatii aina liitteen: minun kirjani, sinun kirjasi, hänen kirjansa. Substantiivin genetiivi ei vaadi: Matin kirja.", e:"After a genitive personal pronoun the suffix is compulsory in writing. Minun kirja is spoken Finnish only. After an ordinary noun in the genitive there is no suffix at all: Matin kirja, naapurin auto. And with the third person, the pronoun itself is usually dropped when the owner is the subject of the clause."},
     {k:"pair", cf:"Oma vai jonkun toisen", ce:"The suffix marks 'his own'", items:[{a:"Hän pesi autonsa.", b:"Hän pesi hänen autonsa.", af:"oma auto", ae:"his own car — the suffix alone, subject and owner are the same person", bf:"jonkun toisen auto", be:"somebody else's car. Adding hänen switches the owner away from the subject"},{a:"Matti otti kirjansa.", b:"Matti otti Liisan kirjan.", af:"Matin oma kirja", ae:"Matti's own book", bf:"toisen kirja, ei liitettä", be:"Liisa's book — a noun owner, so no suffix on kirjan"}]},
     {k:"ex", items:[{f:"Asun talossani Espoossa.", e:"I live in my house in Espoo.", n:"talo + ssa + ni"},{f:"Otin kirjani mukaan.", e:"I took my book along.", n:"Accusative merged with nominative before the suffix."},{f:"Hän lähetti hakemuksensa eilen.", e:"He sent his application yesterday.", n:"Subject is the owner, so no hänen."},{f:"Menen kotiini kello viideltä.", e:"I go home at five.", n:"koti to kotiin plus -ni: kotiini."}]},
@@ -8304,8 +8306,8 @@ const GRAMMAR_D = [
   body: [
     {k:"p", f:"Liitepartikkeli on lyhyt pääte sanan lopussa. Se ei muuta sanan merkitystä vaan lauseen sävyä. Englannissa sama tehdään intonaatiolla tai sanoilla kuten 'too', 'you know', 'I wonder'.", e:"Clitics are the smallest and most underrated part of Finnish. They do not change what a sentence says; they change what it does — whether it asks, insists, softens, assumes agreement, or adds a thing to a list. English spreads this work across intonation and little words like 'too', 'after all', 'you know', 'I wonder'. Finnish glues it to the end of a word."},
     {k:"box", tone:"key", f:"Liitepartikkeli tulee aivan viimeiseksi: sijapäätteen ja omistusliitteen jälkeen.", e:"Order inside the word: stem, case ending, possessive suffix, clitic. So talossanikin — in my house too. Nothing comes after a clitic except another clitic."},
-    {k:"table", cf:"Viisi liitepartikkelia", ce:"The five that matter", head:["Liite","Merkitys","Esimerkki"], rows:[["-kin","myös, jopa","minä*kin tulen"],["-kaan / -kään","ei myöskään","en minä*kään tule"],["-han / -hän","pehmentää, yhteinen tieto","se*hän on helppoa"],["-pa / -pä","korostaa, kevyt käsky","on*pa kaunis päivä"],["-ko / -kö","kysymys","tule*t*ko"]], nf:"Vain -kin on aina samanlainen. Muut noudattavat vokaalisointua.", ne:"-kin never changes shape. The other four all have front and back versions and must obey vowel harmony: en ostanutkaan but en mennytkään, olihan but menihän, tuletko but menetkö."},
-    {k:"table", cf:"Hän on kotona", ce:"What each clitic does to the same words", head:["Lause","Sävy","English"], rows:[["Hän on kotona.","neutraali","He is at home."],["On*ko hän kotona?","kysymys","Is he at home?"],["Hän*kin on kotona.","myös hän","He is at home too."],["Hän*hän on kotona.","tiedämme sen","He's at home, as you know."],["Hän on*kin kotona.","yllätys, sittenkin","He is at home after all."],["On*ko*han hän kotona?","epävarma kysymys","I wonder if he's at home."],["Ei hän*kään ole kotona.","ei hänkään","He isn't at home either."]], nf:"Liite kiinnittyy siihen sanaan, jota se korostaa.", ne:"The clitic attaches to whatever word carries the focus, and that word usually moves to the front of the clause. Hänkö tulee? asks whether it is HE who is coming; Tuleeko hän? just asks whether he comes."},
+    {k:"table", cf:"Viisi liitepartikkelia", ce:"The five that matter", head:["Liite","Merkitys","Esimerkki"], rows:[["-kin",{f:"myös, jopa",e:"also, even"},"minä*kin tulen"],["-kaan / -kään",{f:"ei myöskään",e:"not … either"},"en minä*kään tule"],["-han / -hän",{f:"pehmentää, yhteinen tieto",e:"softens; shared knowledge"},"se*hän on helppoa"],["-pa / -pä",{f:"korostaa, kevyt käsky",e:"emphasis; gentle command"},"on*pa kaunis päivä"],["-ko / -kö",{f:"kysymys",e:"question"},"tule*t*ko"]], nf:"Vain -kin on aina samanlainen. Muut noudattavat vokaalisointua.", ne:"-kin never changes shape. The other four all have front and back versions and must obey vowel harmony: en ostanutkaan but en mennytkään, olihan but menihän, tuletko but menetkö."},
+    {k:"table", cf:"Hän on kotona", ce:"What each clitic does to the same words", head:["Lause","Sävy","English"], rows:[["Hän on kotona.",{f:"neutraali",e:"neutral"},"He is at home."],["On*ko hän kotona?",{f:"kysymys",e:"question"},"Is he at home?"],["Hän*kin on kotona.",{f:"myös hän",e:"him too"},"He is at home too."],["Hän*hän on kotona.",{f:"tiedämme sen",e:"as we both know"},"He's at home, as you know."],["Hän on*kin kotona.",{f:"yllätys, sittenkin",e:"surprise, after all"},"He is at home after all."],["On*ko*han hän kotona?",{f:"epävarma kysymys",e:"uncertain question"},"I wonder if he's at home."],["Ei hän*kään ole kotona.",{f:"ei hänkään",e:"not him either"},"He isn't at home either."]], nf:"Liite kiinnittyy siihen sanaan, jota se korostaa.", ne:"The clitic attaches to whatever word carries the focus, and that word usually moves to the front of the clause. Hänkö tulee? asks whether it is HE who is coming; Tuleeko hän? just asks whether he comes."},
     {k:"pair", cf:"Myönteinen ja kielteinen", ce:"Positive and negative", items:[{a:"Minäkin ymmärrän.", b:"En minäkään ymmärrä.", af:"myös minä", ae:"I understand too", bf:"en minäkään", be:"I don't understand either. The clitic has to change with the polarity"},{a:"Hänellä on autokin.", b:"Hänellä ei ole autoakaan.", af:"jopa auto", ae:"he even has a car", bf:"ei edes autoa", be:"he doesn't even have a car. Note the object also goes partitive under negation"}]},
     {k:"p", f:"Liite -han/-hän sanoo: tämä on meille molemmille tuttua, tai tämä ei ole vakava vaatimus. Se on suomen ystävällisin pääte.", e:"This is the most socially useful clitic in the language. It signals shared ground, reduces the force of an assertion, and turns a bare imperative into an invitation. Finns use it constantly, and a learner who starts using it sounds markedly less blunt."},
     {k:"ex", items:[{f:"Sehän on helppoa.", e:"That's easy, isn't it.", n:"Assumes you agree."},{f:"Onhan sinulla avain?", e:"You do have a key, don't you?", n:"A checking question, not an interrogation."},{f:"Tulehan tänne.", e:"Come here, would you.", n:"Imperative made friendly."},{f:"Sinähän olet täällä!", e:"Oh, you're here!", n:"Mild surprise at recognising something."}]},
@@ -8341,7 +8343,7 @@ const GRAMMAR_D = [
   body: [
     {k:"p", f:"Suomi ei lainaa paljon sanoja. Se rakentaa uusia sanoja vanhoista johtimilla. Kun tunnet johtimet, ymmärrät sanoja, joita et ole koskaan nähnyt.", e:"Finnish builds rather than borrows. A handful of productive suffixes turns verbs into nouns, nouns into adjectives, adjectives into adverbs and back again. For an adult learner this is the highest-leverage chapter in the book: it converts every root you already know into four or five words, and it lets you decode unfamiliar words instead of looking them up."},
     {k:"box", tone:"key", f:"Älä opettele sanoja yksin. Opettele sanaperheitä.", e:"Stop learning isolated words. When you meet opettaa, take the family with it: opettaja, opetus, opettavainen. The extra effort is small and the return is compounding."},
-    {k:"table", cf:"Tuottavat johtimet", ce:"The productive suffixes, with their genitive stems", head:["Johdin","Mitä tekee","Esimerkki","Genetiivi"], rows:[["-ja / -jä","tekijä verbistä","opettaa → opetta*ja","opettaja*n"],["-minen","teko verbistä","lukea → luke*minen","lukemise*n"],["-us / -uus","ominaisuus","vapaa → vapa*us","vapaude*n"],["-us (verbistä)","teon tulos","opettaa → opet*us","opetukse*n"],["-llinen","adjektiivi substantiivista","luonto → luonno*llinen","luonnollise*n"],["-ton / -tön","ilman jotain","työ → työ*tön","työttömä*n"],["-sti","adverbi adjektiivista","nopea → nopea*sti","-"],["-staa / -stää","verbi substantiivista","kala → kala*staa","-"],["-ttaa","aiheuttaa jotain","syödä → syö*ttää","-"],["-ua / -yä","tapahtuu itsestään","avata → ava*utua","-"],["-in","väline","tulostaa → tulost*in","tulostime*n"],["-la / -lä","paikka","kahvi → kahvi*la","kahvila*n"]], nf:"Genetiivi kannattaa opetella heti johdoksen kanssa.", ne:"Learn each derived word together with its genitive. The two -us families look identical in the nominative and behave completely differently once they inflect, and that is the trap of this chapter. Three formation notes worth keeping with the table. The agent suffix -ja attaches to the verb stem and turns a stem-final e into i, so lukea gives lukija and tehdä gives tekijä. The suffix -minen works on every verb without exception and inflects lukeminen, lukemisen, lukemista. The adverb suffix -sti attaches to the same inflectional stem you use for the comparative, so nopea gives nopeasti and kaunis gives kauniisti; hyvä is the one to memorise, since its adverb is hyvin."},
+    {k:"table", cf:"Tuottavat johtimet", ce:"The productive suffixes, with their genitive stems", head:["Johdin","Mitä tekee","Esimerkki","Genetiivi"], rows:[["-ja / -jä",{f:"tekijä verbistä",e:"doer, from a verb"},"opettaa → opetta*ja","opettaja*n"],["-minen",{f:"teko verbistä",e:"action, from a verb"},"lukea → luke*minen","lukemise*n"],["-us / -uus",{f:"ominaisuus",e:"quality"},"vapaa → vapa*us","vapaude*n"],[{f:"-us (verbistä)",e:"-us (from a verb)"},{f:"teon tulos",e:"result of an action"},"opettaa → opet*us","opetukse*n"],["-llinen",{f:"adjektiivi substantiivista",e:"adjective from a noun"},"luonto → luonno*llinen","luonnollise*n"],["-ton / -tön",{f:"ilman jotain",e:"without something"},"työ → työ*tön","työttömä*n"],["-sti",{f:"adverbi adjektiivista",e:"adverb from an adjective"},"nopea → nopea*sti","-"],["-staa / -stää",{f:"verbi substantiivista",e:"verb from a noun"},"kala → kala*staa","-"],["-ttaa",{f:"aiheuttaa jotain",e:"causes something"},"syödä → syö*ttää","-"],["-ua / -yä",{f:"tapahtuu itsestään",e:"happens by itself"},"avata → ava*utua","-"],["-in",{f:"väline",e:"instrument, device"},"tulostaa → tulost*in","tulostime*n"],["-la / -lä",{f:"paikka",e:"place"},"kahvi → kahvi*la","kahvila*n"]], nf:"Genetiivi kannattaa opetella heti johdoksen kanssa.", ne:"Learn each derived word together with its genitive. The two -us families look identical in the nominative and behave completely differently once they inflect, and that is the trap of this chapter. Three formation notes worth keeping with the table. The agent suffix -ja attaches to the verb stem and turns a stem-final e into i, so lukea gives lukija and tehdä gives tekijä. The suffix -minen works on every verb without exception and inflects lukeminen, lukemisen, lukemista. The adverb suffix -sti attaches to the same inflectional stem you use for the comparative, so nopea gives nopeasti and kaunis gives kauniisti; hyvä is the one to memorise, since its adverb is hyvin."},
     {k:"table", cf:"Tekijännimet", ce:"Agent nouns", head:["Verbi","Tekijä","English"], rows:[["opettaa","opetta*ja","teacher"],["myydä","myy*jä","salesperson"],["kirjoittaa","kirjoitta*ja","writer"],["johtaa","johta*ja","manager, director"],["tutkia","tutki*ja","researcher"],["kääntää","kääntä*jä","translator"],["lukea","luki*ja","reader"],["tehdä","teki*jä","doer, factor"]]},
     {k:"ex", items:[{f:"Lukeminen on paras tapa oppia sanoja.", e:"Reading is the best way to learn words.", n:"lukea to lukeminen, subject of the sentence."},{f:"Pidän uimisesta talvella.", e:"I like swimming in winter.", n:"pitää plus elative: uimisesta."},{f:"Suomen kielen oppiminen vie aikaa.", e:"Learning Finnish takes time.", n:"Genitive group plus the derived noun."}]},
     {k:"table", cf:"Adjektiivista ominaisuus", ce:"From adjective to abstract noun", head:["Adjektiivi","Substantiivi","English"], rows:[["vapaa","vapa*us","freedom"],["nopea","nope*us","speed"],["hyvä","hyv*yys","goodness"],["kaunis","kaune*us","beauty"],["vaikea","vaike*us","difficulty"],["ystävä","ystäv*yys","friendship"],["mahdollinen","mahdolli*suus","possibility"]], nf:"Näiden genetiivi on -uden/-yyden: vapauden, nopeuden.", ne:"Quality nouns built from adjectives inflect on a -ude-/-yyde- stem: vapaus, vapauden, vapautta. Partitive doubles the t."},
@@ -8377,11 +8379,11 @@ const GRAMMAR_D = [
   tags: ["aika","essiivi","adessiivi","kesto"],
   body: [
     {k:"p", f:"Suomessa aikaa ei ilmaista prepositioilla vaan sijoilla. Englannin on, in ja at ovat suomessa päätteitä. Sääntöjä ei ole montaa, mutta ne pitää opetella ulkoa.", e:"English uses three prepositions for time: on Monday, in January, at five. Finnish uses case endings, and the choice is fixed by the unit of time rather than by logic. The good news is that the list is short and finite. Learn it as a table, not as a rule."},
-    {k:"table", cf:"Milloin?", ce:"When? The core table", head:["Aikayksikkö","Sija","Esimerkki"], rows:[["viikonpäivä","essiivi","maanantai*na"],["juhlapäivä","essiivi","joulu*na"],["vuosi","essiivi","vuon*na 2026"],["vuorokaudenaika","adessiivi","aamu*lla · illa*lla · yö*llä"],["vuodenaika","adessiivi","kesä*llä · talve*lla"],["viikko","adessiivi","ensi viiko*lla"],["kuukausi","inessiivi","tammikuu*ssa"],["kellonaika","ablatiivi","kello kahdeksa*lta"]], nf:"Vain kuukausi saa -ssa. Viikko saa -lla.", ne:"The one pair that must not blur: months take the inessive (tammikuussa) but weeks take the adessive (tällä viikolla). Say them aloud together a few times; that is the fastest way to fix them."},
+    {k:"table", cf:"Milloin?", ce:"When? The core table", head:["Aikayksikkö","Sija","Esimerkki"], rows:[[{f:"viikonpäivä",e:"day of the week"},{f:"essiivi",e:"essive"},"maanantai*na"],[{f:"juhlapäivä",e:"holiday"},{f:"essiivi",e:"essive"},"joulu*na"],[{f:"vuosi",e:"year"},{f:"essiivi",e:"essive"},"vuon*na 2026"],[{f:"vuorokaudenaika",e:"time of day"},{f:"adessiivi",e:"adessive"},"aamu*lla · illa*lla · yö*llä"],[{f:"vuodenaika",e:"season"},{f:"adessiivi",e:"adessive"},"kesä*llä · talve*lla"],[{f:"viikko",e:"week"},{f:"adessiivi",e:"adessive"},"ensi viiko*lla"],[{f:"kuukausi",e:"month"},{f:"inessiivi",e:"inessive"},"tammikuu*ssa"],[{f:"kellonaika",e:"clock time"},{f:"ablatiivi",e:"ablative"},"kello kahdeksa*lta"]], nf:"Vain kuukausi saa -ssa. Viikko saa -lla.", ne:"The one pair that must not blur: months take the inessive (tammikuussa) but weeks take the adessive (tällä viikolla). Say them aloud together a few times; that is the fastest way to fix them."},
     {k:"box", tone:"key", f:"Viikonpäivä ja vuosi: essiivi. Vuorokaudenaika, vuodenaika ja viikko: adessiivi. Kuukausi: inessiivi. Kello: ablatiivi.", e:"Four lines carry almost the whole system. Essive for named days and years, adessive for parts of the day, seasons and weeks, inessive for months, ablative for clock times. Everything else in this chapter is detail hanging off those four."},
     {k:"table", cf:"Kolme määrettä", ce:"The three determiners keep the noun's own case", head:["","viikko","vuosi","kuukausi"], rows:[["viime","viime viiko*lla","viime vuon*na","viime kuu*ssa"],["ensi","ensi viiko*lla","ensi vuon*na","ensi kuu*ssa"],["tämä","tällä viiko*lla","tänä vuon*na","tässä kuu*ssa"]], nf:"viime ja ensi eivät taivu. tämä taipuu.", ne:"viime and ensi never change shape, whatever case the noun takes. tämä agrees: tällä viikolla, tänä vuonna, tässä kuussa, tänä aamuna."},
     {k:"ex", items:[{f:"Tulen kello kahdeksalta.", e:"I'll come at eight o'clock.", n:"Ablative answers the question monelta."},{f:"Olen töissä kahdeksasta neljään.", e:"I'm at work from eight to four.", n:"Elative for the start, illative for the end."},{f:"Kurssi kestää maanantaista perjantaihin.", e:"The course runs from Monday to Friday.", n:"The same -sta ... -hen frame with weekdays."},{f:"Kauppa on auki yhdeksästä kahteenkymmeneenyhteen.", e:"The shop is open from nine to nine in the evening.", n:"Numerals inflect fully in a range."}]},
-    {k:"table", cf:"Kesto ja etäisyys ajassa", ce:"Duration, and distance in time", head:["Kysymys","Rakenne","Esimerkki"], rows:[["Kuinka kauan?","partitiivi","Olin siellä kaksi viikko*a."],["Kuinka kauan? (yksi yksikkö)","genetiivin muoto","Odotin tunni*n."],["Milloin tulevaisuudessa?","genetiivi + päästä","kahde*n tunni*n päästä"],["Milloin tulevaisuudessa?","genetiivi + kuluttua","viiko*n kuluttua"],["Milloin menneisyydessä?","+ sitten","kaksi viikko*a sitten"],["Mihin mennessä?","illatiivi + mennessä","perjantai*hin mennessä"]], nf:"päästä ja kuluttua tarkoittavat samaa.", ne:"päästä and kuluttua are interchangeable: kahden tunnin päästä and kahden tunnin kuluttua both mean in two hours. Both demand the genitive in front, which is why the number stems from the lukusanat chapter matter here. Two more small words pull in opposite directions: ennen takes the partitive (ennen joulua) while jälkeen takes the genitive (joulun jälkeen). aikana also takes the genitive: loman aikana."},
+    {k:"table", cf:"Kesto ja etäisyys ajassa", ce:"Duration, and distance in time", head:["Kysymys","Rakenne","Esimerkki"], rows:[[{f:"Kuinka kauan?",e:"How long?"},{f:"partitiivi",e:"partitive"},"Olin siellä kaksi viikko*a."],[{f:"Kuinka kauan? (yksi yksikkö)",e:"How long? (one unit)"},{f:"genetiivin muoto",e:"genitive form"},"Odotin tunni*n."],[{f:"Milloin tulevaisuudessa?",e:"When, in the future?"},{f:"genetiivi + päästä",e:"genitive + päästä"},"kahde*n tunni*n päästä"],[{f:"Milloin tulevaisuudessa?",e:"When, in the future?"},{f:"genetiivi + kuluttua",e:"genitive + kuluttua"},"viiko*n kuluttua"],[{f:"Milloin menneisyydessä?",e:"When, in the past?"},"+ sitten","kaksi viikko*a sitten"],[{f:"Mihin mennessä?",e:"By when?"},{f:"illatiivi + mennessä",e:"illative + mennessä"},"perjantai*hin mennessä"]], nf:"päästä ja kuluttua tarkoittavat samaa.", ne:"päästä and kuluttua are interchangeable: kahden tunnin päästä and kahden tunnin kuluttua both mean in two hours. Both demand the genitive in front, which is why the number stems from the lukusanat chapter matter here. Two more small words pull in opposite directions: ennen takes the partitive (ennen joulua) while jälkeen takes the genitive (joulun jälkeen). aikana also takes the genitive: loman aikana."},
     {k:"pair", cf:"Viikolla vai viikossa", ce:"The pair that confuses everyone", items:[{a:"Ensi viikolla.", b:"Viikossa.", af:"milloin: seuraavalla viikolla", ae:"next week — a point in time, adessive", bf:"kuinka nopeasti: viikon sisällä", be:"in a week, that is within a week — inessive of duration"},{a:"Tänä aamuna.", b:"Aamulla.", af:"tämä nimenomainen aamu", ae:"this particular morning — essive with tänä", bf:"aamuisin, yleisesti", be:"in the morning, generally. Both are correct Finnish for different jobs"}]},
     {k:"table", cf:"Toistuvuus", ce:"Frequency", head:["Suomeksi","English"], rows:[["joka päivä","every day"],["kerran viiko*ssa","once a week"],["kaksi kertaa kuukaude*ssa","twice a month"],["maanantai*sin","on Mondays"],["aamu*isin","in the mornings"],["kesä*isin","in the summers"]], nf:"Toistuva tapa saa päätteen -sin.", ne:"The -sin ending marks habit rather than a single occasion. Menen uimaan maanantaisin means every Monday; Menen uimaan maanantaina means this coming Monday. The distinction is genuinely useful and costs one letter."},
     {k:"ex", items:[{f:"Muutin Suomeen vuonna 2024.", e:"I moved to Finland in 2024.", n:"Essive vuonna, never vuodessa."},{f:"Työskentelen kolmekymmentä tuntia viikossa.", e:"I work thirty hours a week.", n:"Duration partitive tuntia, then viikossa for the rate."},{f:"Kokous on ensi torstaina kello yhdeltätoista.", e:"The meeting is next Thursday at eleven.", n:"Essive for the day, ablative for the hour."},{f:"Palauta hakemus perjantaihin mennessä.", e:"Return the application by Friday.", n:"Illative plus mennessä for a deadline."}]},
@@ -10071,9 +10073,9 @@ const YKI = {
      cf:"Kolme tasoa", ce:"The three levels and what they map to",
      head:["Taso","Taitotasot","CEFR"],
      rows:[
-       ["Perustaso","1-2","A1-A2"],
-       ["Keskitaso","3-4","B1-B2"],
-       ["Ylin taso","5-6","C1-C2"]
+       [{f:"Perustaso",e:"Basic level"},"1-2","A1-A2"],
+       [{f:"Keskitaso",e:"Intermediate level"},"3-4","B1-B2"],
+       [{f:"Ylin taso",e:"Advanced level"},"5-6","C1-C2"]
      ],
      nf:"Keskitason kokeesta saa arvosanan 3 tai 4. Jos taito ei riitä, tulos voi olla myös alle 3.",
      ne:"Sitting the keskitaso exam can yield 3 or 4. A performance below the level is reported as under 3, which is why sitting a level you are not ready for wastes the fee rather than earning a lower certificate."},
@@ -10088,10 +10090,10 @@ const YKI = {
      cf:"Osakokeet", ce:"The four subtests",
      head:["Osakoe","Englanniksi","Mitä testataan"],
      rows:[
-       ["Tekstin ymmärtäminen","Reading comprehension","Autenttiset lyhyet tekstit"],
-       ["Kirjoittaminen","Writing","Kolme erilaista kirjoitustehtävää"],
-       ["Puheen ymmärtäminen","Listening comprehension","Kuullut tilanteet ja puheenvuorot"],
-       ["Puhuminen","Speaking","Viisi tehtävätyyppiä kielistudiossa"]
+       ["Tekstin ymmärtäminen","Reading comprehension",{f:"Autenttiset lyhyet tekstit",e:"Short authentic texts"}],
+       ["Kirjoittaminen","Writing",{f:"Kolme erilaista kirjoitustehtävää",e:"Three different writing tasks"}],
+       ["Puheen ymmärtäminen","Listening comprehension",{f:"Kuullut tilanteet ja puheenvuorot",e:"Recorded situations and conversations"}],
+       ["Puhuminen","Speaking",{f:"Viisi tehtävätyyppiä kielistudiossa",e:"Five task types, recorded in a language studio"}]
      ]},
     {k:"h", f:"Tekstin ymmärtäminen", e:"Reading"},
     {k:"p",
@@ -10129,11 +10131,11 @@ const YKI = {
      cf:"Viisi tehtävätyyppiä", ce:"The five speaking task types",
      head:["Tehtävä","Mitä teet","Aika"], hE:["Task","","Timing"],
      rows:[
-       ["1. Kerronta","Kerrot tärkeästä ihmisestä","1 min valmistautuminen, 1,5 min puhetta"],
-       ["2. Vuoropuhelu","Vastaat ääniohjeisiin","10-25 s vastausaika"],
-       ["3. Vuoropuhelu","Toinen samanlainen tilanne","10-25 s vastausaika"],
-       ["4. Tilannereaktiot","Viisi lyhyttä tilannetta","20-30 s kutakin"],
-       ["5. Mielipide","Valitset kahdesta aiheesta","2 min puhetta"]
+       [{f:"1. Kerronta",e:"1. Narration"},{f:"Kerrot tärkeästä ihmisestä",e:"You talk about an important person"},{f:"1 min valmistautuminen, 1,5 min puhetta",e:"1 min to prepare, 1.5 min speaking"}],
+       [{f:"2. Vuoropuhelu",e:"2. Dialogue"},{f:"Vastaat ääniohjeisiin",e:"You respond to spoken prompts"},{f:"10-25 s vastausaika",e:"10–25 s to respond"}],
+       [{f:"3. Vuoropuhelu",e:"3. Dialogue"},{f:"Toinen samanlainen tilanne",e:"Another similar situation"},{f:"10-25 s vastausaika",e:"10–25 s to respond"}],
+       [{f:"4. Tilannereaktiot",e:"4. Situational responses"},{f:"Viisi lyhyttä tilannetta",e:"Five short situations"},{f:"20-30 s kutakin",e:"20–30 s each"}],
+       [{f:"5. Mielipide",e:"5. Opinion"},{f:"Valitset kahdesta aiheesta",e:"You choose one of two topics"},{f:"2 min puhetta",e:"2 min speaking"}]
      ],
      nf:"Nämä ajat koskevat puhumisen tehtäviä.",
      ne:"These are the task-level timings for the speaking subtest. The total duration of each subtest is not stated here because it was not verified; any minute figures elsewhere in this app are suggested practice timings only."},
@@ -11267,6 +11269,18 @@ function thCell(h, over) {
   if (S.lang === "fi") return mo(fi);
   return mo(fi) + '<span class="the">' + esc(en) + "</span>";
 }
+/* A table cell is either a plain string, shown the same in every mode — used
+   for Finnish forms and examples, which ARE the lesson — or {f, e} when the cell
+   describes something. Descriptive cells follow the same rule as the column
+   headings: FI shows Finnish, EN shows English, FI+EN shows the Finnish with a
+   quiet English gloss beneath it. */
+function cellHtml(cell) {
+  if (!(cell && typeof cell === "object")) return mo(cell);
+  if (S.lang === "fi") return mo(cell.f);
+  if (S.lang === "en") return mo(cell.e);
+  return mo(cell.f) + '<span class="tde">' + esc(String(cell.e).replace(/\*/g, "")) + "</span>";
+}
+
 function block(b, id) {
   const anchor = id ? ' id="' + id + '"' : "";
   switch (b.k) {
@@ -11281,7 +11295,7 @@ function block(b, id) {
       const head = "<thead><tr>" + (b.head || []).map((h, i) =>
         "<th>" + thCell(h, (b.hE || [])[i]) + "</th>").join("") + "</tr></thead>";
       const rows = "<tbody>" + (b.rows || []).map(r =>
-        "<tr>" + r.map(cell => "<td>" + mo(cell) + "</td>").join("") + "</tr>").join("") + "</tbody>";
+        "<tr>" + r.map(cell => "<td>" + cellHtml(cell) + "</td>").join("") + "</tr>").join("") + "</tbody>";
       const note = (b.nf || b.ne) ? '<div class="tnote">' +
         (S.lang !== "en" && b.nf ? lang("FI") + "<b>" + esc(b.nf) + "</b> " : "") +
         (S.lang !== "fi" && b.ne ? lang("EN") + esc(b.ne) : "") + "</div>" : "";
