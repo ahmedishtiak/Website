@@ -12940,17 +12940,21 @@ function runOrder(q) {
 }
 function runFlip(q) {
   const s = SESSION;
-  return '<div class="flip' + (s.answered ? " on" : "") + '" data-act="flip">' +
+  return '<div class="flip' + (s.answered ? " on" : "") + '" data-act="flip"' +
+      ' tabindex="0" role="button" aria-pressed="' + (s.answered ? "true" : "false") + '"' +
+      ' aria-label="' + esc(pick("Käännä kortti", "Flip the card")) + '">' +
       '<div class="flip-in">' +
         '<div class="face"><div class="w">' + esc(q.front) + "</div>" +
           '<div class="sub">' + esc(pick("Napauta kääntääksesi", "Tap to flip")) + " · <kbd>Space</kbd></div></div>" +
         '<div class="face bk"><div class="w" style="font-size:26px">' + esc(q.back) + "</div>" +
           (q.note ? '<div class="tag vt" style="margin-top:8px">' + esc(q.note) + "</div>" : "") +
           (q.exf ? '<div class="exf">' + esc(q.exf) + "</div>" : "") +
-          (q.exe ? '<div class="exe">' + esc(q.exe) + "</div>" : "") + "</div>" +
+          (q.exe ? '<div class="exe">' + esc(q.exe) + "</div>" : "") +
+          '<div class="sub">' + esc(pick("Napauta kääntääksesi takaisin", "Tap to flip back")) + " · <kbd>Space</kbd></div></div>" +
       "</div></div>" +
     '<div class="row mt" style="justify-content:center">' + spk(q.speak, "") +
-      '<button class="btn sm ghost" data-act="flip">' + esc(pick("Käännä", "Flip")) + "</button></div>" +
+      '<button class="btn sm ghost" data-act="flip">' +
+        esc(s.answered ? pick("Käännä takaisin", "Flip back") : pick("Käännä", "Flip")) + "</button></div>" +
     (s.answered
       ? '<div class="grade">' + GRADES.map(g =>
           '<button class="gbtn g' + g.g + '" data-act="grade" data-g="' + g.g + '">' + esc(pick(g.f, g.e)) +
@@ -13122,8 +13126,16 @@ function render() {
 function postRender() {
   if (ROUTE.path === "run" || ROUTE.path === "review" || ROUTE.path === "drill") {
     const q = sessionQ();
-    if (q && q.kind === "type" && !SESSION.answered) { const e = $("#ans"); if (e) e.focus(); }
+    let typing = false;
+    if (q && q.kind === "type" && !SESSION.answered) { const e = $("#ans"); if (e) { e.focus(); typing = true; } }
     if (q && q.auto && !SESSION.answered && !SESSION._played) { SESSION._played = true; setTimeout(() => speak(q.auto), 300); }
+    /* The whole view is rebuilt on every flip, which drops focus back to the top
+       of the page — Tab would then walk the entire sidebar before reaching the
+       card. Put focus on whatever comes next, so Tab moves across these buttons. */
+    if (q && !typing) {
+      const next = (SESSION.answered && $(".grade .gbtn")) || $(".flip");
+      if (next && next.focus) next.focus({ preventScroll: true });
+    }
   }
   ["analyzer:#anin", "numbers:#numin", "inflect:#inflin"].forEach(pair => {
     const [path, sel] = pair.split(":");
@@ -13206,7 +13218,15 @@ document.addEventListener("click", e => {
   if (act === "pick") { answerMC(parseInt(a.dataset.i, 10)); return; }
   if (act === "submit") { const q = sessionQ(); if (q.kind === "order") answerOrder(); else answerType(); return; }
   if (act === "next") { nextQ(); return; }
-  if (act === "flip") { if (SESSION && !SESSION.answered) { SESSION.answered = true; render(); if (sessionQ().speak) speak(sessionQ().speak); } return; }
+  if (act === "flip") {
+    const fq = SESSION && sessionQ();
+    if (fq && fq.kind === "flip") {
+      SESSION.answered = !SESSION.answered;          // flip back as well as forward
+      render();
+      if (SESSION.answered && fq.speak) speak(fq.speak);
+    }
+    return;
+  }
   if (act === "grade") { gradeCard(parseInt(a.dataset.g, 10)); return; }
   if (act === "build") { SESSION.built.push(a.dataset.w); render(); return; }
   if (act === "unbuild") { SESSION.built.splice(parseInt(a.dataset.i, 10), 1); render(); return; }
@@ -13318,7 +13338,16 @@ document.addEventListener("keydown", e => {
     return;
   }
   if (q.kind === "flip") {
-    if (!SESSION.answered && (e.key === " " || e.key === "Enter")) { e.preventDefault(); SESSION.answered = true; render(); speak(q.speak); return; }
+    // A real <button> already turns Space/Enter into a click, so only handle the
+    // key here when focus is elsewhere — otherwise the card would flip twice.
+    const onButton = e.target && e.target.tagName === "BUTTON";
+    if (!onButton && (e.key === " " || e.key === "Enter")) {
+      e.preventDefault();
+      SESSION.answered = !SESSION.answered;
+      render();
+      if (SESSION.answered) speak(q.speak);
+      return;
+    }
     if (SESSION.answered && /^[1-4]$/.test(e.key)) { e.preventDefault(); gradeCard(parseInt(e.key, 10) - 1); return; }
   }
   if (q.kind === "order" && !SESSION.answered && e.key === "Enter") { e.preventDefault(); answerOrder(); return; }
