@@ -547,8 +547,17 @@ html[data-theme="dark"] .turn.b .av{color:#06201E}
 /* ---------- responsive ---------- */
 @media (max-width:1080px){ .toc{display:none} .withtoc{display:block} }
 @media (max-width:860px){
-  .rail{position:fixed;left:0;top:0;transform:translateX(-100%);transition:transform .24s cubic-bezier(.22,1,.36,1);box-shadow:var(--sh3)}
+  .rail{position:fixed;left:0;top:0;transform:translateX(-100%);transition:transform .24s cubic-bezier(.22,1,.36,1);box-shadow:var(--sh3);
+    /* above the scrim (z 45), or the overlay swallows every tap on the menu */
+    z-index:48;
+    /* stop the bottom tab bar (z 50) covering the last items */
+    box-sizing:border-box;padding-bottom:calc(64px + env(safe-area-inset-bottom))}
   .rail.open{transform:none}
+  /* theme, settings and language sit right under the brand on a phone,
+     instead of at the very bottom where the tab bar hides them */
+  .rail-brand{order:-2}
+  .rail-foot{order:-1;border-top:0;border-bottom:1px solid var(--line2);padding:4px 12px 12px}
+  .rail-nav{order:0}
   .burger{display:inline-flex}
   .wrap{padding:20px 16px 92px}
   .hero-in{padding:30px 22px 26px}
