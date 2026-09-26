@@ -652,6 +652,49 @@ h2.blk,h3.blk,#drills,.blk[id]{scroll-margin-top:84px}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 #boot{display:flex;align-items:center;justify-content:center;min-height:100vh;font-family:var(--fs);color:var(--ink3);font-size:14px}
 #fatal{display:none;padding:24px;font-family:var(--fm);font-size:13px;white-space:pre-wrap;color:#a33529}
+
+/* ---------- About Finland ---------- */
+.finjump{display:flex;gap:7px;flex-wrap:wrap;margin:16px 0 2px}
+.finjump .chip{font-size:12.5px;padding:5px 11px}
+@media (min-width:1081px){.finjump{display:none}}
+.fingrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(205px,1fr));gap:12px;margin:18px 0}
+.fingrid.wide{grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+.finsym{padding:15px 16px 16px;display:flex;flex-direction:column;gap:3px}
+.finsym,.fincard{scroll-margin-top:90px;transition:box-shadow .3s,border-color .3s}
+.finsym-h{align-items:flex-start;gap:8px;flex-wrap:nowrap}
+.finsym-c{flex:1;min-width:0}
+.finsym-ce{font-size:11.5px;color:var(--ink4);margin-top:1px}
+.finsym-n{gap:2px;margin-top:6px;flex-wrap:nowrap}
+.finsym-n .h-fi{font-size:21px;line-height:1.2;overflow-wrap:anywhere;min-width:0}
+.finsym-en{font-size:13.5px;color:var(--ink2);margin-top:-2px}
+.finflag{width:72px;height:auto;border:1px solid var(--line);border-radius:3px;margin-top:8px;display:block}
+.fintxt{margin-top:8px}
+.fintxt .f{font-size:13.5px;line-height:1.55;color:var(--ink)}
+.fintxt .e{font-size:13px;line-height:1.55;color:var(--ink2)}
+.fintxt .sep{margin-top:7px;padding-top:6px}
+.fintxt .sep:first-child{margin-top:0;padding-top:0;border-top:0}
+.fincard h3{font-family:var(--fd);font-size:17px;font-weight:600;display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 8px}
+.fincard h3 .e{font-family:var(--fs);font-size:12.5px;color:var(--ink3);font-weight:500}
+.finstats{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin:18px 0}
+.finstat .v{font-size:22px;line-height:1.15;margin-top:6px}
+.finstat .v2{font-size:13px;color:var(--ink3);margin-top:3px}
+.finpage td.num,.finpage th.num{text-align:right;font-variant-numeric:tabular-nums}
+.finpeople{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px}
+.finperson{border:1px solid var(--line);border-radius:var(--r2);padding:10px 12px;background:var(--surface)}
+.finperson b{display:block;font-size:14.5px}
+.finperson span{font-size:12.5px;color:var(--ink3)}
+.fintl{margin:18px 0 8px}
+.fintl-i{display:grid;grid-template-columns:118px 1fr;gap:14px;padding:10px 0;border-bottom:1px dashed var(--line2)}
+.fintl-i:last-child{border-bottom:0}
+.fintl-y{font-family:var(--fm);font-weight:700;font-size:13.5px;color:var(--pine);padding-top:1px}
+.fintl .fintxt{margin-top:0}
+@media (max-width:520px){.fintl-i{grid-template-columns:1fr;gap:4px}}
+.icb.finsp{width:26px;height:26px;vertical-align:middle;margin-left:4px}
+.icb.finsp svg{width:14px;height:14px}
+.finsrc{margin-top:38px;padding-top:16px;border-top:1px solid var(--line)}
+.finsrc ul{margin:10px 0 0;padding-left:18px;font-size:12.5px;line-height:1.75;color:var(--ink3);columns:2 280px;column-gap:28px}
+.finsrc li{break-inside:avoid}
+.hl{border-color:var(--pine)!important;box-shadow:0 0 0 3px var(--pineSoft2),var(--sh2)!important}
 </style>
 </head>
 <body>
@@ -10374,7 +10417,8 @@ const I = {
   refresh:'<path d="M3 12a9 9 0 0 1 15.5-6.2L21 8M21 4v4h-4"/><path d="M21 12a9 9 0 0 1-15.5 6.2L3 16M3 20v-4h4"/>',
   shuffle:'<path d="M16 3h5v5M4 20 21 3M21 16v5h-5M15 15l6 6M4 4l5 5"/>',
   down:'<path d="M12 4v13M6 12l6 6 6-6"/>',
-  eye:'<path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/>'
+  eye:'<path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/>',
+  flag:'<path d="M5 21V3.5"/><path d="M5 4h13l-2.6 4.2L18 12.4H5"/>'
 };
 function ic(n, cls) {
   return '<svg class="' + (cls || "i") + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
@@ -10687,6 +10731,19 @@ function search(qRaw) {
         add("Taivutus · Inflection", t.model, pick(t.tf, t.te), "inflect?t=" + t.id, 1);
     });
   }
+  if (typeof FIN !== "undefined") {
+    const G = "Tietoa Suomesta · About Finland";
+    if (fold("tietoa suomesta about finland suomi-visa finland quiz").includes(q))
+      add(G, pick("Tietoa Suomesta", "About Finland"),
+        pick("Symbolit, perustiedot, luonto, historia ja juhlat", "Symbols, key facts, nature, history and holidays"), "finland", 2);
+    FIN.symbols.forEach(x => {
+      const i = fold([x.fi, x.en, x.cf, x.ce].join(" ")).indexOf(q);
+      if (i >= 0) add(G, x.fi, L2(x.cf, x.ce) + (S.lang !== "fi" && x.en !== x.fi ? " — " + x.en : ""), "finland?s=" + x.id, i === 0 ? 1 : 3);
+    });
+    FIN.nature.concat(FIN.customs).forEach(x => {
+      if (fold(x.tf + " " + x.te).includes(q)) add(G, pick(x.tf, x.te), pick("Tietoa Suomesta", "About Finland"), "finland?s=" + x.id, 3);
+    });
+  }
   if (/^[0-9]+$/.test(qRaw.trim()))
     add("Numerot · Numbers", qRaw.trim(), numCard(parseInt(qRaw, 10)), "numbers?n=" + qRaw.trim(), -3);
   res.sort((a, b) => a.score - b.score || a.t.length - b.t.length);
@@ -10996,6 +11053,526 @@ function phraseOfDay() {
    ============================================================ */
 
 /* ---------- shell ---------- */
+/* ============================================================
+   ABOUT FINLAND — Tietoa Suomesta
+   Every figure and date below was checked against the sources listed in
+   FIN.sources (September 2026). Where something is unofficial, the text says so.
+   ============================================================ */
+const FIN = {
+  symbols: [
+    { id: "flag", cf: "Lippu", ce: "Flag", fi: "siniristilippu", en: "the Blue Cross Flag", y: "1918",
+      f: "Sininen risti valkoisella pohjalla. Lipusta säädettiin laki toukokuussa 1918. Sinisen sanotaan kuvaavan järviä ja taivasta, valkoisen talven lunta.",
+      e: "A blue cross on a white background, made official by law in May 1918. The blue is said to stand for the lakes and sky, the white for winter snow." },
+    { id: "arms", cf: "Vaakuna", ce: "Coat of arms", fi: "Suomen vaakuna", en: "the lion coat of arms", y: ["n. 1580", "c. 1580"],
+      f: "Kruunupäinen leijona punaisella pohjalla heiluttaa miekkaa ja tallaa sapelia. Vaakuna on peräisin noin vuodelta 1580. Sen yhdeksän hopeista ruusua ovat todennäköisesti pelkkää koristetta.",
+      e: "A crowned lion on a red field brandishes a sword and tramples a sabre. The arms date from around 1580; the nine silver roses are most likely just decoration." },
+    { id: "anthem", cf: "Kansallislaulu", ce: "National anthem", fi: "Maamme", en: "Our Land (in Swedish: Vårt land)", y: "1848",
+      f: "Sanat kirjoitti J. L. Runeberg ruotsiksi, sävelen Fredrik Pacius. Laulu esitettiin ensimmäisen kerran Helsingissä 13.5.1848. Mikään laki ei tee siitä kansallislaulua – se vain on sellainen. Viron kansallislaulussa on sama sävel.",
+      e: "Words by J. L. Runeberg, written in Swedish; music by Fredrik Pacius. First performed in Helsinki on 13 May 1848. No law makes it the anthem — it simply is. Estonia's anthem uses the same melody." },
+    { id: "animal", cf: "Kansalliseläin", ce: "National animal", fi: "karhu", en: "brown bear", y: "1985",
+      f: "Valittiin Suomen luonnonsuojeluliiton ja Helsingin Sanomien kansanäänestyksessä 1985. Toiseksi tuli hylje ja kolmanneksi hirvi.",
+      e: "Chosen in a 1985 public vote run by the Finnish Association for Nature Conservation and Helsingin Sanomat. The seal came second and the elk third." },
+    { id: "bird", cf: "Kansallislintu", ce: "National bird", fi: "laulujoutsen", en: "whooper swan", y: "1981",
+      f: "Nimettiin kansallislinnuksi 1981. Kaksi lentävää joutsenta on myös Suomen yhden euron kolikossa.",
+      e: "Named the national bird in 1981. Two flying swans also appear on Finland's one-euro coin." },
+    { id: "fish", cf: "Kansalliskala", ce: "National fish", fi: "ahven", en: "European perch", y: "1994",
+      f: "Valittiin kansalliskalaksi 1994. Ahven on Suomen vesien tutuin ja helpoimmin tunnistettava kala.",
+      e: "Chosen as the national fish in 1994 — the most familiar and easily recognised fish in Finnish waters." },
+    { id: "tree", cf: "Kansallispuu", ce: "National tree", fi: "rauduskoivu", en: "silver birch", y: "1988",
+      f: "Valittiin kansanäänestyksessä 1988. Valkorunkoinen koivu on suomalaisen maiseman tunnusmerkki, ja saunavihta tehdään koivunoksista.",
+      e: "Chosen in a public vote in 1988. The white-barked birch is a hallmark of the Finnish landscape, and sauna whisks are made from its twigs." },
+    { id: "flower", cf: "Kansalliskukka", ce: "National flower", fi: "kielo", en: "lily of the valley", y: "1967",
+      f: "Valittiin Yleisradion äänestyksessä 1967, itsenäisyyden 50-vuotisjuhlavuonna. Kaunis mutta myrkyllinen: kasvin kaikki osat ovat myrkyllisiä.",
+      e: "Chosen in a Yle vote in 1967, Finland's 50th year of independence. Beautiful but poisonous — every part of the plant is toxic." },
+    { id: "insect", cf: "Kansallishyönteinen", ce: "National insect", fi: "seitsenpistepirkko", en: "seven-spot ladybird", y: "1996",
+      f: "Valittiin 1996 eläinlehden järjestämässä äänestyksessä.",
+      e: "Chosen in 1996 in a poll run by a popular animal magazine." },
+    { id: "stone", cf: "Kansalliskivi", ce: "National stone", fi: "graniitti", en: "granite", y: "1989",
+      f: "Nimettiin kansalliskiveksi 1989. Vähintään kaksi miljardia vuotta vanhaa graniittikalliota näkyy lähes kaikkialla Suomessa.",
+      e: "Named the national stone in 1989. Granite bedrock at least two billion years old can be seen almost everywhere in Finland." },
+    { id: "butterfly", cf: "Kansallisperhonen", ce: "National butterfly", fi: "paatsamasinisiipi", en: "holly blue", y: "2017",
+      f: "Valittiin Suomen 100-vuotisjuhlavuonna 2017. Äänestykseen osallistui lähes 36 500 suomalaista.",
+      e: "Chosen in Finland's centenary year, 2017, in a vote with almost 36,500 participants." },
+    { id: "dog", cf: "Kansalliskoira", ce: "National dog", fi: "suomenpystykorva", en: "Finnish Spitz", y: "1979",
+      f: "Julistettiin kansalliskoiraksi 1979. Vanha suomalainen metsästyskoirarotu.",
+      e: "Declared the national dog in 1979 — an old Finnish hunting breed." },
+    { id: "horse", cf: "Kansallishevonen", ce: "National horse", fi: "suomenhevonen", en: "Finnhorse", y: "",
+      f: "Suomen ainoa alkuperäinen hevosrotu.",
+      e: "Finland's only native horse breed." },
+    { id: "food", cf: "Kansallisruoka", ce: "National food", fi: "ruisleipä", en: "rye bread", y: "2017",
+      f: "Valittiin kansallisruoaksi Suomi 100 -juhlavuoden kansanäänestyksessä. Äänestäjiä oli lähes 50 000, ja ruisleipä voitti selvästi lähes 10 000 äänellä. Karjalanpaisti tuli toiseksi.",
+      e: "Voted the national food in Finland's centenary year, 2017. Almost 50,000 people voted, and rye bread won clearly with nearly 10,000 votes. Karelian hot pot came second." },
+    { id: "sport", cf: "Kansallispeli", ce: "National sport", fi: "pesäpallo", en: "Finnish baseball", y: ["1920-luku", "1920s"],
+      f: "Lauri ”Tahko” Pihkala kehitti pesäpallon 1920-luvun alussa vanhan kuningaspallon ja amerikkalaisen baseballin pohjalta. Se oli näytöslajina Helsingin olympialaisissa 1952. Seuratuimpia lajeja on silti jääkiekko: miesten maajoukkue on voittanut MM-kullan viidesti (1995, 2011, 2019, 2022 ja 2026) ja olympiakullan 2022.",
+      e: "Developed by Lauri 'Tahko' Pihkala in the early 1920s from the old game kuningaspallo and American baseball, and a demonstration sport at the 1952 Helsinki Olympics. Ice hockey is still one of the most followed sports: the men's team are five-time world champions (1995, 2011, 2019, 2022, 2026) and won Olympic gold in 2022." },
+    { id: "epic", cf: "Kansalliseepos", ce: "National epic", fi: "Kalevala", en: "the Kalevala", y: "1835",
+      f: "Elias Lönnrot kokosi eepoksen kansanrunoista. Ensimmäinen laitos ilmestyi 1835 ja nykyään luettu laajempi laitos (50 runoa) vuonna 1849. Kalevalan päivää vietetään 28. helmikuuta.",
+      e: "Compiled by Elias Lönnrot from folk poetry. The first edition came out in 1835; the longer version read today (50 poems) in 1849. Kalevala Day is 28 February." },
+    { id: "instrument", cf: "Kansallissoitin", ce: "National instrument", fi: "kantele", en: "kantele (a plucked zither)", y: "",
+      f: "Kalevalassa Väinämöinen tekee ensimmäisen kanteleen suuren hauen leukaluusta.",
+      e: "In the Kalevala, Väinämöinen makes the first kantele from the jawbone of a giant pike." },
+    { id: "fruit", cf: "Kansallishedelmä?", ce: "National fruit?", fi: "lakka", en: "cloudberry", y: ["ei virallinen", "not official"],
+      f: "Suomella ei ole virallista kansallishedelmää, mutta Suomi on marjojen maa: luonnonvaraisia marjalajeja on noin 50, ja niistä 37 on syötäviä. Lakka on Suomen kahden euron kolikossa. Tunnetuimmat metsämarjat ovat puolukka ja mustikka.",
+      e: "Finland has no official national fruit — but it is a berry country: about 50 wild berry species grow here, 37 of them edible. The cloudberry is on Finland's two-euro coin, and the best-known forest berries are the lingonberry and the bilberry." },
+    { id: "day", cf: "Kansallispäivä", ce: "National day", fi: "itsenäisyyspäivä", en: "Independence Day", y: ["6.12.", "6 Dec"],
+      f: "Suomi julistautui itsenäiseksi 6.12.1917. Ikkunoille sytytetään kaksi kynttilää, ja illalla seurataan presidentin Linnan juhlia televisiosta.",
+      e: "Finland declared independence on 6 December 1917. People light two candles in their windows and watch the President's Independence Day Reception on TV." },
+    { id: "landscape", cf: "Kansallismaisema", ce: "National landscape", fi: "Koli", en: "Koli", y: ["1990-luku", "1990s"],
+      f: "1990-luvun alussa Suomeen valittiin 27 kansallismaisemaa. Niistä tunnetuin on Kolin vaaramaisema Pielisen rannalla.",
+      e: "In the early 1990s Finland named 27 national landscapes. The best known is the hilltop view at Koli over Lake Pielinen." }
+  ],
+
+  /* people whose names Finns attach the word "national" to */
+  people: [
+    { fi: "J. L. Runeberg", f: "kansallisrunoilija", e: "national poet" },
+    { fi: "Aleksis Kivi", f: "kansalliskirjailija – Seitsemän veljestä", e: "national author — Seven Brothers" },
+    { fi: "Jean Sibelius", f: "kansallissäveltäjä – Finlandia", e: "national composer — Finlandia" },
+    { fi: "Akseli Gallen-Kallela", f: "kansallistaiteilija", e: "national artist" },
+    { fi: "Alvar Aalto", f: "arkkitehti ja muotoilija", e: "architect and designer" },
+    { fi: "Tove Jansson", f: "Muumien luoja", e: "creator of the Moomins" }
+  ],
+
+  facts: [
+    { kf: "Pääkaupunki", ke: "Capital", vf: "Helsinki", ve: "Helsinki",
+      nf: "Pääkaupunki vuodesta 1812. Asukkaita noin 694 000 (2025).", ne: "Capital since 1812; about 694,000 residents (2025)." },
+    { kf: "Väkiluku", ke: "Population", vf: "5,66 milj.", ve: "5.66 million",
+      nf: "5 659 324 elokuun 2026 lopussa (ennakkotieto).", ne: "5,659,324 at the end of August 2026 (preliminary)." },
+    { kf: "Pinta-ala", ke: "Area", vf: "338 000 km²", ve: "338,000 km²",
+      nf: "Maa ja sisävedet. Merialueineen 390 900 km².", ne: "Land and inland waters; 390,900 km² with sea areas." },
+    { kf: "Viralliset kielet", ke: "Official languages", vf: "suomi ja ruotsi", ve: "Finnish and Swedish",
+      nf: "Äidinkieli: suomi 83,5 %, ruotsi 5,0 %, muu 11,5 % (2025). Saamen kielillä on virallinen asema saamelaisten kotiseutualueella.",
+      ne: "Mother tongue: Finnish 83.5%, Swedish 5.0%, other 11.5% (2025). The Sámi languages are official in the Sámi homeland." },
+    { kf: "Valuutta", ke: "Currency", vf: "euro (€)", ve: "euro (€)",
+      nf: "Euro otettiin käyttöön 1999 ja käteisenä 2002. Sitä ennen rahana oli markka.", ne: "Adopted in 1999, with notes and coins from 2002. Before that, the markka." },
+    { kf: "Valtiomuoto", ke: "Government", vf: "tasavalta", ve: "republic",
+      nf: "Parlamentaarinen tasavalta. Presidentti Alexander Stubb (vuodesta 2024), eduskunnassa 200 kansanedustajaa.",
+      ne: "A parliamentary republic. President: Alexander Stubb (since 2024); Parliament has 200 MPs." },
+    { kf: "Itsenäisyys", ke: "Independence", vf: "6.12.1917", ve: "6 Dec 1917",
+      nf: "Itsenäisyyspäivä on Suomen kansallispäivä.", ne: "Independence Day is Finland's national day." },
+    { kf: "Kunnat", ke: "Municipalities", vf: "308", ve: "308",
+      nf: "19 maakuntaa, joista yksi on itsehallinnollinen Ahvenanmaa (2026).", ne: "19 regions, one of them the self-governing Åland Islands (2026)." },
+    { kf: "Aikavyöhyke", ke: "Time zone", vf: "UTC+2", ve: "UTC+2",
+      nf: "Kesäaikana UTC+3.", ne: "UTC+3 in summer." },
+    { kf: "Tunnukset", ke: "Codes", vf: "+358 · .fi", ve: "+358 · .fi",
+      nf: "Maatunnus +358, verkkotunnus .fi. Hätänumero on 112.", ne: "Calling code +358, internet domain .fi. The emergency number is 112." },
+    { kf: "Jäsenyydet", ke: "Memberships", vf: "EU ja Nato", ve: "EU & NATO",
+      nf: "YK ja Pohjoismaiden neuvosto 1955, EU 1995, Nato 2023.", ne: "UN and Nordic Council 1955, EU 1995, NATO 2023." },
+    { kf: "Onnellisuus", ke: "Happiness", vf: "Nro 1", ve: "No. 1",
+      nf: "Maailman onnellisin maa World Happiness Report -vertailussa yhdeksättä vuotta peräkkäin (2026).",
+      ne: "The world's happiest country in the World Happiness Report for the ninth year running (2026)." }
+  ],
+
+  /* population on 31.12.2025 */
+  cities: [["Helsinki", 694392], ["Espoo", 325716], ["Tampere", 263337], ["Vantaa", 252956],
+    ["Oulu", 217469], ["Turku", 209633], ["Jyväskylä", 149895], ["Kuopio", 126572], ["Lahti", 121832]],
+
+  nature: [
+    { id: "n-lakes", tf: "Järvet ja saaret", te: "Lakes and islands",
+      f: "Suomessa on 187 888 yli viiden aarin järveä – siksi Suomea kutsutaan tuhansien järvien maaksi. Saaria on lähes 180 000.",
+      e: "Finland has 187,888 lakes larger than five ares (500 m²) — hence 'the land of a thousand lakes' — and nearly 180,000 islands." },
+    { id: "n-forest", tf: "Metsät", te: "Forests",
+      f: "Yli 75 % Suomen maa-alasta on metsää. Suhteessa pinta-alaan Suomi on Euroopan metsäisin maa.",
+      e: "More than 75% of the land is forest. Relative to its size, Finland is the most forested country in Europe." },
+    { id: "n-saimaa", tf: "Suurin järvi: Saimaa", te: "Largest lake: Saimaa",
+      f: "Saimaa on saimaannorpan ainoa koti. Norppa on yksi maailman harvinaisimmista hylkeistä.",
+      e: "Saimaa is the only home of the Saimaa ringed seal, one of the rarest seals in the world." },
+    { id: "n-halti", tf: "Korkein kohta: Halti", te: "Highest point: Halti",
+      f: "Haltin rinne Suomen puolella, 1 324 m – itse huippu on Norjassa. Korkein kokonaan Suomessa oleva huippu on Ridnitšohkka (1 317 m).",
+      e: "The slope of Halti on the Finnish side, 1,324 m — the summit itself is in Norway. The highest peak wholly in Finland is Ridnitšohkka (1,317 m)." },
+    { id: "n-river", tf: "Pisin joki: Kemijoki", te: "Longest river: Kemijoki",
+      f: "Kemijoki virtaa Lapissa. Kaikkiaan Suomessa on 647 jokea.",
+      e: "The Kemijoki flows through Lapland. Altogether Finland has 647 rivers." },
+    { id: "n-border", tf: "Naapurit", te: "Neighbours",
+      f: "Maarajat Ruotsin, Norjan ja Venäjän kanssa; Viro on Suomenlahden toisella puolella. Itäraja on noin 1 340 km pitkä – EU:n pisin raja Venäjän kanssa.",
+      e: "Land borders with Sweden, Norway and Russia; Estonia lies across the Gulf of Finland. The eastern border is about 1,340 km long — the EU's longest border with Russia." },
+    { id: "n-lapland", tf: "Lappi ja napapiiri", te: "Lapland and the Arctic Circle",
+      f: "Noin neljännes Suomesta on napapiirin pohjoispuolella.",
+      e: "About a quarter of Finland lies north of the Arctic Circle." },
+    { id: "n-sun", tf: "Yötön yö", te: "Midnight sun",
+      f: "Utsjoella, Suomen pohjoisimmassa kunnassa, aurinko ei laske noin 74 vuorokauteen (16.5.–28.7.).",
+      e: "In Utsjoki, Finland's northernmost municipality, the sun doesn't set for about 74 days (16 May – 28 July)." },
+    { id: "n-kaamos", tf: "Kaamos", te: "Polar night",
+      f: "Talvella aurinko pysyy Utsjoella horisontin alapuolella yli 50 päivää, marraskuun lopulta tammikuun puoliväliin.",
+      e: "In winter the sun stays below the horizon in Utsjoki for more than 50 days, from late November to mid-January." },
+    { id: "n-aurora", tf: "Revontulet", te: "Northern lights",
+      f: "Kilpisjärvellä revontulia näkyy keskimäärin kolmena selkeänä ja pimeänä yönä neljästä, Helsingissä tilastollisesti noin kerran kuussa.",
+      e: "At Kilpisjärvi in Lapland they appear on about three clear, dark nights out of four; in Helsinki, statistically about once a month." },
+    { id: "n-climate", tf: "Ilmasto", te: "Climate",
+      f: "Neljä selvää vuodenaikaa. Lämpöennätys on +37,2 °C (Liperi 29.7.2010) ja pakkasennätys −51,5 °C (Kittilä 28.1.1999).",
+      e: "Four distinct seasons. The record high is +37.2 °C (Liperi, 29 July 2010) and the record low −51.5 °C (Kittilä, 28 January 1999)." },
+    { id: "n-parks", tf: "Kansallispuistot", te: "National parks",
+      f: "Suomessa on 41 kansallispuistoa. Niissä käytiin 3,5 miljoonaa kertaa vuonna 2025.",
+      e: "Finland has 41 national parks, with 3.5 million visits in 2025." },
+    { id: "n-sami", tf: "Saamelaiset", te: "The Sámi",
+      f: "Saamelaiset ovat EU:n ainoa alkuperäiskansa. Suomessa heitä on noin 10 000, ja täällä puhutaan kolmea saamen kieltä: pohjois-, inarin- ja koltansaamea.",
+      e: "The Sámi are the EU's only indigenous people. About 10,000 live in Finland, where three Sámi languages are spoken: Northern, Inari and Skolt Sámi." },
+    { id: "n-aland", tf: "Ahvenanmaa", te: "Åland",
+      f: "Itsehallinnollinen, ruotsinkielinen ja demilitarisoitu saaristomaakunta Suomen ja Ruotsin välissä.",
+      e: "A self-governing, Swedish-speaking and demilitarised group of islands between Finland and Sweden." }
+  ],
+
+  history: [
+    { y: ["n. 9000 eaa.", "c. 9000 BC"], f: "Ensimmäiset ihmiset saapuvat jääkauden jälkeen, yli 10 000 vuotta sitten.", e: "The first people arrive after the Ice Age, more than 10,000 years ago." },
+    { y: ["1100–1200-l.", "1100s–1200s"], f: "Suomi liitetään vähitellen Ruotsin valtakuntaan. Ruotsin vallan aika kestää vuoteen 1809.", e: "Finland gradually becomes part of the Swedish realm, and stays so until 1809." },
+    { y: "1543–1548", f: "Mikael Agricola julkaisee aapisen ja Uuden testamentin – suomen kirjakieli syntyy.", e: "Mikael Agricola publishes an ABC book and the New Testament — the birth of written Finnish." },
+    { y: "1550", f: "Kuningas Kustaa Vaasa perustaa Helsingin.", e: "King Gustav Vasa founds Helsinki." },
+    { y: "1640", f: "Turun akatemia, Suomen ensimmäinen yliopisto, perustetaan.", e: "The Royal Academy of Turku, Finland's first university, is founded." },
+    { y: "1809", f: "Suomesta tulee Venäjän keisarikunnan autonominen suuriruhtinaskunta.", e: "Finland becomes an autonomous Grand Duchy of the Russian Empire." },
+    { y: "1812", f: "Helsingistä tulee pääkaupunki Turun sijaan.", e: "Helsinki replaces Turku as the capital." },
+    { y: "1835", f: "Elias Lönnrotin Kalevala ilmestyy.", e: "Elias Lönnrot's Kalevala is published." },
+    { y: "1863", f: "Kieliasetus: suomen kieli aletaan nostaa virkakieleksi ruotsin rinnalle.", e: "The Language Decree starts making Finnish an official language alongside Swedish." },
+    { y: "1906", f: "Suomen naiset saavat ensimmäisinä Euroopassa sekä äänioikeuden että oikeuden asettua ehdolle vaaleissa.", e: "Finnish women become the first in Europe to win both the vote and the right to stand for election." },
+    { y: "1907", f: "Ensimmäiseen yksikamariseen eduskuntaan valitaan 19 naista.", e: "Nineteen women are elected to the first single-chamber parliament." },
+    { y: "1917", f: "Suomi julistautuu itsenäiseksi 6. joulukuuta.", e: "Finland declares independence on 6 December." },
+    { y: "1918", f: "Sisällissota tammikuusta toukokuuhun.", e: "Civil war, January to May." },
+    { y: "1919", f: "Suomesta tulee tasavalta. K. J. Ståhlberg valitaan ensimmäiseksi presidentiksi.", e: "Finland becomes a republic; K. J. Ståhlberg is elected the first president." },
+    { y: "1939–1940", f: "Talvisota.", e: "The Winter War." },
+    { y: "1941–1944", f: "Jatkosota.", e: "The Continuation War." },
+    { y: "1944–1945", f: "Lapin sota Saksaa vastaan.", e: "The Lapland War against Germany." },
+    { y: "1952", f: "Helsingin olympialaiset. Sotakorvaukset Neuvostoliitolle saadaan maksettua.", e: "The Helsinki Olympics; the war reparations to the Soviet Union are paid off." },
+    { y: "1955", f: "Suomi liittyy YK:hon ja Pohjoismaiden neuvostoon.", e: "Finland joins the UN and the Nordic Council." },
+    { y: "1975", f: "Euroopan turvallisuus- ja yhteistyökokous (ETYK) Helsingissä.", e: "The Conference on Security and Co-operation in Europe (CSCE) meets in Helsinki." },
+    { y: "1995", f: "Suomi liittyy Euroopan unioniin.", e: "Finland joins the European Union." },
+    { y: "2000", f: "Tarja Halosesta tulee Suomen ensimmäinen naispresidentti.", e: "Tarja Halonen becomes Finland's first female president." },
+    { y: "2002", f: "Euro korvaa markan.", e: "Euro notes and coins replace the markka." },
+    { y: "2023", f: "Suomi liittyy Natoon 4. huhtikuuta.", e: "Finland joins NATO on 4 April." },
+    { y: "2024", f: "Alexander Stubb aloittaa tasavallan presidenttinä.", e: "Alexander Stubb becomes President of the Republic." }
+  ],
+
+  /* [Finnish name, English name, when (FI), when (EN), not an official holiday] */
+  holidays: [
+    ["uudenvuodenpäivä", "New Year's Day", "1.1.", "1 January"],
+    ["loppiainen", "Epiphany", "6.1.", "6 January"],
+    ["pitkäperjantai", "Good Friday", "pääsiäistä edeltävä perjantai", "the Friday before Easter"],
+    ["pääsiäispäivä ja 2. pääsiäispäivä", "Easter Sunday and Easter Monday", "maalis- tai huhtikuussa", "in March or April"],
+    ["vappu", "May Day", "1.5.", "1 May"],
+    ["helatorstai", "Ascension Day", "torstai, 39 päivää pääsiäisen jälkeen", "Thursday, 39 days after Easter"],
+    ["helluntaipäivä", "Whit Sunday (Pentecost)", "sunnuntai, 49 päivää pääsiäisen jälkeen", "Sunday, 49 days after Easter"],
+    ["juhannusaatto", "Midsummer Eve", "perjantai 19.–25.6.", "the Friday between 19 and 25 June", true],
+    ["juhannuspäivä", "Midsummer Day", "lauantai 20.–26.6.", "the Saturday between 20 and 26 June"],
+    ["pyhäinpäivä", "All Saints' Day", "lauantai 31.10.–6.11.", "the Saturday between 31 October and 6 November"],
+    ["itsenäisyyspäivä", "Independence Day", "6.12.", "6 December"],
+    ["jouluaatto", "Christmas Eve", "24.12.", "24 December", true],
+    ["joulupäivä", "Christmas Day", "25.12.", "25 December"],
+    ["tapaninpäivä", "St Stephen's Day (Boxing Day)", "26.12.", "26 December"]
+  ],
+
+  /* [when (FI), when (EN), name (FI), name (EN)] */
+  flagOfficial: [
+    ["28.2.", "28 Feb", "Kalevalan päivä, suomalaisen kulttuurin päivä", "Kalevala Day, Day of Finnish Culture"],
+    ["1.5.", "1 May", "vappu, suomalaisen työn päivä", "May Day, Day of Finnish Labour"],
+    ["toukokuun 2. sunnuntai", "2nd Sunday of May", "äitienpäivä", "Mother's Day"],
+    ["4.6.", "4 June", "puolustusvoimain lippujuhlan päivä", "Flag Day of the Finnish Defence Forces"],
+    ["juhannuspäivä", "Midsummer Day", "Suomen lipun päivä", "Day of the Finnish Flag"],
+    ["marraskuun 2. sunnuntai", "2nd Sunday of November", "isänpäivä", "Father's Day"],
+    ["6.12.", "6 Dec", "itsenäisyyspäivä", "Independence Day"]
+  ],
+  flagCustom: [
+    ["5.2.", "5 Feb", "J. L. Runebergin päivä", "Runeberg Day"],
+    ["19.3.", "19 Mar", "Minna Canthin päivä, tasa-arvon päivä", "Minna Canth Day, Day of Equality"],
+    ["9.4.", "9 Apr", "Mikael Agricolan päivä, suomen kielen päivä", "Mikael Agricola Day, Day of the Finnish Language"],
+    ["27.4.", "27 Apr", "kansallinen veteraanipäivä", "National Veterans' Day"],
+    ["9.5.", "9 May", "Eurooppa-päivä", "Europe Day"],
+    ["12.5.", "12 May", "J. V. Snellmanin päivä, suomalaisuuden päivä", "J. V. Snellman Day, Day of Finnish Heritage"],
+    ["toukokuun 3. sunnuntai", "3rd Sunday of May", "kaatuneitten muistopäivä", "Remembrance Day"],
+    ["6.7.", "6 July", "Eino Leinon päivä, runon ja suven päivä", "Eino Leino Day, Day of Poetry and Summer"],
+    ["elokuun viimeinen lauantai", "last Saturday of August", "Suomen luonnon päivä", "Finnish Nature Day"],
+    ["1.10.", "1 Oct", "Miina Sillanpään päivä, kansalaisvaikuttamisen päivä", "Miina Sillanpää Day, Day of Civic Participation"],
+    ["10.10.", "10 Oct", "Aleksis Kiven päivä, suomalaisen kirjallisuuden päivä", "Aleksis Kivi Day, Day of Finnish Literature"],
+    ["24.10.", "24 Oct", "YK:n päivä", "United Nations Day"],
+    ["6.11.", "6 Nov", "ruotsalaisuuden päivä", "Finland-Swedish Heritage Day"],
+    ["20.11.", "20 Nov", "lapsen oikeuksien päivä", "Day of Children's Rights"],
+    ["8.12.", "8 Dec", "Jean Sibeliuksen päivä, suomalaisen musiikin päivä", "Jean Sibelius Day, Day of Finnish Music"]
+  ],
+
+  customs: [
+    { id: "c-sauna", tf: "Sauna", te: "Sauna",
+      f: "Suomessa on noin 3,3 miljoonaa saunaa 5,6 miljoonalle asukkaalle. Suomalainen saunakulttuuri lisättiin Unescon aineettoman kulttuuriperinnön luetteloon joulukuussa 2020.",
+      e: "Finland has about 3.3 million saunas for 5.6 million people. Finnish sauna culture was added to UNESCO's list of intangible cultural heritage in December 2020." },
+    { id: "c-coffee", tf: "Kahvi", te: "Coffee",
+      f: "Suomalaiset kuuluvat maailman ahkerimpiin kahvinjuojiin. Vieraalle keitetään kahvit, ja työpaikoilla pidetään kahvitaukoja.",
+      e: "Finns are among the world's biggest coffee drinkers. Guests are offered coffee, and workplaces have coffee breaks." },
+    { id: "c-rights", tf: "Jokaisenoikeus", te: "Everyone's right",
+      f: "Luonnossa saa liikkua jalan, hiihtäen ja pyöräillen, poimia marjoja ja sieniä sekä yöpyä tilapäisesti – myös toisen maalla. Avotulta ei saa tehdä ilman lupaa, eikä kasvavia puita saa vahingoittaa. Vanhempi nimi on jokamiehenoikeus.",
+      e: "Anyone may walk, ski and cycle in nature, pick berries and mushrooms and camp for a short time — even on someone else's land. Open fires need permission, and living trees must not be damaged. The older name is jokamiehenoikeus." },
+    { id: "c-cottage", tf: "Kesämökki", te: "Summer cottage",
+      f: "Suomessa on lähes 500 000 kesämökkiä (485 475 vuoden 2025 lopussa). Kesällä mökillä saunotaan, uidaan ja kalastetaan.",
+      e: "Finland has almost 500,000 summer cottages (485,475 at the end of 2025) — for sauna, swimming and fishing in summer." },
+    { id: "c-shoes", tf: "Kengät pois", te: "Shoes off",
+      f: "Kotiin tultaessa kengät riisutaan eteisessä – myös kylässä.",
+      e: "Shoes come off in the hallway at home, and when visiting someone." },
+    { id: "c-names", tf: "Nimipäivät", te: "Name days",
+      f: "Lähes jokaisella kalenterin päivällä on omat nimensä, ja nimipäivää onnitellaan kuten syntymäpäivää.",
+      e: "Almost every day of the calendar has its own names, and people congratulate each other on their name day." },
+    { id: "c-xmas", tf: "Joulu", te: "Christmas",
+      f: "Pääjuhla on jouluaatto: joulusauna, riisipuuro, kinkku ja joulupukki. Turussa julistetaan joulurauha jouluaattona kello 12, ja perinne on jatkunut 1300-luvulta asti.",
+      e: "Christmas Eve is the main day: a Christmas sauna, rice porridge, ham and Father Christmas. At noon on Christmas Eve, Turku declares Christmas Peace — a tradition going back to the 1300s." },
+    { id: "c-easter", tf: "Pääsiäinen", te: "Easter",
+      f: "Lapset pukeutuvat noidiksi ja virpovat koristelluilla pajunoksilla. Pääsiäisenä syödään mämmiä.",
+      e: "Children dress up as witches and go round with decorated willow twigs (virpominen). The Easter treat is mämmi." },
+    { id: "c-vappu", tf: "Vappu", te: "May Day",
+      f: "Ylioppilaat painavat päähänsä valkoisen lakin, juodaan simaa ja syödään tippaleipiä. Helsingissä Havis Amanda -patsas lakitetaan vappuaattona.",
+      e: "Graduates put on their white student caps, people drink sima (a home-made mead) and eat funnel cakes. In Helsinki the Havis Amanda statue gets her cap on May Day Eve." },
+    { id: "c-midsummer", tf: "Juhannus", te: "Midsummer",
+      f: "Juhannuksena mennään mökille, poltetaan kokkoja ja saunotaan valoisassa yössä. Juhannuspäivä on Suomen lipun päivä: lippu liehuu juhannusaaton kello 18:sta juhannuspäivän kello 21:een.",
+      e: "At Midsummer people head to their cottages, light bonfires and have a sauna in the light night. Midsummer Day is the Day of the Finnish Flag: the flag flies from 6 pm on Midsummer Eve until 9 pm on Midsummer Day." }
+  ],
+
+  /* a: right answer [FI, EN]; w: three wrong answers; sp: Finnish word to hear afterwards */
+  quiz: [
+    { qf: "Mikä on Suomen kansallislintu?", qe: "What is Finland's national bird?", a: ["laulujoutsen", "whooper swan"],
+      w: [["kuikka", "black-throated diver"], ["metso", "capercaillie"], ["talitiainen", "great tit"]],
+      xf: "Laulujoutsen nimettiin kansallislinnuksi 1981.", xe: "The whooper swan was named the national bird in 1981.", sp: "laulujoutsen" },
+    { qf: "Mikä on Suomen kansalliseläin?", qe: "What is Finland's national animal?", a: ["karhu", "brown bear"],
+      w: [["hirvi", "elk"], ["susi", "wolf"], ["poro", "reindeer"]],
+      xf: "Karhu voitti kansanäänestyksen 1985.", xe: "The bear won a public vote in 1985.", sp: "karhu" },
+    { qf: "Mikä on Suomen kansalliskukka?", qe: "What is Finland's national flower?", a: ["kielo", "lily of the valley"],
+      w: [["ruusu", "rose"], ["valkovuokko", "wood anemone"], ["kanerva", "heather"]],
+      xf: "Kielo valittiin 1967. Se on kaunis mutta myrkyllinen.", xe: "The lily of the valley was chosen in 1967 — beautiful but poisonous.", sp: "kielo" },
+    { qf: "Mikä on Suomen kansallispuu?", qe: "What is Finland's national tree?", a: ["rauduskoivu", "silver birch"],
+      w: [["mänty", "Scots pine"], ["kuusi", "Norway spruce"], ["tammi", "oak"]],
+      xf: "Rauduskoivu valittiin kansanäänestyksessä 1988.", xe: "The silver birch was chosen in a public vote in 1988.", sp: "rauduskoivu" },
+    { qf: "Mikä on Suomen kansalliskala?", qe: "What is Finland's national fish?", a: ["ahven", "European perch"],
+      w: [["lohi", "salmon"], ["hauki", "pike"], ["silakka", "Baltic herring"]],
+      xf: "Ahven valittiin kansalliskalaksi 1994.", xe: "The perch became the national fish in 1994.", sp: "ahven" },
+    { qf: "Mikä valittiin Suomen kansallisruoaksi vuonna 2017?", qe: "What was voted Finland's national food in 2017?", a: ["ruisleipä", "rye bread"],
+      w: [["karjalanpaisti", "Karelian hot pot"], ["karjalanpiirakka", "Karelian pasty"], ["lohikeitto", "salmon soup"]],
+      xf: "Ruisleipä voitti selvästi, ja karjalanpaisti tuli toiseksi.", xe: "Rye bread won clearly; Karelian hot pot came second.", sp: "ruisleipä" },
+    { qf: "Mitä peliä kutsutaan Suomen kansallispeliksi?", qe: "Which game is called Finland's national sport?", a: ["pesäpallo", "pesäpallo (Finnish baseball)"],
+      w: [["jääkiekko", "ice hockey"], ["salibandy", "floorball"], ["mölkky", "mölkky (a throwing game)"]],
+      xf: "Lauri ”Tahko” Pihkala kehitti pesäpallon 1920-luvun alussa.", xe: "Lauri 'Tahko' Pihkala developed pesäpallo in the early 1920s.", sp: "pesäpallo" },
+    { qf: "Kuka kirjoitti Maamme-laulun sanat?", qe: "Who wrote the words of the national anthem, Maamme?", a: ["J. L. Runeberg", "J. L. Runeberg"],
+      w: [["Elias Lönnrot", "Elias Lönnrot"], ["Aleksis Kivi", "Aleksis Kivi"], ["Jean Sibelius", "Jean Sibelius"]],
+      xf: "Runeberg kirjoitti sanat ruotsiksi, ja sävelen teki Fredrik Pacius.", xe: "Runeberg wrote the words in Swedish; Fredrik Pacius wrote the music." },
+    { qf: "Minä vuonna Suomi itsenäistyi?", qe: "In which year did Finland become independent?", a: ["1917", "1917"],
+      w: [["1809", "1809"], ["1918", "1918"], ["1945", "1945"]],
+      xf: "Suomi julistautui itsenäiseksi 6.12.1917.", xe: "Finland declared independence on 6 December 1917." },
+    { qf: "Mitä Suomen lipun sinisen sanotaan kuvaavan?", qe: "What is the blue in Finland's flag said to stand for?", a: ["järviä ja taivasta", "lakes and sky"],
+      w: [["Itämerta", "the Baltic Sea"], ["valoisaa kesäyötä", "the light summer night"], ["rauhaa", "peace"]],
+      xf: "Valkoinen kuvaa talven lunta.", xe: "The white stands for winter snow." },
+    { qf: "Mikä kaupunki oli Suomen pääkaupunki ennen Helsinkiä?", qe: "Which city was Finland's capital before Helsinki?", a: ["Turku", "Turku"],
+      w: [["Tampere", "Tampere"], ["Porvoo", "Porvoo"], ["Hämeenlinna", "Hämeenlinna"]],
+      xf: "Helsingistä tuli pääkaupunki 1812.", xe: "Helsinki became the capital in 1812.", sp: "Turku" },
+    { qf: "Mitkä ovat Suomen viralliset kielet?", qe: "What are Finland's official languages?", a: ["suomi ja ruotsi", "Finnish and Swedish"],
+      w: [["suomi ja saame", "Finnish and Sámi"], ["suomi ja englanti", "Finnish and English"], ["vain suomi", "Finnish only"]],
+      xf: "Saamen kielillä on virallinen asema saamelaisten kotiseutualueella.", xe: "The Sámi languages are official in the Sámi homeland." },
+    { qf: "Kuinka monta yli viiden aarin järveä Suomessa on?", qe: "How many lakes larger than five ares does Finland have?", a: ["187 888", "187,888"],
+      w: [["18 788", "18,788"], ["57 000", "57,000"], ["1 200 000", "1,200,000"]],
+      xf: "Siksi Suomea kutsutaan tuhansien järvien maaksi.", xe: "Hence 'the land of a thousand lakes'." },
+    { qf: "Kuinka suuri osa Suomen maa-alasta on metsää?", qe: "How much of Finland's land area is forest?", a: ["yli 75 %", "over 75%"],
+      w: [["noin 25 %", "about 25%"], ["noin 50 %", "about 50%"], ["yli 95 %", "over 95%"]],
+      xf: "Suhteessa pinta-alaan Suomi on Euroopan metsäisin maa.", xe: "Relative to its size, Finland is Europe's most forested country." },
+    { qf: "Missä on Suomen korkein kohta?", qe: "Where is Finland's highest point?", a: ["Halti", "Halti"],
+      w: [["Koli", "Koli"], ["Saana", "Saana"], ["Pallastunturi", "Pallastunturi"]],
+      xf: "Haltin rinne Suomen puolella on 1 324 metriä; huippu on Norjassa.", xe: "Halti's slope on the Finnish side reaches 1,324 m; the summit is in Norway.", sp: "Halti" },
+    { qf: "Mikä on Suomen suurin järvi?", qe: "What is Finland's largest lake?", a: ["Saimaa", "Saimaa"],
+      w: [["Päijänne", "Päijänne"], ["Inarijärvi", "Lake Inari"], ["Pielinen", "Pielinen"]],
+      xf: "Saimaa on saimaannorpan ainoa koti.", xe: "Saimaa is the only home of the Saimaa ringed seal.", sp: "Saimaa" },
+    { qf: "Kuinka pitkään yötön yö kestää Utsjoella?", qe: "How long does the midnight sun last in Utsjoki?", a: ["noin 74 päivää", "about 74 days"],
+      w: [["noin viikon", "about a week"], ["noin 30 päivää", "about 30 days"], ["noin puoli vuotta", "about six months"]],
+      xf: "Utsjoella aurinko ei laske 16.5.–28.7.", xe: "In Utsjoki the sun doesn't set from 16 May to 28 July." },
+    { qf: "Minä vuonna Suomen naiset saivat äänioikeuden?", qe: "In which year did Finnish women get the vote?", a: ["1906", "1906"],
+      w: [["1917", "1917"], ["1919", "1919"], ["1945", "1945"]],
+      xf: "Suomen naiset saivat ensimmäisinä Euroopassa sekä äänioikeuden että oikeuden asettua ehdolle.", xe: "Finnish women were the first in Europe to get both the vote and the right to stand for election." },
+    { qf: "Minä vuonna Suomi liittyi Euroopan unioniin?", qe: "In which year did Finland join the European Union?", a: ["1995", "1995"],
+      w: [["1973", "1973"], ["2002", "2002"], ["2004", "2004"]],
+      xf: "Euro tuli käteiseksi rahaksi 2002.", xe: "Euro notes and coins arrived in 2002." },
+    { qf: "Minä vuonna Suomi liittyi Natoon?", qe: "In which year did Finland join NATO?", a: ["2023", "2023"],
+      w: [["1995", "1995"], ["2014", "2014"], ["2025", "2025"]],
+      xf: "Suomesta tuli Naton jäsen 4.4.2023.", xe: "Finland became a NATO member on 4 April 2023." },
+    { qf: "Kuka kokosi Kalevalan?", qe: "Who compiled the Kalevala?", a: ["Elias Lönnrot", "Elias Lönnrot"],
+      w: [["J. L. Runeberg", "J. L. Runeberg"], ["Mikael Agricola", "Mikael Agricola"], ["Zachris Topelius", "Zachris Topelius"]],
+      xf: "Kalevala ilmestyi 1835. Kalevalan päivää vietetään 28. helmikuuta.", xe: "The Kalevala came out in 1835. Kalevala Day is 28 February." },
+    { qf: "Mikä kasvi on Suomen kahden euron kolikossa?", qe: "Which plant is on Finland's two-euro coin?", a: ["lakka", "cloudberry"],
+      w: [["kielo", "lily of the valley"], ["mustikka", "bilberry"], ["rauduskoivu", "silver birch"]],
+      xf: "Yhden euron kolikossa lentää kaksi joutsenta.", xe: "The one-euro coin shows two flying swans.", sp: "lakka" },
+    { qf: "Minä päivänä vietetään Suomen lipun päivää?", qe: "When is the Day of the Finnish Flag?", a: ["juhannuspäivänä", "on Midsummer Day"],
+      w: [["itsenäisyyspäivänä", "on Independence Day"], ["vappuna", "on May Day"], ["Kalevalan päivänä", "on Kalevala Day"]],
+      xf: "Lippu liehuu juhannusaaton kello 18:sta juhannuspäivän kello 21:een.", xe: "The flag flies from 6 pm on Midsummer Eve to 9 pm on Midsummer Day.", sp: "juhannuspäivä" },
+    { qf: "Mitä jokaisenoikeus sallii?", qe: "What does everyone's right allow?", a: ["marjojen poimimisen toisen metsästä", "picking berries in someone else's forest"],
+      w: [["kasvavien puiden kaatamisen", "felling living trees"], ["nuotion teon toisen maalle ilman lupaa", "lighting a campfire on someone else's land without permission"], ["metsästämisen ilman lupaa", "hunting without a permit"]],
+      xf: "Luonnossa saa liikkua ja poimia marjoja ja sieniä, mutta luontoa ei saa vahingoittaa.", xe: "You may roam and pick berries and mushrooms, but you may not damage nature." },
+    { qf: "Kuinka monta saunaa Suomessa on?", qe: "How many saunas are there in Finland?", a: ["noin 3,3 miljoonaa", "about 3.3 million"],
+      w: [["noin 300 000", "about 300,000"], ["noin miljoona", "about one million"], ["noin 10 miljoonaa", "about 10 million"]],
+      xf: "Suomalainen saunakulttuuri on Unescon aineettoman kulttuuriperinnön luettelossa.", xe: "Finnish sauna culture is on UNESCO's list of intangible cultural heritage." },
+    { qf: "Mikä on Suomen kansallissoitin?", qe: "What is Finland's national instrument?", a: ["kantele", "kantele"],
+      w: [["harmonikka", "accordion"], ["viulu", "violin"], ["huilu", "flute"]],
+      xf: "Kalevalassa Väinämöinen tekee ensimmäisen kanteleen hauen leukaluusta.", xe: "In the Kalevala, Väinämöinen makes the first kantele from a pike's jawbone.", sp: "kantele" },
+    { qf: "Mikä on Suomen kansallishyönteinen?", qe: "What is Finland's national insect?", a: ["seitsenpistepirkko", "seven-spot ladybird"],
+      w: [["mehiläinen", "honeybee"], ["kimalainen", "bumblebee"], ["sudenkorento", "dragonfly"]],
+      xf: "Seitsenpistepirkko valittiin 1996.", xe: "The seven-spot ladybird was chosen in 1996.", sp: "seitsenpistepirkko" },
+    { qf: "Monettako vuotta peräkkäin Suomi oli maailman onnellisin maa vuonna 2026?", qe: "In 2026, for which year running was Finland named the world's happiest country?", a: ["yhdeksättä", "the ninth"],
+      w: [["kolmatta", "the third"], ["viidettä", "the fifth"], ["kahdettatoista", "the twelfth"]],
+      xf: "World Happiness Report on sijoittanut Suomen ensimmäiseksi vuodesta 2018 lähtien.", xe: "The World Happiness Report has ranked Finland first every year since 2018." }
+  ],
+
+  sources: [
+    ["thisisFINLAND — Finland's national nature symbols", "https://finland.fi/life-society/iconic-finnish-nature-symbols-stand-out/"],
+    ["thisisFINLAND — The Finnish flag", "https://finland.fi/facts-stats-and-info/the-finnish-flag/"],
+    ["thisisFINLAND — The Finnish national anthem", "https://finland.fi/facts-stats-and-info/the-finnish-national-anthem/"],
+    ["thisisFINLAND — Sauna culture on UNESCO's list", "https://finland.fi/life-society/unesco-highlights-the-intangible-but-very-real-spirit-of-finnish-sauna-culture/"],
+    ["thisisFINLAND — World Happiness Report 2026", "https://finland.fi/life-society/9-years-and-counting-finland-is-first-in-the-world-happiness-report/"],
+    ["Tilastokeskus — Population, August 2026", "https://stat.fi/en/publication/cmf2csr781baq08vutvz6rebx"],
+    ["Tilastokeskus — Summer in statistics 2026", "https://stat.fi/fi/tietoa-meista/ajankohtaista/kesa-tilastojen-valossa"],
+    ["Maanmittauslaitos — Area of Finland 1.1.2026", "https://www.maanmittauslaitos.fi/media/31708/download"],
+    ["Kuntaliitto — Municipalities and cities", "https://www.kuntaliitto.fi/kuntaliitto/tietotuotteet-ja-palvelut/kaupunkien-ja-kuntien-lukumaarat-ja-vaestotiedot"],
+    ["University of Helsinki Almanac Office — Flag days 2026", "https://almanakka.helsinki.fi/en/flag-days-and-holidays/flag-days-in-2026"],
+    ["Ilmatieteen laitos — Temperature records", "https://www.ilmatieteenlaitos.fi/lampotilaennatyksia"],
+    ["Ilmatieteen laitos — Where and when to see auroras", "https://www.ilmatieteenlaitos.fi/missa-ja-milloin"],
+    ["Ministry of Agriculture and Forestry — Forest resources", "https://mmm.fi/en/forests/forestry/forest-resources"],
+    ["Luontoon.fi — National parks", "https://www.luontoon.fi/kansallispuistot"],
+    ["Luontoon.fi — Everyone's rights", "https://www.luontoon.fi/jokamiehenoikeudet"],
+    ["Ministry of Finance — Finnish euro coins", "https://vm.fi/-/eurokolikoiden-kansallisille-puolille-lakka-kaksi-joutsenta-ja-leijona"],
+    ["Yle — Lakes, rivers and islands", "https://yle.fi/a/20-169521"],
+    ["Yle — Midnight sun in Utsjoki", "https://yle.fi/a/74-20031801"],
+    ["Yle — Finland's fifth ice hockey world title (2026)", "https://yle.fi/a/74-20229038"],
+    ["MTK — Rye bread is Finland's national food", "https://www.mtk.fi/-/ruisleipa-on-suomen-kansallisruoka"],
+    ["Suomen Kansallisperhonen — FAQ", "https://kansallisperhonen.fi/usein-kysytyt-kysymykset/"],
+    ["Pesis.fi — History of pesäpallo", "https://www.pesis.fi/pesis-info/historia"],
+    ["Joulukaupunki Turku — Declaration of Christmas Peace", "https://www.joulukaupunkiturku.fi/en/finlands-turku-declares-christmas-peace/"],
+    ["Wikipedia — Coat of arms of Finland", "https://en.wikipedia.org/wiki/Coat_of_arms_of_Finland"]
+  ]
+};
+
+/* ---------- ABOUT FINLAND ---------- */
+/* one line in the current language; in FI+EN mode both halves, joined */
+function L2(f, e) { return S.lang === "fi" ? f : S.lang === "en" ? e : (f === e ? f : f + " · " + e); }
+function finYear(y) { return Array.isArray(y) ? (S.lang === "en" ? y[1] : y[0]) : (y || ""); }
+function finNum(n) { return Number(n).toLocaleString(S.lang === "en" ? "en-GB" : "fi-FI"); }
+function finTh(f, e) {
+  if (S.lang === "fi") return esc(f);
+  if (S.lang === "en") return esc(e);
+  return esc(f) + '<span class="the">' + esc(e) + "</span>";
+}
+function finFlag() {
+  /* the law's proportions: 11 × 18, cross 3 wide, set 5 units from the hoist */
+  return '<svg class="finflag" viewBox="0 0 18 11" role="img" aria-label="' + esc(pick("Suomen lippu", "Flag of Finland")) + '">' +
+    '<rect width="18" height="11" fill="#fff"/><rect x="5" width="3" height="11" fill="#002f6c"/>' +
+    '<rect y="4" width="18" height="3" fill="#002f6c"/></svg>';
+}
+const FIN_SECS = [
+  ["Kansallissymbolit", "National symbols"],
+  ["Perustiedot", "Key facts"],
+  ["Maantiede ja luonto", "Geography & nature"],
+  ["Historia", "History"],
+  ["Juhlapyhät ja liputuspäivät", "Holidays & flag days"],
+  ["Tavat ja perinteet", "Customs & traditions"],
+  ["Testaa tietosi", "Test yourself"]
+];
+function finSym(s) {
+  const y = finYear(s.y);
+  return '<div class="card finsym" id="fin-' + s.id + '">' +
+    '<div class="row finsym-h"><div class="finsym-c">' +
+      '<div class="eyebrow">' + esc(S.lang === "en" ? s.ce : s.cf) + "</div>" +
+      (S.lang === "both" ? '<div class="finsym-ce">' + esc(s.ce) + "</div>" : "") +
+    "</div>" + (y ? '<span class="tag">' + esc(y) + "</span>" : "") + "</div>" +
+    (s.id === "flag" ? finFlag() : "") +
+    '<div class="row finsym-n"><span class="h-fi">' + esc(s.fi) + "</span>" + spk(s.fi, "") + "</div>" +
+    (S.lang !== "fi" && s.en !== s.fi ? '<div class="finsym-en">' + esc(s.en) + "</div>" : "") +
+    '<div class="fintxt">' + bi(s.f, s.e) + "</div>" +
+  "</div>";
+}
+function finCard(c) {
+  return '<div class="card pad fincard" id="fin-' + c.id + '">' +
+    "<h3>" + esc(S.lang === "en" ? c.te : c.tf) +
+      (S.lang === "both" && c.te !== c.tf ? '<span class="e">' + esc(c.te) + "</span>" : "") + "</h3>" +
+    '<div class="fintxt">' + bi(c.f, c.e) + "</div></div>";
+}
+function finFlagTable(rows, capF, capE) {
+  return '<div class="blk"><div class="cap"><b>' + esc(S.lang === "en" ? capE : capF) + "</b>" +
+      (S.lang === "both" ? " <span>· " + esc(capE) + "</span>" : "") + "</div>" +
+    '<div class="tbl-w"><table><thead><tr><th>' + finTh("Päivä", "Date") + "</th><th>" + finTh("Liputuspäivä", "Flag day") + "</th></tr></thead><tbody>" +
+    rows.map(r => "<tr><td>" + cellHtml({ f: r[0], e: r[1] }) + "</td><td>" + cellHtml({ f: r[2], e: r[3] }) + "</td></tr>").join("") +
+    "</tbody></table></div></div>";
+}
+function vFinland() {
+  const F = FIN;
+  const head = n => block({ k: "h", f: FIN_SECS[n][0], e: FIN_SECS[n][1] }, "sec" + n);
+  const toc = '<nav class="toc"><div class="eyebrow" style="padding:5px 10px">' + esc(pick("Sisältö", "On this page")) + "</div>" +
+    FIN_SECS.map((s, n) => '<a href="#sec' + n + '" data-act="jump" data-i="' + n + '">' + esc(pick(s[0], s[1])) + "</a>").join("") + "</nav>";
+  const chips = '<div class="finjump">' + FIN_SECS.map((s, n) =>
+    '<a class="chip" href="#sec' + n + '" data-act="jump" data-i="' + n + '">' + esc(pick(s[0], s[1])) + "</a>").join("") + "</div>";
+
+  const symbols = head(0) +
+    '<div class="blk">' + bi("Suomen luontosymbolit valittiin pääosin kansanäänestyksillä. Paina kaiutinta ja kuuntele suomenkielinen nimi.",
+      "Most of Finland's nature symbols were chosen by public vote. Tap the speaker to hear each Finnish name.") + "</div>" +
+    '<div class="fingrid">' + F.symbols.map(finSym).join("") + "</div>" +
+    '<div class="blk"><div class="cap"><b>' + esc(S.lang === "en" ? "The people behind the symbols" : "Kansalliset merkkihenkilöt") + "</b>" +
+      (S.lang === "both" ? " <span>· The people behind the symbols</span>" : "") + "</div>" +
+      '<div class="finpeople">' + F.people.map(p => '<div class="finperson"><b>' + esc(p.fi) + "</b><span>" + esc(L2(p.f, p.e)) + "</span></div>").join("") + "</div></div>";
+
+  const facts = head(1) +
+    '<div class="finstats">' + F.facts.map(x =>
+      '<div class="stat finstat"><div class="k">' + esc(L2(x.kf, x.ke)) + "</div>" +
+        '<div class="v">' + esc(S.lang === "en" ? x.ve : x.vf) + "</div>" +
+        (S.lang === "both" && x.ve !== x.vf ? '<div class="v2">' + esc(x.ve) + "</div>" : "") +
+        '<div class="fintxt small">' + bi(x.nf, x.ne) + "</div></div>").join("") + "</div>" +
+    '<div class="blk"><div class="cap"><b>' + esc(S.lang === "en" ? "Largest cities" : "Suurimmat kaupungit") + "</b> <span>" +
+      esc(S.lang === "fi" ? "· asukkaita 31.12.2025" : S.lang === "en" ? "· residents on 31 Dec 2025" : "· Largest cities, residents on 31 Dec 2025") + "</span></div>" +
+      '<div class="tbl-w"><table><thead><tr><th>' + finTh("Kaupunki", "City") + '</th><th class="num">' + finTh("Asukkaita", "Residents") + "</th></tr></thead><tbody>" +
+      F.cities.map(c => "<tr><td><b>" + esc(c[0]) + '</b></td><td class="num">' + esc(finNum(c[1])) + "</td></tr>").join("") +
+      "</tbody></table></div></div>";
+
+  const nature = head(2) + '<div class="fingrid wide">' + F.nature.map(finCard).join("") + "</div>";
+
+  const history = head(3) + '<div class="fintl">' + F.history.map(h =>
+    '<div class="fintl-i"><div class="fintl-y">' + esc(finYear(h.y)) + '</div><div class="fintxt">' + bi(h.f, h.e) + "</div></div>").join("") + "</div>";
+
+  const holidays = head(4) +
+    '<div class="blk"><div class="cap"><b>' + esc(S.lang === "en" ? "Public holidays" : "Juhlapyhät") + "</b>" +
+      (S.lang === "both" ? " <span>· Public holidays</span>" : "") + "</div>" +
+      '<div class="tbl-w"><table><thead><tr><th>' + finTh("Juhlapyhä", "Holiday") + "</th><th>" + finTh("Ajankohta", "When") + "</th></tr></thead><tbody>" +
+      F.holidays.map(h => "<tr><td><b>" + esc(h[0]) + (h[4] ? " *" : "") + "</b>" + spk(h[0], "finsp") +
+        (S.lang !== "fi" ? '<span class="tde">' + esc(h[1]) + "</span>" : "") + "</td><td>" + cellHtml({ f: h[2], e: h[3] }) + "</td></tr>").join("") +
+      "</tbody></table></div>" +
+      '<div class="tnote">* ' + (S.lang !== "en" ? lang("FI") + esc("Juhannusaatto ja jouluaatto eivät ole virallisia pyhäpäiviä, mutta useimmat ovat silloin vapaalla.") + " " : "") +
+        (S.lang !== "fi" ? lang("EN") + esc("Midsummer Eve and Christmas Eve aren't official holidays, but most people have the day off.") : "") + "</div></div>" +
+    finFlagTable(F.flagOfficial, "Viralliset liputuspäivät", "Official flag days") +
+    finFlagTable(F.flagCustom, "Vakiintuneet liputuspäivät", "Customary flag days");
+
+  const customs = head(5) + '<div class="fingrid wide">' + F.customs.map(finCard).join("") + "</div>";
+
+  const quiz = head(6) +
+    '<div class="card pad" style="background:var(--surface2)"><div class="row"><div style="flex:1;min-width:200px">' +
+      '<h3 class="h-fi" style="font-size:20px">' + esc(pick("Suomi-visa", "Finland quiz")) + "</h3>" +
+      '<div class="small muted">' + esc(pick(
+        "12 satunnaista kysymystä " + F.quiz.length + " kysymyksen joukosta. Jokainen kierros on erilainen.",
+        "12 random questions from a bank of " + F.quiz.length + ", so every round is different.")) + "</div></div>" +
+      '<button class="btn pri" data-go="run/finland/quiz">' + ic("play") + " " + esc(pick("Aloita", "Start")) + "</button></div></div>";
+
+  const sources = '<div class="finsrc"><div class="eyebrow">' + esc(L2("Lähteet", "Sources")) + "</div>" +
+    '<div class="small muted" style="margin-top:4px">' + esc(L2("Tiedot tarkistettu syyskuussa 2026.", "Facts checked in September 2026.")) + "</div>" +
+    "<ul>" + F.sources.map(s => '<li><a href="' + esc(s[1]) + '" target="_blank" rel="noopener">' + esc(s[0]) + "</a></li>").join("") + "</ul></div>";
+
+  return '<div class="wrap"><div class="withtoc">' +
+    '<article class="chap finpage">' +
+      '<div class="page-h" style="margin-bottom:8px"><div class="eyebrow">' + esc(L2("Suomi", "Finland")) + "</div>" +
+        "<h1>" + esc(S.lang === "en" ? "About Finland" : "Tietoa Suomesta") + "</h1>" +
+        (S.lang === "both" ? '<div class="muted" style="font-size:17px;margin-top:4px">About Finland</div>' : "") +
+        '<div class="hook">' + lang("FI") + esc("Kansallissymbolit, perustiedot, luonto, historia ja juhlat yhdellä sivulla – ja lopuksi visa.") +
+          (S.lang !== "fi" ? '<span class="e">' + lang("EN") + esc("National symbols, key facts, nature, history and holidays on one page — with a quiz at the end.") + "</span>" : "") +
+        "</div></div>" +
+      chips + symbols + facts + nature + history + holidays + customs + quiz + sources +
+    "</article>" + toc + "</div></div>";
+}
+function launchFinlandQuiz() {
+  const qs = shuffle(FIN.quiz).slice(0, 12).map(x => {
+    const opts = shuffle([x.a].concat(x.w));
+    return {
+      key: "fin:" + FIN.quiz.indexOf(x), kind: "mc",
+      prompt: x.qf, pF: x.qf, pE: x.qe,
+      opts: opts.map(o => o[0]), oF: opts.map(o => o[0]), oE: opts.map(o => o[1]),
+      a: opts.indexOf(x.a), xf: x.xf, xe: x.xe, speakAfter: x.sp || ""
+    };
+  });
+  sessionStart({ mode: "finland-quiz", title: pick("Suomi-visa", "Finland quiz"), sub: pick("Suomi-visa", "Finland quiz"),
+    back: "finland", qs, srs: false });
+  return vRun();
+}
+/* bilingual quiz questions carry both languages and are shown in the current one */
+function qText(q) { return q.pF ? (S.lang === "en" ? q.pE : q.pF) : q.prompt; }
+function qOpt(q, i) { return q.oF ? L2(q.oF[i], q.oE[i]) : q.opts[i]; }
+
 const NAV = [
   { s: "Opi · Learn" },
   { p: "home", ic: "home", f: "Koti", e: "Home" },
@@ -11003,6 +11580,7 @@ const NAV = [
   { p: "vocab", ic: "cards", f: "Sanasto", e: "Vocabulary" },
   { p: "sentences", ic: "sent", f: "Lauseet", e: "Sentences" },
   { p: "phrases", ic: "chat", f: "Fraasit", e: "Phrases" },
+  { p: "finland", ic: "flag", f: "Tietoa Suomesta", e: "About Finland" },
   { s: "Käytä · Use" },
   { p: "spoken", ic: "mic", f: "Puhekieli", e: "Spoken Finnish" },
   { p: "situations", ic: "compass", f: "Tilanteet", e: "Situations" },
@@ -11996,7 +12574,7 @@ function vLegal() {
   return '<div class="wrap read">' +
     '<div class="page-h"><div class="eyebrow">' + esc(pick("Oikeudelliset tiedot", "Legal")) + "</div>" +
       "<h1>" + esc(pick("Tekijänoikeus ja ehdot", "Copyright and terms")) + "</h1>" +
-      '<div class="sub">' + esc(pick("Päivitetty 17. syyskuuta 2026.", "Last updated 17 September 2026.")) + "</div></div>" +
+      '<div class="sub">' + esc(pick("Päivitetty 26. syyskuuta 2026.", "Last updated 26 September 2026.")) + "</div></div>" +
 
     '<div class="box key"><div class="lbl">' + ic("check") + " " + esc(pick("Tekijänoikeus", "Copyright")) + "</div>" +
       '<div class="f" style="font-size:16px">© ' + COPY_YEAR + " " + esc(COPY_HOLDER) + ". " +
@@ -12023,6 +12601,8 @@ function vLegal() {
        "This is an independent, privately made project. It is not produced, approved, endorsed by or otherwise connected with any authority, educational institution or examination body."],
       ["Yleinen kielitutkinto (YKI) on Opetushallituksen vastuulla ja Jyväskylän yliopiston toteuttama. Tämän sivuston harjoitukset ovat epävirallisia, tätä sivustoa varten kirjoitettuja tehtäviä, eivät virallisia koetehtäviä. Tarkista aina ajantasaiset tiedot kokeen järjestäjältä.",
        "The National Certificate of Language Proficiency (YKI) is the responsibility of the Finnish National Agency for Education and is run by the University of Jyväskylä. The practice material here is unofficial and consists of exercises written for this site, not real examination papers. Always check current details with the examination organiser."],
+      ["Tietoa Suomesta -sivun tiedot on koottu julkisista lähteistä, jotka on lueteltu sivun lopussa. Luvut muuttuvat ajan myötä – tarkista uusin tieto lähteestä.",
+       "The facts on the About Finland page come from the public sources listed at the end of that page. Figures change over time, so check the source for the latest."],
       ["Dialogeissa mainitaan todellisia organisaatioita, kuten Kela, HSL ja DVV, jotta tilanteet olisivat aitoja. Nimet ja tavaramerkit kuuluvat omistajilleen, eikä mainitseminen tarkoita yhteyttä tai hyväksyntää. Käytännöt, hinnat ja säännöt muuttuvat — tarkista ne virallisista lähteistä.",
        "Real organisations such as Kela, HSL and DVV are named in the dialogues so that the situations ring true. Those names and marks belong to their owners, and mentioning them implies no connection or endorsement. Procedures, prices and rules change — check them against the official source before you rely on them."]
     ]) +
@@ -12804,6 +13384,7 @@ function qDrill(d, key, cid) {
 /* ---------- launching ---------- */
 function launch(kind, mode, q) {
   q = q || {};
+  if (kind === "finland") return launchFinlandQuiz();
   const N = 20;
   let qs = [], title = "", sub = "", back = "home";
 
@@ -12947,11 +13528,12 @@ function runMC(q) {
       cls += " lock";
     }
     return '<button class="' + cls + '" data-act="pick" data-i="' + i + '">' +
-      '<span class="kk">' + (i + 1) + "</span><span>" + moText(o) + "</span></button>";
+      '<span class="kk">' + (i + 1) + "</span><span>" + moText(qOpt(q, i)) + "</span></button>";
   }).join("");
   return '<div class="qcard">' +
       (q.sub ? '<div class="qlbl">' + esc(q.sub) + "</div>" : "") +
-      '<div class="qq">' + moText(q.prompt) + (q.speak ? " " + spk(q.speak, "") : "") + "</div>" +
+      '<div class="qq">' + moText(qText(q)) + (q.speak ? " " + spk(q.speak, "") : "") + "</div>" +
+      (q.pF && S.lang === "both" ? '<div class="qsub">' + esc(q.pE) + "</div>" : "") +
     "</div>" +
     '<div class="opts">' + opts + "</div>" + feedback(q);
 }
@@ -13018,7 +13600,7 @@ function runFlip(q) {
 function feedback(q) {
   const s = SESSION;
   if (!s.answered) return "";
-  const correct = q.kind === "mc" ? q.opts[q.a] : (q.answers || [])[0];
+  const correct = q.kind === "mc" ? qOpt(q, q.a) : (q.answers || [])[0];
   return '<div class="fb ' + (s.ok ? "ok" : "no") + '">' +
     '<div class="vd">' + ic(s.ok ? "check" : "x") + " " +
       esc(s.ok ? pick("Oikein", "Correct") : pick("Ei aivan", "Not quite")) + "</div>" +
@@ -13039,7 +13621,11 @@ function vRunDone() {
   const s = SESSION, total = s.qs.length;
   const pct = total ? s.right / total : 0;
   const mins = Math.max(1, Math.round((Date.now() - s.startedAt) / 60000));
-  const msg = pct >= .9 ? pick("Loistavaa. Nosta vaikeustasoa.", "Excellent. Time to raise the difficulty.")
+  const msg = !s.srs
+    ? (pct >= .9 ? pick("Loistavaa!", "Excellent!")
+      : pct >= .7 ? pick("Hyvä tulos.", "Solid result.")
+      : pick("Lue aihe vielä kerran ja yritä uudelleen.", "Read it through once more, then try again."))
+    : pct >= .9 ? pick("Loistavaa. Nosta vaikeustasoa.", "Excellent. Time to raise the difficulty.")
     : pct >= .7 ? pick("Hyvä tulos. Virheet menivät kertausjonoon.", "Solid. The ones you missed are back in the queue.")
     : pick("Nämä kaipaavat vielä toistoa — ne palaavat pian.", "These need another pass. They will come back soon.");
   return '<div class="wrap narrow"><div class="prac center">' +
@@ -13135,6 +13721,7 @@ function view() {
     case "vocab": return vVocab();
     case "sentences": return vSentences();
     case "phrases": return vPhrases();
+    case "finland": return vFinland();
     case "spoken": return vSpoken();
     case "situations": return p[1] ? vSituation(p[1]) : vSituations();
     case "analyzer": return vAnalyzer();
@@ -13201,6 +13788,16 @@ function postRender() {
   });
   const TOOLS = ROUTE.path === "numbers" || ROUTE.path === "inflect" || ROUTE.path === "analyzer";
   if (!TOOLS && ROUTE.path !== "run") window.scrollTo(0, 0);
+  if (ROUTE.path === "finland" && ROUTE.q.s) {
+    const id = "fin-" + ROUTE.q.s;
+    setTimeout(() => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.scrollIntoView({ behavior: "smooth", block: "center" });
+      el.classList.add("hl");
+      setTimeout(() => el.classList.remove("hl"), 1800);
+    }, 80);
+  }
 }
 
 /* ---------- navigation ---------- */
