@@ -13744,9 +13744,13 @@ function numContexts(n) {
       vf: "kello " + numCard(hh) + " — " + numCard(n <= 12 ? n : n) + (n > 12 ? " (24 h)" : ""),
       ve: "At " + n + ":00 you say kello " + numCard(hh) + ". 'At' uses the ablative: " +
         (numDecline(numCard(hh), "abl") || "") + "." });
+    /* puoli counts towards the hour named: puoli kaksi is half an hour before two, 1.30 (13.30 in the afternoon) */
+    const before = (hh + 10) % 12 + 1, at = n > 12 ? n - 1 : before;
     out.push({ kf: "Puoli", ke: "Half past — the trap",
-      vf: "puoli " + numCard(hh) + " = " + ((hh + 11) % 12 + 1) + ".30",
-      ve: "puoli " + numCard(hh) + " means half an hour BEFORE " + hh + ", i.e. " + ((hh + 11) % 12 + 1) + ":30. Finnish counts towards the coming hour, not away from the last one." });
+      vf: "puoli " + numCard(hh) + " = " + at + ".30",
+      ve: "puoli " + numCard(hh) + " means half an hour BEFORE " + hh + ", i.e. " + before + ":30" +
+        (at !== before ? " (" + at + ":30 on the 24-hour clock)" : "") +
+        ". Finnish counts towards the coming hour, not away from the last one." });
   }
   if (n >= 1 && n <= 31) out.push({ kf: "Päivämäärä", ke: "Date",
     vf: numOrd(n) + " päivä — " + n + ".",
@@ -13784,7 +13788,7 @@ function vNumbers() {
 
   const ctx = numContexts(n).map(c =>
     '<div class="ncard"><div class="eyebrow">' + esc(pick(c.kf, c.ke)) + "</div>" +
-      '<div class="nv">' + esc(c.vf) + spk(c.vf.split("—")[0], "") + "</div>" +
+      '<div class="nv">' + esc(c.vf) + spk(c.vf.split(/—| = /)[0], "") + "</div>" +
       (S.lang !== "fi" ? '<div class="small muted mt">' + esc(c.ve) + "</div>" : "") + "</div>").join("");
 
   return '<div class="wrap">' +
