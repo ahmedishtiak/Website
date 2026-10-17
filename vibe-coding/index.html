@@ -202,6 +202,17 @@ nav {
   flex-shrink: 0;
 }
 
+.project-icon.project-logo {
+  background: none;
+  overflow: hidden;
+}
+
+.project-icon.project-logo svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
 .project-name {
   font-family: var(--font-head);
   font-size: 20px;
@@ -313,16 +324,16 @@ nav {
   <div class="projects-grid" id="projectsGrid">
 
     <div class="project-card">
-      <div class="project-icon">🇫🇮</div>
-      <div class="project-name">SuomiPolku</div>
-      <div class="project-desc" data-i18n="proj_suomipolku_desc">A trilingual Finnish language learning app — grammar reference with a form analyzer, vocabulary bank, sentence builder, and levelled mock exams.</div>
+      <div class="project-icon project-logo"><svg viewBox="0 0 40 40" fill="none" role="img" aria-label="SuomiPolku v2 logo"><rect width="40" height="40" rx="11" fill="#0E4B48"/><path d="M9 29c4.5 0 4.5-7 9-7s4.5-7 9-7 4.5 3 4.5 3" stroke="#E0EEEB" stroke-width="2.6" stroke-linecap="round"/><circle cx="27" cy="12.5" r="3" fill="#E0EEEB"/></svg></div>
+      <div class="project-name">SuomiPolku v2</div>
+      <div class="project-desc" data-i18n="proj_suomipolkuv2_desc">A full rebuild of the Finnish course — grammar, vocabulary, sentences, phrases, spoken Finnish, real-life situations, a form analyser, an inflection table, a number lab, spaced-repetition daily review and YKI practice. 2734 items, dark mode, progress saved in your browser.</div>
       <div class="project-tags">
         <span class="project-tag">Finnish · YKI</span>
-        <span class="project-tag">React</span>
-        <span class="project-tag">Offline-first</span>
+        <span class="project-tag">Spaced repetition</span>
+        <span class="project-tag">FI / EN</span>
       </div>
-      <a href="suomipolku/" target="_blank" rel="noopener" class="project-launch">
-        <span data-i18n="launch_btn">Launch App</span> →
+      <a href="suomipolku-v2/" target="_blank" rel="noopener" class="project-launch">
+        <span data-i18n="launch_btn">Open app</span> →
       </a>
     </div>
 
@@ -333,10 +344,10 @@ nav {
       <div class="project-tags">
         <span class="project-tag">Hygieniapassi</span>
         <span class="project-tag">FI / EN</span>
-        <span class="project-tag">Offline-first</span>
+        <span class="project-tag">Mock exams</span>
       </div>
       <a href="hygieniapassi/" target="_blank" rel="noopener" class="project-launch">
-        <span data-i18n="launch_btn">Launch App</span> →
+        <span data-i18n="launch_btn">Open app</span> →
       </a>
     </div>
 
@@ -350,21 +361,21 @@ nav {
         <span class="project-tag">Desktop</span>
       </div>
       <a href="flightdesk/" target="_blank" rel="noopener" class="project-launch">
-        <span data-i18n="launch_btn">Launch App</span> →
+        <span data-i18n="launch_btn">Open app</span> →
       </a>
     </div>
 
     <div class="project-card">
       <div class="project-icon">🇫🇮</div>
-      <div class="project-name">SuomiPolku v2</div>
-      <div class="project-desc" data-i18n="proj_suomipolkuv2_desc">A full rebuild of the Finnish course — grammar, vocabulary, sentences, phrases, spoken Finnish, real-life situations, a form analyzer, an inflection table, a number lab, spaced-repetition daily review and YKI practice. 2734 items, dark mode, works offline.</div>
+      <div class="project-name">SuomiPolku</div>
+      <div class="project-desc" data-i18n="proj_suomipolku_desc">A trilingual Finnish language learning app — grammar reference with a form analyser, vocabulary bank, sentence builder, and levelled mock exams.</div>
       <div class="project-tags">
         <span class="project-tag">Finnish · YKI</span>
-        <span class="project-tag">Spaced repetition</span>
-        <span class="project-tag">Offline</span>
+        <span class="project-tag">React</span>
+        <span class="project-tag">FI / EN / BN</span>
       </div>
-      <a href="suomipolku-v2/" target="_blank" rel="noopener" class="project-launch">
-        <span data-i18n="launch_btn">Launch App</span> →
+      <a href="suomipolku/" target="_blank" rel="noopener" class="project-launch">
+        <span data-i18n="launch_btn">Open app</span> →
       </a>
     </div>
 
@@ -377,7 +388,7 @@ nav {
 </section>
 
 <footer class="hub-footer">
-  <span data-i18n="footer_text">Built with vanilla HTML, CSS &amp; JS</span> ·
+  <span data-i18n="footer_text">Built with HTML, CSS &amp; JS</span> ·
   <a href="https://ahmedishtiak.com">ahmedishtiak.com</a>
 </footer>
 
@@ -388,13 +399,13 @@ const TRANSLATIONS = {
     hub_eyebrow: 'Interactive Tools',
     hub_title: 'Vibe <em>Coding</em>',
     hub_sub: "Apps and tools I've built for fun — click any project below to try it live, no signup required.",
-    proj_suomipolku_desc: 'A trilingual Finnish language learning app — grammar reference with a form analyzer, vocabulary bank, sentence builder, and levelled mock exams.',
+    proj_suomipolku_desc: 'A trilingual Finnish language learning app — grammar reference with a form analyser, vocabulary bank, sentence builder, and levelled mock exams.',
     proj_hygieniapassi_desc: 'A Finnish food hygiene passport (Hygieniapassi) exam trainer — 275 statements across six official subfields, timed mock exams matching the real 34/40 pass mark, topic drills, and an official model series from Ruokavirasto.',
     proj_flightdesk_desc: 'A Helsinki-based flight search dashboard \u2014 a price heat-map by weekday and week, a flexible-dates playbook, a multi-city trip builder, and one-click deep links into Google Flights, Skyscanner, Kayak and Momondo.',
-    proj_suomipolkuv2_desc: 'A full rebuild of the Finnish course \u2014 grammar, vocabulary, sentences, phrases, spoken Finnish, real-life situations, a form analyzer, an inflection table, a number lab, spaced-repetition daily review and YKI practice. 2734 items, dark mode, works offline.',
-    launch_btn: 'Launch App',
+    proj_suomipolkuv2_desc: 'A full rebuild of the Finnish course \u2014 grammar, vocabulary, sentences, phrases, spoken Finnish, real-life situations, a form analyser, an inflection table, a number lab, spaced-repetition daily review and YKI practice. 2734 items, dark mode, progress saved in your browser.',
+    launch_btn: 'Open app',
     more_soon_title: 'More Coming Soon',
-    footer_text: 'Built with vanilla HTML, CSS &amp; JS',
+    footer_text: 'Built with HTML, CSS &amp; JS',
   },
   fi: {
     nav_back: 'Ishtiak Ahmed',
@@ -404,7 +415,7 @@ const TRANSLATIONS = {
     proj_suomipolku_desc: 'Kolmikielinen suomen kielen oppimissovellus \u2014 kielioppiviite muototy\u00f6kalulla, sanavarasto, lauserakentaja ja tasokokeet.',
     proj_hygieniapassi_desc: 'Hygieniapassin harjoituskoe \u2014 275 v\u00e4itett\u00e4 kuudesta virallisesta aihealueesta, aikarajoitettu harjoituskoe todellisella l\u00e4p\u00e4isyrajalla 34/40, aihekohtaiset harjoitukset ja Ruokaviraston virallinen mallisarja.',
     proj_flightdesk_desc: 'Helsingist\u00e4 l\u00e4htev\u00e4 lentohakupaneeli \u2014 hintakartta viikonp\u00e4ivitt\u00e4in ja viikoittain, joustavien p\u00e4iv\u00e4m\u00e4\u00e4rien pelikirja, monikohdematkan rakentaja ja suorat haut Google Flightsiin, Skyscanneriin, Kayakiin ja Momondoon.',
-    proj_suomipolkuv2_desc: 'Suomen kurssin t\u00e4ysi uudistus \u2014 kielioppi, sanasto, lauseet, fraasit, puhekieli, arjen tilanteet, muototy\u00f6kalu, taivutustaulukko, numerolaboratorio, v\u00e4lipalautukseen perustuva p\u00e4ivitt\u00e4inen kertaus ja YKI-harjoittelu. 2734 kohdetta, tumma tila, toimii offline.',
+    proj_suomipolkuv2_desc: 'Suomen kurssin t\u00e4ysi uudistus \u2014 kielioppi, sanasto, lauseet, fraasit, puhekieli, arjen tilanteet, muototy\u00f6kalu, taivutustaulukko, numerolaboratorio, p\u00e4ivitt\u00e4inen kertaus kasvavin v\u00e4lein ja YKI-harjoittelu. 2734 kohdetta, tumma tila, edistyminen tallentuu selaimeen.',
     launch_btn: 'Avaa sovellus',
     more_soon_title: 'Lis\u00e4\u00e4 tulossa pian',
     footer_text: 'Rakennettu HTML:ll\u00e4, CSS:ll\u00e4 ja JS:ll\u00e4',
@@ -415,10 +426,10 @@ const TRANSLATIONS = {
     hub_title: 'Vibe <em>Coding</em>',
     hub_sub: 'Appar och verktyg jag byggt f\u00f6r skojs skull \u2014 klicka p\u00e5 valfritt projekt nedan f\u00f6r att testa det direkt, ingen registrering kr\u00e4vs.',
     proj_suomipolku_desc: 'En flerspr\u00e5kig app f\u00f6r att l\u00e4ra sig finska \u2014 grammatikreferens med formanalysator, ordbank, meningsbyggare och niv\u00e5indelade provtentor.',
-    proj_hygieniapassi_desc: 'En finsk hygienpasstr\u00e4nare (Hygieniapassi) \u2014 275 p\u00e5st\u00e5enden inom sex officiella \u00e4mnesomr\u00e5den, tidsbegr\u00e4nsat provtenta som matchar det verkliga godk\u00e4nnandekravet 34/40, \u00e4mnesvisa \u00f6vningar och Ruokaviraston officiella modellserie.',
+    proj_hygieniapassi_desc: 'En finsk hygienpasstr\u00e4nare (Hygieniapassi) \u2014 275 p\u00e5st\u00e5enden inom sex officiella \u00e4mnesomr\u00e5den, tidsbegr\u00e4nsade provtentor som matchar det verkliga godk\u00e4nnandekravet 34/40, \u00e4mnesvisa \u00f6vningar och Livsmedelsverkets officiella modellserie.',
     proj_flightdesk_desc: 'En flygs\u00f6kningspanel med Helsingfors som utg\u00e5ngspunkt \u2014 priskarta per veckodag och vecka, en spelbok f\u00f6r flexibla datum, en flerstoppsplanerare och direktl\u00e4nkar till Google Flights, Skyscanner, Kayak och Momondo.',
-    proj_suomipolkuv2_desc: 'En komplett ombyggnad av finskakursen \u2014 grammatik, ordf\u00f6rr\u00e5d, meningar, fraser, talad finska, vardagssituationer, formanalysator, b\u00f6jningstabell, sifferlabb, daglig repetition med spacad inl\u00e4rning och YKI-\u00f6vning. 2734 poster, m\u00f6rkt l\u00e4ge, fungerar offline.',
-    launch_btn: 'Starta appen',
+    proj_suomipolkuv2_desc: 'En komplett ombyggnad av finskakursen \u2014 grammatik, ordf\u00f6rr\u00e5d, meningar, fraser, talad finska, vardagssituationer, formanalysator, b\u00f6jningstabell, sifferlabb, daglig repetition med spacad inl\u00e4rning och YKI-\u00f6vning. 2734 poster, m\u00f6rkt l\u00e4ge, framstegen sparas i webbl\u00e4saren.',
+    launch_btn: '\u00d6ppna appen',
     more_soon_title: 'Fler kommer snart',
     footer_text: 'Byggd med HTML, CSS och JS',
   }
