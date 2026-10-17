@@ -870,6 +870,31 @@ mark.xm{background:var(--e1bg);color:var(--e1);border-radius:4px;padding:0 3px}
 .xwdt h2{font-size:24px}
 @media (max-width:860px){.xwbar{top:68px}}
 @media (max-width:520px){.xwbar{padding:9px 12px}.xwt{font-size:15px}.xk{height:44px;font-size:16px}.xwh h1{font-size:26px}}
+
+/* ---------- where the month and weekday names come from ---------- */
+.mnem.origin{margin:18px 0 0;padding:15px 18px}
+.origin .osrc{font-family:var(--fd);font-size:21px;font-weight:600;letter-spacing:-.01em;margin-top:6px}
+.origin .otx{margin-top:6px}
+.origin .otx .f,.origin .otx .e{font-family:var(--fs);font-size:14.5px;line-height:1.6;margin-top:0}
+.origin .otx .f{font-weight:550;color:var(--ink)}
+.origin .otx .e{font-weight:450;color:var(--ink2)}
+.origin .otx .sep{margin-top:7px;padding-top:7px}
+.origin .onote{margin-top:10px;padding-top:9px;border-top:1px dashed color-mix(in srgb,var(--pine) 28%,transparent)}
+.origin .onote .f,.origin .onote .e{font-family:var(--fs);font-size:12.5px;font-weight:450;line-height:1.5;margin-top:0;color:var(--ink3)}
+.origin .onote .sep{margin-top:4px;padding-top:0;border-top:0}
+.fb .memo{margin-top:12px;padding:10px 12px;border-radius:10px;background:color-mix(in srgb,var(--surface) 72%,transparent);
+  font-size:13.5px;line-height:1.55;color:var(--ink2)}
+.fb .memo .ml{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--pine)}
+.fb .memo .ms{font-family:var(--fd);font-weight:600;font-size:16px;color:var(--ink);margin:3px 0 4px}
+.fb .memo .f{color:var(--ink)}
+.fb .memo .sep{margin-top:5px;padding-top:5px}
+/* one language only: no rule above the first line */
+.origin .otx>.sep:first-child,.fb .memo .ms+.sep{margin-top:0;padding-top:0;border-top:0}
+/* the longest hooks need a little more room on the back of a card */
+.flip.tall{height:380px}
+.flip.tall .face{padding:22px 24px}
+.flip.tall .face .alt{font-size:13.5px;line-height:1.5;margin-top:5px}
+@media (max-width:520px){.flip.tall{height:420px}}
 </style>
 </head>
 <body>
@@ -12412,6 +12437,96 @@ function practiceTile(mode, icn, f, e, df, de, q) {
     (S.lang === "both" ? '<div class="fi2">' + esc(e) + "</div>" : "") +
     "<p>" + esc(pick(df, de)) + "</p></button>";
 }
+/* ---------- where the month and weekday names come from ----------
+   A memory hook for each name, shown on the word card, on the back of a flashcard
+   and after a quiz answer (never before, so it cannot give the answer away).
+   Sources: Kotus word pages, which take precedence (Kirsti Aapala on tammikuu 2020,
+   maaliskuu 2019 and helmikuu 2021; Klaas Ruppel on the weekday names, 2018–2021),
+   Kotus column by Satu Tanner, "Lokakuu vai viinikuu?" (1997; out of date on
+   maaliskuu), Maaseudun Tulevaisuus after Vilkuna and Suomen sanojen alkuperä,
+   Suomenmaa after Kotus (elo), Kirjastot.fi (joulu), Merriam-Webster (English
+   weekday names). */
+const NAME_KIND = {
+  m: { f: "Kaikki kuukausien nimet päättyvät sanaan kuu, joka tarkoittaa kuuta ja myös kuukautta (ensi kuussa).",
+       e: "Every month name ends in kuu: 'moon', and also 'month' (ensi kuussa, next month)." },
+  d: { f: "Loppuosa -tai on lainaa skandinaavisesta sanasta, joka tarkoittaa päivää (ruotsin dag).",
+       e: "The ending -tai comes from the Scandinavian word for 'day' (Swedish dag)." }
+};
+const NAME_ORIGIN = {
+  tammikuu: { k: "m", src: "tammi + kuu",
+    f: "Tammi on luultavasti tarkoittanut tässä akselia tai napaa: tammikuu olisi vuoden napa eli keskikohta, jolloin talvi on puolivälissä. Toisen selityksen mukaan nimi viittaa tammeen, kovaan puuhun, ja tammikuun koviin pakkasiin.",
+    e: "tammi probably meant 'axle, hub' here: January would be the hub of the year, its midpoint, with winter half over. Another explanation links it to the oak, a hard wood, and January's hard frosts." },
+  helmikuu: { k: "m", src: "helmi + kuu",
+    f: "Helmi viittaa luultavasti jäähelmiin, joita helmikuussa muodostuu puiden oksille.",
+    e: "helmi 'pearl': probably the pearls of ice that form on tree branches in February." },
+  maaliskuu: { k: "m", src: "maalis + kuu",
+    f: "Kaksi selitystä: maa – maaliskuussa lumen alta alkaa paljastua maata – tai mahla. Kumpikaan ei ole varma, ja mahlaselitystä Kotus epäilee, koska Suomessa mahla alkaa virrata yleensä vasta huhtikuussa.",
+    e: "Two explanations: maa 'earth', as bare ground starts to show through the snow, or mahla 'birch sap'. Neither is certain, and Kotus doubts the sap one, since in Finland sap usually starts to flow only in April." },
+  huhtikuu: { k: "m", src: "huhta + kuu",
+    f: "Huhta tarkoittaa kaskea. Huhtikuussa kaskimaan puut kaadettiin kuivumaan, ja myöhemmin ne poltettiin.",
+    e: "huhta 'slash-and-burn clearing': in April the trees were felled to dry, to be burnt later." },
+  toukokuu: { k: "m", src: "touko + kuu",
+    f: "Touko tarkoittaa kevätkylvöä: toukokuussa pellot kylvettiin.",
+    e: "touko 'spring sowing': May was when the fields were sown." },
+  kesäkuu: { k: "m", src: "kesä + kuu",
+    f: "Kesä + kuu eli kesän kuukausi. Kesäkuussa vietetään juhannusta.",
+    e: "kesä 'summer': the summer month. Juhannus, the Finnish Midsummer, falls in June." },
+  heinäkuu: { k: "m", src: "heinä + kuu",
+    f: "Heinäkuu on heinänteon aikaa: karjalle niitettiin rehua talveksi.",
+    e: "heinä 'hay': July was haymaking time, when winter fodder was cut for the cattle." },
+  elokuu: { k: "m", src: "elo + kuu",
+    f: "Elo tarkoittaa viljaa ja viljasatoa: elokuussa vilja korjattiin. Sana on sukua verbille elää.",
+    e: "elo 'grain, crop': August is harvest time. The word is related to elää 'to live'." },
+  syyskuu: { k: "m", src: "syys + kuu",
+    f: "Syys- tarkoittaa syksyä, kuten sanassa syysloma: syyskuu aloittaa syksyn.",
+    e: "syys 'autumn', as in syysloma (autumn holiday): September opens the autumn." },
+  lokakuu: { k: "m", src: "loka + kuu",
+    f: "Loka tarkoittaa likaa ja kuraa: lokakuun sateet tekevät maasta kuraisen.",
+    e: "loka 'mud, dirt': October's rains turn the ground to mud." },
+  marraskuu: { k: "m", src: "marras + kuu",
+    f: "Marras tarkoittaa kuolevaa tai kuollutta: marraskuussa luonto vaipuu melkein kuolleena talviuneen. Nimi voi viitata myös vainajien henkiin, joiden uskottiin liikkuvan silloin.",
+    e: "marras 'dead, dying': in November nature sinks, almost lifeless, into its winter sleep. It may also refer to the spirits of the dead, believed to roam at this time." },
+  joulukuu: { k: "m", src: "joulu + kuu",
+    f: "Joulu + kuu eli joulun kuukausi. Joulu on skandinaavinen lainasana (ruotsin jul).",
+    e: "joulu 'Christmas': the Christmas month. Joulu is a Scandinavian loanword (Swedish jul; compare English Yule)." },
+  maanantai: { k: "d", src: ["kuun päivä", "moon's day"],
+    f: "Lainattu ruotsista (måndag, vanhemmin mānadagher); taustalla on latinan dies Lunae. Vrt. englannin Monday.",
+    e: "Borrowed from Swedish (måndag, older mānadagher), after Latin dies Lunae, just like English Monday." },
+  tiistai: { k: "d", src: ["Týrin päivä", "Týr's day"],
+    f: "Vanha skandinaavinen laina (muinaisnorjaksi týsdagr). Týr oli taistelun ja voiton jumala – sama jumala on englannin Tuesdayn taustalla.",
+    e: "An old Scandinavian loanword (Old Norse týsdagr). Týr was the god of battle and victory, the same god behind English Tuesday." },
+  keskiviikko: { k: "w", src: "keski + viikko",
+    f: "Viikon keskikohta, kuten saksan Mittwoch. Nimi on luultavasti käännöslaina muinaisruotsista.",
+    e: "keski 'middle' + viikko 'week': midweek, like German Mittwoch. Probably a loan translation from Old Swedish." },
+  torstai: { k: "d", src: ["Torin päivä", "Thor's day"],
+    f: "Vanha skandinaavinen laina (ruotsiksi torsdag, muinaisnorjaksi þórsdagr). Tor oli skandinaavien ukkosen jumala. Vrt. englannin Thursday.",
+    e: "An old Scandinavian loanword (Swedish torsdag, Old Norse þórsdagr). Thor was the Norse god of thunder, as in English Thursday." },
+  perjantai: { k: "d", src: ["Friggin päivä", "Frigg's day"],
+    f: "Vanha skandinaavinen laina (muinaisnorjaksi frjádagr). Frigg oli kauneuden, rakkauden ja hedelmällisyyden jumalatar. Vrt. englannin Friday.",
+    e: "An old Scandinavian loanword (Old Norse frjádagr). Frigg was the goddess of beauty, love and fertility, as in English Friday." },
+  lauantai: { k: "d", src: ["pesupäivä", "washing day"],
+    f: "Vanha skandinaavinen laina (muinaisnorjaksi laugardagr). Alkuosa tulee sanasta, joka tarkoitti lipeää, kylpyä tai pyykkiä: lauantai on perinteinen sauna- ja kylpypäivä. Englannin Saturday taas on Saturnuksen päivä.",
+    e: "An old Scandinavian loanword (Old Norse laugardagr), whose first part comes from a word for lye, bath or laundry: Saturday is the traditional sauna and bath day. English Saturday, by contrast, is Saturn's day." },
+  sunnuntai: { k: "d", src: ["auringon päivä", "sun's day"],
+    f: "Lainattu skandinaaveilta tai muinaisalasaksasta; taustalla on latinan dies solis. Vrt. englannin Sunday.",
+    e: "Borrowed from Scandinavian or Old Low German, after Latin dies solis, just like English Sunday." }
+};
+const originOf = v => (v && NAME_ORIGIN[bareFi(v.fi)]) || null;
+const originSrc = o => Array.isArray(o.src) ? L2(o.src[0], o.src[1]) : o.src;
+/* the word card: the name's origin, the hook, and what kuu or -tai means */
+function originBox(v) {
+  const o = originOf(v);
+  if (!o) return "";
+  const kind = NAME_KIND[o.k];
+  return '<div class="mnem origin"><div class="lbl">' + esc(L2("Mistä nimi tulee?", "Where the name comes from")) + "</div>" +
+    '<div class="osrc" lang="fi">' + esc(originSrc(o)) + "</div>" +
+    '<div class="otx">' + bi(o.f, o.e) + "</div>" +
+    (kind ? '<div class="onote">' + bi(kind.f, kind.e) + "</div>" : "") + "</div>";
+}
+/* the same hook, shorter, for the back of a flashcard */
+function originAlt(o) {
+  return [originSrc(o)].concat(S.lang === "fi" ? [o.f] : S.lang === "en" ? [o.e] : [o.f, o.e]);
+}
 function wordCard(v) {
   const k = kVocab(v), c = S.srs[k];
   const rel = VOCAB.filter(x => x.t === v.t && x.fi !== v.fi).slice(0, 6);
@@ -12432,6 +12547,7 @@ function wordCard(v) {
       esc(pick("katso taivutus", "see the conjugation")) + "</a></div>"
       : inflFind(bareFi(v.fi)) ? '<div class="small muted mt"><a href="#/inflect?w=' + encodeURIComponent(bareFi(v.fi)) + '">' +
         esc(pick("katso koko taivutus", "see every form")) + "</a></div>" : "") +
+    originBox(v) +
     '<div class="exs mt2"><div class="ex-i"><div class="f">' + lang("FI") + esc(v.exf) + spk(v.exf, "") + "</div>" +
       '<div class="e sep">' + lang("EN") + esc(v.exe) + "</div></div></div>" +
     '<div class="row wrap2 mt" style="gap:7px">' + rel.map(r =>
@@ -14730,7 +14846,7 @@ function qVocabMC(v, pool, dir) {
     speak: dir === "fi2en" ? bareFi(v.fi) : null,
     opts: o.map(x => dir === "fi2en" ? x.en : x.fi),
     a: o.indexOf(v),
-    xf: v.exf, xe: v.exe, tail: v.fi + " · " + v.en
+    xf: v.exf, xe: v.exe, tail: v.fi + " · " + v.en, memo: originOf(v)
   };
 }
 function qVocabType(v) {
@@ -14738,7 +14854,7 @@ function qVocabType(v) {
     key: kVocab(v), kind: "type",
     prompt: v.en, sub: pick("Kirjoita suomeksi", "Type it in Finnish"),
     answers: [v.fi, bareFi(v.fi)], xf: v.exf, xe: v.exe, speakAfter: bareFi(v.fi),
-    tail: v.fi + " · " + v.en + (v.t === "verb" ? " · " + vtLabel(v.fi) : "")
+    tail: v.fi + " · " + v.en + (v.t === "verb" ? " · " + vtLabel(v.fi) : ""), memo: originOf(v)
   };
 }
 function qVocabListen(v, pool) {
@@ -14748,12 +14864,13 @@ function qVocabListen(v, pool) {
     key: kVocab(v), kind: "mc", auto: bareFi(v.fi),
     prompt: "▶", sub: pick("Kuuntele ja valitse merkitys", "Listen, then pick the meaning"),
     speak: bareFi(v.fi), opts: o.map(x => x.en), a: o.indexOf(v),
-    xf: v.exf, xe: v.exe, tail: v.fi + " · " + v.en
+    xf: v.exf, xe: v.exe, tail: v.fi + " · " + v.en, memo: originOf(v)
   };
 }
 function qVocabFlip(v) {
+  const o = originOf(v);
   return { key: kVocab(v), kind: "flip", front: v.fi, back: v.en, exf: v.exf, exe: v.exe,
-    note: v.t === "verb" ? vtLabel(v.fi) : "", speak: bareFi(v.fi) };
+    note: v.t === "verb" ? vtLabel(v.fi) : "", speak: bareFi(v.fi), alt: o ? originAlt(o) : null, tall: !!o };
 }
 function qSentOrder(s) {
   return { key: kSent(s), kind: "order",
@@ -15078,6 +15195,8 @@ function feedback(q) {
     (q.tail && s.ok && !s.spell ? '<div class="cor" style="font-size:15px">' + esc(q.tail) + "</div>" : "") +
     (q.xf && S.lang !== "en" ? '<div class="xf">' + moText(q.xf) + "</div>" : "") +
     (q.xe && S.lang !== "fi" ? '<div class="xe">' + moText(q.xe) + "</div>" : "") +
+    (q.memo ? '<div class="memo"><div class="ml">' + esc(L2("Muistivinkki", "Memory hint")) + "</div>" +
+      '<div class="ms" lang="fi">' + esc(originSrc(q.memo)) + "</div>" + bi(q.memo.f, q.memo.e) + "</div>" : "") +
     (q.cid && GBY[q.cid] ? '<a class="chip" style="margin-top:10px" href="#/grammar/' + q.cid + '">' +
       esc(pick("Lue sääntö", "Read the rule")) + ": " + esc(GBY[q.cid].tf) + "</a>" : "") +
     '<button class="btn pri wide mt" data-act="next">' +
