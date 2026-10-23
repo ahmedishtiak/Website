@@ -1612,6 +1612,7 @@ footer {
 .cert-card-bar.workshop  { background: linear-gradient(90deg, #8b5cf6, #a78bfa); }
 .cert-card-bar.seminar   { background: linear-gradient(90deg, #10b981, #34d399); }
 .cert-card-bar.cert      { background: linear-gradient(90deg, var(--gold), #e2b44b); }
+.cert-card-bar.conference { background: linear-gradient(90deg, #f43f5e, #fb7185); }
 
 .cert-card-body {
   padding: 22px 22px 18px;
@@ -1642,6 +1643,7 @@ footer {
 .cert-type-badge.workshop  { background: rgba(139,92,246,0.12); border: 1px solid rgba(139,92,246,0.3); color: #a78bfa; }
 .cert-type-badge.seminar   { background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.3); color: #34d399; }
 .cert-type-badge.cert      { background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.3); color: var(--gold); }
+.cert-type-badge.conference { background: rgba(244,63,94,0.12); border: 1px solid rgba(244,63,94,0.3); color: #fb7185; }
 
 .cert-card-year {
   font-size: 12px;
@@ -1661,6 +1663,22 @@ footer {
   font-size: 12px;
   color: var(--accent);
   font-weight: 500;
+}
+
+.cert-card-org {
+  font-size: 11.5px;
+  color: var(--text-dim);
+  line-height: 1.55;
+}
+
+.cert-card-org span {
+  display: block;
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+  opacity: 0.85;
 }
 
 .cert-card-id {
@@ -2394,7 +2412,7 @@ footer {
   <div class="reveal">
     <div class="section-label"><span></span> <span data-i18n="certs_label">Training & Development</span></div>
     <h2 class="section-title" data-i18n="certs_title">Certifications</h2>
-    <p class="section-sub" data-i18n="certs_sub">Certificates earned across professional training programmes, workshops, and industry seminars throughout my career.</p>
+    <p class="section-sub" data-i18n="certs_sub">Certificates earned across professional training programmes, workshops, and international conferences throughout my career.</p>
   </div>
 
   <!-- Filter tabs -->
@@ -2404,6 +2422,7 @@ footer {
     <button class="cert-filter-btn" data-filter="training" data-i18n="certs_filter_training">Training</button>
     <button class="cert-filter-btn" data-filter="workshop" data-i18n="certs_filter_workshop">Workshop</button>
     <button class="cert-filter-btn" data-filter="seminar"  data-i18n="certs_filter_seminar">Seminar</button>
+    <button class="cert-filter-btn" data-filter="conference" data-i18n="certs_filter_conference">International Conference</button>
   </div>
 
   <!-- Cards grid -->
@@ -2731,8 +2750,10 @@ sections.forEach(s => sectionObserver.observe(s));
 // ══════════════════════════════════════════════════════════════
 // ── CERTIFICATIONS ──
 // ══════════════════════════════════════════════════════════════
-// To add a certificate: copy one object below, fill in the fields,
-// and set file: 'certificates/your-file.pdf' once you upload the scan.
+// To add a certificate: copy one object below and fill in the fields.
+// type: 'cert' | 'training' | 'workshop' | 'seminar' | 'conference'
+// organiser: optional "Organised by" line; leave it out when the issuer says it all.
+// file: path from the site's root, e.g. 'images/Your scan.jpg', or null until it is uploaded.
 const CERTIFICATES = [
   {
     type: 'cert',
@@ -2761,7 +2782,7 @@ const CERTIFICATES = [
   {
     type: 'cert',
     title: 'Occupational Safety Card',
-    issuer: 'Finnish Occupational Safety Authority',
+    issuer: 'Centre for Occupational Safety (TTK), Finland',
     year: '2023',
     id: null,
     file: null
@@ -2775,20 +2796,21 @@ const CERTIFICATES = [
     file: null
   },
   {
-    type: 'seminar',
-    title: 'Asia-Pacific Conference on Trade Finance',
-    issuer: 'UN ESCAP / Asian Development Bank / ICC',
+    type: 'conference',
+    title: 'Asia-Pacific Conference on Financing Inclusive and Sustainable Development',
+    issuer: 'ICC Bangladesh and The London Institute of Banking & Finance',
+    organiser: 'ICC Bangladesh jointly with UNESCAP, the Asian Development Bank (ADB) and LIBF (UK), under the patronage of the Ministry of Finance, Government of Bangladesh',
     year: '2019',
     id: null,
-    file: null
+    file: 'images/ADB UNESCAP 2019.jpg'
   },
   {
-    type: 'seminar',
-    title: 'UN ESCAP Forum on Regional Integration',
-    issuer: 'United Nations ESCAP',
+    type: 'conference',
+    title: 'Asia-Pacific Business Forum (APBF): Regional Integration to Achieve Sustainable Development',
+    issuer: 'United Nations ESCAP & ICC Bangladesh',
     year: '2017',
     id: null,
-    file: null
+    file: 'images/APBF UNESCAP 2017.jpg'
   },
   {
     type: 'workshop',
@@ -2799,7 +2821,7 @@ const CERTIFICATES = [
     file: null
   },
   {
-    type: 'seminar',
+    type: 'conference',
     title: 'International Conference on Sustainable Business',
     issuer: 'JAMK University of Applied Sciences, Finland',
     year: '2025',
@@ -2813,6 +2835,7 @@ const TYPE_LABELS = {
   training: 'Training',
   workshop: 'Workshop',
   seminar:  'Seminar',
+  conference: 'International Conference',
 };
 
 const TYPE_LABELS_FI = {
@@ -2820,6 +2843,7 @@ const TYPE_LABELS_FI = {
   training: 'Koulutus',
   workshop: 'Työpaja',
   seminar:  'Seminaari',
+  conference: 'Kansainvälinen konferenssi',
 };
 
 const TYPE_LABELS_SV = {
@@ -2827,6 +2851,7 @@ const TYPE_LABELS_SV = {
   training: 'Utbildning',
   workshop: 'Workshop',
   seminar:  'Seminarium',
+  conference: 'Internationell konferens',
 };
 
 function getCertTypeLabel(type) {
@@ -2840,6 +2865,12 @@ function getCertBtnLabel() {
   if (currentLang === 'fi') return '📄 Näytä todistus';
   if (currentLang === 'sv') return '📄 Visa certifikat';
   return '📄 View Certificate';
+}
+
+function getCertOrgLabel() {
+  if (currentLang === 'fi') return 'Järjestäjät';
+  if (currentLang === 'sv') return 'Arrangörer';
+  return 'Organised by';
 }
 
 function getCertNoneLabel() {
@@ -2869,11 +2900,12 @@ function renderCertCards(filter) {
         </div>
         <div class="cert-card-title">${c.title}</div>
         <div class="cert-card-issuer">${c.issuer}</div>
+        ${c.organiser ? `<div class="cert-card-org"><span>${getCertOrgLabel()}</span>${c.organiser}</div>` : ''}
         ${c.id ? `<div class="cert-card-id">ID: ${c.id}</div>` : ''}
       </div>
       <div class="cert-card-footer">
         ${c.file
-          ? `<a href="${c.file}" target="_blank" rel="noopener" class="cert-view-btn">${getCertBtnLabel()}</a>`
+          ? `<a href="${encodeURI(c.file)}" target="_blank" rel="noopener" class="cert-view-btn">${getCertBtnLabel()}</a>`
           : `<span class="cert-view-btn no-file">${getCertNoneLabel()}</span>`
         }
       </div>
@@ -2891,6 +2923,12 @@ document.querySelectorAll('.cert-filter-btn').forEach(btn => {
     btn.classList.add('active');
     renderCertCards(btn.dataset.filter);
   });
+});
+
+// Hide the tab of any category that has no cards yet
+document.querySelectorAll('.cert-filter-btn').forEach(btn => {
+  const f = btn.dataset.filter;
+  if (f !== 'all' && !CERTIFICATES.some(c => c.type === f)) btn.hidden = true;
 });
 
 // Initial render
@@ -3019,10 +3057,10 @@ const TRANSLATIONS = {
     // Certifications section
     certs_label: 'Training & Development',
     certs_title: 'Certifications',
-    certs_sub: 'Certificates earned across professional training programmes, workshops, and industry seminars throughout my career.',
+    certs_sub: 'Certificates earned across professional training programmes, workshops, and international conferences throughout my career.',
     certs_filter_all: 'All', certs_filter_cert: 'Certification',
     certs_filter_training: 'Training', certs_filter_workshop: 'Workshop',
-    certs_filter_seminar: 'Seminar', certs_none: 'No certificates in this category yet.',
+    certs_filter_seminar: 'Seminar', certs_filter_conference: 'International Conference', certs_none: 'No certificates in this category yet.',
     // Hero
     hero_eyebrow: 'Senior Trade Finance & Payments Professional',
     hero_title: 'CDCS® | VP – International Banking Operations | Uusimaa Region',
@@ -3103,10 +3141,10 @@ const TRANSLATIONS = {
     // Certifications section
     certs_label: 'Koulutus ja kehitys',
     certs_title: 'Sertifikaatit',
-    certs_sub: 'Todistukset ammattikoulutuksista, työpajoista ja toimialaseminaareista urallani.',
+    certs_sub: 'Todistukset ammattikoulutuksista, työpajoista ja kansainvälisistä konferensseista urallani.',
     certs_filter_all: 'Kaikki', certs_filter_cert: 'Sertifikaatti',
     certs_filter_training: 'Koulutus', certs_filter_workshop: 'Työpaja',
-    certs_filter_seminar: 'Seminaari', certs_none: 'Ei vielä todistuksia tässä kategoriassa.',
+    certs_filter_seminar: 'Seminaari', certs_filter_conference: 'Kansainvälinen konferenssi', certs_none: 'Ei vielä todistuksia tässä kategoriassa.',
     // Hero
     hero_eyebrow: 'Kaupparahoituksen senior-asiantuntija',
     hero_title: 'CDCS® | VP – Kansainväliset pankkioperaatiot | Uudenmaan alue',
@@ -3187,10 +3225,10 @@ const TRANSLATIONS = {
     // Certifications section
     certs_label: 'Utbildning och utveckling',
     certs_title: 'Certifieringar',
-    certs_sub: 'Certifikat från professionella utbildningar, workshops och branschseminarier under min karriär.',
+    certs_sub: 'Certifikat från professionella utbildningar, workshops och internationella konferenser under min karriär.',
     certs_filter_all: 'Alla', certs_filter_cert: 'Certifiering',
     certs_filter_training: 'Utbildning', certs_filter_workshop: 'Workshop',
-    certs_filter_seminar: 'Seminarium', certs_none: 'Inga certifikat i denna kategori ännu.',
+    certs_filter_seminar: 'Seminarium', certs_filter_conference: 'Internationell konferens', certs_none: 'Inga certifikat i denna kategori ännu.',
     // Hero
     hero_eyebrow: 'Senior specialist inom handelsfinansiering',
     hero_title: 'CDCS® | VP – Internationell bankverksamhet | Nyland',
