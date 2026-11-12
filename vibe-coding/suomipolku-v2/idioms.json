@@ -1,0 +1,1846 @@
+{
+ "v": 1,
+ "themes": [
+  [
+   "tunteet",
+   "Tunteet",
+   "Feelings"
+  ],
+  [
+   "ihmiset",
+   "Ihmiset ja käytös",
+   "People & behaviour"
+  ],
+  [
+   "puhe",
+   "Puhe ja ymmärrys",
+   "Talk & understanding"
+  ],
+  [
+   "tyo",
+   "Työ ja yritys",
+   "Work & effort"
+  ],
+  [
+   "raha",
+   "Raha ja kauppa",
+   "Money & buying"
+  ],
+  [
+   "onni",
+   "Onni ja vastoinkäymiset",
+   "Luck & mishaps"
+  ],
+  [
+   "elama",
+   "Elämänviisaus",
+   "Life wisdom"
+  ],
+  [
+   "arki",
+   "Arki ja kohteliaisuus",
+   "Everyday life & courtesy"
+  ]
+ ],
+ "items": [
+  {
+   "id": "i01",
+   "type": "idiom",
+   "fi": "vetää herne nenään",
+   "mf": "loukkaantua pienestä asiasta",
+   "en": "to take offence at something small",
+   "lit": "to pull a pea up one's nose",
+   "eq": "to get huffy",
+   "ex": {
+    "f": "Älä vedä hernettä nenään, se oli vain vitsi.",
+    "e": "Don't get huffy, it was only a joke."
+   },
+   "nf": "Kieltolauseessa objekti on partitiivissa: älä vedä hernettä nenään.",
+   "ne": "In the negative the pea goes into the partitive: älä vedä hernettä nenään.",
+   "reg": "col",
+   "lvl": "B1",
+   "th": "tunteet",
+   "gap": "nenään",
+   "near": [
+    "i10",
+    "i31"
+   ]
+  },
+  {
+   "id": "i02",
+   "type": "idiom",
+   "fi": "olla pihalla",
+   "mf": "olla täysin ymmällään",
+   "en": "to have no idea what's going on",
+   "lit": "to be out in the yard",
+   "eq": "to be all at sea",
+   "ex": {
+    "f": "Olin ihan pihalla, kun opettaja selitti kielioppia.",
+    "e": "I was all at sea when the teacher explained the grammar."
+   },
+   "reg": "col",
+   "lvl": "B1",
+   "th": "puhe",
+   "near": [
+    "i13",
+    "i40",
+    "s05"
+   ]
+  },
+  {
+   "id": "i03",
+   "type": "idiom",
+   "fi": "heittää lusikka nurkkaan",
+   "mf": "kuolla (leikillisesti)",
+   "en": "to die (jokingly)",
+   "lit": "to throw the spoon into the corner",
+   "eq": "to kick the bucket",
+   "ex": {
+    "f": "Ukki lupasi, ettei hän heitä lusikkaa nurkkaan ennen satavuotispäiviään.",
+    "e": "Grandad promised he wouldn't kick the bucket before his hundredth birthday."
+   },
+   "nf": "Leikillinen ilmaus. Surun hetkellä sitä ei käytetä.",
+   "ne": "Light-hearted — never use it when someone is grieving.",
+   "reg": "col",
+   "lvl": "B1",
+   "th": "onni",
+   "gap": "nurkkaan"
+  },
+  {
+   "id": "i04",
+   "type": "idiom",
+   "fi": "mennä metsään",
+   "mf": "epäonnistua, mennä pieleen",
+   "en": "to go wrong, to fail",
+   "lit": "to go into the forest",
+   "eq": "to go pear-shaped",
+   "ex": {
+    "f": "Esitys meni ihan metsään, kun unohdin, mitä piti sanoa.",
+    "e": "The presentation went completely pear-shaped when I forgot what to say."
+   },
+   "reg": "col",
+   "lvl": "B1",
+   "th": "onni",
+   "near": [
+    "i06",
+    "i23"
+   ]
+  },
+  {
+   "id": "i05",
+   "type": "idiom",
+   "fi": "puhua sivu suunsa",
+   "mf": "kertoa vahingossa jotain, minkä piti pysyä salassa",
+   "en": "to let something slip",
+   "lit": "to speak past one's mouth",
+   "eq": "to let the cat out of the bag",
+   "ex": {
+    "f": "Puhuin sivu suuni ja paljastin yllätysjuhlat.",
+    "e": "I let the cat out of the bag about the surprise party."
+   },
+   "nf": "Omistusliite vaihtuu persoonan mukaan: puhuin sivu suuni, hän puhui sivu suunsa.",
+   "ne": "The possessive ending follows the speaker: puhuin sivu suuni (I), hän puhui sivu suunsa (he or she).",
+   "lvl": "B1",
+   "th": "puhe",
+   "gap": "sivu"
+  },
+  {
+   "id": "i06",
+   "type": "idiom",
+   "fi": "jäädä nuolemaan näppejään",
+   "mf": "jäädä ilman sitä, mitä toivoi",
+   "en": "to be left empty-handed",
+   "lit": "to be left licking one's fingers",
+   "eq": "to be left out in the cold",
+   "ex": {
+    "f": "Liput myytiin loppuun, ja me jäimme nuolemaan näppejämme.",
+    "e": "The tickets sold out and we were left empty-handed."
+   },
+   "nf": "Omistusliite: jäin nuolemaan näppejäni, jäimme nuolemaan näppejämme.",
+   "ne": "The possessive follows the person: näppejäni (my), näppejämme (our).",
+   "lvl": "B1",
+   "th": "onni",
+   "gap": "näppejään",
+   "near": [
+    "i04",
+    "i23"
+   ]
+  },
+  {
+   "id": "i07",
+   "type": "idiom",
+   "fi": "pitää peukkua",
+   "mf": "toivoa onnea jollekulle",
+   "en": "to keep one's fingers crossed for someone",
+   "lit": "to hold the thumb",
+   "eq": "to keep one's fingers crossed",
+   "ex": {
+    "f": "Pidän sinulle peukkua huomenna!",
+    "e": "I'll keep my fingers crossed for you tomorrow!"
+   },
+   "nf": "Peukkua pidetään jollekulle: pidän sinulle peukkua. Myös monikko on tavallinen: pidän peukkuja.",
+   "ne": "You keep your thumb for someone: pidän sinulle peukkua. The plural, pidän peukkuja, is just as common.",
+   "reg": "col",
+   "lvl": "A2",
+   "th": "onni"
+  },
+  {
+   "id": "i08",
+   "type": "idiom",
+   "fi": "vetää lonkkaa",
+   "mf": "laiskotella, levätä",
+   "en": "to laze about",
+   "lit": "to pull hip",
+   "eq": "to put one's feet up",
+   "ex": {
+    "f": "Vedin koko viikonlopun lonkkaa sohvalla.",
+    "e": "I lazed about on the sofa all weekend."
+   },
+   "reg": "col",
+   "lvl": "B1",
+   "th": "tyo",
+   "near": [
+    "i37"
+   ]
+  },
+  {
+   "id": "i09",
+   "type": "idiom",
+   "fi": "panna jollekulle jauhot suuhun",
+   "mf": "saada joku sanattomaksi, vaientaa",
+   "en": "to shut someone up, to leave someone speechless",
+   "lit": "to put flour in someone's mouth",
+   "eq": "to shut someone up",
+   "ex": {
+    "f": "Hänen vastauksensa pani kriitikoille jauhot suuhun.",
+    "e": "Her answer shut the critics up."
+   },
+   "nf": "Vaiennettava on allatiivissa: kriitikoille. Myös pistää käy: pistää jollekulle jauhot suuhun.",
+   "ne": "The person silenced goes in the allative: kriitikoille. Pistää works as well as panna.",
+   "lvl": "B1",
+   "th": "puhe",
+   "gap": "jauhot"
+  },
+  {
+   "id": "i10",
+   "type": "idiom",
+   "fi": "tehdä kärpäsestä härkänen",
+   "mf": "liioitella pientä asiaa",
+   "en": "to make a big deal out of nothing",
+   "lit": "to make a little ox out of a fly",
+   "eq": "to make a mountain out of a molehill",
+   "ex": {
+    "f": "Älä tee kärpäsestä härkästä, se on vain pieni naarmu.",
+    "e": "Don't make a mountain out of a molehill — it's only a small scratch."
+   },
+   "nf": "Kieltolauseessa objekti on partitiivissa: älä tee kärpäsestä härkästä.",
+   "ne": "In the negative the object becomes partitive: älä tee kärpäsestä härkästä.",
+   "lvl": "B1",
+   "th": "ihmiset",
+   "gap": "härkänen",
+   "near": [
+    "i01",
+    "i31"
+   ]
+  },
+  {
+   "id": "i11",
+   "type": "idiom",
+   "fi": "ostaa sika säkissä",
+   "mf": "ostaa jotain tarkistamatta sitä ensin",
+   "en": "to buy something without checking it first",
+   "lit": "to buy a pig in a sack",
+   "eq": "to buy a pig in a poke",
+   "ex": {
+    "f": "Koeaja auto ennen kauppaa, ettet osta sikaa säkissä.",
+    "e": "Test-drive the car before you buy it, so you don't buy a pig in a poke."
+   },
+   "lvl": "B1",
+   "th": "raha",
+   "gap": "säkissä"
+  },
+  {
+   "id": "i12",
+   "type": "idiom",
+   "fi": "heittää kirves kaivoon",
+   "mf": "luopua toivosta, luovuttaa",
+   "en": "to give up",
+   "lit": "to throw the axe into the well",
+   "eq": "to throw in the towel",
+   "ex": {
+    "f": "Älä heitä kirvestä kaivoon, kyllä sinä opit suomea!",
+    "e": "Don't throw in the towel — you will learn Finnish!"
+   },
+   "lvl": "B1",
+   "th": "tyo",
+   "gap": "kaivoon",
+   "near": [
+    "i28"
+   ]
+  },
+  {
+   "id": "i13",
+   "type": "idiom",
+   "fi": "mennä yli hilseen",
+   "mf": "jäädä ymmärtämättä",
+   "en": "to go over one's head",
+   "lit": "to go over the dandruff",
+   "eq": "to go over one's head",
+   "ex": {
+    "f": "Luennon loppu meni minulta täysin yli hilseen.",
+    "e": "The end of the lecture went right over my head."
+   },
+   "reg": "col",
+   "lvl": "B1",
+   "th": "puhe",
+   "gap": "hilseen",
+   "near": [
+    "i02",
+    "i40",
+    "s05"
+   ]
+  },
+  {
+   "id": "i14",
+   "type": "idiom",
+   "fi": "ottaa härkää sarvista",
+   "mf": "tarttua vaikeaan asiaan rohkeasti",
+   "en": "to tackle a problem head-on",
+   "lit": "to take the bull by the horns",
+   "eq": "to take the bull by the horns",
+   "ex": {
+    "f": "Otin härkää sarvista ja soitin vuokranantajalle.",
+    "e": "I took the bull by the horns and called the landlord."
+   },
+   "lvl": "B1",
+   "th": "tyo",
+   "gap": "sarvista",
+   "near": [
+    "i15"
+   ]
+  },
+  {
+   "id": "i15",
+   "type": "idiom",
+   "fi": "nostaa kissa pöydälle",
+   "mf": "ottaa hankala asia avoimesti puheeksi",
+   "en": "to raise an awkward issue openly",
+   "lit": "to lift the cat onto the table",
+   "eq": "to address the elephant in the room",
+   "ex": {
+    "f": "Nostan kissan pöydälle: rahat eivät riitä tähän projektiin.",
+    "e": "Let me address the elephant in the room: the money won't stretch to this project."
+   },
+   "nf": "Hyvin yleinen työpaikoilla ja kokouksissa.",
+   "ne": "Very common at work and in meetings.",
+   "lvl": "B1",
+   "th": "puhe",
+   "gap": "pöydälle",
+   "near": [
+    "i14"
+   ]
+  },
+  {
+   "id": "i16",
+   "type": "idiom",
+   "fi": "puhua puuta heinää",
+   "mf": "puhua järjettömiä",
+   "en": "to talk nonsense",
+   "lit": "to talk wood and hay",
+   "eq": "to talk rubbish",
+   "ex": {
+    "f": "Älä usko häntä, hän puhuu puuta heinää.",
+    "e": "Don't believe him — he's talking rubbish."
+   },
+   "lvl": "B1",
+   "th": "puhe",
+   "gap": "heinää"
+  },
+  {
+   "id": "i17",
+   "type": "idiom",
+   "fi": "vetää nenästä",
+   "mf": "huijata jotakuta",
+   "en": "to fool or cheat someone",
+   "lit": "to pull by the nose",
+   "eq": "to take someone for a ride",
+   "ex": {
+    "f": "Myyjä veti meitä nenästä: puhelin oli rikki.",
+    "e": "The seller took us for a ride: the phone was broken."
+   },
+   "nf": "Huijattu on partitiivissa: vetää jotakuta nenästä.",
+   "ne": "The person fooled goes in the partitive: vetää jotakuta nenästä.",
+   "lvl": "B1",
+   "th": "ihmiset"
+  },
+  {
+   "id": "i18",
+   "type": "idiom",
+   "fi": "saada kenkää",
+   "mf": "tulla irtisanotuksi tai jätetyksi",
+   "en": "to be fired or dumped",
+   "lit": "to get shoe",
+   "eq": "to get the boot",
+   "ex": {
+    "f": "Hän sai kenkää, koska myöhästyi joka päivä.",
+    "e": "He got the sack because he was late every day."
+   },
+   "nf": "Vastakohta: antaa kenkää eli erottaa tai jättää.",
+   "ne": "The other side of it: antaa kenkää, to fire or dump someone.",
+   "reg": "col",
+   "lvl": "B1",
+   "th": "tyo"
+  },
+  {
+   "id": "i19",
+   "type": "idiom",
+   "fi": "ei ole kaikki muumit laaksossa",
+   "mf": "joku ei ole aivan täysjärkinen",
+   "en": "someone isn't quite all there",
+   "lit": "not all the Moomins are in the valley",
+   "eq": "a few sandwiches short of a picnic",
+   "ex": {
+    "f": "Naapurilla ei taida olla kaikki muumit laaksossa.",
+    "e": "I don't think our neighbour is quite all there."
+   },
+   "nf": "Kenestä puhutaan, on adessiivissa, ja verbi on yksikössä: naapurilla ei ole kaikki muumit laaksossa. Leikillinen mutta loukkaava, joten käytä varoen.",
+   "ne": "Whoever it's about goes in the adessive, with a singular verb: naapurilla ei ole kaikki muumit laaksossa. Jokey but insulting, so use it with care; it plays on Tove Jansson's Moominvalley.",
+   "reg": "col",
+   "lvl": "B2",
+   "th": "ihmiset",
+   "gap": "laaksossa"
+  },
+  {
+   "id": "i20",
+   "type": "idiom",
+   "fi": "maksaa maltaita",
+   "mf": "olla hyvin kallis",
+   "en": "to cost a fortune",
+   "lit": "to cost malts",
+   "eq": "to cost an arm and a leg",
+   "ex": {
+    "f": "Asunto Helsingin keskustassa maksaa maltaita.",
+    "e": "A flat in central Helsinki costs an arm and a leg."
+   },
+   "lvl": "B1",
+   "th": "raha"
+  },
+  {
+   "id": "i21",
+   "type": "idiom",
+   "fi": "pitää pintansa",
+   "mf": "pysyä kannassaan, olla antamatta periksi",
+   "en": "to stand one's ground",
+   "lit": "to keep one's surface",
+   "eq": "to stand one's ground",
+   "ex": {
+    "f": "Myyjä tarjosi kalliimpaa mallia, mutta pidin pintani.",
+    "e": "The salesman pushed the more expensive model, but I stood my ground."
+   },
+   "nf": "Omistusliite: pidin pintani, hän piti pintansa.",
+   "ne": "The possessive follows the person: pidin pintani (I), hän piti pintansa (he or she).",
+   "lvl": "B1",
+   "th": "ihmiset",
+   "near": [
+    "i35"
+   ]
+  },
+  {
+   "id": "i22",
+   "type": "idiom",
+   "fi": "olla samassa veneessä",
+   "mf": "olla samassa tilanteessa",
+   "en": "to be in the same situation",
+   "lit": "to be in the same boat",
+   "eq": "to be in the same boat",
+   "ex": {
+    "f": "Älä huoli, olemme kaikki samassa veneessä.",
+    "e": "Don't worry, we're all in the same boat."
+   },
+   "lvl": "A2",
+   "th": "ihmiset",
+   "gap": "veneessä"
+  },
+  {
+   "id": "i23",
+   "type": "idiom",
+   "fi": "vetää vesiperä",
+   "mf": "epäonnistua, jäädä tyhjin käsin",
+   "en": "to come up empty-handed",
+   "lit": "to draw an empty haul",
+   "eq": "to draw a blank",
+   "ex": {
+    "f": "Etsin avaimia koko päivän, mutta vedin vesiperän.",
+    "e": "I searched for the keys all day but drew a blank."
+   },
+   "nf": "Kalastussanastoa: vesiperä on nuotanveto, jossa saalina on pelkkää vettä.",
+   "ne": "From fishing: a vesiperä is a haul of the net that brings up nothing but water.",
+   "lvl": "B2",
+   "th": "onni",
+   "near": [
+    "i04",
+    "i06"
+   ]
+  },
+  {
+   "id": "i24",
+   "type": "idiom",
+   "fi": "lähteä lapasesta",
+   "mf": "riistäytyä hallinnasta",
+   "en": "to get out of hand",
+   "lit": "to slip out of the mitten",
+   "eq": "to get out of hand",
+   "ex": {
+    "f": "Juhlat lähtivät vähän lapasesta.",
+    "e": "The party got a bit out of hand."
+   },
+   "lvl": "B1",
+   "th": "ihmiset"
+  },
+  {
+   "id": "i25",
+   "type": "idiom",
+   "fi": "ottaa onkeensa",
+   "mf": "ymmärtää vihje ja toimia sen mukaan",
+   "en": "to take a hint, to take something on board",
+   "lit": "to take onto one's fishing line",
+   "eq": "to take the hint",
+   "ex": {
+    "f": "Hän otti palautteesta onkeensa ja paransi raporttia.",
+    "e": "She took the feedback on board and improved the report."
+   },
+   "lvl": "B1",
+   "th": "puhe"
+  },
+  {
+   "id": "i26",
+   "type": "idiom",
+   "fi": "kantaa kortensa kekoon",
+   "mf": "tehdä oma osuutensa yhteisen hyväksi",
+   "en": "to do one's bit",
+   "lit": "to carry one's straw to the anthill",
+   "eq": "to do one's bit",
+   "ex": {
+    "f": "Jokainen voi kantaa kortensa kekoon lajittelemalla jätteensä.",
+    "e": "Everyone can do their bit by sorting their rubbish."
+   },
+   "lvl": "B1",
+   "th": "tyo",
+   "gap": "kekoon"
+  },
+  {
+   "id": "i27",
+   "type": "idiom",
+   "fi": "olla kahden tulen välissä",
+   "mf": "olla kahden riitapuolen välissä",
+   "en": "to be caught between two sides",
+   "lit": "to be between two fires",
+   "eq": "to be caught in the crossfire",
+   "ex": {
+    "f": "Vanhempien riidassa olin kahden tulen välissä.",
+    "e": "In my parents' argument I was caught in the crossfire."
+   },
+   "lvl": "B2",
+   "th": "ihmiset",
+   "gap": "tulen"
+  },
+  {
+   "id": "i28",
+   "type": "idiom",
+   "fi": "ottaa lusikka kauniiseen käteen",
+   "mf": "sopeutua vaatimuksiin ja totella vastustelematta",
+   "en": "to give in and do as one is told",
+   "lit": "to take the spoon in the pretty hand",
+   "eq": "to swallow one's pride",
+   "ex": {
+    "f": "Sääntöjä ei voinut muuttaa, joten otimme lusikan kauniiseen käteen ja täytimme lomakkeet.",
+    "e": "The rules couldn't be changed, so we swallowed our pride and filled in the forms."
+   },
+   "nf": "Kaunis käsi on oikea käsi: lapsia opetettiin syömään oikealla kädellä.",
+   "ne": "The ‘pretty hand’ is the right hand: children were taught to eat with their right hand.",
+   "lvl": "B1",
+   "th": "ihmiset",
+   "gap": "kauniiseen",
+   "near": [
+    "i12"
+   ]
+  },
+  {
+   "id": "i29",
+   "type": "idiom",
+   "fi": "kääntää kelkkansa",
+   "mf": "muuttaa mielipidettään täysin",
+   "en": "to change one's position completely",
+   "lit": "to turn one's sledge round",
+   "eq": "to do a U-turn",
+   "ex": {
+    "f": "Puolue käänsi kelkkansa veroasiassa.",
+    "e": "The party did a U-turn on taxes."
+   },
+   "lvl": "B2",
+   "th": "ihmiset"
+  },
+  {
+   "id": "i30",
+   "type": "idiom",
+   "fi": "pitää naamansa peruslukemilla",
+   "mf": "olla nauramatta, pysyä vakavana",
+   "en": "to keep a straight face",
+   "lit": "to keep one's face at its baseline reading",
+   "eq": "to keep a straight face",
+   "ex": {
+    "f": "Minun oli vaikea pitää naamani peruslukemilla, kun pomo alkoi laulaa.",
+    "e": "I struggled to keep a straight face when the boss started singing."
+   },
+   "reg": "col",
+   "lvl": "B2",
+   "th": "tunteet",
+   "gap": "peruslukemilla"
+  },
+  {
+   "id": "i31",
+   "type": "idiom",
+   "fi": "ottaa nokkiinsa",
+   "mf": "loukkaantua",
+   "en": "to take offence",
+   "lit": "to take it into one's beaks",
+   "eq": "to get the hump",
+   "ex": {
+    "f": "Hän otti nokkiinsa, kun en kutsunut häntä juhliin.",
+    "e": "She took offence when I didn't invite her to the party."
+   },
+   "reg": "col",
+   "lvl": "B1",
+   "th": "tunteet",
+   "near": [
+    "i01",
+    "i10"
+   ]
+  },
+  {
+   "id": "i32",
+   "type": "idiom",
+   "fi": "pyytää kuuta taivaalta",
+   "mf": "vaatia mahdottomia",
+   "en": "to ask for the impossible",
+   "lit": "to ask for the moon from the sky",
+   "eq": "to ask for the moon",
+   "ex": {
+    "f": "En pyydä kuuta taivaalta, vain vähän apua kotitöissä.",
+    "e": "I'm not asking for the moon, just a bit of help with the housework."
+   },
+   "lvl": "B1",
+   "th": "ihmiset",
+   "gap": "taivaalta"
+  },
+  {
+   "id": "i33",
+   "type": "idiom",
+   "fi": "sukset menevät ristiin",
+   "mf": "joutua riitaan jonkun kanssa",
+   "en": "to fall out with someone",
+   "lit": "the skis cross",
+   "eq": "to clash",
+   "ex": {
+    "f": "Meillä menivät sukset ristiin jo ensimmäisessä kokouksessa.",
+    "e": "We fell out at the very first meeting."
+   },
+   "nf": "Riitapuolet ovat adessiivissa, toinen osapuoli kanssa-sanan kera: minulla menivät sukset ristiin pomon kanssa. Puhekielessä verbi on usein yksikössä: meillä meni sukset ristiin.",
+   "ne": "Whoever fell out goes in the adessive, the other side with kanssa: minulla menivät sukset ristiin pomon kanssa, I fell out with my boss. In speech the verb is often singular: meillä meni sukset ristiin.",
+   "lvl": "B2",
+   "th": "ihmiset",
+   "gap": "ristiin",
+   "near": [
+    "s02"
+   ]
+  },
+  {
+   "id": "i34",
+   "type": "idiom",
+   "fi": "viheltää peli poikki",
+   "mf": "lopettaa jokin päättäväisesti",
+   "en": "to put a stop to something",
+   "lit": "to blow the whistle on the game",
+   "eq": "to call time on something",
+   "ex": {
+    "f": "Kun lapset riitelivät taas, isä vihelsi pelin poikki.",
+    "e": "When the children started arguing again, Dad put a stop to it."
+   },
+   "lvl": "B2",
+   "th": "ihmiset",
+   "gap": "poikki"
+  },
+  {
+   "id": "i35",
+   "type": "idiom",
+   "fi": "hampaat irvessä",
+   "mf": "sinnikkäästi, vaikka on raskasta",
+   "en": "with grim determination",
+   "lit": "teeth bared",
+   "eq": "with gritted teeth",
+   "ex": {
+    "f": "Juoksin viimeisen kilometrin hampaat irvessä.",
+    "e": "I ran the last kilometre with gritted teeth."
+   },
+   "lvl": "B2",
+   "th": "tyo",
+   "near": [
+    "i21"
+   ]
+  },
+  {
+   "id": "i36",
+   "type": "idiom",
+   "fi": "olla tulisilla hiilillä",
+   "mf": "odottaa jännittyneenä",
+   "en": "to wait anxiously",
+   "lit": "to be on burning coals",
+   "eq": "to be on tenterhooks",
+   "ex": {
+    "f": "Olin tulisilla hiilillä, kun odotin koetuloksia.",
+    "e": "I was on tenterhooks waiting for my exam results."
+   },
+   "lvl": "B2",
+   "th": "tunteet",
+   "gap": "hiilillä"
+  },
+  {
+   "id": "i37",
+   "type": "idiom",
+   "fi": "vaihtaa vapaalle",
+   "mf": "rentoutua ja unohtaa työt",
+   "en": "to switch off and relax",
+   "lit": "to shift into neutral",
+   "eq": "to wind down",
+   "ex": {
+    "f": "Mökillä vaihdan heti vapaalle.",
+    "e": "At the summer cottage I switch off straight away."
+   },
+   "reg": "col",
+   "lvl": "B1",
+   "th": "tunteet",
+   "near": [
+    "i08"
+   ]
+  },
+  {
+   "id": "i38",
+   "type": "idiom",
+   "fi": "olla taivaissaan",
+   "mf": "olla erittäin iloinen",
+   "en": "to be overjoyed",
+   "lit": "to be in one's heavens",
+   "eq": "to be over the moon",
+   "ex": {
+    "f": "Lapset olivat taivaissaan, kun saivat koiranpennun.",
+    "e": "The children were over the moon when they got a puppy."
+   },
+   "lvl": "B1",
+   "th": "tunteet"
+  },
+  {
+   "id": "i39",
+   "type": "idiom",
+   "fi": "kävi tuuri",
+   "mf": "jollakulla oli onnea",
+   "en": "someone got lucky",
+   "lit": "luck visited",
+   "eq": "to strike lucky",
+   "ex": {
+    "f": "Minulla kävi tuuri: viimeinen bussi odotti vielä.",
+    "e": "I struck lucky: the last bus was still waiting."
+   },
+   "nf": "Onnekas on adessiivissa: minulla kävi tuuri.",
+   "ne": "Whoever got lucky goes in the adessive: minulla kävi tuuri.",
+   "reg": "col",
+   "lvl": "B1",
+   "th": "onni"
+  },
+  {
+   "id": "i40",
+   "type": "idiom",
+   "fi": "olla pää pyörällä",
+   "mf": "olla hämmentynyt ja ymmällään",
+   "en": "to feel confused and overwhelmed",
+   "lit": "to have one's head in a spin (on the wheel)",
+   "eq": "one's head is spinning",
+   "ex": {
+    "f": "Minulla on pää pyörällä kaikista uusista sanoista.",
+    "e": "My head is spinning with all the new words."
+   },
+   "nf": "Kenellä: minulla on pää pyörällä.",
+   "ne": "The person goes in the adessive: minulla on pää pyörällä.",
+   "lvl": "B1",
+   "th": "tunteet",
+   "near": [
+    "i02",
+    "i13",
+    "s05"
+   ]
+  },
+  {
+   "id": "p01",
+   "type": "proverb",
+   "fi": "Oma maa mansikka, muu maa mustikka.",
+   "mf": "Koti ja oma maa tuntuvat parhailta.",
+   "en": "Home is best.",
+   "lit": "Your own land a strawberry, another land a bilberry.",
+   "eq": "There's no place like home.",
+   "ex": {
+    "f": "Kun palasin pitkältä matkalta, ajattelin: oma maa mansikka, muu maa mustikka.",
+    "e": "When I got back from a long trip, I thought: there's no place like home."
+   },
+   "nf": "Mansikka on herkku, mustikka arkinen marja.",
+   "ne": "The strawberry is the treat, the bilberry the everyday berry.",
+   "lvl": "B1",
+   "th": "elama",
+   "gap": "mustikka"
+  },
+  {
+   "id": "p02",
+   "type": "proverb",
+   "fi": "Hiljaa hyvä tulee.",
+   "mf": "Hyvät asiat vievät aikaa, eikä kannata kiirehtiä.",
+   "en": "Good things take time.",
+   "lit": "Slowly the good comes.",
+   "eq": "Slow and steady wins the race.",
+   "ex": {
+    "f": "Suomen oppiminen vie aikaa, mutta hiljaa hyvä tulee.",
+    "e": "Learning Finnish takes time, but slow and steady wins the race."
+   },
+   "lvl": "B1",
+   "th": "elama",
+   "gap": "hyvä"
+  },
+  {
+   "id": "p03",
+   "type": "proverb",
+   "fi": "Ei kahta ilman kolmatta.",
+   "mf": "Kun jotain on sattunut kahdesti, se sattuu kolmannenkin kerran.",
+   "en": "What happens twice will happen a third time.",
+   "lit": "Not two without a third.",
+   "eq": "Things come in threes.",
+   "ex": {
+    "f": "Bussi myöhästyi taas. Ei kahta ilman kolmatta!",
+    "e": "The bus was late again. Things come in threes!"
+   },
+   "lvl": "B1",
+   "th": "onni",
+   "gap": "kolmatta"
+  },
+  {
+   "id": "p04",
+   "type": "proverb",
+   "fi": "Joka kuuseen kurkottaa, se katajaan kapsahtaa.",
+   "mf": "Liian korkealle tavoitteleva voi epäonnistua pahasti.",
+   "en": "If you reach too high, you may fall flat.",
+   "lit": "Whoever reaches for the spruce tumbles into the juniper.",
+   "ex": {
+    "f": "Hän haki vain johtajan paikkoja eikä saanut mitään. Joka kuuseen kurkottaa, se katajaan kapsahtaa.",
+    "e": "He applied only for director posts and got nothing. Aim too high and you can fall flat."
+   },
+   "lvl": "B2",
+   "th": "elama",
+   "gap": "katajaan",
+   "near": [
+    "p13"
+   ]
+  },
+  {
+   "id": "p05",
+   "type": "proverb",
+   "fi": "Parempi myöhään kuin ei milloinkaan.",
+   "mf": "On parempi tehdä jotain myöhään kuin jättää se kokonaan tekemättä.",
+   "en": "Better late than never.",
+   "lit": "Better late than never.",
+   "eq": "Better late than never.",
+   "ex": {
+    "f": "Aloitin suomen opinnot viisikymppisenä. Parempi myöhään kuin ei milloinkaan!",
+    "e": "I started studying Finnish at fifty. Better late than never!"
+   },
+   "lvl": "A2",
+   "th": "elama",
+   "gap": "milloinkaan"
+  },
+  {
+   "id": "p06",
+   "type": "proverb",
+   "fi": "Ei oppi ojaan kaada.",
+   "mf": "Oppimisesta on aina hyötyä.",
+   "en": "Learning never does any harm.",
+   "lit": "Learning won't tip you into a ditch.",
+   "eq": "You can never know too much.",
+   "ex": {
+    "f": "Mene vain sille kurssille, ei oppi ojaan kaada.",
+    "e": "Go on, take that course — learning never hurts."
+   },
+   "lvl": "B1",
+   "th": "elama",
+   "gap": "ojaan"
+  },
+  {
+   "id": "p07",
+   "type": "proverb",
+   "fi": "Työ tekijäänsä kiittää.",
+   "mf": "Hyvin tehty työ kertoo tekijänsä taidosta.",
+   "en": "Good work speaks for itself.",
+   "lit": "The work praises its maker.",
+   "eq": "Good work speaks for itself.",
+   "ex": {
+    "f": "Uusi terassi on upea. Työ tekijäänsä kiittää!",
+    "e": "The new deck looks great. The work speaks for itself!"
+   },
+   "lvl": "B1",
+   "th": "tyo",
+   "gap": "tekijäänsä"
+  },
+  {
+   "id": "p08",
+   "type": "proverb",
+   "fi": "Niin metsä vastaa kuin sinne huudetaan.",
+   "mf": "Muut kohtelevat sinua samalla tavalla kuin sinä heitä.",
+   "en": "People treat you the way you treat them.",
+   "lit": "The forest answers the way you shout into it.",
+   "eq": "What goes around comes around.",
+   "ex": {
+    "f": "Ole ystävällinen asiakaspalvelulle. Niin metsä vastaa kuin sinne huudetaan.",
+    "e": "Be friendly to customer service. What goes around comes around."
+   },
+   "lvl": "B1",
+   "th": "ihmiset",
+   "gap": "metsä"
+  },
+  {
+   "id": "p09",
+   "type": "proverb",
+   "fi": "Ei savua ilman tulta.",
+   "mf": "Huhuissa on yleensä perää.",
+   "en": "Rumours usually have some truth in them.",
+   "lit": "No smoke without fire.",
+   "eq": "There's no smoke without fire.",
+   "ex": {
+    "f": "Kaikki puhuvat yrityksen ongelmista. Ei savua ilman tulta.",
+    "e": "Everyone's talking about the company's problems. There's no smoke without fire."
+   },
+   "lvl": "B1",
+   "th": "elama",
+   "gap": "tulta"
+  },
+  {
+   "id": "p10",
+   "type": "proverb",
+   "fi": "Kell' onni on, se onnen kätkeköön.",
+   "mf": "Omasta onnesta ei kannata kerskua, ettei herätä kateutta.",
+   "en": "Keep your happiness to yourself, so as not to stir envy.",
+   "lit": "Whoever has happiness, let them hide it.",
+   "ex": {
+    "f": "En kerro lottovoitostani kenellekään. Kell' onni on, se onnen kätkeköön.",
+    "e": "I'm not telling anyone about my lottery win. Keep your good fortune to yourself."
+   },
+   "nf": "Säe on Eino Leinon runosta Laulu onnesta (1900). Kell' on lyhennetty muoto sanasta kellä eli kenellä.",
+   "ne": "A line from Eino Leino's poem Laulu onnesta (1900) that became a saying. Kell' is kellä, an old form of kenellä: kell' onni on means ‘whoever has happiness’.",
+   "lvl": "B2",
+   "th": "onni",
+   "gap": "kätkeköön"
+  },
+  {
+   "id": "p11",
+   "type": "proverb",
+   "fi": "Aika parantaa haavat.",
+   "mf": "Suru ja kipu helpottavat ajan myötä.",
+   "en": "Pain fades with time.",
+   "lit": "Time heals the wounds.",
+   "eq": "Time heals all wounds.",
+   "ex": {
+    "f": "Ero oli vaikea, mutta aika parantaa haavat.",
+    "e": "The break-up was hard, but time heals all wounds."
+   },
+   "lvl": "A2",
+   "th": "elama",
+   "gap": "haavat"
+  },
+  {
+   "id": "p12",
+   "type": "proverb",
+   "fi": "Rapatessa roiskuu.",
+   "mf": "Isossa työssä sattuu aina pieniä vahinkoja.",
+   "en": "Getting things done always makes a bit of mess.",
+   "lit": "When you plaster, it splashes.",
+   "eq": "You can't make an omelette without breaking eggs.",
+   "ex": {
+    "f": "Remontissa meni pari laattaa rikki, mutta rapatessa roiskuu.",
+    "e": "A couple of tiles broke during the renovation, but you can't make an omelette without breaking eggs."
+   },
+   "lvl": "B2",
+   "th": "tyo"
+  },
+  {
+   "id": "p13",
+   "type": "proverb",
+   "fi": "Parempi pyy pivossa kuin kymmenen oksalla.",
+   "mf": "Varma pieni hyöty on parempi kuin epävarma suuri.",
+   "en": "A sure small gain beats an uncertain big one.",
+   "lit": "Better a grouse in the hand than ten on the branch.",
+   "eq": "A bird in the hand is worth two in the bush.",
+   "ex": {
+    "f": "Otan tämän työpaikan. Parempi pyy pivossa kuin kymmenen oksalla.",
+    "e": "I'll take this job. A bird in the hand is worth two in the bush."
+   },
+   "nf": "Pyy on metsäkanalintu, ja pivo on vanha sana kämmenelle.",
+   "ne": "A pyy is a hazel grouse; pivo is an old word for the palm of the hand.",
+   "lvl": "B2",
+   "th": "elama",
+   "gap": "oksalla",
+   "near": [
+    "p04"
+   ]
+  },
+  {
+   "id": "p14",
+   "type": "proverb",
+   "fi": "Ei omena kauas puusta putoa.",
+   "mf": "Lapset ovat usein vanhempiensa kaltaisia.",
+   "en": "Children take after their parents.",
+   "lit": "The apple doesn't fall far from the tree.",
+   "eq": "The apple doesn't fall far from the tree.",
+   "ex": {
+    "f": "Poika on yhtä puhelias kuin isänsä. Ei omena kauas puusta putoa.",
+    "e": "The boy is as chatty as his father. The apple doesn't fall far from the tree."
+   },
+   "lvl": "B1",
+   "th": "ihmiset",
+   "gap": "puusta"
+  },
+  {
+   "id": "p15",
+   "type": "proverb",
+   "fi": "Tyhjät tynnyrit kolisevat eniten.",
+   "mf": "Eniten äänessä ovat ne, joilla on vähiten sanottavaa.",
+   "en": "Those who know least talk most.",
+   "lit": "Empty barrels rattle the most.",
+   "eq": "Empty vessels make the most noise.",
+   "ex": {
+    "f": "Kokouksessa eniten puhui se, joka tiesi vähiten. Tyhjät tynnyrit kolisevat eniten.",
+    "e": "In the meeting, the one who knew least talked most. Empty vessels make the most noise."
+   },
+   "lvl": "B1",
+   "th": "puhe",
+   "gap": "tynnyrit",
+   "near": [
+    "p19"
+   ]
+  },
+  {
+   "id": "p16",
+   "type": "proverb",
+   "fi": "Jokainen on oman onnensa seppä.",
+   "mf": "Jokainen vaikuttaa itse omaan elämäänsä.",
+   "en": "Everyone shapes their own life.",
+   "lit": "Everyone is the smith of their own fortune.",
+   "eq": "Life is what you make it.",
+   "ex": {
+    "f": "Hän uskoo, että jokainen on oman onnensa seppä.",
+    "e": "She believes that life is what you make it."
+   },
+   "lvl": "B1",
+   "th": "elama",
+   "gap": "seppä"
+  },
+  {
+   "id": "p17",
+   "type": "proverb",
+   "fi": "Moni kakku päältä kaunis.",
+   "mf": "Ulkonäkö voi pettää.",
+   "en": "Looks can be deceptive.",
+   "lit": "Many a cake is pretty on top.",
+   "eq": "All that glitters is not gold.",
+   "ex": {
+    "f": "Asunto näytti hienolta, mutta kylpyhuoneessa oli hometta. Moni kakku päältä kaunis.",
+    "e": "The flat looked lovely, but there was mould in the bathroom. All that glitters is not gold."
+   },
+   "nf": "Koko sananlasku: moni kakku päältä kaunis, vaan on silkkoa sisältä.",
+   "ne": "The full proverb adds vaan on silkkoa sisältä: ‘but worthless inside’.",
+   "lvl": "B1",
+   "th": "elama",
+   "gap": "kakku"
+  },
+  {
+   "id": "p18",
+   "type": "proverb",
+   "fi": "Aamu on iltaa viisaampi.",
+   "mf": "Vaikea asia näyttää selvemmältä, kun on nukkunut yön yli.",
+   "en": "Sleep on a difficult decision.",
+   "lit": "The morning is wiser than the evening.",
+   "eq": "Sleep on it.",
+   "ex": {
+    "f": "Älä päätä vielä tänään. Aamu on iltaa viisaampi.",
+    "e": "Don't decide today. Sleep on it."
+   },
+   "lvl": "B1",
+   "th": "elama",
+   "gap": "iltaa"
+  },
+  {
+   "id": "p19",
+   "type": "proverb",
+   "fi": "Puhuminen on hopeaa, vaikeneminen kultaa.",
+   "mf": "Joskus on viisainta olla hiljaa.",
+   "en": "Sometimes it's wiser to say nothing.",
+   "lit": "Speaking is silver, silence is gold.",
+   "eq": "Speech is silver, silence is golden.",
+   "ex": {
+    "f": "Kokouksessa päätin olla hiljaa. Puhuminen on hopeaa, vaikeneminen kultaa.",
+    "e": "I decided to keep quiet in the meeting. Speech is silver, silence is golden."
+   },
+   "lvl": "B1",
+   "th": "puhe",
+   "gap": "kultaa",
+   "near": [
+    "p15"
+   ]
+  },
+  {
+   "id": "p20",
+   "type": "proverb",
+   "fi": "Ei auta itku markkinoilla.",
+   "mf": "Valittaminen ei enää auta, tilanne on mikä on.",
+   "en": "Complaining won't change anything now.",
+   "lit": "Crying at the market won't help.",
+   "eq": "It's no use crying over spilt milk.",
+   "ex": {
+    "f": "Juna on jo mennyt. Ei auta itku markkinoilla.",
+    "e": "The train has already left. No use crying over spilt milk."
+   },
+   "lvl": "B1",
+   "th": "onni",
+   "gap": "markkinoilla",
+   "near": [
+    "e14",
+    "e15"
+   ]
+  },
+  {
+   "id": "s01",
+   "type": "simile",
+   "fi": "kuin kala vedessä",
+   "mf": "täysin omassa elementissään",
+   "en": "completely at home, at ease",
+   "lit": "like a fish in water",
+   "eq": "in one's element",
+   "ex": {
+    "f": "Uudessa työpaikassa olen kuin kala vedessä.",
+    "e": "I'm completely in my element at my new job."
+   },
+   "lvl": "A2",
+   "th": "tunteet",
+   "gap": "vedessä"
+  },
+  {
+   "id": "s02",
+   "type": "simile",
+   "fi": "kuin kissa ja koira",
+   "mf": "jatkuvasti riidoissa",
+   "en": "always quarrelling",
+   "lit": "like cat and dog",
+   "eq": "to fight like cat and dog",
+   "ex": {
+    "f": "Veljekset riitelevät kuin kissa ja koira.",
+    "e": "The brothers fight like cat and dog."
+   },
+   "lvl": "A2",
+   "th": "ihmiset",
+   "gap": "koira",
+   "near": [
+    "i33"
+   ]
+  },
+  {
+   "id": "s03",
+   "type": "simile",
+   "fi": "kiertää kuin kissa kuumaa puuroa",
+   "mf": "vältellä asian ydintä",
+   "en": "to avoid getting to the point",
+   "lit": "to circle like a cat around hot porridge",
+   "eq": "to beat about the bush",
+   "ex": {
+    "f": "Älä kierrä kuin kissa kuumaa puuroa, vaan sano suoraan!",
+    "e": "Stop beating about the bush and just say it!"
+   },
+   "lvl": "B1",
+   "th": "puhe",
+   "gap": "puuroa"
+  },
+  {
+   "id": "s04",
+   "type": "simile",
+   "fi": "kuin Ellun kanat",
+   "mf": "huolettomasti ja vapaasti, ilman järjestystä",
+   "en": "carefree and unruly, doing as one pleases",
+   "lit": "like Ellu's hens",
+   "eq": "running wild",
+   "ex": {
+    "f": "Lapset juoksentelivat rannalla kuin Ellun kanat.",
+    "e": "The children ran wild on the beach without a care in the world."
+   },
+   "lvl": "B2",
+   "th": "ihmiset",
+   "gap": "kanat"
+  },
+  {
+   "id": "s05",
+   "type": "simile",
+   "fi": "pihalla kuin lumiukko",
+   "mf": "täysin ymmällään",
+   "en": "completely clueless",
+   "lit": "out in the yard like a snowman",
+   "eq": "completely at sea",
+   "ex": {
+    "f": "Uuden järjestelmän kanssa olin pihalla kuin lumiukko.",
+    "e": "With the new system I was completely at sea."
+   },
+   "nf": "Vahvempi versio ilmauksesta olla pihalla.",
+   "ne": "A stronger version of olla pihalla.",
+   "reg": "col",
+   "lvl": "B1",
+   "th": "puhe",
+   "gap": "lumiukko",
+   "near": [
+    "i02",
+    "i13",
+    "i40"
+   ]
+  },
+  {
+   "id": "s06",
+   "type": "simile",
+   "fi": "kuin kaksi marjaa",
+   "mf": "hyvin samannäköiset",
+   "en": "very alike",
+   "lit": "like two berries",
+   "eq": "like two peas in a pod",
+   "ex": {
+    "f": "Kaksoset ovat kuin kaksi marjaa.",
+    "e": "The twins are like two peas in a pod."
+   },
+   "lvl": "A2",
+   "th": "ihmiset",
+   "gap": "marjaa"
+  },
+  {
+   "id": "s07",
+   "type": "simile",
+   "fi": "kuin norsu posliinikaupassa",
+   "mf": "kömpelösti ja tahdittomasti",
+   "en": "clumsily and tactlessly",
+   "lit": "like an elephant in a porcelain shop",
+   "eq": "like a bull in a china shop",
+   "ex": {
+    "f": "Hän käyttäytyi neuvotteluissa kuin norsu posliinikaupassa.",
+    "e": "He behaved like a bull in a china shop during the negotiations."
+   },
+   "lvl": "B1",
+   "th": "ihmiset",
+   "gap": "norsu"
+  },
+  {
+   "id": "s08",
+   "type": "simile",
+   "fi": "kuin sillit suolassa",
+   "mf": "tiiviisti ahdettuina",
+   "en": "packed tightly together",
+   "lit": "like herrings in salt",
+   "eq": "packed like sardines",
+   "ex": {
+    "f": "Ruuhkabussissa seisoimme kuin sillit suolassa.",
+    "e": "On the rush-hour bus we stood packed like sardines."
+   },
+   "lvl": "B1",
+   "th": "arki",
+   "gap": "suolassa"
+  },
+  {
+   "id": "s09",
+   "type": "simile",
+   "fi": "nukkua kuin tukki",
+   "mf": "nukkua sikeästi",
+   "en": "to sleep very deeply",
+   "lit": "to sleep like a log",
+   "eq": "to sleep like a log",
+   "ex": {
+    "f": "Saunan jälkeen nukuin kuin tukki.",
+    "e": "After the sauna I slept like a log."
+   },
+   "lvl": "A2",
+   "th": "arki",
+   "gap": "tukki"
+  },
+  {
+   "id": "s10",
+   "type": "simile",
+   "fi": "upota kuin kuuma veitsi voihin",
+   "mf": "mennä läpi vaivatta, saada heti suosiota",
+   "en": "to go down extremely well, effortlessly",
+   "lit": "to sink in like a hot knife into butter",
+   "eq": "to go down a storm",
+   "ex": {
+    "f": "Uusi tuote upposi asiakkaisiin kuin kuuma veitsi voihin.",
+    "e": "The new product went down a storm with customers."
+   },
+   "nf": "Muista kuuma: pelkkä veitsi voihin on yleinen virhe.",
+   "ne": "Keep kuuma, hot: the version without it is a common slip.",
+   "lvl": "B2",
+   "th": "tyo",
+   "gap": "voihin",
+   "near": [
+    "s20"
+   ]
+  },
+  {
+   "id": "s11",
+   "type": "simile",
+   "fi": "vapista kuin haavanlehti",
+   "mf": "vapista pelosta tai kylmästä",
+   "en": "to tremble with fear or cold",
+   "lit": "to tremble like an aspen leaf",
+   "eq": "to shake like a leaf",
+   "ex": {
+    "f": "Ennen esiintymistä vapisin kuin haavanlehti.",
+    "e": "Before going on stage I was shaking like a leaf."
+   },
+   "lvl": "B1",
+   "th": "tunteet",
+   "gap": "haavanlehti"
+  },
+  {
+   "id": "s12",
+   "type": "simile",
+   "fi": "kuin salama kirkkaalta taivaalta",
+   "mf": "täysin odottamatta",
+   "en": "completely unexpectedly",
+   "lit": "like lightning from a clear sky",
+   "eq": "like a bolt from the blue",
+   "ex": {
+    "f": "Irtisanominen tuli kuin salama kirkkaalta taivaalta.",
+    "e": "The redundancy came like a bolt from the blue."
+   },
+   "lvl": "B1",
+   "th": "onni",
+   "gap": "taivaalta",
+   "near": [
+    "s16"
+   ]
+  },
+  {
+   "id": "s13",
+   "type": "simile",
+   "fi": "syödä kuin hevonen",
+   "mf": "syödä paljon",
+   "en": "to eat a lot",
+   "lit": "to eat like a horse",
+   "eq": "to eat like a horse",
+   "ex": {
+    "f": "Teini-ikäinen poikamme syö kuin hevonen.",
+    "e": "Our teenage son eats like a horse."
+   },
+   "lvl": "A2",
+   "th": "arki",
+   "gap": "hevonen"
+  },
+  {
+   "id": "s14",
+   "type": "simile",
+   "fi": "punainen kuin rapu",
+   "mf": "hyvin punainen auringosta tai nolostumisesta",
+   "en": "very red from the sun or embarrassment",
+   "lit": "red as a crayfish",
+   "eq": "as red as a lobster",
+   "ex": {
+    "f": "Rannalta palattuani olin punainen kuin rapu.",
+    "e": "When I got back from the beach I was as red as a lobster."
+   },
+   "nf": "Rapujuhlia vietetään Suomessa perinteisesti elokuussa.",
+   "ne": "Crayfish parties are a Finnish August tradition. For blushing, English prefers as red as a beetroot.",
+   "lvl": "B1",
+   "th": "arki",
+   "gap": "rapu"
+  },
+  {
+   "id": "s15",
+   "type": "simile",
+   "fi": "hiljainen kuin hiiri",
+   "mf": "hyvin hiljainen, ei pidä ääntä itsestään",
+   "en": "very quiet, hardly makes a sound",
+   "lit": "quiet as a mouse",
+   "eq": "as quiet as a mouse",
+   "ex": {
+    "f": "Uusi naapurimme on hiljainen kuin hiiri.",
+    "e": "Our new neighbour is as quiet as a mouse."
+   },
+   "nf": "Adverbina käytetään yhdyssanaa hiirenhiljaa: lapset olivat hiirenhiljaa.",
+   "ne": "As an adverb, use the compound hiirenhiljaa: lapset olivat hiirenhiljaa, the children were as quiet as mice.",
+   "lvl": "A2",
+   "th": "arki",
+   "gap": "hiiri"
+  },
+  {
+   "id": "s16",
+   "type": "simile",
+   "fi": "kuin kylmä suihku",
+   "mf": "ikävä yllätys, joka palauttaa maan pinnalle",
+   "en": "a nasty, sobering surprise",
+   "lit": "like a cold shower",
+   "eq": "a rude awakening",
+   "ex": {
+    "f": "Sähkölasku oli kuin kylmä suihku.",
+    "e": "The electricity bill was a rude awakening."
+   },
+   "lvl": "B1",
+   "th": "onni",
+   "gap": "suihku",
+   "near": [
+    "s12"
+   ]
+  },
+  {
+   "id": "s17",
+   "type": "simile",
+   "fi": "tykätä kuin hullu puurosta",
+   "mf": "pitää jostakin hyvin paljon",
+   "en": "to love something, to be crazy about it",
+   "lit": "to like (it) as a madman likes porridge",
+   "eq": "to be mad about something",
+   "ex": {
+    "f": "Lapset tykkäsivät uudesta leikkipuistosta kuin hullu puurosta.",
+    "e": "The children were mad about the new playground."
+   },
+   "nf": "Pidetty asia on elatiivissa: tykätä jostakin.",
+   "ne": "What you like goes in the elative: tykätä jostakin.",
+   "reg": "col",
+   "lvl": "B1",
+   "th": "tunteet",
+   "gap": "puurosta"
+  },
+  {
+   "id": "s18",
+   "type": "simile",
+   "fi": "kuin tilauksesta",
+   "mf": "juuri oikeaan aikaan, juuri kun tarvittiin",
+   "en": "just when it was needed",
+   "lit": "as if to order",
+   "eq": "right on cue",
+   "ex": {
+    "f": "Työtarjous tuli kuin tilauksesta, juuri kun säästöt loppuivat.",
+    "e": "The job offer came right on cue, just as my savings ran out."
+   },
+   "lvl": "B1",
+   "th": "onni"
+  },
+  {
+   "id": "s19",
+   "type": "simile",
+   "fi": "kuin pisara meressä",
+   "mf": "mitättömän pieni määrä",
+   "en": "a tiny amount compared with what's needed",
+   "lit": "like a drop in the sea",
+   "eq": "a drop in the ocean",
+   "ex": {
+    "f": "Lahjoitukseni on kuin pisara meressä, mutta se auttaa silti.",
+    "e": "My donation is a drop in the ocean, but it still helps."
+   },
+   "lvl": "B1",
+   "th": "raha",
+   "gap": "meressä"
+  },
+  {
+   "id": "s20",
+   "type": "simile",
+   "fi": "mennä kuin kuumille kiville",
+   "mf": "kulua tai myydä loppuun hyvin nopeasti",
+   "en": "to sell out or disappear very fast",
+   "lit": "to go as if onto hot stones",
+   "eq": "to sell like hot cakes",
+   "ex": {
+    "f": "Konserttiliput menivät kuin kuumille kiville.",
+    "e": "The concert tickets sold like hot cakes."
+   },
+   "nf": "Kuvan arvellaan tulevan saunasta: kuumille kiville heitetty vesi katoaa hetkessä.",
+   "ne": "The image is thought to come from the sauna: water thrown on the hot stones vanishes in an instant.",
+   "lvl": "B1",
+   "th": "raha",
+   "gap": "kiville",
+   "near": [
+    "s10"
+   ]
+  },
+  {
+   "id": "e01",
+   "type": "expr",
+   "fi": "No niin.",
+   "mf": "monikäyttöinen aloitus, lopetus tai huokaus",
+   "en": "Right then. / Well then.",
+   "lit": "Well, so.",
+   "eq": "Right then.",
+   "ex": {
+    "f": "No niin, aloitetaanko?",
+    "e": "Right then, shall we start?"
+   },
+   "nf": "Sävy ratkaisee merkityksen: aloitus, lopetus, yhteenveto tai lievä kärsimättömyys.",
+   "ne": "Finland's all-purpose phrase: it opens, closes, sums up or sighs. The tone does all the work.",
+   "lvl": "A1",
+   "th": "arki"
+  },
+  {
+   "id": "e02",
+   "type": "expr",
+   "fi": "Hyvää jatkoa!",
+   "mf": "ystävällinen hyvästely",
+   "en": "All the best! / Have a good one!",
+   "lit": "Good continuation!",
+   "eq": "All the best!",
+   "ex": {
+    "f": "Kiitos avusta ja hyvää jatkoa!",
+    "e": "Thanks for your help, and all the best!"
+   },
+   "nf": "Kaupassa kuulee usein: hyvää päivänjatkoa!",
+   "ne": "In shops you'll often hear hyvää päivänjatkoa — have a nice rest of the day.",
+   "lvl": "A2",
+   "th": "arki",
+   "near": [
+    "e09",
+    "e12"
+   ]
+  },
+  {
+   "id": "e03",
+   "type": "expr",
+   "fi": "Kiitos samoin!",
+   "mf": "vastaus toivotukseen",
+   "en": "Thanks, you too!",
+   "lit": "Thanks, likewise!",
+   "eq": "Same to you!",
+   "ex": {
+    "f": "– Hyvää viikonloppua! – Kiitos samoin!",
+    "e": "‘Have a nice weekend!’ ‘Thanks, you too!’"
+   },
+   "lvl": "A1",
+   "th": "arki",
+   "near": [
+    "e19"
+   ]
+  },
+  {
+   "id": "e04",
+   "type": "expr",
+   "fi": "Ei se mitään.",
+   "mf": "vastaus anteeksipyyntöön: ei haittaa",
+   "en": "Never mind. / That's all right.",
+   "lit": "It's nothing.",
+   "eq": "No worries.",
+   "ex": {
+    "f": "– Anteeksi, olen myöhässä. – Ei se mitään.",
+    "e": "‘Sorry I'm late.’ ‘That's all right.’"
+   },
+   "lvl": "A1",
+   "th": "arki",
+   "near": [
+    "e05"
+   ]
+  },
+  {
+   "id": "e05",
+   "type": "expr",
+   "fi": "Ihan sama.",
+   "mf": "minulle on yhdentekevää",
+   "en": "I don't mind. / Whatever.",
+   "lit": "Quite the same.",
+   "eq": "I'm easy.",
+   "ex": {
+    "f": "– Kahvia vai teetä? – Ihan sama.",
+    "e": "‘Coffee or tea?’ ‘I'm easy.’"
+   },
+   "nf": "Hymyn kanssa neutraali, huokauksen kanssa välinpitämätön.",
+   "ne": "Neutral with a smile, dismissive with a sigh.",
+   "reg": "col",
+   "lvl": "A2",
+   "th": "arki",
+   "near": [
+    "e04"
+   ]
+  },
+  {
+   "id": "e06",
+   "type": "expr",
+   "fi": "Terveydeksi!",
+   "mf": "sanotaan, kun joku aivastaa",
+   "en": "Bless you!",
+   "lit": "To your health!",
+   "eq": "Bless you!",
+   "ex": {
+    "f": "Kun aivastin, kollega sanoi: terveydeksi!",
+    "e": "When I sneezed, my colleague said: bless you!"
+   },
+   "nf": "Myös maljaa nostettaessa: terveydeksi!",
+   "ne": "It's also a toast: terveydeksi, to your health!",
+   "lvl": "A2",
+   "th": "arki"
+  },
+  {
+   "id": "e07",
+   "type": "expr",
+   "fi": "Onneksi olkoon!",
+   "mf": "onnittelu",
+   "en": "Congratulations!",
+   "lit": "May it be for happiness!",
+   "eq": "Congratulations!",
+   "ex": {
+    "f": "Onneksi olkoon uudesta työpaikasta!",
+    "e": "Congratulations on your new job!"
+   },
+   "nf": "Onniteltava asia on elatiivissa: uudesta työpaikasta.",
+   "ne": "What you're congratulating on goes in the elative: uudesta työpaikasta.",
+   "lvl": "A2",
+   "th": "arki"
+  },
+  {
+   "id": "e08",
+   "type": "expr",
+   "fi": "Otan osaa.",
+   "mf": "osanotto surun kohdanneelle",
+   "en": "My condolences.",
+   "lit": "I take part.",
+   "eq": "I'm so sorry for your loss.",
+   "ex": {
+    "f": "Kuulin isäsi kuolemasta. Otan osaa.",
+    "e": "I heard about your father's death. I'm so sorry for your loss."
+   },
+   "nf": "Kortissa tai viestissä: lämmin osanottoni.",
+   "ne": "In a card or message: lämmin osanottoni, my warmest sympathy.",
+   "lvl": "B1",
+   "th": "arki"
+  },
+  {
+   "id": "e09",
+   "type": "expr",
+   "fi": "Pidä huolta itsestäsi!",
+   "mf": "toivotus hyvästellessä",
+   "en": "Take care of yourself!",
+   "lit": "Take care of yourself!",
+   "eq": "Take care!",
+   "ex": {
+    "f": "Hyvää matkaa, ja pidä huolta itsestäsi!",
+    "e": "Have a good trip, and take care of yourself!"
+   },
+   "lvl": "A2",
+   "th": "arki",
+   "near": [
+    "e02",
+    "e12"
+   ]
+  },
+  {
+   "id": "e10",
+   "type": "expr",
+   "fi": "Siitä vaan!",
+   "mf": "kehotus: ole hyvä, tee vain",
+   "en": "Go ahead! / Help yourself!",
+   "lit": "Just from there!",
+   "eq": "Go ahead!",
+   "ex": {
+    "f": "– Saako tähän istua? – Siitä vaan!",
+    "e": "‘May I sit here?’ ‘Go ahead!’"
+   },
+   "reg": "col",
+   "lvl": "A2",
+   "th": "arki",
+   "near": [
+    "e18"
+   ]
+  },
+  {
+   "id": "e11",
+   "type": "expr",
+   "fi": "Tsemppiä!",
+   "mf": "rohkaisu ennen vaikeaa tilannetta",
+   "en": "Good luck! / You can do it!",
+   "lit": "Spirit!",
+   "eq": "Hang in there!",
+   "ex": {
+    "f": "Huomenna on tentti? Tsemppiä!",
+    "e": "You've got an exam tomorrow? Good luck!"
+   },
+   "nf": "Arkikieltä. Verbi tsempata tarkoittaa kannustaa tai ponnistella.",
+   "ne": "Informal. The verb tsempata means to cheer someone on or to push yourself.",
+   "reg": "col",
+   "lvl": "A2",
+   "th": "arki"
+  },
+  {
+   "id": "e12",
+   "type": "expr",
+   "fi": "Kuulemiin.",
+   "mf": "hyvästely puhelimessa",
+   "en": "Goodbye (on the phone).",
+   "lit": "Until hearing.",
+   "eq": "Goodbye.",
+   "ex": {
+    "f": "Kiitos soitosta, kuulemiin!",
+    "e": "Thanks for calling — goodbye!"
+   },
+   "nf": "Kasvokkain sanotaan näkemiin, puhelimessa kuulemiin.",
+   "ne": "Face to face it's näkemiin (until seeing); on the phone, kuulemiin (until hearing).",
+   "lvl": "A2",
+   "th": "arki",
+   "near": [
+    "e02",
+    "e09"
+   ]
+  },
+  {
+   "id": "e13",
+   "type": "expr",
+   "fi": "Mitäs tässä.",
+   "mf": "vastaus kysymykseen mitä kuuluu: ei mitään erikoista",
+   "en": "Oh, not much. (reply to ‘how's it going?’)",
+   "lit": "What (is there) here.",
+   "eq": "Not much.",
+   "ex": {
+    "f": "– Mitä kuuluu? – Mitäs tässä, ihan hyvää.",
+    "e": "‘How's it going?’ ‘Oh, not much, all good.’"
+   },
+   "reg": "col",
+   "lvl": "A2",
+   "th": "arki"
+  },
+  {
+   "id": "e14",
+   "type": "expr",
+   "fi": "Ei voi mitään.",
+   "mf": "asialle ei voi tehdä mitään",
+   "en": "It can't be helped.",
+   "lit": "One can't do anything.",
+   "eq": "Oh well.",
+   "ex": {
+    "f": "Sataa taas. Ei voi mitään.",
+    "e": "It's raining again. Oh well."
+   },
+   "nf": "Asia on allatiivissa: sille ei voi mitään.",
+   "ne": "What can't be helped goes in the allative: sille ei voi mitään, there's nothing you can do about it.",
+   "lvl": "A2",
+   "th": "arki",
+   "near": [
+    "e15",
+    "p20"
+   ]
+  },
+  {
+   "id": "e15",
+   "type": "expr",
+   "fi": "Niinpä niin.",
+   "mf": "myöntävä, usein hieman alistunut toteamus",
+   "en": "Quite so. / Ah well.",
+   "lit": "So indeed, so.",
+   "eq": "So it goes.",
+   "ex": {
+    "f": "– Kesä loppui taas liian nopeasti. – Niinpä niin.",
+    "e": "‘Summer's over far too soon again.’ ‘Ah well.’"
+   },
+   "lvl": "B1",
+   "th": "arki",
+   "near": [
+    "e14",
+    "p20"
+   ]
+  },
+  {
+   "id": "e16",
+   "type": "expr",
+   "fi": "Kiva kuulla!",
+   "mf": "ilo hyvästä uutisesta",
+   "en": "Glad to hear it!",
+   "lit": "Nice to hear!",
+   "eq": "Glad to hear it!",
+   "ex": {
+    "f": "– Sain opiskelupaikan! – Kiva kuulla!",
+    "e": "‘I got a place on the course!’ ‘Glad to hear it!’"
+   },
+   "nf": "Yleiskielisempi vaihtoehto: mukava kuulla.",
+   "ne": "A slightly more neutral version: mukava kuulla.",
+   "reg": "col",
+   "lvl": "A1",
+   "th": "arki"
+  },
+  {
+   "id": "e17",
+   "type": "expr",
+   "fi": "Anteeksi kuinka?",
+   "mf": "en kuullut, voisitko toistaa; myös kohtelias hämmästys",
+   "en": "Pardon? / Sorry, what?",
+   "lit": "Sorry, how?",
+   "eq": "Pardon?",
+   "ex": {
+    "f": "Anteeksi kuinka? En kuullut, mitä sanoit.",
+    "e": "Pardon? I didn't catch what you said."
+   },
+   "lvl": "A2",
+   "th": "arki"
+  },
+  {
+   "id": "e18",
+   "type": "expr",
+   "fi": "Totta kai!",
+   "mf": "tietysti",
+   "en": "Of course!",
+   "lit": "True indeed!",
+   "eq": "Of course!",
+   "ex": {
+    "f": "– Voinko lainata kynääsi? – Totta kai!",
+    "e": "‘Can I borrow your pen?’ ‘Of course!’"
+   },
+   "nf": "Yksinään kai tarkoittaa ’luultavasti’: hän tulee kai huomenna.",
+   "ne": "On its own, kai means ‘probably’: hän tulee kai huomenna, he's probably coming tomorrow.",
+   "lvl": "A1",
+   "th": "arki",
+   "near": [
+    "e10"
+   ]
+  },
+  {
+   "id": "e19",
+   "type": "expr",
+   "fi": "Sama täällä.",
+   "mf": "minulla samoin, niin minäkin",
+   "en": "Same here.",
+   "lit": "Same here.",
+   "eq": "Same here.",
+   "ex": {
+    "f": "– Olen ihan väsynyt. – Sama täällä.",
+    "e": "‘I'm really tired.’ ‘Same here.’"
+   },
+   "nf": "Englannin same here -ilmauksen mallin mukainen. Kuuluu arkiseen puheeseen, kirjoituksessa harvinainen.",
+   "ne": "Modelled on English ‘same here’. It belongs to casual speech and is rare in writing.",
+   "reg": "col",
+   "lvl": "A2",
+   "th": "arki",
+   "near": [
+    "e03"
+   ]
+  },
+  {
+   "id": "e20",
+   "type": "expr",
+   "fi": "Ei kestä.",
+   "mf": "vastaus kiitokseen",
+   "en": "You're welcome. / Don't mention it.",
+   "lit": "(It) doesn't merit (thanks).",
+   "eq": "Don't mention it.",
+   "ex": {
+    "f": "– Kiitos avusta! – Ei kestä.",
+    "e": "‘Thanks for the help!’ ‘Don't mention it.’"
+   },
+   "nf": "Lyhennys sanoista ei kestä kiittää. Samaa tarkoittavat eipä kestä ja eipä mitään.",
+   "ne": "Short for ei kestä kiittää, ‘it isn't worth thanking for’. Eipä kestä and eipä mitään mean the same.",
+   "lvl": "A2",
+   "th": "arki"
+  }
+ ]
+}
