@@ -324,6 +324,20 @@ nav {
   <div class="projects-grid" id="projectsGrid">
 
     <div class="project-card">
+      <div class="project-icon project-logo"><svg viewBox="0 0 40 40" fill="none" role="img" aria-label="Remburssi logo"><rect width="40" height="40" rx="11" fill="#E6D9BE"/><path d="M10.5 7.5h13l6 6v19h-19z" fill="#FFFCF4"/><path d="M23.5 7.5v6h6z" fill="#DCCBA8"/><path d="M14 16.5h11.5M14 20.5h11.5" stroke="#0F2742" stroke-width="1.8" stroke-linecap="round"/><path d="M14 25.3c1.2-1.5 2.3-1.5 3.5 0s2.3 1.5 3.5 0" stroke="#1FA89C" stroke-width="1.9" stroke-linecap="round"/><circle cx="29" cy="29.3" r="6.2" fill="#F2B12E" stroke="#0F2742" stroke-width="1.6"/><path d="M26.3 29.4l1.9 1.9 3.6-3.8" stroke="#0F2742" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="project-name">Remburssi</div>
+      <div class="project-desc" data-i18n="proj_remburssi_desc">Remburssi is Finnish for documentary credit. Three tools in one: a discrepancy checker that examines a presentation against UCP 600 and ISBP 821, a plain-English guide to all 39 UCP 600 articles with court cases where they exist, and an Incoterms® 2020 map showing where risk and cost pass from seller to buyer.</div>
+      <div class="project-tags">
+        <span class="project-tag">Trade finance</span>
+        <span class="project-tag">UCP 600 · ISBP 821</span>
+        <span class="project-tag">Incoterms® 2020</span>
+      </div>
+      <a href="remburssi/" target="_blank" rel="noopener" class="project-launch">
+        <span data-i18n="launch_btn">Open app</span> →
+      </a>
+    </div>
+
+    <div class="project-card">
       <div class="project-icon project-logo"><svg viewBox="0 0 40 40" fill="none" role="img" aria-label="SuomiPolku v2 logo"><rect width="40" height="40" rx="11" fill="#0E4B48"/><path d="M9 29c4.5 0 4.5-7 9-7s4.5-7 9-7 4.5 3 4.5 3" stroke="#E0EEEB" stroke-width="2.6" stroke-linecap="round"/><circle cx="27" cy="12.5" r="3" fill="#E0EEEB"/></svg></div>
       <div class="project-name">SuomiPolku v2</div>
       <div class="project-desc" data-i18n="proj_suomipolkuv2_desc">A full rebuild of the Finnish course — grammar, vocabulary, sentences, phrases, spoken Finnish, real-life situations, a form analyser, an inflection table, a number lab, spaced-repetition daily review and YKI practice. 2734 items, dark mode, progress saved in your browser.</div>
@@ -402,6 +416,7 @@ const TRANSLATIONS = {
     proj_suomipolku_desc: 'A trilingual Finnish language learning app — grammar reference with a form analyser, vocabulary bank, sentence builder, and levelled mock exams.',
     proj_hygieniapassi_desc: 'A Finnish food hygiene passport (Hygieniapassi) exam trainer — 275 statements across six official subfields, timed mock exams matching the real 34/40 pass mark, topic drills, and an official model series from Ruokavirasto.',
     proj_flightdesk_desc: 'A Helsinki-based flight search dashboard \u2014 a price heat-map by weekday and week, a flexible-dates playbook, a multi-city trip builder, and one-click deep links into Google Flights, Skyscanner, Kayak and Momondo.',
+    proj_remburssi_desc: 'Remburssi is Finnish for documentary credit. Three tools in one: a discrepancy checker that examines a presentation against UCP 600 and ISBP 821, a plain-English guide to all 39 UCP 600 articles with court cases where they exist, and an Incoterms\u00ae 2020 map showing where risk and cost pass from seller to buyer.',
     proj_suomipolkuv2_desc: 'A full rebuild of the Finnish course \u2014 grammar, vocabulary, sentences, phrases, spoken Finnish, real-life situations, a form analyser, an inflection table, a number lab, spaced-repetition daily review and YKI practice. 2734 items, dark mode, progress saved in your browser.',
     launch_btn: 'Open app',
     more_soon_title: 'More Coming Soon',
@@ -415,6 +430,7 @@ const TRANSLATIONS = {
     proj_suomipolku_desc: 'Kolmikielinen suomen kielen oppimissovellus \u2014 kielioppiviite muototy\u00f6kalulla, sanavarasto, lauserakentaja ja tasokokeet.',
     proj_hygieniapassi_desc: 'Hygieniapassin harjoituskoe \u2014 275 v\u00e4itett\u00e4 kuudesta virallisesta aihealueesta, aikarajoitettu harjoituskoe todellisella l\u00e4p\u00e4isyrajalla 34/40, aihekohtaiset harjoitukset ja Ruokaviraston virallinen mallisarja.',
     proj_flightdesk_desc: 'Helsingist\u00e4 l\u00e4htev\u00e4 lentohakupaneeli \u2014 hintakartta viikonp\u00e4ivitt\u00e4in ja viikoittain, joustavien p\u00e4iv\u00e4m\u00e4\u00e4rien pelikirja, monikohdematkan rakentaja ja suorat haut Google Flightsiin, Skyscanneriin, Kayakiin ja Momondoon.',
+    proj_remburssi_desc: 'Remburssity\u00f6kalu kolmessa osassa: tarkistaa esitetyt asiakirjat UCP 600:n ja ISBP 821:n s\u00e4\u00e4nt\u00f6j\u00e4 vasten, selitt\u00e4\u00e4 UCP 600:n kaikki 39 artiklaa selke\u00e4ll\u00e4 kielell\u00e4 ja n\u00e4ytt\u00e4\u00e4 Incoterms\u00ae 2020 -kartalla, miss\u00e4 riski ja kustannukset siirtyv\u00e4t myyj\u00e4lt\u00e4 ostajalle. Sovellus on englanninkielinen.',
     proj_suomipolkuv2_desc: 'Suomen kurssin t\u00e4ysi uudistus \u2014 kielioppi, sanasto, lauseet, fraasit, puhekieli, arjen tilanteet, muototy\u00f6kalu, taivutustaulukko, numerolaboratorio, p\u00e4ivitt\u00e4inen kertaus kasvavin v\u00e4lein ja YKI-harjoittelu. 2734 kohdetta, tumma tila, edistyminen tallentuu selaimeen.',
     launch_btn: 'Avaa sovellus',
     more_soon_title: 'Lis\u00e4\u00e4 tulossa pian',
@@ -428,6 +444,7 @@ const TRANSLATIONS = {
     proj_suomipolku_desc: 'En flerspr\u00e5kig app f\u00f6r att l\u00e4ra sig finska \u2014 grammatikreferens med formanalysator, ordbank, meningsbyggare och niv\u00e5indelade provtentor.',
     proj_hygieniapassi_desc: 'En finsk hygienpasstr\u00e4nare (Hygieniapassi) \u2014 275 p\u00e5st\u00e5enden inom sex officiella \u00e4mnesomr\u00e5den, tidsbegr\u00e4nsade provtentor som matchar det verkliga godk\u00e4nnandekravet 34/40, \u00e4mnesvisa \u00f6vningar och Livsmedelsverkets officiella modellserie.',
     proj_flightdesk_desc: 'En flygs\u00f6kningspanel med Helsingfors som utg\u00e5ngspunkt \u2014 priskarta per veckodag och vecka, en spelbok f\u00f6r flexibla datum, en flerstoppsplanerare och direktl\u00e4nkar till Google Flights, Skyscanner, Kayak och Momondo.',
+    proj_remburssi_desc: 'Remburssi \u00e4r finska f\u00f6r remburs. En verktygsl\u00e5da i tre delar: granskar presenterade dokument mot UCP 600 och ISBP 821, f\u00f6rklarar alla 39 artiklar i UCP 600 p\u00e5 klarspr\u00e5k och visar p\u00e5 en Incoterms\u00ae 2020-karta var risk och kostnad g\u00e5r \u00f6ver fr\u00e5n s\u00e4ljare till k\u00f6pare. Appen \u00e4r p\u00e5 engelska.',
     proj_suomipolkuv2_desc: 'En komplett ombyggnad av finskakursen \u2014 grammatik, ordf\u00f6rr\u00e5d, meningar, fraser, talad finska, vardagssituationer, formanalysator, b\u00f6jningstabell, sifferlabb, daglig repetition med spacad inl\u00e4rning och YKI-\u00f6vning. 2734 poster, m\u00f6rkt l\u00e4ge, framstegen sparas i webbl\u00e4saren.',
     launch_btn: '\u00d6ppna appen',
     more_soon_title: 'Fler kommer snart',
