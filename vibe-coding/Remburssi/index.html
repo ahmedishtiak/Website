@@ -1,0 +1,1569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Remburssi: LC discrepancy checker, UCP 600 explorer and Incoterms 2020 map</title>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40' fill='none'%3E%3Crect width='40' height='40' rx='11' fill='%23E6D9BE'/%3E%3Cpath d='M10.5 7.5h13l6 6v19h-19z' fill='%23FFFCF4'/%3E%3Cpath d='M23.5 7.5v6h6z' fill='%23DCCBA8'/%3E%3Cpath d='M14 16.5h11.5M14 20.5h11.5' stroke='%230F2742' stroke-width='1.8' stroke-linecap='round'/%3E%3Cpath d='M14 25.3c1.2-1.5 2.3-1.5 3.5 0s2.3 1.5 3.5 0' stroke='%231FA89C' stroke-width='1.9' stroke-linecap='round'/%3E%3Ccircle cx='29' cy='29.3' r='6.2' fill='%23F2B12E' stroke='%230F2742' stroke-width='1.6'/%3E%3Cpath d='M26.3 29.4l1.9 1.9 3.6-3.8' stroke='%230F2742' stroke-width='1.9' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<meta name="description" content="Remburssi: a professional toolkit for documentary credit practitioners. Examine a presentation against UCP 600 and ISBP 821, consult any UCP 600 article in plain English, and see where risk and cost transfer under each Incoterms 2020 rule.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders:wght@600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil:wght@800&display=swap">
+<style>
+:root{
+  --navy:#0F2742;--navy2:#1B3A5E;--navy3:#2C4D75;
+  --kraft:#E6D9BE;--kraft2:#DCCBA8;--paper:#F8F2E4;--field:#FFFCF4;--line:#C4AE85;
+  --teal:#1FA89C;--teal-ink:#0B6159;--amber:#F2B12E;--amber-ink:#7A5000;
+  --red:#C42F2B;--green:#2E7A4C;--ink:#0F2742;--muted:#5C5545;
+  --display:"Big Shoulders","Big Shoulders Display","Oswald","Arial Narrow",sans-serif;
+  --stencil:"Big Shoulders Stencil","Big Shoulders Stencil Display","Big Shoulders","Arial Narrow",sans-serif;
+  --body:"Atkinson Hyperlegible","Segoe UI",system-ui,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--kraft);color:var(--ink);font:17px/1.55 var(--body);-webkit-font-smoothing:antialiased}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+a{color:var(--teal-ink);text-underline-offset:2px}
+:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+button{font:inherit;color:inherit}
+
+/* ---------- shell ---------- */
+.top{background:var(--navy);color:var(--paper);padding:30px 0 0}
+.top h1{font:800 clamp(2.2rem,5vw,3.4rem)/.95 var(--display);margin:0 0 8px;letter-spacing:.005em}
+.top h1.brand{font:800 clamp(3rem,8vw,5.2rem)/.85 var(--stencil);letter-spacing:.03em;color:var(--paper);margin:0}
+.top p{margin:0;color:#C6D2E2}
+.masthead{display:grid;grid-template-columns:auto minmax(0,1fr);gap:18px 64px;align-items:end;margin-bottom:30px}
+@media(max-width:860px){.masthead{grid-template-columns:1fr;gap:14px}}
+.tagline{margin-top:8px!important;font-size:.92rem;color:var(--amber)!important;letter-spacing:.01em}
+.mast-intro{border-left:2px solid var(--navy3);padding-left:28px}
+@media(max-width:860px){.mast-intro{border-left:0;padding-left:0}}
+.mast-intro p{font-size:1.08rem;line-height:1.6;color:#DCE5F0}
+.mast-intro .byline{margin-top:10px;font-size:.9rem;color:#9FB3CB}
+.tabs{display:flex;gap:6px;flex-wrap:wrap}
+.tabs button{font:700 1.15rem/1 var(--display);letter-spacing:.02em;background:var(--navy2);color:#DCE5F0;border:0;border-radius:10px 10px 0 0;padding:14px 22px 12px;cursor:pointer}
+.tabs button:hover{background:var(--navy3)}
+.tabs button[aria-selected="true"]{background:var(--kraft);color:var(--navy)}
+.tabs button:focus-visible{outline-offset:-4px}
+main{padding:36px 0 64px}
+.tab h2{font:800 clamp(2rem,4.4vw,3rem)/1 var(--display);margin:0 0 12px}
+.lede{margin:0 0 24px;color:#283546}
+.fine{font-size:.85rem;color:var(--muted);margin:28px 0 0;border-top:1px solid var(--line);padding-top:16px;columns:2 380px;column-gap:48px}
+footer{background:var(--navy);color:#AFC0D4;font-size:.85rem;padding:20px 0}
+footer a{color:var(--amber)}
+
+/* ---------- spotter ---------- */
+#tab-spotter .grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+@media(max-width:820px){#tab-spotter .grid{grid-template-columns:1fr}}
+#tab-spotter fieldset{background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:18px 18px 8px;margin:0}
+#tab-spotter legend{font:800 1.15rem var(--display);color:var(--paper);background:var(--navy);padding:4px 12px;border-radius:4px}
+#tab-spotter h4{margin:16px 0 8px;font:700 1.05rem var(--display);color:var(--teal-ink);border-top:1px dashed var(--line);padding-top:12px}
+#tab-spotter label{display:block;font-size:.82rem;font-weight:700;color:var(--navy2);margin:0 0 10px}
+#tab-spotter input[type=text],#tab-spotter input[type=number],#tab-spotter input[type=date],#tab-spotter select{width:100%;margin-top:3px;padding:8px 10px;border:1px solid #B9A47C;border-radius:6px;background:var(--field);font:inherit;font-size:.95rem;color:var(--ink)}
+#tab-spotter input:focus,#tab-spotter select:focus{outline:2px solid var(--teal);border-color:var(--teal)}
+#tab-spotter .row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+#tab-spotter .checks{display:flex;flex-wrap:wrap;gap:6px 14px;margin-bottom:10px}
+#tab-spotter .checks label{display:flex;align-items:center;gap:6px;margin:0;font-weight:400}
+#tab-spotter .bar{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0}
+#tab-spotter .bar button{font-weight:700;border:0;border-radius:8px;padding:11px 20px;cursor:pointer}
+#tab-spotter .go{background:var(--navy);color:var(--paper)}#tab-spotter .go:hover{background:var(--navy2)}
+#tab-spotter .alt{background:var(--amber);color:var(--navy)}
+#tab-spotter .ghost{background:transparent;box-shadow:inset 0 0 0 2px var(--navy);color:var(--navy)}
+#tab-spotter .sum{padding:14px 18px;border-radius:6px;font-weight:700;margin-bottom:12px;color:#fff}
+#tab-spotter .sum.bad{background:var(--red)}#tab-spotter .sum.ok{background:var(--green)}#tab-spotter .sum.mid{background:#9A6A12}
+#tab-spotter h3{font:800 1.5rem var(--display);margin:24px 0 2px}
+#tab-spotter .sub{font-size:.85rem;color:var(--muted);margin:0 0 10px}
+#tab-spotter .item{background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--red);border-radius:6px;padding:10px 14px;margin-bottom:8px}
+#tab-spotter .item.warn{border-left-color:var(--amber)}
+#tab-spotter .item.info{border-left-color:var(--teal)}
+#tab-spotter .item b{color:var(--navy)}
+.art{display:inline-block;background:var(--navy);color:var(--paper);font-size:.72rem;font-weight:700;padding:2px 9px;border-radius:99px;margin-left:6px;vertical-align:2px;text-decoration:none}
+a.art:hover{background:var(--navy3);text-decoration:underline}
+.art.isbp{background:var(--teal);color:var(--navy)}
+.art.inco{background:var(--amber);color:var(--navy)}
+#tab-spotter .note{font-size:.82rem;color:var(--muted);margin-top:24px;border-top:1px solid var(--line);padding-top:12px}
+#tab-spotter .note{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px 40px;font-size:.85rem}
+@media(max-width:900px){#tab-spotter .note{grid-template-columns:1fr}}
+#tab-spotter .note p{margin:0}
+
+/* ---------- UCP explorer ---------- */
+.ask{display:flex;gap:8px;max-width:760px}
+.ask input{flex:1;min-width:0;font:inherit;font-size:1.15rem;padding:14px 16px;border:2px solid var(--navy);border-radius:8px;background:var(--field);color:var(--ink)}
+.ask input:focus{outline:3px solid var(--amber);outline-offset:1px}
+.ask button{font-weight:700;background:var(--navy);color:var(--paper);border:0;border-radius:8px;padding:0 22px;cursor:pointer}
+.try{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:12px 0 28px;max-width:900px}
+.try span{font-size:.85rem;color:var(--muted);margin-right:4px}
+.try button{font-size:.85rem;background:var(--paper);border:1px solid var(--line);border-radius:99px;padding:4px 12px;cursor:pointer}
+.try button:hover{border-color:var(--navy)}
+.ucp-layout{display:grid;grid-template-columns:280px minmax(0,1fr);gap:32px;align-items:start}
+@media(max-width:860px){.ucp-layout{grid-template-columns:1fr}}
+.ucp-index{position:sticky;top:12px;max-height:calc(100vh - 24px);overflow:auto;background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:4px 10px 10px}
+@media(max-width:860px){.ucp-index{position:static;max-height:none}}
+.ucp-index summary{font:700 1.1rem var(--display);padding:8px 2px;cursor:pointer}
+.ig{font:700 .95rem var(--display);color:var(--teal-ink);margin:12px 0 4px}
+.il{list-style:none;margin:0;padding:0}
+.il a{display:grid;grid-template-columns:30px 1fr;gap:6px;align-items:baseline;padding:4px 6px;border-radius:4px;text-decoration:none;color:var(--ink);font-size:.86rem;line-height:1.3}
+.il a b{font:800 1rem var(--stencil);color:var(--navy3)}
+.il a:hover{background:var(--kraft)}
+.il a.on{background:var(--navy);color:var(--paper)}.il a.on b{color:var(--amber)}
+.rs-h{font-size:.85rem;color:var(--muted);margin:0 0 6px}
+.rs{list-style:none;margin:0 0 26px;padding:0;display:grid;gap:6px}
+.rs a{display:grid;grid-template-columns:48px 1fr;gap:10px;align-items:start;text-decoration:none;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:6px;padding:10px 12px}
+.rs a.top{border-color:var(--navy);box-shadow:inset 4px 0 0 var(--amber)}
+.rs a b{font:800 1.9rem/1 var(--stencil);color:var(--navy)}
+.rs strong{display:block}.rs em{display:block;font-style:normal;font-size:.88rem;color:var(--muted)}
+.noresult{background:var(--paper);border:1px dashed var(--line);border-radius:6px;padding:14px 16px;margin-bottom:24px}
+#ucpArticle:focus{outline:none}
+.ah{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:end;border-bottom:3px solid var(--navy);padding-bottom:12px;margin-bottom:16px}
+.an{font:800 clamp(5rem,12vw,8.5rem)/.8 var(--stencil);color:var(--navy);letter-spacing:-.02em}
+.ag{margin:0 0 4px;color:var(--teal-ink);font-weight:700;font-size:.9rem}
+.ah h3{font:800 clamp(1.6rem,3.2vw,2.3rem)/1.02 var(--display);margin:0}
+.asum{font-size:1.1rem}
+#ucpArticle h4{font:800 1.3rem var(--display);margin:26px 0 8px}
+#ucpArticle h4 small{font:400 .8rem var(--body);color:var(--muted);margin-left:6px}
+.apts{display:grid;grid-template-columns:max-content 1fr;gap:6px 16px;margin:0}
+.apts dt{font:800 1rem var(--display);color:var(--teal-ink);white-space:nowrap}
+.apts dd{margin:0}
+.ex{background:var(--paper);border:1px solid var(--line);border-left:6px solid var(--red);border-radius:6px;padding:4px 18px 12px;margin-top:22px}
+.ex.sit{border-left-color:var(--teal)}
+.ex dl{margin:0}.ex dt{font-weight:700;margin-top:8px}.ex dd{margin:0}
+.case{background:var(--navy);color:#E7EDF5;border-radius:6px;padding:14px 18px;margin:0 0 12px}
+.case p{margin:0 0 8px}
+.case .cn{font-weight:700;color:#fff;font-size:1.02rem}
+.case .cc{color:var(--amber);font-size:.85rem}
+.case .cl b{color:var(--amber)}
+.case a{color:var(--amber)}
+.rel{display:flex;flex-wrap:wrap;gap:6px;margin:0}
+.chip{display:inline-block;font-size:.84rem;background:var(--paper);border:1px solid var(--line);border-radius:99px;padding:4px 12px;text-decoration:none;color:var(--ink)}
+a.chip:hover{border-color:var(--navy)}
+.chip.inco{background:var(--amber);border-color:var(--amber)}
+.chip.isbp{background:transparent;border-style:dashed}
+
+/* ---------- Incoterms map ---------- */
+.picker{display:flex;flex-wrap:wrap;gap:14px 26px;margin:6px 0 6px}
+.pgroup{display:grid;grid-template-columns:auto 1fr;grid-template-rows:auto auto;column-gap:10px;align-items:center}
+.pg-letter{grid-row:1 / span 2;font:800 2.6rem/1 var(--stencil);color:var(--navy3);opacity:.45}
+.pg-desc{font-size:.78rem;color:var(--muted)}
+.pg-rules{display:flex;gap:6px}
+.rule{position:relative;background:var(--paper);border:2px solid var(--navy);border-radius:4px;padding:6px 10px 4px;cursor:pointer;min-width:62px;text-align:center}
+.rule .rc{font:800 1.45rem/1 var(--stencil);letter-spacing:.04em;color:var(--navy)}
+.rule .wave{display:block;width:26px;height:8px;margin:2px auto 0}
+.rule:hover{background:#fff}
+.rule[aria-pressed="true"]{background:var(--navy)}
+.rule[aria-pressed="true"] .rc{color:var(--amber)}
+.rule[aria-pressed="true"] .wave path{stroke:var(--amber)}
+.wave path{fill:none;stroke:var(--teal-ink);stroke-width:2;stroke-linecap:round}
+.picker-note{font-size:.82rem;color:var(--muted);margin:4px 0 22px;display:flex;align-items:center;gap:6px}
+.picker-note .wave{width:26px;height:9px}
+.rule-bar{display:grid;grid-template-columns:auto 1fr auto;gap:22px;align-items:center;margin-bottom:16px}
+@media(max-width:760px){.rule-bar{grid-template-columns:auto 1fr}.place-toggle{grid-column:1 / -1}}
+.rule-code{font:800 clamp(4.5rem,11vw,7.5rem)/.82 var(--stencil);color:var(--navy);letter-spacing:.02em}
+.rule-meta h3{font:800 clamp(1.5rem,3vw,2.1rem)/1.05 var(--display);margin:0 0 4px}
+.rule-meta p{margin:0;font-size:.92rem;color:#2E3A4A}
+.write-it{margin-top:6px!important}
+#incoWrite{display:inline-block;max-width:100%;font-weight:700;background:var(--paper);border:1px dashed var(--line);padding:1px 8px;border-radius:4px}
+.place-toggle{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+.place-toggle[hidden]{display:none}
+.pt-l{font-size:.8rem;color:var(--muted);width:100%}
+.place-toggle button{background:var(--paper);border:1px solid var(--navy);border-radius:99px;padding:6px 14px;font-size:.9rem;cursor:pointer}
+.place-toggle button[aria-pressed="true"]{background:var(--navy);color:var(--paper)}
+
+.map-panel{background:var(--navy);color:#DDE6F1;border-radius:14px;padding:16px 18px 12px;box-shadow:0 1px 0 #fff3 inset}
+.map-top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px;margin-bottom:8px}
+.legend{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px 18px;font-size:.85rem}
+.legend li{display:flex;align-items:center;gap:7px}
+.sw{display:inline-block;width:22px;height:10px;border-radius:2px}
+.sw.s{background:var(--teal)}.sw.b{background:var(--amber)}
+.sw.d,.cost.d .cv{background:repeating-linear-gradient(135deg,var(--teal) 0 5px,var(--amber) 5px 10px)}
+.play{background:var(--amber);color:var(--navy);font-weight:700;border:0;border-radius:99px;padding:8px 18px;cursor:pointer}
+.play[aria-pressed="true"]{background:var(--paper)}
+.map-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:4px}
+.map-inner{position:relative;min-width:980px;padding-bottom:14px}
+.route{display:grid;grid-template-columns:86px repeat(13,minmax(68px,1fr));grid-template-rows:30px 92px 58px 26px 58px 46px}
+.cell{grid-column:calc(var(--s) + 2);grid-row:calc(var(--t) + 2);position:relative;min-width:0}
+.zone{grid-row:1;font:700 .95rem var(--display);color:#9FB3CB;border-bottom:1px solid #ffffff2b;padding:4px 6px;margin:0 2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lbl{font:700 1rem var(--display);color:#9FB3CB;display:flex;align-items:center}
+.stn{background:transparent;border:0;border-radius:8px;color:#E7EEF7;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:6px;padding:10px 3px 4px;text-align:center}
+.stn svg{width:30px;height:30px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linejoin:round;stroke-linecap:round;flex:none}
+.stn-l{font-size:.74rem;line-height:1.2}
+.stn:hover{background:#ffffff12}
+.stn[aria-pressed="true"]{color:#fff}
+.ztag{display:none}
+.risk::before{content:"";position:absolute;left:0;right:0;top:50%;height:12px;transform:translateY(-50%);background:var(--c,var(--teal));transition:background-color .45s ease}
+.risk.s{--c:var(--teal)}.risk.b{--c:var(--amber)}
+.risk,.cost,.insc,.lane{cursor:pointer}
+.cost .cv{position:absolute;inset:14px 1px;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;color:var(--navy);background:var(--c);transition:background-color .45s ease;overflow:hidden}
+.cost.s{--c:var(--teal)}.cost.b{--c:var(--amber)}
+.cost.d .cv{color:#fff;text-shadow:0 0 3px var(--navy),0 0 2px var(--navy)}
+.insc::before{content:"";position:absolute;left:0;right:0;top:50%;border-top:1px dashed #ffffff33}
+.ov{position:absolute;pointer-events:none;transition:left .5s cubic-bezier(.3,.7,.2,1),top .5s cubic-bezier(.3,.7,.2,1),width .5s cubic-bezier(.3,.7,.2,1),height .5s cubic-bezier(.3,.7,.2,1),opacity .3s}
+.pin{background:#fff;z-index:3}
+.pin span{position:absolute;white-space:nowrap;font-size:.72rem;font-weight:700;background:#fff;color:var(--navy);padding:2px 7px;border-radius:3px;left:6px}
+.risk-pin span{top:-2px}
+.cost-pin span{bottom:-2px}
+.pin.flip span{left:auto;right:6px}
+.pin.quiet span{display:none}
+.gap{opacity:0;z-index:2;border:2px solid #fff;border-top:0;border-bottom:0;display:flex;align-items:center;justify-content:center}
+.gap::before{content:"";position:absolute;left:0;right:0;top:50%;border-top:2px dotted #fff}
+.gap.on{opacity:1}
+.gap span{position:relative;background:var(--navy);color:#fff;font-size:.74rem;font-weight:700;padding:0 8px;white-space:nowrap}
+.ins{z-index:2;display:flex;align-items:center;justify-content:center;border-radius:99px;margin-top:9px;height:28px!important;background:#ffffff14;border:1.5px solid var(--teal)}
+.ins span{font-size:.72rem;font-weight:700;color:#CFF3EE;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 10px}
+.ins.none{border:1px dashed #ffffff40;background:transparent}
+.ins.none span{color:#9FB3CB;font-weight:400}
+.incident{z-index:1;border:2px solid #FF6B5E;border-radius:10px;background:#ff6b5e14}
+.incident span{position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);background:#FF6B5E;color:#fff;font-size:.66rem;font-weight:700;padding:1px 6px;border-radius:3px;white-space:nowrap}
+.map-foot{font-size:.78rem;color:#9FB3CB;margin:8px 0 0}
+
+.inco-lower{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;margin-top:24px;align-items:start}
+@media(max-width:900px){.inco-lower{grid-template-columns:1fr}}
+.verdict{background:var(--paper);border:1px solid var(--line);border-top:6px solid #E2483D;border-radius:6px;padding:14px 20px 16px}
+.verdict h3{font:800 1.6rem/1.05 var(--display);margin:0 0 2px}
+.v-sub{margin:0 0 10px;font-size:.88rem;color:var(--muted)}
+.vrows dt{font-weight:700;margin-top:10px;font-size:.88rem;color:var(--navy2)}
+.vrows dd{margin:2px 0 0}
+.pty{display:inline-block;font-size:.8rem;padding:1px 9px;border-radius:99px;margin-right:4px}
+.pty.s{background:var(--teal);color:var(--navy)}.pty.b{background:var(--amber);color:var(--navy)}
+.pty.d{background:repeating-linear-gradient(135deg,var(--teal) 0 5px,var(--amber) 5px 10px);color:var(--navy)}
+.callout{margin:14px 0 0;background:var(--navy);color:#fff;padding:10px 14px;border-radius:6px;font-weight:700}
+.facts-wrap h3{font:800 1.6rem var(--display);margin:0 0 6px}
+.facts{margin:0;display:grid;grid-template-columns:10.5rem 1fr;gap:8px 16px}
+@media(max-width:520px){.facts{grid-template-columns:1fr;gap:2px}.facts dd{margin-bottom:8px}}
+.facts dt{font-weight:700;font-size:.86rem;color:var(--navy2)}
+.facts dd{margin:0;font-size:.95rem}
+
+/* vertical map on small screens */
+@media(max-width:760px){
+  .map-panel{padding:14px 10px 10px;border-radius:10px}
+  .map-inner{min-width:0}
+  .route{grid-template-columns:minmax(0,1fr) 40px 16px 78px 70px;grid-template-rows:34px repeat(13,minmax(72px,auto))}
+  .cell{grid-row:calc(var(--s) + 2);grid-column:calc(var(--t) + 1)}
+  .zone{display:none}
+  .lbl{justify-content:center;font-size:.85rem}
+  .stn{flex-direction:row;align-items:center;justify-content:flex-start;text-align:left;padding:12px 6px;gap:10px;flex-wrap:wrap;align-content:center}
+  .stn svg{width:26px;height:26px}
+  .stn-l{font-size:.85rem}
+  .ztag{display:block;width:100%;order:-1;font-size:.7rem;color:#9FB3CB}
+  .risk::before{left:50%;right:auto;top:0;bottom:0;width:12px;height:auto;transform:translateX(-50%)}
+  .cost .cv{inset:4px 6px;font-size:.7rem}
+  .insc::before{top:0;bottom:0;left:50%;right:auto;border-top:0;border-left:1px dashed #ffffff33}
+  .pin span{left:auto;right:calc(100% + 6px);top:50%!important;bottom:auto!important;transform:translateY(-50%);font-size:.66rem}
+  .cost-pin span{right:calc(100% + 62px)}
+  .pin.flip span{left:auto;right:calc(100% + 6px)}
+  .cost-pin.flip span{right:calc(100% + 62px)}
+  .gap{border:2px solid #fff;border-left:0;border-right:0}
+  .gap::before{left:50%;right:auto;top:0;bottom:0;border-top:0;border-left:2px dotted #fff}
+  .gap span{display:none}
+  .ins{margin:0 0 0 7px;width:56px!important;height:auto!important;border-radius:28px}
+  .ins span{white-space:normal;text-align:center;font-size:.66rem;padding:6px 4px;line-height:1.2}
+  .incident span{top:-9px;bottom:auto;left:auto;right:10px;transform:none}
+}
+@media(max-width:520px){.tabs{gap:4px}.tabs button{font-size:.92rem;padding:11px 11px 9px}}
+.backbtn{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:50;display:flex;align-items:center;gap:8px;background:var(--navy);color:var(--paper);border:2px solid var(--amber);border-radius:99px;padding:10px 20px 10px 14px;font-weight:700;font-size:.95rem;white-space:nowrap;max-width:calc(100vw - 32px);cursor:pointer;box-shadow:0 6px 20px #0f274259;animation:backin .25s ease-out}
+.backbtn[hidden]{display:none}
+.backbtn svg{width:16px;height:16px;fill:none;stroke:var(--amber);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.backbtn:hover{background:var(--navy3)}
+@keyframes backin{from{opacity:0;transform:translate(-50%,10px)}to{opacity:1;transform:translate(-50%,0)}}
+.came-back{outline:3px solid var(--amber);outline-offset:3px;animation:cameback 1.6s ease-out forwards}
+@keyframes cameback{0%,60%{outline-color:var(--amber)}100%{outline-color:transparent}}
+main{scroll-margin-top:0}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="masthead">
+      <div class="mast-name">
+        <h1 class="brand">Remburssi</h1>
+      </div>
+      <div class="mast-intro">
+        <p>A professional toolkit for documentary credit practitioners. Examine a presentation against UCP 600 and ISBP 821, consult any UCP 600 article in plain English, and see precisely where risk and cost transfer under each Incoterms® 2020 rule.</p>
+        <p class="byline">Designed and developed by Ishtiak Ahmed, CDCS</p>
+      </div>
+    </div>
+    <div class="tabs" role="tablist" aria-label="Tools">
+      <button type="button" role="tab" id="t-spotter" aria-controls="tab-spotter" aria-selected="true" data-tab="spotter">Discrepancy checker</button>
+      <button type="button" role="tab" id="t-ucp" aria-controls="tab-ucp" aria-selected="false" data-tab="ucp" tabindex="-1">UCP 600 explorer</button>
+      <button type="button" role="tab" id="t-incoterms" aria-controls="tab-incoterms" aria-selected="false" data-tab="incoterms" tabindex="-1">Incoterms 2020 map</button>
+    </div>
+  </div>
+</header>
+<main>
+<section class="tab" id="tab-spotter" role="tabpanel" aria-labelledby="t-spotter">
+  <div class="wrap">
+    <h2>Will the bank refuse this presentation?</h2>
+    <p class="lede">Enter the key LC terms and what the beneficiary presented. The checker reads it the way a document examiner would, against UCP 600 and ISBP 821, then tests whether the trade term fits the deal under Incoterms® 2020. Every rule reference opens the article in the UCP 600 explorer or the rule on the Incoterms map. Nothing leaves your browser.</p>
+
+<div class="grid">
+  <fieldset>
+    <legend>1. LC terms</legend>
+    <div class="row">
+      <label>Currency<input type="text" id="lcCur" placeholder="USD"></label>
+      <label>LC amount<input type="number" id="lcAmt" step="0.01"></label>
+    </div>
+    <label>Amount / quantity tolerance
+      <select id="tol"><option value="0">None stated</option><option value="10">"About" / "approximately" (±10%)</option></select>
+    </label>
+    <div class="row">
+      <label>Latest shipment date<input type="date" id="lcShip"></label>
+      <label>LC expiry date<input type="date" id="lcExp"></label>
+    </div>
+    <label>Presentation period (days after shipment)<input type="number" id="lcPer" value="21" min="1"></label>
+    <div class="row">
+      <label>Port / place of loading<input type="text" id="lcPol"></label>
+      <label>Port / place of discharge<input type="text" id="lcPod"></label>
+    </div>
+    <div class="row">
+      <label>Partial shipments<select id="lcPart"><option value="allowed">Allowed</option><option value="prohibited">Prohibited</option></select></label>
+      <label>Transhipment<select id="lcTrans"><option value="allowed">Allowed</option><option value="prohibited">Prohibited</option></select></label>
+    </div>
+    <label>Applicant (buyer) name<input type="text" id="lcApp"></label>
+    <label>Goods description<input type="text" id="lcGoods"></label>
+    <div class="row">
+      <label>LC quantity<input type="number" id="lcQty" step="any"></label>
+      <label>Quantity stated in
+        <select id="qtyType"><option value="items">Packing units / individual items</option><option value="bulk">Bulk (weight, volume, length)</option></select>
+      </label>
+    </div>
+
+    <h4>Trade term</h4>
+    <div class="row">
+      <label>Incoterms rule
+        <select id="inco">
+          <option value="none">None stated</option>
+          <optgroup label="Any mode of transport">
+            <option>EXW</option><option>FCA</option><option>CPT</option><option>CIP</option><option>DAP</option><option>DPU</option><option>DDP</option>
+          </optgroup>
+          <optgroup label="Sea and inland waterway only">
+            <option>FAS</option><option>FOB</option><option>CFR</option><option selected>CIF</option>
+          </optgroup>
+        </select>
+      </label>
+      <label>Named place / port<input type="text" id="lcPlace" placeholder="e.g. Helsinki"></label>
+    </div>
+    <label>Edition stated in the LC
+      <select id="incoVer"><option value="2020">Incoterms 2020</option><option value="2010">Incoterms 2010</option><option value="none">No edition stated</option></select>
+    </label>
+
+    <div class="checks" id="reqDocs">
+      <strong style="width:100%;font-size:.8rem;color:var(--navy2)">Documents required</strong>
+      <label><input type="checkbox" value="invoice" checked> Invoice</label>
+      <label><input type="checkbox" value="bl" checked> Transport document</label>
+      <label><input type="checkbox" value="packing" checked> Packing list</label>
+      <label><input type="checkbox" value="insurance"> Insurance</label>
+      <label><input type="checkbox" value="origin"> Cert. of origin</label>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>2. Presentation</legend>
+    <div class="row">
+      <label>Presentation date<input type="date" id="prDate"></label>
+      <label>Shipment / on-board date<input type="date" id="prShip"></label>
+    </div>
+
+    <h4>Commercial invoice</h4>
+    <div class="row">
+      <label>Invoice currency<input type="text" id="invCur"></label>
+      <label>Invoice amount<input type="number" id="invAmt" step="0.01"></label>
+    </div>
+    <label>Invoice made out to<input type="text" id="invBuyer"></label>
+    <label>Invoice goods description<input type="text" id="invGoods"></label>
+    <div class="row">
+      <label>Invoice quantity<input type="number" id="invQty" step="any"></label>
+      <label>Trade term shown on invoice<input type="text" id="invTerm" placeholder="e.g. CIF Helsinki Incoterms 2020"></label>
+    </div>
+
+    <h4>Transport document</h4>
+    <label>Type
+      <select id="tdType">
+        <option value="bl">Bill of lading (Art. 20)</option>
+        <option value="swb">Non-negotiable sea waybill (Art. 21)</option>
+        <option value="mto">Multimodal / combined transport doc (Art. 19)</option>
+        <option value="awb">Air waybill (Art. 23)</option>
+        <option value="road">Road or rail document (Art. 24)</option>
+      </select>
+    </label>
+    <div class="row">
+      <label>Port / place of loading<input type="text" id="blPol"></label>
+      <label>Port / place of discharge<input type="text" id="blPod"></label>
+    </div>
+    <div class="row">
+      <label>Shows transhipment<select id="blTrans"><option value="no">No</option><option value="yes">Yes</option></select></label>
+      <label>Goods in container<select id="blCont"><option value="yes">Yes</option><option value="no">No</option></select></label>
+    </div>
+    <div class="row">
+      <label>Says "on deck"<select id="blDeck"><option value="no">No</option><option value="yes">Yes</option></select></label>
+      <label>Clean<select id="blClean"><option value="yes">Yes</option><option value="no">No (claused)</option></select></label>
+    </div>
+    <div class="row">
+      <label>On-board notation / shipped wording<select id="blOnb"><option value="yes">Present</option><option value="no">Missing</option></select></label>
+      <label>Freight notation<select id="blFreight"><option value="prepaid">Freight prepaid</option><option value="collect">Freight collect / payable at destination</option><option value="none">Not shown</option></select></label>
+    </div>
+    <label>This is a partial shipment<select id="prPart"><option value="no">No</option><option value="yes">Yes</option></select></label>
+
+    <h4>Insurance</h4>
+    <div class="row">
+      <label>Cover amount<input type="number" id="insAmt" step="0.01"></label>
+      <label>Cover currency<input type="text" id="insCur"></label>
+    </div>
+    <div class="row">
+      <label>Effective date<input type="date" id="insDate"></label>
+      <label>Cover terms<select id="insCl"><option value="A">Institute Cargo Clauses (A)</option><option value="B">Institute Cargo Clauses (B)</option><option value="C">Institute Cargo Clauses (C)</option><option value="none">Not stated</option></select></label>
+    </div>
+
+    <h4>Across all documents</h4>
+    <label>Uncertified alterations in any document<select id="alter"><option value="no">No</option><option value="yes">Yes</option></select></label>
+    <div class="checks" id="prDocs">
+      <strong style="width:100%;font-size:.8rem;color:var(--navy2)">Documents actually presented</strong>
+      <label><input type="checkbox" value="invoice"> Invoice</label>
+      <label><input type="checkbox" value="bl"> Transport document</label>
+      <label><input type="checkbox" value="packing"> Packing list</label>
+      <label><input type="checkbox" value="insurance"> Insurance</label>
+      <label><input type="checkbox" value="origin"> Cert. of origin</label>
+    </div>
+  </fieldset>
+</div>
+
+<div class="bar">
+  <button class="go" id="run">Check presentation</button>
+  <button class="alt" id="sample">Load sample (with traps)</button>
+  <button class="ghost" id="clear">Clear</button>
+</div>
+<div id="out" aria-live="polite"></div>
+
+<div class="note">
+  <p><b>Rule editions.</b> Based on UCP 600, ISBP 821 and Incoterms® 2020. ISBP paragraph numbers differ between ISBP 745 and ISBP 821, so check which edition a credit calls for.</p>
+  <p><b>Two different questions.</b> The first results block is about the bank: will the presentation be refused? The second is about the deal: does the trade term fit the credit, the transport and the insurance? Banks deal with documents, not the sale contract (UCP 600 Art. 4), so an Incoterms mismatch only becomes a discrepancy when it shows up as a conflict in the documents or the credit's own terms.</p>
+  <p><b>Scope.</b> An educational tool, not a substitute for a trained document examiner. It checks only the fields above against the default rules. The credit's own conditions can modify or exclude these articles. Banks have up to five banking days following the day of presentation to examine documents (Art. 14(b)). Incoterms® is a registered trademark of the International Chamber of Commerce.</p>
+</div>
+
+  </div>
+</section>
+
+<section class="tab" id="tab-ucp" role="tabpanel" aria-labelledby="t-ucp" hidden>
+  <div class="wrap">
+    <h2>Ask UCP 600 a question</h2>
+    <p class="lede">Type a question in plain words, a keyword or an article number. Every article has a plain-language summary and a typical discrepancy. Where a public court judgment has tested the article, you'll find the case too.</p>
+    <form class="ask" id="ucpForm" role="search">
+      <label for="ucpQ" class="sr-only">Question, keyword or article number</label>
+      <input id="ucpQ" type="search" placeholder="How long does the bank have to check documents?" autocomplete="off">
+      <button type="submit">Search</button>
+    </form>
+    <div class="try" id="ucpTry"><span>Try</span></div>
+
+    <div class="ucp-layout">
+      <nav class="ucp-index" aria-label="All 39 articles">
+        <details id="ucpIdx" open><summary>All 39 articles</summary><div id="ucpList"></div></details>
+      </nav>
+      <div class="ucp-main">
+        <div id="ucpResults" aria-live="polite"></div>
+        <article id="ucpArticle" tabindex="-1"></article>
+      </div>
+    </div>
+    <p class="fine">Summaries are plain-language paraphrases, not the text of UCP 600 (ICC Publication No. 600). Examples marked "typical" are illustrative, not real cases. Court cases link to the public judgment or a law-firm case note. Always check the official ICC text and the credit's own terms.</p>
+  </div>
+</section>
+
+<section class="tab" id="tab-incoterms" role="tabpanel" aria-labelledby="t-incoterms" hidden>
+  <div class="wrap">
+    <h2>Where does the risk change hands?</h2>
+    <p class="lede">Pick an Incoterms® 2020 rule and follow a container from a garment factory in Gazipur to a warehouse in Vantaa. One line shows who carries the risk, the other shows who pays. Click any stage to see who takes the loss if something goes wrong there.</p>
+
+    <div class="picker" id="incoPicker" role="group" aria-label="Incoterms 2020 rule"></div>
+    <p class="picker-note"><svg class="wave" viewBox="0 0 28 10" aria-hidden="true"><path d="M1 6c3-3 5-3 8 0s5 3 8 0 5-3 8 0"/></svg> Sea and inland waterway only. The other seven work for any mode of transport.</p>
+
+    <div class="rule-bar" id="incoRuleBar">
+      <div class="rule-code" id="incoCode" aria-hidden="true">CIF</div>
+      <div class="rule-meta">
+        <h3 id="incoName">Cost, Insurance and Freight</h3>
+        <p id="incoMode"></p>
+        <p class="write-it">Write it as <span id="incoWrite"></span></p>
+      </div>
+      <div class="place-toggle" id="incoPlace" role="group" aria-label="Named place"></div>
+    </div>
+
+    <div class="map-panel">
+      <div class="map-top">
+        <ul class="legend">
+          <li><i class="sw s"></i>Seller</li>
+          <li><i class="sw b"></i>Buyer</li>
+          <li><i class="sw d"></i>Buyer, unless the seller's carriage contract covers it</li>
+        </ul>
+        <button type="button" class="play" id="incoPlay">Follow the shipment</button>
+      </div>
+      <div class="map-scroll">
+        <div class="map-inner" id="mapInner">
+          <div class="route" id="route"></div>
+          <div class="ov incident" id="ovIncident" aria-hidden="true"><span>Mishap here</span></div>
+          <div class="ov pin risk-pin" id="ovRisk" aria-hidden="true"><span></span></div>
+          <div class="ov pin cost-pin" id="ovCost" aria-hidden="true"><span></span></div>
+          <div class="ov gap" id="ovGap" aria-hidden="true"><span>Buyer's risk, seller's bill</span></div>
+          <div class="ov ins" id="ovIns" aria-hidden="true"><span></span></div>
+        </div>
+      </div>
+      <p class="map-foot">The map uses a sea shipment so all eleven rules fit on one route. For air, road or rail, read "terminal" and "carrier" in place of port and vessel.</p>
+    </div>
+
+    <div class="inco-lower">
+      <div class="verdict" id="incoVerdict" aria-live="polite"></div>
+      <div class="facts-wrap">
+        <h3 id="incoFactsTitle">CIF at a glance</h3>
+        <dl class="facts" id="incoFacts"></dl>
+      </div>
+    </div>
+    <p class="fine">Based on Incoterms® 2020. The map simplifies the A1–A10 and B1–B10 obligations of each rule, so refer to the ICC text before relying on it in a contract. Incoterms® is a registered trademark of the International Chamber of Commerce.</p>
+  </div>
+</section>
+
+</main>
+<button type="button" class="backbtn" id="backBtn" hidden><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M10 3 5 8l5 5"/></svg><span>Back</span></button>
+<footer><div class="wrap">Educational tools, not legal advice. Based on UCP 600, ISBP 821 and Incoterms® 2020. Runs entirely in your browser. © 2026 Ishtiak Ahmed.</div></footer>
+<script>
+
+(function(){
+  var $=function(i){return document.getElementById(i)};
+  var v=function(i){return $(i).value.trim()};
+  var norm=function(s){return s.toLowerCase().replace(/[^a-z0-9]/g,'')};
+  var d=function(i){var x=v(i);return x?new Date(x+'T00:00:00Z'):null};
+  var days=function(a,b){return Math.round((b-a)/86400000)};
+  var fmt=function(n){return n.toLocaleString('en-GB',{minimumFractionDigits:2,maximumFractionDigits:2})};
+  var ids=['lcCur','lcAmt','tol','lcShip','lcExp','lcPer','lcPol','lcPod','lcPart','lcTrans','lcApp','lcGoods','lcQty','qtyType','inco','lcPlace','incoVer','prDate','prShip','invCur','invAmt','invBuyer','invGoods','invQty','invTerm','tdType','blPol','blPod','blTrans','blCont','blDeck','blClean','blOnb','blFreight','prPart','insAmt','insCur','insDate','insCl','alter'];
+  var checked=function(box){return Array.prototype.map.call($(box).querySelectorAll('input:checked'),function(c){return c.value})};
+  var setChecks=function(box,vals){Array.prototype.forEach.call($(box).querySelectorAll('input'),function(c){c.checked=vals.indexOf(c.value)>-1})};
+  var has=function(a,x){return a.indexOf(x)>-1};
+
+  var SEA=['FAS','FOB','CFR','CIF'], FREIGHT_PAID=['CFR','CIF','CPT','CIP','DAP','DPU','DDP'], BUYER_CARRIES=['EXW','FCA','FAS','FOB'], INSURED=['CIF','CIP'];
+  var TD={
+    bl:{name:'bill of lading',art:'20',sea:true,fr:'E26',isbp:true},
+    swb:{name:'sea waybill',art:'21',sea:true,fr:'F24'},
+    mto:{name:'multimodal transport document',art:'19',sea:false,fr:'D30'},
+    awb:{name:'air waybill',art:'23',sea:false},
+    road:{name:'road or rail document',art:'24',sea:false}
+  };
+
+  var sample={lcCur:'USD',lcAmt:'250000',tol:'0',lcShip:'2026-10-15',lcExp:'2026-11-10',lcPer:'21',lcPol:'Chattogram',lcPod:'Helsinki',lcPart:'prohibited',lcTrans:'prohibited',lcApp:'Nordic Apparel Oy',lcGoods:'100% cotton knitted T-shirts, 50,000 pcs',lcQty:'50000',qtyType:'items',inco:'CIF',lcPlace:'Helsinki',incoVer:'2020',prDate:'2026-11-12',prShip:'2026-10-14',invCur:'USD',invAmt:'252500',invBuyer:'Nordic Apparel Group Oy',invGoods:'Cotton T-shirts, 50,000 pcs',invQty:'52000',invTerm:'CIF Helsinki',tdType:'bl',blPol:'Chattogram',blPod:'Rotterdam',blTrans:'yes',blCont:'yes',blDeck:'no',blClean:'no',blOnb:'yes',blFreight:'collect',prPart:'no',insAmt:'250000',insCur:'EUR',insDate:'2026-10-16',insCl:'C',alter:'yes'};
+
+  $('sample').onclick=function(){ids.forEach(function(i){$(i).value=sample[i]});setChecks('reqDocs',['invoice','bl','packing','insurance']);setChecks('prDocs',['invoice','bl','insurance']);run()};
+  $('clear').onclick=function(){ids.forEach(function(i){var e=$(i);if(e.tagName==='SELECT')e.selectedIndex=0;else e.value=(i==='lcPer'?'21':'')});$('inco').value='none';setChecks('reqDocs',['invoice','bl','packing']);setChecks('prDocs',[]);$('out').innerHTML=''};
+  $('run').onclick=run;
+
+  function run(){
+    var B=[],I=[];
+    var add=function(level,title,ucp,txt,isbp){B.push({level:level,title:title,ucp:ucp,isbp:isbp,txt:txt})};
+    var addI=function(level,title,ref,txt){I.push({level:level,title:title,inco:ref,txt:txt})};
+    var lcShip=d('lcShip'),lcExp=d('lcExp'),prDate=d('prDate'),prShip=d('prShip'),insDate=d('insDate');
+    var per=parseInt(v('lcPer'),10)||21, tol=parseFloat(v('tol'))||0;
+    var needs=checked('reqDocs'),haveDocs=checked('prDocs');
+    var td=TD[v('tdType')], term=v('inco'), ver=v('incoVer');
+    var cur=v('lcCur').toUpperCase(),icur=v('invCur').toUpperCase();
+    var amt=parseFloat(v('lcAmt')),inv=parseFloat(v('invAmt'));
+
+    /* ---------- BANK EXAMINATION: UCP 600 + ISBP 821 ---------- */
+    // Timing
+    if(!prDate||!prShip)add('warn','Dates missing','Art. 14(c)','Enter the presentation date and the shipment date to test timing.');
+    if(prDate&&lcExp&&prDate>lcExp)add('bad','Presented after expiry','Art. 6(d), 14(c)','Presentation on '+v('prDate')+' is after LC expiry '+v('lcExp')+'. A waiver will not fix this; it needs an amendment or the applicant’s acceptance outside the credit.');
+    if(prDate&&prShip&&days(prShip,prDate)>per)add('bad','Late presentation (stale documents)','Art. 14(c)','Presented '+days(prShip,prDate)+' days after shipment. The limit is '+per+' calendar days after the shipment date, and never later than expiry. The shipment day itself is not counted.','A15');
+    if(prShip&&lcShip&&prShip>lcShip)add('bad','Late shipment','Art. 14(c)','Shipment date '+v('prShip')+' is after the latest shipment date '+v('lcShip')+'.');
+    if(prShip&&prDate&&prShip>prDate)add('bad','Shipment date after presentation date','Art. 14(i)','A document cannot be dated later than its presentation. Check the dates.');
+
+    // Invoice
+    var hasInv=has(haveDocs,'invoice');
+    if(hasInv){
+      if(cur&&icur&&cur!==icur)add('bad','Invoice currency differs from LC','Art. 18(a)(iii)','Invoice is in '+icur+', credit is in '+cur+'.','C6(c)');
+      if(!isNaN(amt)&&!isNaN(inv)){
+        var max=amt*(1+tol/100);
+        if(inv>max+0.005)add('bad','Invoice exceeds LC amount','Art. 18, 30(a)','Invoice '+fmt(inv)+' vs maximum drawable '+fmt(max)+(tol?' (with the 10% "about" tolerance)':' (no tolerance stated)')+'.');
+      }
+      if(v('lcApp')&&v('invBuyer')&&norm(v('lcApp'))!==norm(v('invBuyer')))add('bad','Invoice not made out in the applicant’s name','Art. 18(a)(ii)','LC applicant: "'+v('lcApp')+'". Invoice: "'+v('invBuyer')+'". The name need not sit in a box labelled Applicant, but it has to be the applicant.','A17(b)');
+      if(v('lcGoods')&&v('invGoods')&&norm(v('lcGoods'))!==norm(v('invGoods')))add('warn','Goods description is not identical','Art. 18(c)','The invoice description must correspond with the credit. It need not mirror it word for word and may add details that do not change the nature of the goods, but anything missing or contradictory is a discrepancy. LC: "'+v('lcGoods')+'". Invoice: "'+v('invGoods')+'".','C3-C5');
+
+      // Trade term on invoice (ISBP C9)
+      if(term!=='none'){
+        var it=v('invTerm'), itN=norm(it);
+        if(!it)add('bad','Invoice does not show the trade term','','The credit states '+term+', so the invoice must show it.','C9');
+        else if(itN.indexOf(term.toLowerCase())<0)add('bad','Invoice shows a different trade term','Art. 14(d)','Credit: '+term+'. Invoice: "'+it+'".','C9');
+        else{
+          if(ver!=='none'&&itN.indexOf('incoterms'+ver)<0)add('bad','Trade term source missing or different on invoice','','The credit states the source, Incoterms '+ver+', so the invoice must show the same source. Invoice reads: "'+it+'".','C9');
+          if(v('lcPlace')&&itN.indexOf(norm(v('lcPlace')))<0)add('warn','Named place missing from invoice trade term','Art. 14(d)','Credit: '+term+' '+v('lcPlace')+'. Invoice: "'+it+'".','C9');
+        }
+      }
+    }
+
+    // Quantity
+    var lq=parseFloat(v('lcQty')),iq=parseFloat(v('invQty'));
+    if(hasInv&&!isNaN(lq)&&!isNaN(iq)&&lq>0){
+      var lim=tol?10:(v('qtyType')==='bulk'?5:0);
+      if(iq>lq*(1+lim/100)+1e-9)add('bad','Quantity exceeds permitted tolerance','Art. 30(a), 30(b)','Invoice quantity '+iq+' vs LC '+lq+'. Allowed excess: '+lim+'%. '+(v('qtyType')==='items'?'Quantity stated in packing units or individual items gets no 5% tolerance unless the credit says "about".':'The 5% bulk tolerance also needs the total drawing to stay within the LC amount.'),'C14');
+      else if(iq<lq*(1-lim/100)-1e-9){
+        if(v('lcPart')==='prohibited')add('bad','Short quantity with partial shipments prohibited','Art. 30(b), 31(a)','Invoice quantity '+iq+' vs LC '+lq+', beyond the '+lim+'% tolerance.','C14');
+        else add('info','Short quantity treated as a partial shipment','Art. 31(a)','Invoice quantity '+iq+' vs LC '+lq+'. Acceptable because partial shipments are allowed.','C14');
+      }
+    }
+
+    // Missing documents
+    var names={invoice:'Commercial invoice',bl:'Transport document',packing:'Packing list',insurance:'Insurance document',origin:'Certificate of origin'};
+    needs.forEach(function(k){if(!has(haveDocs,k))add('bad','Missing document: '+names[k],'Art. 14(a), 17(a)','The credit requires it and it was not presented.')});
+
+    // Transport document
+    if(has(haveDocs,'bl')){
+      var a=td.art;
+      if(td.sea||v('tdType')==='mto'){
+        var portArt=v('tdType')==='mto'?'Art. 19(a)(iii)':'Art. '+a+'(a)(iii)';
+        if(v('lcPol')&&v('blPol')&&norm(v('lcPol'))!==norm(v('blPol')))add('bad','Port / place of loading differs',portArt,'LC: '+v('lcPol')+'. Transport document: '+v('blPol')+'.');
+        if(v('lcPod')&&v('blPod')&&norm(v('lcPod'))!==norm(v('blPod')))add('bad','Port / place of discharge differs',portArt,'LC: '+v('lcPod')+'. Transport document: '+v('blPod')+'.');
+      }else{
+        add('info','Place checks skipped for this document type','Art. '+a,'Port checks here are built for sea and multimodal documents. Check the airports or places on the '+td.name+' against Art. '+a+' yourself.');
+      }
+      if(td.sea&&v('blOnb')==='no')add('bad','No on-board notation','Art. '+a+'(a)(ii)','A "received for shipment" '+td.name+' needs a dated on-board notation.',td.isbp?'E6':'');
+      if(v('blClean')==='no')add('bad','Transport document is not clean','Art. 27','It carries a clause declaring defective goods or packaging. The word "clean" itself is not required.',td.isbp?'E20, E21':'');
+      if(v('tdType')!=='awb'&&v('tdType')!=='road'&&v('blDeck')==='yes')add('bad','Goods shown loaded on deck','Art. 26(a)','A transport document must not indicate on-deck loading. A clause saying goods "may" be loaded on deck is acceptable.');
+      if(v('blTrans')==='yes'&&v('lcTrans')==='prohibited'){
+        if(td.sea){
+          if(v('blCont')==='yes')add('info','Transhipment shown, but containerised','Art. '+a+'(c)(ii)','A '+td.name+' indicating transhipment is acceptable even if the credit prohibits it when the goods are shipped in a container, trailer or LASH barge, unless the credit excludes this sub-article.',td.isbp?'E17':'');
+          else add('bad','Transhipment shown but prohibited','Art. '+a+'(c)','The credit prohibits transhipment and the goods are not containerised, so the container exception does not apply.',td.isbp?'E17':'');
+        }else if(v('tdType')==='mto'){
+          add('info','Transhipment on a multimodal document','Art. 19(c)(ii)','A multimodal document indicating transhipment is acceptable even if the credit prohibits it, provided one document covers the entire carriage.');
+        }else add('warn','Transhipment shown but prohibited','Art. '+a,'Check the transhipment rules in Art. '+a+' for this document type.');
+      }
+      if(v('blFreight')==='collect'&&term!=='none'&&has(FREIGHT_PAID,term))add('warn','Freight notation conflicts with the trade term','Art. 14(d)','The seller pays main carriage under '+term+', yet the '+td.name+' says freight collect. Freight wording need not match the credit exactly, but it must not conflict with the credit or the invoice. Most '+term+' credits call for "freight prepaid".',td.fr||'');
+    }
+    if(v('prPart')==='yes'&&v('lcPart')==='prohibited')add('bad','Partial shipment prohibited','Art. 31(a)','The credit prohibits partial shipments, so a partial shipment is a discrepancy.');
+
+    // Insurance
+    if(has(haveDocs,'insurance')){
+      var ia=parseFloat(v('insAmt')),icur2=v('insCur').toUpperCase();
+      if(!isNaN(ia)&&!isNaN(inv)&&ia+0.005<inv*1.1)add('bad','Insurance cover below 110%','Art. 28(f)(ii)','With no cover amount in the credit, the minimum is 110% of the CIF or CIP value. If that cannot be worked out from the documents, use the greater of the amount drawn and the gross invoice value. Needed here: '+fmt(inv*1.1)+'. Presented: '+fmt(ia)+'.','K12, K13, K15');
+      if(cur&&icur2&&cur!==icur2)add('bad','Insurance currency differs from LC','Art. 28(f)(i)','Cover must be in the currency of the credit. Insurance: '+icur2+'. Credit: '+cur+'.','K12, K13, K15');
+      if(insDate&&prShip&&insDate>prShip)add('bad','Insurance effective after shipment','Art. 28(e)','Cover must be effective no later than the date of shipment. If the issue date is later, the document must say cover runs from shipment or earlier. "Warehouse to warehouse" wording alone does not do that.','K10, K11');
+    }
+    if(v('alter')==='yes')add('bad','Uncertified alterations','','A correction needs authentication by the right party, which depends on who issued the document and whether it is legalised or certified. For a bill of lading that means the carrier, master or a named agent. One statement can cover several corrections in the same document.','A7, A8'+(v('tdType')==='bl'?', E24':''));
+
+    /* ---------- DEAL FIT: INCOTERMS 2020 ---------- */
+    if(term==='none'){
+      addI('warn','No trade term in the credit','','Without a stated rule, nobody can tell from the credit who pays freight or insurance, or where risk passes. Write it as rule + named place + edition, e.g. "CIF Helsinki Incoterms 2020".');
+    }else{
+      if(ver==='none')addI('warn','No Incoterms edition stated','','A term without an edition invites a dispute over which version applies. State "Incoterms 2020" next to the rule and place.');
+      if(ver==='2010')addI('info','Credit uses Incoterms 2010','','Parties may still choose 2010, but 2020 is the current edition. Under 2010, CIP needed only minimum cover; 2020 raised it to Institute Cargo Clauses (A).');
+      if(!v('lcPlace'))addI('warn','Named place missing','',term+' on its own is incomplete. Every Incoterms rule needs a named place or port.');
+      else{
+        if((term==='CFR'||term==='CIF')&&v('lcPod')&&norm(v('lcPlace'))!==norm(v('lcPod')))addI('warn','Named port does not match port of discharge',term,'Under '+term+' the named port is the port of destination. Term: '+term+' '+v('lcPlace')+'. LC port of discharge: '+v('lcPod')+'.');
+        if((term==='FOB'||term==='FAS')&&v('lcPol')&&norm(v('lcPlace'))!==norm(v('lcPol')))addI('warn','Named port does not match port of loading',term,'Under '+term+' the named port is the port of shipment. Term: '+term+' '+v('lcPlace')+'. LC port of loading: '+v('lcPol')+'.');
+      }
+      if(has(SEA,term)&&(v('tdType')==='awb'||v('tdType')==='road'))addI('warn','Sea-only rule used with non-sea transport',term,'FAS, FOB, CFR and CIF are for sea and inland waterway transport only. With an '+td.name+', use FCA, CPT or CIP instead.');
+      if(has(SEA,term)&&v('blCont')==='yes'&&td.sea)addI('info','Containerised goods on a sea-only rule',term,'With containers, the seller usually hands goods over at a terminal long before they go on board, yet keeps the risk under '+term+'. ICC guidance points container trades to '+(term==='FOB'||term==='FAS'?'FCA':(term==='CFR'?'CPT':'CIP'))+'.');
+      if(term==='FCA'&&v('tdType')==='bl')addI('info','FCA with an on-board bill of lading','FCA A6/B6','Incoterms 2020 lets the parties agree that the buyer instructs its carrier to issue an on-board bill of lading to the seller, which is exactly what this credit needs. Make sure the sale contract says so.');
+      if(term==='EXW')addI('warn','EXW under a letter of credit','EXW A2, A7','Under EXW the seller does not have to load the goods or clear them for export, and rarely holds a transport document of its own. That fits badly with a credit that asks the seller for shipping documents. FCA usually works better.');
+
+      // Insurance responsibility
+      var lcNeedsIns=has(needs,'insurance');
+      if(has(INSURED,term)&&!lcNeedsIns)addI('warn','Seller must insure, but the credit asks for no insurance document',term+' A5','Under '+term+' the seller has to buy cargo insurance for the buyer. The credit should call for the insurance document, or the buyer has no proof it exists.');
+      if(!has(INSURED,term)&&lcNeedsIns)addI('info','Credit asks for insurance the term does not require',term+' A5/B5','Under '+term+' the seller has no duty to insure. Asking for an insurance document is fine if agreed, but the seller should price it in.');
+      if(has(haveDocs,'insurance')&&has(INSURED,term)){
+        if(term==='CIP'&&ver!=='2010'&&v('insCl')!=='A')addI('warn','CIP cover below Incoterms 2020 standard','CIP A5','CIP under Incoterms 2020 requires cover in line with Institute Cargo Clauses (A), unless the parties agreed otherwise. Presented: '+(v('insCl')==='none'?'cover terms not stated':'ICC ('+v('insCl')+')')+'.');
+        if(term==='CIF'&&v('insCl')==='none')addI('info','CIF cover terms not stated','CIF A5','CIF requires at least Institute Cargo Clauses (C) or similar. Check that the policy says what it covers.');
+        var ia2=parseFloat(v('insAmt'));
+        if(!isNaN(ia2)&&!isNaN(inv)&&ia2+0.005<inv*1.1)addI('warn','Cover below the Incoterms minimum',term+' A5','Incoterms also sets the floor at 110% of the contract price, in the contract currency. The same shortfall the bank will flag.');
+      }
+      if(v('blFreight')==='prepaid'&&has(BUYER_CARRIES,term)&&has(haveDocs,'bl'))addI('info','"Freight prepaid" under a buyer-carriage term',term+' B4','Under '+term+' the buyer contracts and pays for main carriage. A "freight prepaid" notation is not a discrepancy on its own, but check who paid and whether the invoice price includes it.');
+    }
+
+    if(!B.length)add('info','No automatic discrepancies found','','Still check signatures, originals and copies, document titles, issuers and any special conditions in the credit.');
+    render(B,I);
+  }
+
+  function render(B,I){
+    var ord={bad:0,warn:1,info:2};
+    var srt=function(a,b){return ord[a.level]-ord[b.level]};
+    B.sort(srt);I.sort(srt);
+    var bad=B.filter(function(r){return r.level==='bad'}).length,warn=B.filter(function(r){return r.level==='warn'}).length;
+    var iw=I.filter(function(r){return r.level!=='info'}).length;
+    var cls=bad?'bad':(warn?'mid':'ok');
+    var head=bad?(bad+' likely discrepanc'+(bad>1?'ies':'y')+(warn?', '+warn+' to review':'')+'. Expect refusal unless the applicant waives (Art. 16).'):(warn?warn+' point(s) to review before presenting.':'Looks clean on the fields checked.');
+    if(iw)head+=' Plus '+iw+' trade-term issue'+(iw>1?'s':'')+' in the deal itself.';
+    var h='<div class="sum '+cls+'">'+head+'</div>';
+    h+='<h3>Bank examination</h3><p class="sub">UCP 600 + ISBP 821. Would the bank refuse this presentation?</p>';
+    B.forEach(function(r){h+=item(r)});
+    h+='<h3>Deal fit</h3><p class="sub">Incoterms 2020. Does the trade term fit the credit, the transport and the insurance? Not a bank discrepancy unless it shows up in the documents.</p>';
+    h+=I.length?I.map(item).join(''):'<div class="item info"><b>Trade term looks consistent</b><div>Nothing in the fields above conflicts with the Incoterms rule chosen.</div></div>';
+    $('out').innerHTML=h;
+    $('out').scrollIntoView({behavior:'smooth',block:'start'});
+  }
+  function item(r){
+    var un=r.ucp?(r.ucp.match(/\d+/)||[''])[0]:'', ic=r.inco?r.inco.slice(0,3):'';
+    var badges=(r.ucp?'<a class="art" href="#ucp/'+un+'" title="Open Art. '+un+' in the UCP 600 explorer">UCP 600 '+esc(r.ucp)+'</a>':'')+(r.isbp?'<span class="art isbp">ISBP 821 '+esc(r.isbp)+'</span>':'')+(r.inco?(/^[A-Z]{3}$/.test(ic)?'<a class="art inco" href="#incoterms/'+ic+'" title="Open '+ic+' on the Incoterms map">':'<span class="art inco">')+'Incoterms 2020 '+esc(r.inco)+(/^[A-Z]{3}$/.test(ic)?'</a>':'</span>'):'');
+    return '<div class="item '+(r.level==='bad'?'':r.level)+'"><b>'+esc(r.title)+'</b>'+badges+'<div>'+esc(r.txt)+'</div></div>';
+  }
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+})();
+
+/* ---------- UCP 600 Explorer data: plain-language paraphrase, not the ICC text ---------- */
+(function(){
+var TK=window.TK=window.TK||{};
+
+TK.UCP_GROUPS=[
+  {n:'Scope and principles',a:1,b:5},
+  {n:'Credits, banks and undertakings',a:6,b:13},
+  {n:'Examining documents',a:14,b:17},
+  {n:'The documents',a:18,b:28},
+  {n:'Miscellaneous provisions',a:29,b:33},
+  {n:'Disclaimers',a:34,b:37},
+  {n:'Transfer and assignment',a:38,b:39}
+];
+
+TK.CASES={
+  fortis:{name:'Fortis Bank SA/NV and Stemcor UK Ltd v Indian Overseas Bank',cite:'[2011] EWCA Civ 58',court:'Court of Appeal of England and Wales, 2011',
+    what:'Indian Overseas Bank refused presentations under five credits. Its refusal notices said it was returning the documents, but months passed before it actually did.',
+    held:'Once a bank picks an option in its Art. 16(c)(iii) notice, it has to carry it out, and documents it says it is returning must go back with reasonable promptness. Because the bank didn’t, Art. 16(f) precluded it from relying on the discrepancy. One of the first reported cases on how to read UCP 600.',
+    lesson:'A refusal notice is a promise. Do what it says, quickly.',
+    url:'https://caselaw.nationalarchives.gov.uk/ewca/civ/2011/58',src:'Judgment, National Archives'},
+  bulgrains:{name:'Bulgrains & Co Ltd v Shinhan Bank',cite:'[2013] EWHC 2498 (QB)',court:'High Court, Queen’s Bench Division, 2013',
+    what:'A Bulgarian wheat trader claimed US$825,000 under a credit subject to UCP 600. The invoice named the beneficiary with an ampersand the credit didn’t have, and described the goods only briefly instead of using the credit’s full specification.',
+    held:'Both were valid discrepancies. Anything beyond an obvious typing error lets the bank refuse, and a correct description in another document (the quality certificate) did not cure the invoice under Art. 18(c). The court also accepted banker’s shorthand such as "MT734" and "notify" in the refusal, and held that sending the notice in time is what counts. The claim was dismissed.',
+    lesson:'Copy the credit’s goods description onto the invoice. Other documents can’t rescue it.',
+    url:'https://caselaw.nationalarchives.gov.uk/ewhc/qb/2013/2498',src:'Judgment, National Archives'},
+  cimb2:{name:'Deutsche Bank AG, London Branch v CIMB Bank Berhad',cite:'[2017] EWHC 3380 (Comm)',court:'High Court, Commercial Court, December 2017',
+    what:'CIMB refused reimbursement, arguing that a copy certificate showed an unsigned document and that the documents arrived more than 21 days after shipment.',
+    held:'A company stamp counts as a signature under Art. 3. Field 48 of the credit said documents could be presented within the credit’s validity, which clearly displaced the 21-day default in Art. 14(c). Both defences failed and Deutsche Bank recovered about US$9.96 million.',
+    lesson:'Read field 48. Credit wording can switch off the 21-day rule.',
+    url:'https://caselaw.nationalarchives.gov.uk/ewhc/comm/2017/3380',src:'Judgment, National Archives'},
+  cimb1:{name:'Deutsche Bank AG, London Branch v CIMB Bank Berhad',cite:'[2017] EWHC 1264 (Comm)',court:'High Court, Commercial Court, May 2017',
+    what:'An earlier round of the same dispute. The confirming bank argued the issuing bank had to reimburse on the strength of its statement that it had paid.',
+    held:'The issuing bank’s duty to reimburse under Art. 7(c) only arises where the nominated bank actually honoured a complying presentation. It isn’t a first-demand guarantee, so the issuer could ask for strictly necessary information about the payment, though not go fishing. Art. 13 didn’t apply because no reimbursing bank was involved.',
+    lesson:'Reimbursement depends on real honour of a complying presentation.',
+    url:'https://caselaw.nationalarchives.gov.uk/ewhc/comm/2017/1264',src:'Judgment, National Archives'},
+  maybank:{name:'Malayan Banking Berhad v Punjab National Bank',cite:'[2022] 6 CLJ 1',court:'Federal Court of Malaysia, 2022',
+    what:'Maybank negotiated documents and paid the seller about US$1.98 million, then claimed reimbursement. Punjab National Bank argued the bills of lading were freight forwarder’s bills rather than ocean bills.',
+    held:'The issuing bank examines the documents on their face only, with reasonable care, and doesn’t look behind the sale. The bills appeared compliant on their face. A bank refusing for any kind of non-compliance has to follow Art. 16 strictly, even for alleged fundamental defects, and can’t rely on grounds missing from its notice. Maybank’s appeal was allowed.',
+    lesson:'No proper Art. 16 notice, no defence, however serious the defect looks.',
+    url:'https://www.skrine.com/insights/alerts/july-2022/banks-duty-in-examining-documents-presented-u-1',src:'Case note, Skrine'},
+  equitable:{name:'Equitable Trust Co of New York v Dawson Partners Ltd',cite:'(1926) 27 Ll L Rep 49',court:'House of Lords, decided long before UCP 600',
+    what:'The classic statement of strict compliance: a bank isn’t entitled to accept documents that are nearly, but not exactly, what the credit calls for.',
+    held:'Courts applying UCP 600 still rely on it. In Bulgrains (2013) the judge cited it when upholding an invoice discrepancy.',
+    lesson:'Nearly right is still wrong.',
+    url:'https://caselaw.nationalarchives.gov.uk/ewhc/qb/2013/2498',src:'Cited in Bulgrains, National Archives'}
+};
+
+TK.UCP=[
+{n:1,t:'Application of UCP',k:['apply','applies','application','incorporate','subject to','standby','exclude','exclusion','modify','modification','field 48','latest version','override'],
+ q:['Does UCP 600 apply automatically?','Can a credit change a UCP rule?'],
+ sum:'UCP 600 governs a documentary credit, including a standby credit as far as the rules can apply, when the credit expressly says it is subject to them. Once incorporated, the rules bind every party unless the credit itself expressly modifies or excludes them.',
+ pts:[['1','Applies only when the credit’s text incorporates the rules.'],['1','Covers standby credits to the extent the articles fit.'],['1','The credit may change or exclude any article, but only expressly.']],
+ ex:{kind:'Typical situation',s:'A credit says "UCP latest version", and field 48 reads "documents to be presented within credit validity". Documents arrive 30 days after shipment but before expiry.',why:'That wording modifies Art. 14(c). The 21-day default no longer applies, so the timing is fine.',fix:'Read every field for wording that changes a UCP default before you rely on one.'},
+ cases:['cimb2'],rel:[14,6],isbp:'Preliminary considerations'},
+{n:2,t:'Definitions',k:['definition','define','meaning','means','honour','honor','negotiation','negotiate','complying presentation','banking day','beneficiary','applicant','presenter','irrevocable','confirmation','nominated bank'],
+ q:['What does honour mean?','What counts as negotiation?'],
+ sum:'Sets out the vocabulary of the rules: advising bank, applicant, banking day, beneficiary, complying presentation, confirmation, credit, honour, issuing bank, negotiation, nominated bank, presentation and presenter.',
+ pts:[['2','A credit is irrevocable by definition: a definite undertaking to honour a complying presentation.'],['2','Honour means paying at sight, incurring a deferred payment undertaking and paying at maturity, or accepting a draft and paying it at maturity.'],['2','Negotiation means a nominated bank buying drafts or documents by advancing, or agreeing to advance, funds before reimbursement is due.'],['2','A complying presentation matches the credit, the applicable UCP articles and international standard banking practice.']],
+ ex:{kind:'Typical situation',s:'An advising bank checks the documents, posts them to the issuing bank and tells the beneficiary it has "negotiated".',why:'Checking and forwarding isn’t negotiation. Without advancing or agreeing to advance funds, the bank has not negotiated.',fix:'If the beneficiary needs early money, agree a discount with the nominated bank.'},
+ cases:[],rel:[12,7,15],isbp:'Preliminary considerations'},
+{n:3,t:'Interpretations',k:['interpretation','signature','signed','sign','stamp','chop','on or about','first class','well known','independent','official','competent','local','before','after','until','from','first half','second half','beginning','middle','end of month','promptly','immediately'],
+ q:['Can a stamp be a signature?','What does "on or about" mean?','Who can issue an "independent" certificate?'],
+ sum:'Rules for reading the words in a credit and its documents: how a document can be signed, what vague issuer words allow, and how date expressions such as "on or about", "to", "from", "before" and "after" work.',
+ pts:[['3','A credit is irrevocable even if it doesn’t say so.'],['3','Signing can be by hand, facsimile, perforation, stamp, symbol or any mechanical or electronic method of authentication.'],['3','Words like "first class", "independent", "official" or "local" for an issuer let anyone except the beneficiary issue the document.'],['3','"Promptly", "immediately" or "as soon as possible" are disregarded unless the document requires them.'],['3','"On or about" a date means five calendar days before to five calendar days after, both included.'],['3','For shipment, "to", "until", "till", "from" and "between" include the date named; "before" and "after" exclude it. For maturity, "from" and "after" exclude it.'],['3','First half and second half of a month mean the 1st to 15th and the 16th to the last day; beginning, middle and end mean the 1st to 10th, 11th to 20th and 21st to the last day.']],
+ ex:{kind:'Typical discrepancy',s:'The credit asks for an inspection certificate from an "independent inspection company". The beneficiary issues it on its own letterhead.',why:'Vague issuer words allow any issuer except the beneficiary.',fix:'Get vaguely described documents from a genuine third party.'},
+ cases:['cimb2'],rel:[14,29],isbp:'A3 (signatures), A11–A16 (dates)'},
+{n:4,t:'Credits v. contracts',k:['contract','sale','sales contract','autonomy','independence','independent of contract','quality','dispute','proforma','pro-forma','underlying','buyer complaint'],
+ q:['Can the buyer stop payment because the goods are bad?','Is the bank bound by the sales contract?'],
+ sum:'A credit is a separate transaction from the sale contract. Banks aren’t concerned with or bound by the contract, even if the credit mentions it, and a beneficiary can’t rely on the relationships between the banks or between the applicant and the issuing bank.',
+ pts:[['4(a)','The bank’s undertaking doesn’t depend on claims or defences arising from the sale contract.'],['4(b)','The issuing bank should discourage attempts to make the contract or pro-forma invoice part of the credit.']],
+ ex:{kind:'Typical situation',s:'After shipment the buyer tells its bank the T-shirts are poor quality and asks it not to pay a complying presentation.',why:'Quality is a sale-contract dispute. A complying presentation must be honoured, and the buyer’s remedy lies against the seller. Fraud is a separate question of law outside UCP.',fix:'Buyers who need quality protection should require an independent inspection certificate in the credit.'},
+ cases:[],rel:[5,34],isbp:'Preliminary considerations'},
+{n:5,t:'Documents v. goods, services or performance',k:['goods','documents only','performance','services','damaged goods','cargo','physical','inspect goods','wrong goods','arrived damaged'],
+ q:['The goods arrived damaged. Does the bank still pay?'],
+ sum:'Banks deal with documents, not with the goods, services or performance those documents relate to.',
+ pts:[['5','A bank examines paper or data, never the cargo.'],['5','Whether the goods match the contract is between buyer and seller.']],
+ ex:{kind:'Typical situation',s:'The goods arrive damaged, but the bill of lading is clean and every document complies.',why:'The bank honours. It examined the documents, not the goods.',fix:'Manage goods risk with pre-shipment inspection and cargo insurance.'},
+ cases:[],rel:[4,14,27],isbp:'Preliminary considerations'},
+{n:6,t:'Availability, expiry date and place for presentation',k:['expiry','expire','expired','validity','valid until','place','where to present','available','availability','sight','sight payment','deferred payment','acceptance','negotiation','draft on applicant','counters','time'],
+ q:['Where do I present documents?','What if I miss the expiry date?'],
+ sum:'A credit must say which bank it’s available with, or that it’s available with any bank, and whether by sight payment, deferred payment, acceptance or negotiation. It must state an expiry date for presentation, and documents must be presented at the right place on or before that date.',
+ pts:[['6(a)','A credit available with a nominated bank is also available with the issuing bank.'],['6(c)','A credit must not be issued available by a draft drawn on the applicant.'],['6(d)','It must state an expiry date for presentation; the expiry date for honour or negotiation is the expiry date for presentation.'],['6(d)','The place of the bank with which it’s available is the place for presentation.'],['6(e)','Presentation by or for the beneficiary must be made on or before expiry, subject to Art. 29(a).']],
+ ex:{kind:'Typical discrepancy',s:'The credit expires on 10 November at the nominated bank in Dhaka. The beneficiary couriers the documents to the issuing bank in Helsinki, where they arrive on 12 November.',why:'The credit had expired by the time the documents arrived. Presenting to the issuing bank doesn’t buy extra days.',fix:'Present at the place stated, before expiry, and build courier time into the plan.'},
+ cases:[],rel:[29,33,14],isbp:'Preliminary considerations'},
+{n:7,t:'Issuing bank undertaking',k:['issuing bank','issuer','undertaking','obligation','reimburse','reimbursement','honour','pay','payment','irrevocable','nominated bank'],
+ q:['When must the issuing bank pay?','Does the issuing bank have to reimburse the negotiating bank?'],
+ sum:'If the stipulated documents are presented and comply, the issuing bank must honour: directly when the credit is available with it, or when a nominated bank doesn’t pay. It must also reimburse a nominated bank that honoured or negotiated a complying presentation and forwarded the documents.',
+ pts:[['7(a)','Honour is due for a complying presentation, including when a nominated bank declines to act.'],['7(b)','The issuing bank is irrevocably bound from the moment it issues the credit.'],['7(c)','Reimbursement is due at maturity for deferred payment or acceptance credits, whether or not the nominated bank prepaid or purchased before maturity. This undertaking is independent of the one to the beneficiary.']],
+ ex:{kind:'Typical situation',s:'A nominated bank pays against documents that turn out to be discrepant, then claims reimbursement from the issuing bank.',why:'Reimbursement is only owed for a complying presentation that was actually honoured or negotiated.',fix:'Nominated banks should examine before paying, and pay under reserve or against an indemnity if in doubt.'},
+ cases:['cimb1'],rel:[8,12,13,15],isbp:''},
+{n:8,t:'Confirming bank undertaking',k:['confirm','confirmation','confirming bank','confirmed','without recourse','silent confirmation','add confirmation','country risk'],
+ q:['What does a confirming bank promise?','Can a bank refuse to confirm?'],
+ sum:'A confirming bank adds its own undertaking to the issuing bank’s. For a complying presentation it must honour, or negotiate without recourse, and reimburse another nominated bank that did so.',
+ pts:[['8(a)','For a complying presentation the confirming bank must honour or negotiate without recourse.'],['8(b)','It is irrevocably bound from the moment it adds its confirmation.'],['8(c)','It must reimburse another nominated bank that honoured or negotiated a complying presentation.'],['8(d)','A bank asked to confirm that won’t must tell the issuing bank without delay; it may still advise the credit.']],
+ ex:{kind:'Typical situation',s:'A beneficiary in Bangladesh worries about the issuing bank’s country risk and asks its own bank to "silently confirm" without the issuing bank’s authorisation.',why:'Silent confirmation isn’t confirmation under Art. 8. The bank’s rights depend on its private agreement with the beneficiary.',fix:'Know which you have. A real confirmation is authorised by the issuing bank and shown in the credit.'},
+ cases:[],rel:[7,9,12],isbp:''},
+{n:9,t:'Advising of credits and amendments',k:['advise','advising','advising bank','authenticity','authentic','fake credit','second advising bank','verify'],
+ q:['What does the advising bank check?','Is the advising bank liable to pay?'],
+ sum:'An advising bank passes the credit on without any undertaking to honour or negotiate. By advising, it signals that it has satisfied itself the credit looks authentic and reflects the terms it received.',
+ pts:[['9(a)','Advising without confirming carries no undertaking to pay.'],['9(b)','Advising signals apparent authenticity and accuracy.'],['9(c)','A second advising bank may be used, with the same signal.'],['9(d)','Amendments should be advised through the same bank.'],['9(e)–(f)','A bank that won’t advise, or can’t check authenticity, must say so without delay.']],
+ ex:{kind:'Typical situation',s:'The buyer emails a PDF "credit" straight to the seller, who starts production.',why:'No bank has checked apparent authenticity. The credit might not exist.',fix:'Insist the credit reaches you through an advising bank you know.'},
+ cases:[],rel:[8,10,11],isbp:''},
+{n:10,t:'Amendments',k:['amend','amendment','amendments','change','cancel','cancellation','extend','extension','accept amendment','reject amendment','partial acceptance','silence'],
+ q:['Can the buyer change the credit without my consent?','Can I accept only part of an amendment?'],
+ sum:'A credit can’t be amended or cancelled without the agreement of the issuing bank, any confirming bank and the beneficiary. Until the beneficiary accepts an amendment, the original terms stay in force for it.',
+ pts:[['10(a)','Amendment or cancellation needs the issuing bank, any confirming bank and the beneficiary to agree.'],['10(b)','The issuing bank is bound by an amendment from when it issues it; a confirming bank may extend its confirmation or decline.'],['10(c)','A presentation that complies with the amended terms counts as acceptance.'],['10(e)','Partial acceptance isn’t allowed and counts as rejection.'],['10(f)','A clause saying an amendment takes effect unless rejected within a set time is disregarded.']],
+ ex:{kind:'Typical discrepancy',s:'An amendment extends the shipment date and adds a new inspection certificate. The seller ships within the new date but without the certificate.',why:'That presentation fits neither the original terms (late shipment) nor the amendment (missing certificate). Accepting only the convenient half isn’t allowed.',fix:'Accept or reject the amendment as a whole, in writing.'},
+ cases:[],rel:[9,11],isbp:''},
+{n:11,t:'Teletransmitted and pre-advised credits and amendments',k:['swift','mt700','mt707','teletransmission','telex','mail confirmation','pre-advice','preadvice','operative instrument','authenticated'],
+ q:['Is the SWIFT message or the courier copy the real credit?'],
+ sum:'An authenticated teletransmission of a credit or amendment is the operative instrument, and a later mail confirmation is disregarded. A pre-advice commits the issuing bank to issue the operative credit without delay, on terms that match it.',
+ pts:[['11(a)','If the teletransmission says full details follow, or that the mail confirmation is operative, the mail confirmation is the credit.'],['11(b)','A pre-advice is only sent if the issuing bank is ready to issue.']],
+ ex:{kind:'Typical situation',s:'The bank receives an MT700 and, a week later, a courier copy with slightly different goods wording.',why:'The authenticated SWIFT message is the credit unless it said otherwise. The courier copy is disregarded.',fix:'Work from the MT700, and query any differences with the issuing bank.'},
+ cases:[],rel:[9,10],isbp:''},
+{n:12,t:'Nomination',k:['nominate','nominated bank','nomination','discount','prepay','purchase','forward documents','obliged to pay'],
+ q:['Must the nominated bank pay me?'],
+ sum:'Nominating a bank authorises it to honour or negotiate, but doesn’t oblige it to, unless it is the confirming bank or expressly agrees and tells the beneficiary.',
+ pts:[['12(a)','Nomination is permission, not an obligation, unless the bank has expressly agreed.'],['12(b)','Nomination to accept a draft or incur a deferred payment undertaking also authorises the bank to prepay or purchase it.'],['12(c)','Receiving, examining and forwarding documents doesn’t make a nominated bank liable to honour or negotiate.']],
+ ex:{kind:'Typical situation',s:'A credit is "available with any bank by negotiation". The seller assumes its local bank must pay because it was named.',why:'Being nominated binds no one. Only a confirming bank, or one that agrees, is bound.',fix:'Ask for confirmation if you need a local bank to be bound.'},
+ cases:[],rel:[2,7,8],isbp:''},
+{n:13,t:'Bank-to-bank reimbursement arrangements',k:['reimbursement','reimbursing bank','claim','urr','urr 725','mt740','mt742','claiming bank','interest','reimbursement authorisation'],
+ q:['Who pays the reimbursing bank’s charges?','Does the claiming bank need a certificate of compliance?'],
+ sum:'When reimbursement is to come from another bank, the credit should say whether ICC’s rules for bank-to-bank reimbursements apply. If they don’t, default rules in Art. 13(b) govern the authorisation, claims, interest and charges.',
+ pts:[['13(a)','The credit states whether the bank-to-bank reimbursement rules apply.'],['13(b)','Otherwise the issuing bank gives the reimbursing bank an authorisation matching the credit’s availability and without an expiry date.'],['13(b)','A claiming bank needn’t give the reimbursing bank a certificate of compliance.'],['13(b)','If reimbursement isn’t made on first demand, the issuing bank is liable for lost interest and expenses; charges are for its account unless the credit says otherwise.'],['13(c)','The issuing bank stays liable if reimbursement isn’t made by the reimbursing bank.']],
+ ex:{kind:'Typical situation',s:'A reimbursing bank rejects a claim because the claiming bank didn’t certify that the documents comply.',why:'Under the default rules no certificate of compliance is needed.',fix:'Check whether the bank-to-bank reimbursement rules (URR 725) apply, and use their claim format.'},
+ cases:['cimb1'],rel:[7,8],isbp:''},
+{n:14,t:'Standard for examination of documents',k:['examination','examine','check','checking','review documents','five banking days','5 banking days','how long','time','on their face','face','conflict','inconsistent','inconsistency','21 days','stale','late presentation','presentation period','address','shipper','consignor','non-documentary','extra document','not required','dated before','strict compliance','mirror image'],
+ q:['How long does the bank have to check documents?','How many days after shipment can I present?','Do all documents have to say exactly the same thing?'],
+ sum:'The core of document checking. Banks decide, on the basis of the documents alone, whether they appear on their face to be a complying presentation. Each bank has a maximum of five banking days after the day of presentation to decide.',
+ pts:[['14(a)','Examine the documents alone, on their face.'],['14(b)','Up to five banking days following the day of presentation, not cut short if expiry falls inside that period.'],['14(c)','A presentation with an original transport document under Arts 19–25 must be made no later than 21 calendar days after shipment, and never after expiry.'],['14(d)','Data read in context with the credit, the document itself and ISBP needn’t be identical to, but must not conflict with, other data in that document, other documents or the credit.'],['14(e)','Outside the invoice, goods may be described in general terms that don’t conflict with the credit.'],['14(f)','If the credit doesn’t say who issues a document or what it must contain, it’s accepted if its content appears to fulfil its function and complies with 14(d).'],['14(g)','A document presented but not required is disregarded and may be returned.'],['14(h)','A condition with no document to show compliance is treated as not stated and disregarded.'],['14(i)','A document may be dated before the credit, but not after its presentation.'],['14(j)','Beneficiary and applicant addresses needn’t match the credit but must be in the same country; contact details are disregarded, except the applicant’s details in consignee or notify party boxes of transport documents.'],['14(k)','The shipper or consignor needn’t be the beneficiary.'],['14(l)','A transport document may be issued by any party, provided it meets the relevant transport article.']],
+ ex:{kind:'Typical discrepancy',s:'The credit calls for 50,000 pcs. The invoice shows 52,000 pcs and the packing list 50,000 pcs.',why:'The data conflicts between documents (14(d)), and the invoice quantity exceeds the credit without an "about" tolerance.',fix:'Build every document from one master data sheet, and cross-check numbers before you present.'},
+ cases:['equitable','maybank','bulgrains','cimb2'],rel:[16,15,17,1],isbp:'A1–A41 general principles'},
+{n:15,t:'Complying presentation',k:['complying presentation','comply','compliant','complying','honour','pay','forward documents','approved'],
+ q:['What happens when documents comply?','Does the bank need the buyer’s approval to pay?'],
+ sum:'When the issuing or confirming bank decides a presentation complies, it must honour (the confirming bank may negotiate) and forward the documents as needed. A nominated bank that finds a presentation complying and honours or negotiates sends the documents on.',
+ pts:[['15(a)','Issuing bank: complying presentation, so it must honour.'],['15(b)','Confirming bank: must honour or negotiate and forward the documents to the issuing bank.'],['15(c)','Nominated bank: if it honours or negotiates, it forwards the documents to the confirming or issuing bank.']],
+ ex:{kind:'Typical situation',s:'The issuing bank finds the documents compliant but holds payment until the buyer "approves" them.',why:'Buyer approval only matters for discrepant documents. A complying presentation must be honoured.',fix:'The applicant’s waiver route under Art. 16(b) is for discrepancies only.'},
+ cases:[],rel:[7,8,16],isbp:''},
+{n:16,t:'Discrepant documents, waiver and notice',k:['refuse','refusal','refused','reject','rejected','rejection','discrepant','discrepancy','discrepancies','waiver','waive','notice','notice of refusal','mt734','hold documents','return documents','preclusion','precluded','refund','fifth banking day','dishonour'],
+ q:['How does a bank refuse documents?','Can the bank add a discrepancy later?','Can the buyer waive discrepancies?'],
+ sum:'A bank that decides a presentation doesn’t comply may refuse. The issuing bank may ask the applicant for a waiver, but that doesn’t extend the five days. A refusal needs a single notice that lists every discrepancy and says what will happen to the documents, sent by the close of the fifth banking day. A bank that gets this wrong is precluded from claiming the documents don’t comply.',
+ pts:[['16(a)','A nominated, confirming or issuing bank that finds a presentation non-complying may refuse to honour or negotiate.'],['16(b)','The issuing bank may approach the applicant for a waiver, within the Art. 14(b) period.'],['16(c)','One notice stating that the bank refuses, each discrepancy, and whether it is holding documents pending instructions, holding them until a waiver, returning them, or acting on earlier instructions.'],['16(d)','Notice by telecommunication or other quick means, no later than the close of the fifth banking day after presentation.'],['16(e)','After giving notice, the bank may return the documents at any time.'],['16(f)','Failing to follow this article precludes the bank from claiming the presentation doesn’t comply.'],['16(g)','An issuing bank that refuses properly may claim back any reimbursement already made, with interest.']],
+ ex:{kind:'Typical discrepancy',s:'On day 4 the bank refuses for "late shipment". On day 7 it sends a second message adding "invoice not signed as required".',why:'The rule allows one notice listing every discrepancy within five banking days. The day-7 point can’t be relied on.',fix:'Finish the full examination before sending the notice, and list everything in one go.'},
+ cases:['fortis','maybank','bulgrains'],rel:[14,15,35],isbp:''},
+{n:17,t:'Original documents and copies',k:['original','originals','copy','copies','duplicate','triplicate','photocopy','two fold','in two copies','true copy'],
+ q:['How many originals do I need?','Is a photocopy acceptable?'],
+ sum:'At least one original of each document the credit asks for must be presented. A document bearing what looks like the issuer’s original signature, mark, stamp or label counts as an original unless it says it’s a copy.',
+ pts:[['17(a)','At least one original of each stipulated document.'],['17(b)','An apparently original signature, mark, stamp or label of the issuer makes it an original, unless the document says otherwise.'],['17(c)','Also original if it appears hand-written, typed, perforated or stamped by the issuer, is on the issuer’s original stationery, or says it’s original.'],['17(d)','If the credit asks for copies, originals or copies may be presented.'],['17(e)','"In duplicate", "in two fold" or "in two copies" means at least one original plus copies, unless the document says otherwise.']],
+ ex:{kind:'Typical discrepancy',s:'The credit calls for a "signed commercial invoice in triplicate". The beneficiary presents three photocopies.',why:'At least one of the three has to be an original.',fix:'Present one original plus two copies.'},
+ cases:[],rel:[14,18],isbp:'A26–A35 originals and copies'},
+{n:18,t:'Commercial invoice',k:['invoice','commercial invoice','description','goods description','description of goods','applicant name','buyer name','currency','signed invoice','amount exceeds','over-drawn','overdrawn','beneficiary name'],
+ q:['Does the invoice need to be signed?','Must the goods description match exactly?','Can the invoice exceed the credit amount?'],
+ sum:'The invoice must appear to be issued by the beneficiary, be made out in the applicant’s name and in the credit’s currency, and needn’t be signed. Its description of the goods must correspond with the credit.',
+ pts:[['18(a)','Issued by the beneficiary (except under Art. 38), made out to the applicant (except under Art. 38(g)), in the credit’s currency; no signature needed.'],['18(b)','A bank may accept an invoice above the credit amount if it doesn’t pay more than the credit allows; that decision binds everyone.'],['18(c)','The description of goods, services or performance must correspond with the credit.']],
+ ex:{kind:'Typical discrepancy',s:'Credit: "100% cotton knitted T-shirts, 50,000 pcs". Invoice: "Cotton T-shirts, 50,000 pcs".',why:'The description doesn’t correspond: the knitted construction and the 100% composition are missing.',fix:'Copy the credit’s description onto the invoice. Add detail only if it doesn’t change the goods.'},
+ cases:['bulgrains'],rel:[14,30,38],isbp:'C1–C15 invoices, incl. C9 trade terms',inco:['CIF','FOB']},
+{n:19,t:'Transport document covering at least two different modes of transport',k:['multimodal','combined transport','two modes','mto','fbl','place of receipt','place of dispatch','taking in charge','final destination','door to door','container'],
+ q:['What does a multimodal transport document need?','Is transhipment allowed on a multimodal document?'],
+ sum:'A multimodal or combined transport document must name the carrier and be signed by the carrier, master or a named agent; show dispatch, taking in charge or shipment on board at the place in the credit; name the places of dispatch and final destination; be the sole original or full set; and not be subject to a charter party.',
+ pts:[['19(a)','Carrier named and signature by carrier, master or a named agent.'],['19(a)(ii)','Issue date counts as the shipment date, unless a dated stamp or notation shows dispatch, taking in charge or shipment on board.'],['19(a)(iii)','Places of dispatch, taking in charge or shipment, and final destination, as stated in the credit.'],['19(b)','Transhipment means unloading from one means of conveyance and reloading onto another, in the same or a different mode, during the carriage.'],['19(c)','A document showing transhipment is acceptable even when the credit prohibits it, if one document covers the whole carriage.']],
+ ex:{kind:'Typical discrepancy',s:'The credit says dispatch from "Gazipur" and destination "Vantaa". The multimodal document shows the place of receipt as "Chattogram".',why:'The place of taking in charge doesn’t match the credit.',fix:'Ask the forwarder to show the inland place of receipt the credit names.'},
+ cases:[],rel:[20,14,27],isbp:'D1–D32',inco:['FCA','CPT','CIP']},
+{n:20,t:'Bill of lading',k:['bill of lading','b/l','bl','lading','ocean bill','on board','shipped','vessel','port of loading','port of discharge','full set','carrier','master','agent','transhipment','intended vessel','freight forwarder','received for shipment'],
+ q:['What makes a bill of lading compliant?','Is a received-for-shipment B/L acceptable?','Can a B/L show transhipment?'],
+ sum:'A bill of lading, however named, must name the carrier and be signed by the carrier, master or a named agent; show the goods shipped on board a named vessel at the credit’s port of loading; show the credit’s ports; be the sole original or full set; and not say it’s subject to a charter party.',
+ pts:[['20(a)(i)','Carrier named; signed by the carrier, the master, or a named agent for either.'],['20(a)(ii)','Shipped on board by pre-printed wording or a dated on-board notation; the notation date is the shipment date.'],['20(a)(iii)','Ports of loading and discharge as stated in the credit. An "intended" vessel or port needs an on-board notation with the actual one.'],['20(a)(iv)','Sole original, or the full set if more than one original is issued.'],['20(a)(vi)','No indication it is subject to a charter party.'],['20(b)','Transhipment means unloading from one vessel and reloading onto another between the two ports.'],['20(c)','Transhipment may be shown if one B/L covers the whole voyage; it’s acceptable even when prohibited if the goods are in a container, trailer or LASH barge.'],['20(d)','Clauses reserving the carrier’s right to tranship are disregarded.']],
+ ex:{kind:'Typical discrepancy',s:'A "received for shipment" bill of lading with no on-board notation, under a credit that calls for shipped on board.',why:'There’s no evidence of shipment on board a named vessel.',fix:'Have the carrier add a dated on-board notation naming the vessel, and the port if the B/L says "intended".'},
+ cases:['maybank'],rel:[14,26,27,21],isbp:'E1–E28',inco:['FOB','CFR','CIF']},
+{n:21,t:'Non-negotiable sea waybill',k:['sea waybill','waybill','non-negotiable','swb','express release','straight'],
+ q:['Is a sea waybill the same as a bill of lading?'],
+ sum:'A non-negotiable sea waybill must meet essentially the same requirements as a bill of lading under Art. 20: carrier, signature, on-board shipment, ports, sole original or full set, and the same transhipment rules.',
+ pts:[['21(a)','Same carrier, signature, on-board and port requirements as Art. 20.'],['21(b)–(d)','Same transhipment and container rules as Art. 20.']],
+ ex:{kind:'Typical discrepancy',s:'The credit calls for a full set of on-board bills of lading to order. The beneficiary presents a sea waybill consigned straight to the buyer.',why:'Wrong document. A waybill isn’t a bill of lading, and the bank loses control of the goods.',fix:'If the parties want a waybill, amend the credit to ask for one, usually consigned to the issuing bank.'},
+ cases:[],rel:[20,14],isbp:'F1–F25'},
+{n:22,t:'Charter party bill of lading',k:['charter party','charter','cp bl','charter party bill','bulk','tanker','owner','charterer','voyage charter','range of ports'],
+ q:['Does the bank examine the charter party?'],
+ sum:'A bill of lading that says it’s subject to a charter party must be signed by the master, owner or charterer, or a named agent; show shipment on board at the credit’s port of loading; and show discharge at the credit’s port or a range of ports. Banks don’t examine the charter party itself.',
+ pts:[['22(a)','Signed by the master, owner, charterer, or a named agent for one of them.'],['22(a)(iii)','Port of discharge may be a range or area of ports, if the credit allows it.'],['22(b)','Banks won’t examine charter party contracts, even if the credit requires them.']],
+ ex:{kind:'Typical discrepancy',s:'The credit names "Helsinki" as port of discharge. The charter party B/L shows "one safe port, Baltic Sea".',why:'A range is only acceptable if the credit states one. Here the credit names a single port.',fix:'Get the applicant to amend the credit to a range, or have the B/L name Helsinki.'},
+ cases:[],rel:[20,14],isbp:'G1–G27'},
+{n:23,t:'Air transport document',k:['air','air waybill','airway bill','awb','airport','flight','air freight','hawb','mawb','accepted for carriage'],
+ q:['What is the shipment date on an air waybill?'],
+ sum:'An air transport document must name the carrier and be signed by the carrier or a named agent; show the goods accepted for carriage; show an issue date, which is the shipment date unless a specific flight-date notation appears; show the credit’s airports; and be the original for consignor or shipper.',
+ pts:[['23(a)(iii)','The issue date is the shipment date, unless a specific notation of the actual date of shipment appears.'],['23(a)(iii)','Flight number and date shown elsewhere on the document don’t count as that notation.'],['23(a)(v)','The original for consignor or shipper is needed, even if the credit asks for a full set.'],['23(c)','Transhipment may be shown, even if prohibited, when one document covers the whole carriage.']],
+ ex:{kind:'Typical discrepancy',s:'Credit: from "Dhaka Airport". Air waybill: departure "Chattogram Airport".',why:'The airport of departure doesn’t match the credit.',fix:'Ship from the airport the credit names, or amend the credit first.'},
+ cases:[],rel:[14,19],isbp:'H1–H24',inco:['FCA','CPT','CIP']},
+{n:24,t:'Road, rail or inland waterway transport documents',k:['road','truck','lorry','cmr','rail','train','railway','inland waterway','barge','river'],
+ q:['Is a CMR acceptable under a credit?'],
+ sum:'A road, rail or inland waterway document must name the carrier and be signed, or for rail show the receiving station’s stamp; show the date of shipment or receipt; and show the places of shipment and destination stated in the credit.',
+ pts:[['24(a)','Carrier named and a signature, or for rail a dated station stamp.'],['24(b)','A road document should look like the original for consignor or shipper, or bear no marking; a rail document marked "duplicate" counts as original.'],['24(c)','If no number of originals is shown, the one presented is treated as the full set.'],['24(e)','Transhipment within the same mode may be shown, even when prohibited, if one document covers the whole carriage.']],
+ ex:{kind:'Typical discrepancy',s:'The credit says "from Helsinki". The CMR shows the place of taking over as Vantaa.',why:'The place of shipment doesn’t match the credit.',fix:'Match the places exactly, or have the credit amended.'},
+ cases:[],rel:[14,19],isbp:'J1–J16'},
+{n:25,t:'Courier receipt, post receipt or certificate of posting',k:['courier','courier receipt','dhl','fedex','ups','express','post','postal','posting','certificate of posting','samples'],
+ q:['What does a courier receipt need to show?'],
+ sum:'A courier receipt must name the courier service and be stamped or signed by it at the place of dispatch in the credit, with a pickup or receipt date that counts as the shipment date. A post receipt or certificate of posting must be stamped or signed and dated at the place of shipment.',
+ pts:[['25(a)','Courier named; stamped or signed by the courier at the place the credit states; dated.'],['25(b)','A requirement that courier charges are paid can be met by evidence that they’re for a party other than the consignee.'],['25(c)','A post receipt or certificate of posting must be stamped or signed and dated at the place of shipment.']],
+ ex:{kind:'Typical discrepancy',s:'The beneficiary presents a receipt printed from the courier’s website, with no courier stamp or signature.',why:'It must appear stamped or signed by the named courier at the place of dispatch.',fix:'Get the stamped or signed pickup receipt from the courier.'},
+ cases:[],rel:[14],isbp:''},
+{n:26,t:'"On deck", "shipper’s load and count", "said by shipper to contain" and charges additional to freight',k:['on deck','deck','deck cargo','shipper’s load and count','shippers load and count','slac','said to contain','said by shipper to contain','stc','additional charges','demurrage','fio','charges additional to freight'],
+ q:['Is an on-deck bill of lading acceptable?','Are "said to contain" clauses a problem?'],
+ sum:'A transport document must not say the goods are or will be loaded on deck, though a clause saying they may be is fine. Clauses such as "shipper’s load and count" and "said by shipper to contain" are acceptable, and a document may refer to charges additional to freight.',
+ pts:[['26(a)','"Loaded on deck" is a discrepancy; "may be loaded on deck" is acceptable.'],['26(b)','"Shipper’s load and count" and "said by shipper to contain" are acceptable.'],['26(c)','References to charges additional to freight are acceptable under UCP; ISBP deals with credits that say such charges aren’t.']],
+ ex:{kind:'Typical discrepancy',s:'B/L notation: "cargo loaded on deck at shipper’s risk".',why:'It shows the goods were loaded on deck.',fix:'Arrange under-deck stowage, or have the credit amended to allow on-deck shipment.'},
+ cases:[],rel:[20,27],isbp:'E27, D31'},
+{n:27,t:'Clean transport document',k:['clean','claused','foul','dirty bill','defective','damaged packaging','torn','wet','notation','unclean','clean on board'],
+ q:['What makes a bill of lading unclean?','Does a B/L have to say "clean"?'],
+ sum:'Banks accept only clean transport documents: ones with no clause or notation expressly declaring a defective condition of the goods or their packaging. The word "clean" needn’t appear, even if the credit asks for a "clean on board" document.',
+ pts:[['27','A clause expressly declaring defective goods or packaging makes the document unclean.'],['27','The word "clean" isn’t required.']],
+ ex:{kind:'Typical discrepancy',s:'B/L notation: "cartons wet and torn".',why:'It expressly declares defective packaging.',fix:'Repack before loading. A "clean" stamp won’t cancel a defect clause.'},
+ cases:[],rel:[20,26,5],isbp:'E20–E21'},
+{n:28,t:'Insurance document and coverage',k:['insurance','insure','insured','policy','insurance certificate','cover','coverage','110','110%','cover note','all risks','institute cargo clauses','icc','underwriter','open cover','cif value','cip value','deductible','excess','franchise','insurance date'],
+ q:['How much insurance cover is needed?','Can the insurance certificate be dated after shipment?','Is a cover note acceptable?'],
+ sum:'An insurance policy, certificate or declaration under an open cover must be issued and signed by an insurer, underwriter or their agent. Cover notes aren’t accepted. Cover must be in the credit’s currency, effective no later than shipment, and, unless the credit says otherwise, at least 110% of the CIF or CIP value, covering the route stated in the credit.',
+ pts:[['28(a)','Issued and signed by an insurer, underwriter, or their agent or proxy.'],['28(b)','If it shows more than one original, all of them must be presented.'],['28(c)','Cover notes aren’t accepted.'],['28(e)','Dated no later than shipment, unless it shows cover effective from no later than shipment.'],['28(f)(i)','In the credit’s currency.'],['28(f)(ii)','If no amount is stated, at least 110% of the CIF or CIP value. If that can’t be worked out from the documents, 110% of the greater of the amount claimed and the gross invoice value.'],['28(f)(iii)','Cover from at least the place of taking in charge or shipment to the place of discharge or final destination in the credit.'],['28(g)–(j)','Risks as the credit states; vague terms like "usual risks" are ignored; "all risks" wording is accepted; exclusion clauses and a deductible may appear.']],
+ ex:{kind:'Typical discrepancy',s:'CIF invoice for USD 250,000. Insurance certificate for EUR 250,000, dated two days after the on-board date.',why:'Wrong currency, below 110% (USD 275,000 needed), and dated after shipment without showing earlier cover.',fix:'Cover USD 275,000 or more, in USD, effective no later than the shipment date.'},
+ cases:[],rel:[14,20],isbp:'K1–K23',inco:['CIF','CIP']},
+{n:29,t:'Extension of expiry date or last day for presentation',k:['weekend','holiday','sunday','saturday','closed','bank holiday','public holiday','extension','extended','next banking day','expiry on holiday'],
+ q:['What if the expiry date falls on a bank holiday?','Is the shipment date extended too?'],
+ sum:'If the expiry date or the last day for presentation falls on a day the bank is closed, for reasons other than force majeure under Art. 36, it extends to the next banking day. The latest shipment date is never extended.',
+ pts:[['29(a)','Closed for reasons other than Art. 36: expiry or last presentation day moves to the first following banking day.'],['29(b)','The nominated bank must tell the issuing or confirming bank that presentation was made within the extended period.'],['29(c)','The latest shipment date isn’t extended.']],
+ ex:{kind:'Typical discrepancy',s:'Expiry and latest shipment date both fall on Sunday 15 November, when the bank is closed. The goods ship on Monday the 16th and the documents are presented the same day.',why:'Presentation on Monday is in time, because expiry moves to the next banking day. Shipment on Monday is late, because the latest shipment date never moves.',fix:'Plan shipment against the stated date, not the extended one.'},
+ cases:[],rel:[6,36,33],isbp:''},
+{n:30,t:'Tolerance in credit amount, quantity and unit prices',k:['tolerance','about','approximately','circa','more or less','quantity','amount','unit price','short shipment','over shipment','5%','10%','pieces','pcs','bulk','weight','excess'],
+ q:['Can I ship 5% more than the credit says?','What does "about" allow?','Can I draw less than the full amount?'],
+ sum:'"About" or "approximately" allows 10% more or less on the amount, quantity or unit price it qualifies. Without that, quantity may vary by 5% either way unless it’s stated in packing units or individual items, as long as the total drawing stays within the credit amount.',
+ pts:[['30(a)','"About" or "approximately": plus or minus 10% on what it refers to.'],['30(b)','Plus or minus 5% on quantity, unless stated in packing units or individual items, and the drawing must not exceed the credit amount.'],['30(c)','Up to 5% less in amount is allowed when the full quantity is shipped (or no quantity is stated) and the unit price isn’t reduced. Doesn’t apply if the credit sets its own tolerance or uses "about".']],
+ ex:{kind:'Typical discrepancy',s:'Credit: 50,000 pcs of T-shirts, no "about". Invoice: 52,000 pcs.',why:'Items counted individually get no 5% tolerance.',fix:'Ship the exact quantity, or ask for "about 50,000 pcs" in the credit.'},
+ cases:[],rel:[18,31,14],isbp:'C14'},
+{n:31,t:'Partial drawings or shipments',k:['partial','partial shipment','partial shipments','partial drawing','split shipment','two vessels','multiple shipments','part shipment','several vessels'],
+ q:['Are partial shipments allowed by default?','Is shipping on two vessels a partial shipment?'],
+ sum:'Partial drawings or shipments are allowed unless the credit says otherwise. Several sets of transport documents showing shipment on the same means of conveyance, for the same journey and destination, aren’t a partial shipment, even with different dates or ports of loading.',
+ pts:[['31(a)','Partials allowed by default.'],['31(b)','Same vessel, same journey, same destination: not partial, even with different dates or loading ports. Shipment on more than one means of conveyance in the same mode is partial, even if they leave the same day for the same place.'],['31(c)','Several courier or post receipts from the same place, on the same date, to the same destination aren’t partial.']],
+ ex:{kind:'Typical discrepancy',s:'The credit prohibits partial shipments. The goods go on two vessels on the same day to the same port.',why:'More than one means of conveyance counts as a partial shipment.',fix:'Use one vessel, or have the credit amended to allow partials.'},
+ cases:[],rel:[30,32],isbp:''},
+{n:32,t:'Instalment drawings or shipments',k:['instalment','installment','instalments','schedule','monthly','period','missed shipment','staggered','shipment schedule'],
+ q:['What happens if I miss one instalment?'],
+ sum:'If a credit requires drawings or shipments by instalments within set periods and one isn’t drawn or shipped in its period, the credit stops being available for that instalment and every later one.',
+ pts:[['32','Missing an instalment period ends availability for that instalment and all later ones.']],
+ ex:{kind:'Typical discrepancy',s:'Monthly shipments January to June. February is missed; March ships on time.',why:'The credit is no longer available for February or any later instalment, March included.',fix:'Get an amendment before the missed period ends.'},
+ cases:[],rel:[31,10],isbp:''},
+{n:33,t:'Hours of presentation',k:['hours','banking hours','after hours','closing time','evening','opening hours','cut-off','late in the day'],
+ q:['Can the bank refuse documents delivered after closing time?'],
+ sum:'A bank has no obligation to accept a presentation outside its banking hours.',
+ pts:[['33','No obligation to accept presentation outside banking hours.']],
+ ex:{kind:'Typical situation',s:'The courier delivers the documents at 18:30 on the expiry date, after the bank has closed.',why:'The bank can treat the documents as presented the next banking day, which is after expiry.',fix:'Deliver during banking hours, and well before the last day.'},
+ cases:[],rel:[6,29],isbp:''},
+{n:34,t:'Disclaimer on effectiveness of documents',k:['forged','forgery','fake','fraud','fraudulent','genuine','genuineness','falsified','liability','accuracy','legal effect'],
+ q:['Is the bank liable if a document is forged?'],
+ sum:'A bank isn’t liable for the form, sufficiency, accuracy, genuineness, falsification or legal effect of any document, nor for the description, quantity, condition or value of the goods, nor for the good faith or performance of anyone involved.',
+ pts:[['34','No liability for the genuineness or legal effect of documents.'],['34','No liability for the goods themselves or for the conduct of the shipper, carrier, insurer or anyone else.']],
+ ex:{kind:'Typical situation',s:'After paying in good faith against complying documents, the bank learns the inspection certificate was forged.',why:'The bank examined on the face and isn’t liable for genuineness. Remedies against a fraudster are a question of law outside UCP.',fix:'Use reputable inspection companies and know your counterparty.'},
+ cases:[],rel:[4,5,14],isbp:''},
+{n:35,t:'Disclaimer on transmission and translation',k:['lost','lost in transit','lost documents','courier lost','delay','delayed','translation','translate','swift error','mutilated','transmission','technical terms'],
+ q:['What if the documents are lost in the post?','Does the bank translate documents?'],
+ sum:'A bank isn’t liable for delay, loss in transit, mutilation or other errors in sending messages or documents as the credit requires. If a nominated bank finds a presentation complying and forwards the documents, the issuing or confirming bank must still honour, negotiate or reimburse even if the documents are lost on the way.',
+ pts:[['35','No liability for delays, losses or errors in transmission when sent as the credit requires.'],['35','Documents lost in transit after a nominated bank found them complying: the issuing or confirming bank must still honour or reimburse.'],['35','Banks may pass on technical terms without translating them.']],
+ ex:{kind:'Typical situation',s:'The nominated bank finds the documents complying, pays, and couriers them to the issuing bank. The courier loses them.',why:'The issuing bank must still reimburse, because a nominated bank had determined compliance.',fix:'Keep scans, courier tracking and a record of the compliance decision.'},
+ cases:['bulgrains'],rel:[16,15],isbp:''},
+{n:36,t:'Force majeure',k:['force majeure','war','strike','riot','flood','disaster','pandemic','lockdown','terrorism','act of god','interruption','bank closed'],
+ q:['What happens if the bank closes because of a strike or disaster?'],
+ sum:'A bank isn’t liable for the interruption of its business by acts of God, riots, civil commotion, insurrection, wars, acts of terrorism, strikes, lockouts or other causes beyond its control. When it reopens, it won’t honour or negotiate under a credit that expired during the interruption.',
+ pts:[['36','No liability for business interruption from causes beyond its control.'],['36','No honour or negotiation after reopening under a credit that expired during the interruption.']],
+ ex:{kind:'Typical situation',s:'Floods close the nominated bank for a week, and the credit expires during the closure.',why:'Art. 29 extensions don’t cover force majeure. The bank won’t pay on reopening.',fix:'Ask the applicant and issuing bank for an amendment extending expiry.'},
+ cases:[],rel:[29,6],isbp:''},
+{n:37,t:'Disclaimer for acts of an instructed party',k:['charges','fees','commission','bank charges','correspondent','instructed bank','foreign law','who pays charges'],
+ q:['Who pays the bank charges if the beneficiary doesn’t?'],
+ sum:'A bank that uses another bank does so for the applicant’s account and risk, and isn’t liable if its instructions aren’t carried out. The instructing bank is liable for the other bank’s charges, and if the credit puts charges on the beneficiary but they can’t be collected, the issuing bank remains liable.',
+ pts:[['37(a)–(b)','Using another bank is for the applicant’s account and risk; no liability if that bank doesn’t follow instructions.'],['37(c)','The instructing bank is liable for the instructed bank’s charges. If charges for the beneficiary can’t be collected, the issuing bank pays them. Advising shouldn’t be made conditional on receipt of charges.'],['37(d)','The applicant is bound by, and must indemnify banks against, foreign laws and usages.']],
+ ex:{kind:'Typical situation',s:'The credit says all charges outside Finland are for the beneficiary. The credit expires unused, and the advising bank can’t collect its fee.',why:'The issuing bank remains liable for those charges.',fix:'Agree charges clearly in the sale contract, and budget for them.'},
+ cases:[],rel:[9,13],isbp:''},
+{n:38,t:'Transferable credits',k:['transfer','transferable','transferred','second beneficiary','first beneficiary','middleman','intermediary','trader','substitute invoice','transferring bank'],
+ q:['Can I transfer the credit to my supplier?','What can be changed when a credit is transferred?'],
+ sum:'A credit marked "transferable" can be made available, in whole or part, to a second beneficiary. It can be transferred only once, though a transfer back to the first beneficiary doesn’t count. Some terms may be reduced, and the first beneficiary may substitute its own invoice and draft.',
+ pts:[['38(a)','No bank has to transfer beyond what it expressly agrees.'],['38(b)','Only a credit expressly stated to be "transferable" can be transferred.'],['38(d)','Partial transfers to several second beneficiaries are allowed if partials are; no further transfer by a second beneficiary.'],['38(g)','The amount, unit price, expiry, presentation period and latest shipment date may be reduced; the insurance percentage may be increased; the first beneficiary’s name may replace the applicant’s.'],['38(h)–(i)','The first beneficiary may substitute its own invoice and draft. If it fails to on first demand, the transferring bank may present the second beneficiary’s documents as they are.']],
+ ex:{kind:'Typical situation',s:'A trading house transfers a credit to its Gazipur factory but doesn’t substitute its invoice when the transferring bank asks.',why:'The bank may send the factory’s documents straight to the issuing bank, revealing the supplier and its price.',fix:'Substitute invoices promptly on first demand.'},
+ cases:[],rel:[39,18],isbp:''},
+{n:39,t:'Assignment of proceeds',k:['assign','assignment','proceeds','assignment of proceeds','supplier payment','back to back','back-to-back'],
+ q:['Can I assign the payment to my supplier?'],
+ sum:'A credit not being transferable doesn’t affect the beneficiary’s right to assign its proceeds under the applicable law. This covers the money only, not the right to perform under the credit.',
+ pts:[['39','Proceeds can be assigned under the applicable law.'],['39','Assignment covers money, not the right to present documents.']],
+ ex:{kind:'Typical situation',s:'The beneficiary assigns the proceeds to its fabric supplier and assumes the supplier can now present documents.',why:'Assignment moves money, not the right to present.',fix:'If the supplier must present, use a transferable credit or a back-to-back credit.'},
+ cases:[],rel:[38],isbp:''}
+];
+})();
+
+/* ---------- UCP 600 Explorer ---------- */
+(function(){
+  var TK=window.TK=window.TK||{};
+  var $=function(i){return document.getElementById(i)};
+  var A=TK.UCP, C=TK.CASES, BY={};
+  A.forEach(function(a){BY[a.n]=a});
+
+  var STOP=('a an the is are was were be been do does did can could would should shall will may might must i we you my our your it its this that these those '+
+    'what how when where which who whom why if then than to of in on at for with by from as or and not no yes about under over into out up down '+
+    'there here have has had get got any some all each every per ucp 600 article art rule rules bank banks document documents credit lc l/c letter please tell me need want').split(' ');
+  var SYN={
+    late:['stale','expiry','presentation period','21 days'],deadline:['expiry','presentation period'],long:['how long','time'],days:['time','21 days','five banking days'],
+    check:['examination'],checking:['examination'],examine:['examination'],review:['examination'],
+    refuse:['refusal','discrepancy'],reject:['refusal','discrepancy'],bounce:['refusal'],refused:['refusal'],rejected:['refusal'],
+    mistake:['discrepancy'],error:['discrepancy'],wrong:['discrepancy'],typo:['discrepancy'],
+    money:['amount'],value:['amount'],price:['amount','unit price'],more:['tolerance'],extra:['tolerance','excess'],less:['tolerance'],short:['tolerance','short shipment'],
+    pieces:['quantity'],qty:['quantity'],
+    ship:['shipment','vessel','on board'],shipped:['shipment','on board'],board:['on board'],boat:['vessel'],
+    insure:['insurance'],cover:['insurance','cover'],policy:['insurance'],
+    stamp:['signature','stamp'],chop:['signature'],sign:['signature'],signed:['signature'],
+    photocopy:['copy'],change:['amendment'],modify:['amendment','modification'],
+    holiday:['holiday','closed'],weekend:['closed','weekend'],sunday:['closed'],strike:['force majeure'],flood:['force majeure'],war:['force majeure'],
+    forged:['fraud','genuine'],fake:['fraud','genuine','fake credit'],
+    supplier:['transfer','assignment'],middleman:['transfer'],
+    charges:['charges'],fee:['charges'],fees:['charges'],
+    approve:['complying presentation'],approval:['complying presentation'],
+    damaged:['damaged goods','defective','clean'],damage:['damaged goods','defective'],
+    container:['container','transhipment'],transship:['transhipment'],transshipment:['transhipment'],
+    lost:['lost in transit'],missing:['lost','original'],
+    buyer:['applicant'],seller:['beneficiary'],exporter:['beneficiary'],importer:['applicant'],
+    pay:['honour','pay'],paid:['honour'],payment:['honour','payment'],
+    swift:['swift','mt700'],telex:['teletransmission'],
+    air:['air'],flight:['air'],truck:['road'],train:['rail'],cmr:['road'],courier:['courier'],
+    deck:['on deck'],waive:['waiver'],
+    definition:['definition'],meaning:['definition'],mean:['definition','meaning'],means:['definition'],
+    instalment:['instalment'],installment:['instalment'],
+    nominated:['nominated bank'],confirm:['confirmation'],confirmed:['confirmation'],
+    transfer:['transfer'],assign:['assignment'],
+    after:['after hours'],closed:['closed','hours']
+  };
+  var EXAMPLES=['How long does the bank have to check documents?','Can a stamp be a signature?','Who pays bank charges?','Is a sea waybill a bill of lading?','The goods arrived damaged','Can I ship 5% more?','Art. 28'];
+
+  function norm(s){return (' '+String(s).toLowerCase().replace(/[’']/g,'').replace(/[^a-z0-9%/ ]+/g,' ').replace(/\s+/g,' ')+' ')}
+  var IDX=A.map(function(a){
+    return {a:a,kw:a.k.map(function(k){return norm(k).trim()}),title:norm(a.t),q:norm(a.q.join(' ')),body:norm(a.sum+' '+a.pts.map(function(p){return p[1]}).join(' ')+' '+a.ex.s)};
+  });
+  function variants(t){var v=[t];if(t.length>4){v.push(t.replace(/ies$/,'y'),t.replace(/es$/,''),t.replace(/s$/,''),t.replace(/ing$/,''),t.replace(/ed$/,''))}return v.filter(function(x,i,arr){return x&&arr.indexOf(x)===i})}
+  function has(hay,term){return hay.indexOf(' '+term)>-1}
+
+  function search(raw){
+    var q=norm(raw),m=q.match(/^\s*(?:art(?:icle)?\s*)?(\d{1,2})\b/);
+    if(m&&BY[+m[1]])return [{a:BY[+m[1]],score:99,why:'Article number'}];
+    var toks=q.trim().split(' ').filter(function(t){return t&&STOP.indexOf(t)<0});
+    var terms=[];
+    toks.forEach(function(t){variants(t).forEach(function(v){terms.push({t:v,w:1})});(SYN[t]||[]).forEach(function(s){terms.push({t:s,w:.8})})});
+    var res=IDX.map(function(I){
+      var sc=0,hits=[];
+      I.kw.forEach(function(k){if(k.length>3&&q.indexOf(' '+k+' ')>-1){sc+=8;hits.push(k)}});
+      terms.forEach(function(T){
+        var t=T.t,s=0;
+        if(I.kw.some(function(k){return k===t||has(' '+k+' ',t)})){s+=6;hits.push(t)}
+        if(has(I.title,t))s+=4;
+        if(has(I.q,t))s+=2;
+        if(has(I.body,t))s+=1;
+        sc+=s*T.w;
+      });
+      return {a:I.a,score:sc,why:hits.filter(function(x,i,arr){return arr.indexOf(x)===i}).slice(0,3)};
+    }).filter(function(r){return r.score>=3});
+    res.sort(function(x,y){return y.score-x.score||x.a.n-y.a.n});
+    return res.slice(0,5);
+  }
+
+  function esc(s){return String(s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+
+  function list(){
+    var h='';
+    TK.UCP_GROUPS.forEach(function(G){
+      h+='<p class="ig">'+G.n+'</p><ol class="il">';
+      for(var n=G.a;n<=G.b;n++)h+='<li><a href="#ucp/'+n+'" data-n="'+n+'"><b>'+n+'</b><span>'+esc(BY[n].t)+'</span></a></li>';
+      h+='</ol>';
+    });
+    $('ucpList').innerHTML=h;
+  }
+
+  function showResults(raw){
+    var box=$('ucpResults');
+    if(!raw.trim()){box.innerHTML='';return}
+    var r=search(raw);
+    if(!r.length){box.innerHTML='<div class="noresult"><b>No article matched "'+esc(raw)+'".</b> Try a single keyword such as <i>insurance</i>, <i>refusal</i> or <i>tolerance</i>, an article number, or pick from the list.</div>';return}
+    var h='<p class="rs-h">'+(r.length===1?'Best match':'Best matches')+' for "'+esc(raw)+'"</p><ol class="rs">';
+    r.forEach(function(x,i){
+      h+='<li><a href="#ucp/'+x.a.n+'" class="'+(i===0?'top':'')+'"><b>'+x.a.n+'</b><span><strong>'+esc(x.a.t)+'</strong><em>'+esc(x.a.sum.split('. ')[0])+'.</em></span></a></li>';
+    });
+    box.innerHTML=h+'</ol>';
+    open(r[0].a.n,false);
+  }
+
+  var cur=14;
+  function open(n,focus){
+    var a=BY[n];if(!a)return;cur=n;
+    [].forEach.call($('ucpList').querySelectorAll('a'),function(l){l.classList.toggle('on',+l.getAttribute('data-n')===n);if(+l.getAttribute('data-n')===n)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')});
+    var G=TK.UCP_GROUPS.filter(function(g){return n>=g.a&&n<=g.b})[0];
+    var h='<header class="ah"><div class="an" aria-hidden="true">'+n+'</div><div><p class="ag">'+G.n+'</p><h3>'+esc(a.t)+'</h3></div></header>';
+    h+='<p class="asum">'+esc(a.sum)+'</p>';
+    h+='<h4>Point by point</h4><dl class="apts">'+a.pts.map(function(p){return '<dt>'+esc(p[0])+'</dt><dd>'+esc(p[1])+'</dd>'}).join('')+'</dl>';
+    var disc=a.ex.kind==='Typical discrepancy';
+    h+='<section class="ex '+(disc?'disc':'sit')+'"><h4>'+a.ex.kind+' <small>illustrative</small></h4><dl><dt>What happened</dt><dd>'+esc(a.ex.s)+'</dd><dt>'+(disc?'Why it fails':'What the rule means here')+'</dt><dd>'+esc(a.ex.why)+'</dd><dt>How to avoid it</dt><dd>'+esc(a.ex.fix)+'</dd></dl></section>';
+    if(a.cases.length){
+      h+='<h4>Tested in court</h4>';
+      a.cases.forEach(function(id){var c=C[id];
+        h+='<section class="case"><p class="cn"><i>'+esc(c.name)+'</i> '+esc(c.cite)+'</p><p class="cc">'+esc(c.court)+'</p><p>'+esc(c.what)+'</p><p>'+esc(c.held)+'</p><p class="cl"><b>Lesson:</b> '+esc(c.lesson)+'</p><p class="cs"><a href="'+c.url+'" target="_blank" rel="noopener">'+esc(c.src)+'</a></p></section>';
+      });
+    }
+    var rel=a.rel.map(function(r){return '<a class="chip" href="#ucp/'+r+'">Art. '+r+' '+esc(BY[r].t.length>34?BY[r].t.slice(0,32)+'…':BY[r].t)+'</a>'}).join('');
+    if(a.inco)rel+=a.inco.map(function(k){return '<a class="chip inco" href="#incoterms/'+k+'">'+k+' on the Incoterms map</a>'}).join('');
+    h+='<h4>Related</h4><p class="rel">'+rel+(a.isbp?'<span class="chip isbp">ISBP 821: '+esc(a.isbp)+'</span>':'')+'</p>';
+    var art=$('ucpArticle');art.innerHTML=h;
+    if(focus){art.focus({preventScroll:true});art.scrollIntoView({behavior:'smooth',block:'start'})}
+  }
+
+  TK.ucp={
+    init:function(){
+      list();
+      if(window.matchMedia('(max-width: 860px)').matches)$('ucpIdx').removeAttribute('open');
+      $('ucpTry').innerHTML='<span>Try</span>'+EXAMPLES.map(function(e){return '<button type="button">'+esc(e)+'</button>'}).join('');
+      $('ucpTry').addEventListener('click',function(e){var b=e.target.closest('button');if(b){$('ucpQ').value=b.textContent;showResults(b.textContent)}});
+      $('ucpForm').addEventListener('submit',function(e){e.preventDefault();showResults($('ucpQ').value)});
+      var t;$('ucpQ').addEventListener('input',function(){clearTimeout(t);var v=this.value;t=setTimeout(function(){if(v.trim().length>2)showResults(v)},350)});
+      open(14,false);
+    },
+    open:function(n,focus){if(n&&BY[+n]){open(+n,focus!==false)}},
+    current:function(){return cur},
+    search:search
+  };
+})();
+
+/* ---------- Incoterms 2020 map ---------- */
+(function(){
+  var TK=window.TK=window.TK||{};
+  var $=function(i){return document.getElementById(i)};
+
+  var ICON={
+    wh:'<path d="M3 12 14 5l11 7v12H3z"/><path d="M8 24v-8h12v8M8 19h12"/>',
+    truck:'<path d="M2 9h15v11H2z"/><path d="M17 13h5l4 4v3h-9"/><circle cx="7" cy="21" r="2.4"/><circle cx="21" cy="21" r="2.4"/>',
+    stamp:'<path d="M11 17v-4a3 3 0 1 1 6 0v4"/><path d="M5 17h18v4H5z"/><path d="M5 24h18"/>',
+    crane:'<path d="M7 25V4h17"/><path d="M7 9l5-5"/><path d="M20 4v6"/><path d="M16 10h8v6h-8z"/><path d="M3 25h9"/>',
+    box:'<path d="M7 10h14v10H7z"/><path d="M11 10v10M17 10v10"/><path d="M2 24h24"/>',
+    load:'<path d="M3 20h22l-3 5H6z"/><path d="M5 3h18"/><path d="M15 3v5"/><path d="M11 8h8v6h-8z"/>',
+    sea:'<path d="M3 15h22l-3 5H6z"/><path d="M8 9h6v6H8zM14 9h6v6h-6z"/><path d="M2 25c2-1.5 4-1.5 6 0s4 1.5 6 0 4-1.5 6 0 4 1.5 6 0"/>',
+    ship:'<path d="M3 17h22l-3 6H6z"/><path d="M8 11h6v6H8zM14 11h6v6h-6z"/>'
+  };
+  var ST=[
+    {s:"Seller's warehouse",l:"while packed and waiting at the seller's warehouse",c:"Packing and marking",i:'wh',z:0},
+    {s:"Loaded on truck",l:"while being loaded onto a truck at the seller's warehouse",c:"Loading at the seller's premises",i:'truck',z:0},
+    {s:"Export customs",l:"while held at export customs",c:"Export clearance and any export duties",i:'stamp',z:0},
+    {s:"At origin terminal",l:"while arriving at the origin terminal, still on the truck",c:"Pre-carriage to the terminal",i:'truck',z:0},
+    {s:"Handed to carrier",l:"while being unloaded and handed to the carrier",c:"Unloading and handover to the carrier",i:'crane',z:0},
+    {s:"Alongside ship",l:"while on the quay alongside the ship",c:"Terminal handling up to the ship's side",i:'box',z:0},
+    {s:"Loaded on board",l:"while being lifted on board",c:"Loading on board",i:'load',z:0},
+    {s:"At sea",l:"at sea",c:"Main carriage (ocean freight)",i:'sea',z:1},
+    {s:"At destination port",l:"while still on the vessel at the destination port",c:"Carriage to the destination port",i:'ship',z:2},
+    {s:"Unloaded at terminal",l:"while being unloaded at the destination terminal",c:"Unloading at the destination terminal",i:'crane',z:2},
+    {s:"Import customs",l:"while held at import customs",c:"Import clearance, duties and taxes",i:'stamp',z:2},
+    {s:"At buyer's door",l:"while on the truck outside the buyer's warehouse",c:"On-carriage to the buyer's warehouse",i:'truck',z:2},
+    {s:"Unloaded at buyer",l:"while being unloaded at the buyer's warehouse",c:"Unloading at the buyer's warehouse",i:'wh',z:2}
+  ];
+  var ZONES=[{n:'Origin: Bangladesh',a:0,b:6},{n:'Transit',a:7,b:7},{n:'Destination: Finland',a:8,b:12}];
+  var FCA_P=[{id:'prem',label:"Seller's premises"},{id:'term',label:'Origin terminal'}];
+  var DEST_P=[{id:'term',label:'Destination terminal'},{id:'wh',label:"Buyer's warehouse"}];
+  var HARB='Vuosaari Harbour, Helsinki', WH="buyer's warehouse, Vantaa";
+
+  var R={
+    EXW:{name:'Ex Works',g:'E',sea:false,
+      point:function(){return "when the goods are placed at the buyer's disposal at the seller's warehouse, not loaded"},
+      write:function(){return "EXW seller's factory, Gazipur, Incoterms® 2020"},
+      pays:"Nothing beyond packing. The buyer pays loading, export clearance, freight and everything after.",
+      exp:'Buyer',imp:'Buyer',ins:"No duty on either side.",
+      doc:"None. The seller has no duty to provide a transport document.",
+      lc:"Poor fit. The seller never contracts the carriage, so it may never hold the transport document the credit asks for.",
+      watch:"The buyer has to clear export in the seller's country, which a foreign buyer often can't do. FCA is usually the better choice.",ucp:[4,14]},
+    FCA:{name:'Free Carrier',g:'F',sea:false,places:FCA_P,
+      point:function(p){return p==='prem'?"once the goods are loaded onto the buyer's collecting truck at the seller's premises":"when the seller's truck reaches the terminal, ready for unloading, at the disposal of the buyer's carrier"},
+      write:function(p){return p==='prem'?"FCA seller's factory, Gazipur, Incoterms® 2020":"FCA container terminal, Chattogram, Incoterms® 2020"},
+      pays:"Everything up to delivery at the named place, including export clearance. The buyer pays the main carriage.",
+      exp:'Seller',imp:'Buyer',ins:"No duty on either side.",
+      doc:"Usual proof of delivery. New in 2020: the parties can agree that the buyer's carrier issues an on-board bill of lading to the seller.",
+      lc:"Works with a credit that asks for an on-board B/L, as long as the sale contract uses the 2020 bill of lading option.",
+      watch:"Name the place precisely. At the seller's premises the seller loads; anywhere else the seller delivers on its own truck and doesn't unload.",ucp:[19,20]},
+    FAS:{name:'Free Alongside Ship',g:'F',sea:true,
+      point:function(){return "once the goods are alongside the buyer's vessel at Chattogram"},
+      write:function(){return "FAS Chattogram, Incoterms® 2020"},
+      pays:"Everything until the goods are alongside the ship, including export clearance. The buyer pays loading and freight.",
+      exp:'Seller',imp:'Buyer',ins:"No duty on either side.",
+      doc:"Usual proof that the goods are alongside the vessel.",
+      lc:"The buyer's carrier issues the B/L, so the seller depends on it to get a document it can present.",
+      watch:"Meant for bulk or break-bulk cargo, not containers.",ucp:[20,22]},
+    FOB:{name:'Free On Board',g:'F',sea:true,
+      point:function(){return "once the goods are on board the buyer's vessel at Chattogram"},
+      write:function(){return "FOB Chattogram, Incoterms® 2020"},
+      pays:"Everything until the goods are on board, including loading and export clearance. The buyer pays the freight.",
+      exp:'Seller',imp:'Buyer',ins:"No duty on either side.",
+      doc:"Usual proof that the goods are on board.",
+      lc:"Common with credits, but the buyer's nominated carrier issues the B/L, and the seller has to get it in time to present.",
+      watch:"Not for containers. The box is handed over at the terminal days before it goes on board, and the seller carries the risk all that time. ICC points container trades to FCA.",ucp:[20,14]},
+    CPT:{name:'Carriage Paid To',g:'C',sea:false,places:DEST_P,
+      point:function(){return "when the goods are handed to the carrier at the origin terminal"},
+      write:function(p){return 'CPT '+(p==='wh'?WH:HARB)+', Incoterms® 2020'},
+      pays:"Export clearance and carriage all the way to the named place of destination.",
+      exp:'Seller',imp:'Buyer',ins:"No duty on either side. The buyer carries the transit risk, so it should insure.",
+      doc:"The usual transport document for the carriage the seller contracted.",
+      lc:"Good fit: the seller contracts the carriage and controls the transport document.",
+      watch:"Two critical points: risk passes at origin, costs run to destination. If several carriers are used and no delivery point is agreed, risk passes at the first carrier.",ucp:[19,14]},
+    CFR:{name:'Cost and Freight',g:'C',sea:true,
+      point:function(){return "once the goods are on board the vessel at Chattogram"},
+      write:function(){return 'CFR '+HARB+', Incoterms® 2020'},
+      pays:"Export clearance, loading and ocean freight to the named port of destination.",
+      exp:'Seller',imp:'Buyer',ins:"No duty on either side. The buyer carries the sea risk, so it should insure.",
+      doc:"The usual transport document for the agreed port of destination, normally a bill of lading.",
+      lc:"A classic credit term: the seller contracts the carriage and controls the B/L.",
+      watch:"The buyer carries the sea risk on a voyage it didn't arrange. Not for containers: use CPT.",ucp:[20,14]},
+    CIF:{name:'Cost, Insurance and Freight',g:'C',sea:true,
+      point:function(){return "once the goods are on board the vessel at Chattogram"},
+      write:function(){return 'CIF '+HARB+', Incoterms® 2020'},
+      pays:"Export clearance, loading, ocean freight to the named port, and cargo insurance for the buyer.",
+      exp:'Seller',imp:'Buyer',ins:"Seller must insure the buyer's risk: at least Institute Cargo Clauses (C), for 110% of the price, in the contract currency.",
+      doc:"The usual transport document for the agreed port of destination, plus the insurance document.",
+      lc:"A classic credit term. The seller presents both the B/L and the insurance document.",
+      watch:"ICC (C) covers major casualties only, not theft or rough handling. Agree wider cover if you need it. Not for containers: use CIP.",ucp:[28,20]},
+    CIP:{name:'Carriage and Insurance Paid To',g:'C',sea:false,places:DEST_P,
+      point:function(){return "when the goods are handed to the carrier at the origin terminal"},
+      write:function(p){return 'CIP '+(p==='wh'?WH:HARB)+', Incoterms® 2020'},
+      pays:"Export clearance, carriage to the named place, and cargo insurance for the buyer.",
+      exp:'Seller',imp:'Buyer',ins:"Seller must insure the buyer's risk: Institute Cargo Clauses (A), for 110% of the price, in the contract currency.",
+      doc:"The usual transport document for the carriage contracted, plus the insurance document.",
+      lc:"Good fit for container shipments: the seller controls the transport document and presents the insurance document too.",
+      watch:"Incoterms 2020 raised the default cover from ICC (C) to ICC (A). The parties can still agree a lower level.",ucp:[28,19]},
+    DAP:{name:'Delivered at Place',g:'D',sea:false,places:DEST_P,
+      point:function(p){return p==='wh'?"when the truck arrives at the buyer's warehouse, ready for unloading":"when the vessel arrives at Vuosaari Harbour, ready for unloading"},
+      write:function(p){return 'DAP '+(p==='wh'?WH:HARB)+', Incoterms® 2020'},
+      pays:"Everything to the named place, except unloading there and import clearance.",
+      exp:'Seller',imp:'Buyer',ins:"No duty on either side. The seller carries the risk to destination, so it insures in practice.",
+      doc:"A document that lets the buyer take over the goods.",
+      lc:"Less common. The bank pays on shipping documents long before delivery, while the seller still carries the risk to destination.",
+      watch:"The buyer unloads and clears import. If the seller should unload, use DPU.",ucp:[14,6]},
+    DPU:{name:'Delivered at Place Unloaded',g:'D',sea:false,places:DEST_P,
+      point:function(p){return p==='wh'?"once the goods are unloaded at the buyer's warehouse":"once the goods are unloaded at Vuosaari Harbour"},
+      write:function(p){return 'DPU '+(p==='wh'?WH:HARB)+', Incoterms® 2020'},
+      pays:"Everything to the named place, including unloading there. The buyer pays import clearance and duties.",
+      exp:'Seller',imp:'Buyer',ins:"No duty on either side. The seller carries the risk until unloaded, so it insures in practice.",
+      doc:"A document that lets the buyer take over the goods.",
+      lc:"Less common, for the same reason as DAP.",
+      watch:"The only rule where the seller unloads at destination. Use it only if the seller can organise unloading there. It replaced DAT in 2020.",ucp:[14,6]},
+    DDP:{name:'Delivered Duty Paid',g:'D',sea:false,places:DEST_P,
+      point:function(p){return p==='wh'?"when the goods reach the buyer's warehouse, cleared for import and ready for unloading":"when the goods arrive at Vuosaari Harbour, cleared for import and ready for unloading"},
+      write:function(p){return 'DDP '+(p==='wh'?WH:HARB)+', Incoterms® 2020'},
+      pays:"Everything to the named place, including import clearance, duties and taxes. The buyer only unloads.",
+      exp:'Seller',imp:'Seller',ins:"No duty on either side. The seller carries the risk to destination, so it insures in practice.",
+      doc:"A document that lets the buyer take over the goods.",
+      lc:"Less common, for the same reason as DAP.",
+      watch:"Maximum obligation for the seller. Check that a foreign seller can legally act as importer and pay import VAT in the buyer's country.",ucp:[14,6]}
+  };
+  var GROUPS=[
+    {g:'E',d:'Goods ready at origin',r:['EXW']},
+    {g:'F',d:'Buyer pays main carriage',r:['FCA','FAS','FOB']},
+    {g:'C',d:'Seller pays main carriage',r:['CPT','CFR','CIF','CIP']},
+    {g:'D',d:'Delivered at destination',r:['DAP','DPU','DDP']}
+  ];
+
+  function geo(code,p){
+    var rf,ct;
+    switch(code){
+      case 'EXW':rf=ct=1;break;
+      case 'FCA':rf=ct=(p==='prem'?2:4);break;
+      case 'FAS':rf=ct=6;break;
+      case 'FOB':rf=ct=7;break;
+      case 'CFR':case 'CIF':rf=7;ct=9;break;
+      case 'CPT':case 'CIP':rf=5;ct=(p==='wh'?12:9);break;
+      case 'DAP':case 'DDP':rf=ct=(p==='wh'?12:9);break;
+      case 'DPU':rf=ct=(p==='wh'?13:10);break;
+    }
+    var E=code==='EXW',F=code==='FCA',prem=F&&p==='prem',buyerMain=['EXW','FCA','FAS','FOB'].indexOf(code)>-1,wh=p==='wh';
+    var c=[];
+    c[0]='S';
+    c[1]=E?'B':'S';
+    c[2]=E?'B':'S';
+    c[3]=(E||prem)?'B':'S';
+    c[4]=(E||F)?'B':'S';
+    c[5]=(E||F)?'B':'S';
+    c[6]=(E||F||code==='FAS')?'B':'S';
+    c[7]=buyerMain?'B':'S';
+    c[8]=buyerMain?'B':'S';
+    c[9]=buyerMain?'B':(code==='DPU'||wh)?'S':'D';
+    c[10]=code==='DDP'?'S':'B';
+    c[11]=wh?'S':'B';
+    c[12]=(code==='DPU'&&wh)?'S':(wh?'D':'B');
+    var ins=null;
+    if(code==='CIF')ins={a:7,b:8,cl:'C'};
+    if(code==='CIP')ins={a:rf,b:ct-1,cl:'A'};
+    return {rf:rf,ct:ct,c:c,ins:ins};
+  }
+
+  var state={code:'CIF',place:{FCA:'term',CPT:'term',CIP:'term',DAP:'wh',DPU:'wh',DDP:'wh'},inc:7,timer:null};
+  var cells={st:[],risk:[],cost:[],ins:[],lbl:{}};
+  var PARTY={S:'Seller',B:'Buyer',D:'Depends'};
+
+  function build(){
+    // picker
+    var pk=$('incoPicker'),h='';
+    GROUPS.forEach(function(G){
+      h+='<div class="pgroup"><span class="pg-letter" aria-hidden="true">'+G.g+'</span><span class="pg-desc">'+G.d+'</span><div class="pg-rules">';
+      G.r.forEach(function(k){
+        h+='<button type="button" class="rule" data-rule="'+k+'" aria-pressed="false" title="'+R[k].name+'"><span class="rc">'+k+'</span>'+(R[k].sea?'<svg class="wave" viewBox="0 0 28 10" aria-hidden="true"><path d="M1 6c3-3 5-3 8 0s5 3 8 0 5-3 8 0"/></svg><span class="sr-only"> (sea only)</span>':'')+'</button>';
+      });
+      h+='</div></div>';
+    });
+    pk.innerHTML=h;
+    pk.addEventListener('click',function(e){var b=e.target.closest('.rule');if(b)select(b.getAttribute('data-rule'),true)});
+
+    // route grid
+    var r=$('route'),g='';
+    ZONES.forEach(function(Z){g+='<div class="zone" style="grid-column:'+(Z.a+2)+' / span '+(Z.b-Z.a+1)+'">'+Z.n+'</div>'});
+    var L=[['','lbl0'],['Risk','lblRisk'],['','lblGap'],['Cost','lblCost'],['Insurance','lblIns']];
+    L.forEach(function(x,t){g+='<div class="cell lbl" id="'+x[1]+'" style="--s:-1;--t:'+t+'">'+x[0]+'</div>'});
+    ST.forEach(function(S,s){
+      var first=ZONES.filter(function(Z){return Z.a===s})[0];
+      g+='<button type="button" class="cell stn" data-s="'+s+'" style="--s:'+s+';--t:0" aria-pressed="false"><svg viewBox="0 0 28 28" aria-hidden="true">'+ICON[S.i]+'</svg><span class="stn-l">'+S.s+'</span>'+(first?'<span class="ztag">'+first.n+'</span>':'')+'</button>';
+      g+='<div class="cell risk" data-s="'+s+'" style="--s:'+s+';--t:1"><span class="sr-only"></span></div>';
+      g+='<div class="cell lane" data-s="'+s+'" style="--s:'+s+';--t:2"></div>';
+      g+='<div class="cell cost" data-s="'+s+'" style="--s:'+s+';--t:3"><span class="cv"></span></div>';
+      g+='<div class="cell insc" data-s="'+s+'" style="--s:'+s+';--t:4"></div>';
+    });
+    r.innerHTML=g;
+    cells.st=[].slice.call(r.querySelectorAll('.stn'));
+    cells.risk=[].slice.call(r.querySelectorAll('.risk'));
+    cells.cost=[].slice.call(r.querySelectorAll('.cost'));
+    cells.ins=[].slice.call(r.querySelectorAll('.insc'));
+    ['lbl0','lblRisk','lblGap','lblCost','lblIns'].forEach(function(k){cells.lbl[k]=$(k)});
+    r.addEventListener('click',function(e){var c=e.target.closest('[data-s]');if(c){stop();setInc(+c.getAttribute('data-s'))}});
+    r.addEventListener('keydown',function(e){
+      var c=e.target.closest('.stn');if(!c)return;var s=+c.getAttribute('data-s'),n=null;
+      if(e.key==='ArrowRight'||e.key==='ArrowDown')n=Math.min(12,s+1);
+      if(e.key==='ArrowLeft'||e.key==='ArrowUp')n=Math.max(0,s-1);
+      if(n!==null){e.preventDefault();cells.st[n].focus();stop();setInc(n)}
+    });
+    $('incoPlace').addEventListener('click',function(e){var b=e.target.closest('button');if(b){state.place[state.code]=b.getAttribute('data-p');render()}});
+    $('incoPlay').addEventListener('click',function(){state.timer?stop():play()});
+    window.addEventListener('resize',function(){place()});
+  }
+
+  function select(code,push){
+    if(!R[code])return;
+    state.code=code;
+    if(push){try{history.replaceState(null,'','#incoterms/'+code)}catch(e){}}
+    render();
+  }
+  function setInc(s){state.inc=s;cells.st.forEach(function(b,i){b.setAttribute('aria-pressed',i===s?'true':'false')});verdict();place()}
+
+  function render(){
+    var k=state.code,r=R[k],p=state.place[k],G=geo(k,p);
+    [].forEach.call($('incoPicker').querySelectorAll('.rule'),function(b){b.setAttribute('aria-pressed',b.getAttribute('data-rule')===k?'true':'false')});
+    $('incoCode').textContent=k;
+    $('incoName').textContent=r.name;
+    $('incoMode').textContent=(r.sea?'Sea and inland waterway only':'Any mode of transport')+'. Group '+r.g+': '+GROUPS.filter(function(x){return x.g===r.g})[0].d.toLowerCase()+'.';
+    $('incoWrite').textContent=r.write(p);
+    var pl=$('incoPlace');
+    if(r.places){
+      pl.innerHTML='<span class="pt-l">Named place</span>'+r.places.map(function(o){return '<button type="button" data-p="'+o.id+'" aria-pressed="'+(o.id===p)+'">'+o.label+'</button>'}).join('');
+      pl.hidden=false;
+    }else{pl.innerHTML='';pl.hidden=true}
+    cells.risk.forEach(function(c,s){var b=s>=G.rf;c.className='cell risk '+(b?'b':'s');c.firstChild.textContent=(b?'Buyer':'Seller')+"'s risk"});
+    cells.cost.forEach(function(c,s){var v=G.c[s];c.className='cell cost '+v.toLowerCase();c.firstChild.textContent=PARTY[v];c.title=ST[s].c+': '+(v==='D'?'buyer, unless in the seller’s carriage contract':PARTY[v].toLowerCase())});
+    cells.ins.forEach(function(c,s){c.className='cell insc'+(G.ins&&s>=G.ins.a&&s<=G.ins.b?' on':'')});
+    facts();verdict();place();
+  }
+
+  function facts(){
+    var k=state.code,r=R[k],p=state.place[k];
+    $('incoFactsTitle').textContent=k+' at a glance';
+    var rows=[
+      ['Risk passes',cap(r.point(p))+'.'],
+      ['Seller pays',r.pays],
+      ['Export clearance',r.exp],
+      ['Import clearance and duties',r.imp],
+      ['Insurance',r.ins],
+      ['Transport document from the seller',r.doc],
+      ['With a letter of credit',r.lc],
+      ['Watch out',r.watch],
+      ['Related UCP 600 articles',r.ucp.map(function(n){return '<a href="#ucp/'+n+'">Art. '+n+'</a>'}).join(', ')]
+    ];
+    $('incoFacts').innerHTML=rows.map(function(x){return '<dt>'+x[0]+'</dt><dd>'+x[1]+'</dd>'}).join('');
+  }
+
+  function verdict(){
+    var k=state.code,r=R[k],p=state.place[k],G=geo(k,p),s=state.inc,S=ST[s];
+    var buyerRisk=s>=G.rf, pay=G.c[s];
+    var h='<h3>Damaged '+S.l+'</h3><p class="v-sub">Under '+r.write(p).replace(', Incoterms® 2020','')+'</p><dl class="vrows">';
+    h+='<dt>Who takes the loss</dt><dd><strong class="pty '+(buyerRisk?'b':'s')+'">'+(buyerRisk?'Buyer':'Seller')+'</strong> ';
+    h+=buyerRisk?'Risk passes to the buyer '+r.point(p)+', and that has already happened. The buyer still owes the price and claims from the insurer or the carrier.'
+               :'Risk only passes to the buyer '+r.point(p)+', and that hasn’t happened yet. The seller bears the loss and still has to deliver.';
+    h+='</dd><dt>Who pays for this stage</dt><dd><strong class="pty '+pay.toLowerCase()+'">'+(pay==='D'?'Buyer, unless…':PARTY[pay])+'</strong> '+S.c+(pay==='D'?': the buyer pays, unless the seller’s contract of carriage already covers it.':'.')+'</dd>';
+    var ins;
+    if(G.ins){
+      if(s>=G.ins.a&&s<=G.ins.b)ins='Covered by the policy the seller had to buy for the buyer: Institute Cargo Clauses ('+G.ins.cl+'), at least 110% of the price. The buyer claims under it.'+(G.ins.cl==='C'?' ICC (C) only pays for major casualties such as fire, stranding or sinking.':'');
+      else if(s<G.ins.a)ins='The '+k+' policy only has to start at delivery. Before that it’s the seller’s own risk, so the seller insures this stretch for itself.';
+      else ins='Beyond the minimum cover, which only has to reach the named destination. Check whether the policy runs warehouse to warehouse.';
+    }else{
+      ins='Neither side has to insure under '+k+'. The '+(buyerRisk?'buyer':'seller')+' carries the risk here, so only the '+(buyerRisk?'buyer’s':'seller’s')+' own cover would pay.';
+    }
+    h+='<dt>Insurance</dt><dd>'+ins+'</dd></dl>';
+    if(buyerRisk&&pay==='S')h+='<p class="callout">'+(G.ct>G.rf&&s<G.ct?'This is the C-rule split: the seller paid for this leg, yet the buyer takes the loss.':'The seller pays for this step, but the buyer already carries the risk.')+'</p>';
+    if(!buyerRisk&&pay==='B')h+='<p class="callout">The buyer pays for this step, but the seller still carries the risk.</p>';
+    $('incoVerdict').innerHTML=h;
+  }
+
+  function vertical(){return window.matchMedia('(max-width: 760px)').matches}
+  function edge(i){var a=cells.st;if(vertical())return i>=13?a[12].offsetTop+a[12].offsetHeight:a[i].offsetTop;return i>=13?a[12].offsetLeft+a[12].offsetWidth:a[i].offsetLeft}
+  function band(el){return vertical()?{a:el.offsetLeft,len:el.offsetWidth}:{a:el.offsetTop,len:el.offsetHeight}}
+  function setBox(el,along0,along1,cross){
+    if(vertical()){el.style.left=cross.a+'px';el.style.width=cross.len+'px';el.style.top=along0+'px';el.style.height=Math.max(0,along1-along0)+'px'}
+    else{el.style.top=cross.a+'px';el.style.height=cross.len+'px';el.style.left=along0+'px';el.style.width=Math.max(0,along1-along0)+'px'}
+  }
+  function place(){
+    if(!cells.st.length||$('tab-incoterms').hidden)return;
+    var k=state.code,G=geo(k,state.place[k]),v=vertical();
+    var rb=band(cells.lbl.lblRisk),cb=band(cells.lbl.lblCost),gb=band(cells.lbl.lblGap),ib=band(cells.lbl.lblIns),sb=band(cells.lbl.lbl0);
+    var same=G.rf===G.ct;
+    var rp=$('ovRisk'),cp=$('ovCost');
+    setBox(rp,edge(G.rf)-1,edge(G.rf)+1,rb);
+    setBox(cp,edge(G.ct)-1,edge(G.ct)+1,cb);
+    rp.firstChild.textContent=same?(v?'Risk and costs pass':'Risk and costs pass to the buyer'):(v?'Risk passes':'Risk passes to the buyer');
+    cp.firstChild.textContent=same?'':'Seller stops paying';
+    cp.classList.toggle('quiet',same);
+    rp.classList.toggle('flip',!v&&G.rf>=10);cp.classList.toggle('flip',!v&&G.ct>=10);
+    rp.classList.toggle('start',!v&&G.rf<=1);cp.classList.toggle('start',!v&&G.ct<=1);
+    var gap=$('ovGap');
+    if(G.ct>G.rf){setBox(gap,edge(G.rf),edge(G.ct),gb);gap.classList.add('on')}else{gap.classList.remove('on')}
+    var ins=$('ovIns');
+    if(G.ins){setBox(ins,edge(G.ins.a)+3,edge(G.ins.b+1)-3,ib);ins.firstChild.textContent='Seller insures, ICC ('+G.ins.cl+')';ins.title='Seller insures the buyer\u2019s risk: ICC ('+G.ins.cl+'), at least 110%';ins.classList.remove('none')}
+    else{setBox(ins,edge(0)+3,edge(13)-3,ib);ins.firstChild.textContent='No duty to insure under '+k;ins.classList.add('none')}
+    var inc=$('ovIncident'),whole={a:sb.a-4,len:(ib.a+ib.len)-sb.a+8};
+    setBox(inc,edge(state.inc),edge(state.inc+1),whole);
+  }
+
+  function play(){
+    var b=$('incoPlay');b.textContent='Pause';b.setAttribute('aria-pressed','true');
+    var s=state.inc>=12?0:state.inc;setInc(s);
+    state.timer=setInterval(function(){if(state.inc>=12){stop();return}setInc(state.inc+1)},1150);
+  }
+  function stop(){if(state.timer){clearInterval(state.timer);state.timer=null}var b=$('incoPlay');b.textContent='Follow the shipment';b.setAttribute('aria-pressed','false')}
+  function cap(s){return s.charAt(0).toUpperCase()+s.slice(1)}
+
+  TK.inco={
+    init:function(){build();render();setInc(state.inc)},
+    open:function(code){if(code&&R[code.toUpperCase()])select(code.toUpperCase(),false);else render();setTimeout(place,0)},
+    shown:function(){place()},
+    current:function(){return state.code},
+    rules:R
+  };
+})();
+
+/* ---------- tabs, in-page links and the back button ----------
+   Links are routed in code rather than by the URL fragment, so they also work
+   when the page runs inside a sandboxed preview frame. The URL hash is updated
+   only where the browser allows it. */
+(function(){
+  var TK=window.TK;
+  var tabs=[].slice.call(document.querySelectorAll('.tabs [role=tab]'));
+  var backBtn=document.getElementById('backBtn');
+  var stack=[];
+  var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function currentTab(){var t=tabs.filter(function(x){return x.getAttribute('aria-selected')==='true'})[0];return t?t.getAttribute('data-tab'):'spotter'}
+  function show(name){
+    tabs.forEach(function(t){
+      var on=t.getAttribute('data-tab')===name;
+      t.setAttribute('aria-selected',on?'true':'false');
+      t.tabIndex=on?0:-1;
+      document.getElementById('tab-'+t.getAttribute('data-tab')).hidden=!on;
+    });
+    if(name==='incoterms')TK.inco.shown();
+  }
+  function hashNow(){var t=currentTab();if(t==='ucp')return 'ucp/'+TK.ucp.current();if(t==='incoterms')return 'incoterms/'+TK.inco.current();return 'spotter'}
+  function setHash(h,push){
+    try{if(push)history.pushState({tk:1},'','#'+h);else history.replaceState(history.state,'','#'+h);return true}catch(e){return false}
+  }
+  function scrollToId(id){
+    var el=document.getElementById(id);if(!el)return;
+    requestAnimationFrame(function(){
+      var y=el.getBoundingClientRect().top+window.pageYOffset-14;
+      window.scrollTo({top:Math.max(0,y),behavior:reduced?'auto':'smooth'});
+    });
+  }
+
+  /* show a place: 'spotter', 'ucp', 'ucp/14', 'incoterms', 'incoterms/CIF' */
+  function go(target){
+    var p=String(target||'').split('/');
+    if(p[0]==='ucp'){show('ucp');if(p[1]){TK.ucp.open(+p[1],false);scrollToId('ucpArticle')}else scrollToId('tab-ucp')}
+    else if(p[0]==='incoterms'){show('incoterms');TK.inco.open(p[1]);scrollToId(p[1]?'incoRuleBar':'tab-incoterms')}
+    else{show('spotter');scrollToId('tab-spotter')}
+  }
+
+  function labelHere(){
+    var t=currentTab();
+    if(t==='spotter')return document.querySelector('#out .sum')?'Back to your results':'Back to the discrepancy checker';
+    if(t==='ucp')return 'Back to Art. '+TK.ucp.current();
+    return 'Back to '+TK.inco.current()+' on the map';
+  }
+
+  /* follow a cross-reference and remember where we came from */
+  function follow(target,from){
+    var s={tab:currentTab(),y:window.pageYOffset,ucp:TK.ucp.current(),inco:TK.inco.current(),label:labelHere(),hash:hashNow(),from:from,href:from&&from.getAttribute('href')};
+    stack.push(s);
+    setHash(s.hash,false);            // make sure this history entry matches what we saved
+    go(target);
+    s.pushed=setHash(target,true);
+    renderBack();
+  }
+
+  function restore(){
+    var s=stack.pop();if(!s)return;
+    show(s.tab);
+    if(s.tab==='ucp')TK.ucp.open(s.ucp,false);
+    if(s.tab==='incoterms')TK.inco.open(s.inco);
+    renderBack();
+    requestAnimationFrame(function(){requestAnimationFrame(function(){
+      window.scrollTo({top:s.y,behavior:'auto'});
+      var panel=document.getElementById('tab-'+s.tab);
+      var el=(s.from&&document.contains(s.from))?s.from:(s.href?panel.querySelector('a[href="'+s.href+'"]'):null);
+      if(el){try{el.focus({preventScroll:true})}catch(e){}el.classList.remove('came-back');void el.offsetWidth;el.classList.add('came-back');setTimeout(function(){el.classList.remove('came-back')},1700)}
+    })});
+  }
+
+  function renderBack(){
+    var top=stack[stack.length-1];
+    if(top){backBtn.querySelector('span').textContent=top.label;backBtn.hidden=false}
+    else backBtn.hidden=true;
+  }
+
+  backBtn.addEventListener('click',function(){
+    var top=stack[stack.length-1];if(!top)return;
+    if(top.pushed){history.back()}else restore();
+  });
+
+  /* browser back and forward, and hashes typed by hand */
+  window.addEventListener('popstate',function(){
+    var h=decodeURIComponent(location.hash.replace(/^#/,''))||'spotter',top=stack[stack.length-1];
+    if(top&&top.pushed&&h===top.hash)restore();
+    else go(h);
+  });
+
+  /* every in-page link goes through here instead of the URL fragment */
+  document.addEventListener('click',function(e){
+    if(e.defaultPrevented||e.button!==0||e.metaKey||e.ctrlKey||e.shiftKey||e.altKey)return;
+    var a=e.target.closest('a[href^="#"]');if(!a)return;
+    var h=decodeURIComponent(a.getAttribute('href').slice(1));
+    if(!/^(spotter|ucp|incoterms)\b/.test(h))return;
+    e.preventDefault();
+    if(a.closest('.ucp-index, #ucpResults')){go(h);setHash(h,false);return}   // browsing the explorer: no back step
+    follow(h,a);
+  });
+
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){show(t.getAttribute('data-tab'));setHash(hashNow(),false)});
+    t.addEventListener('keydown',function(e){
+      var n=null;if(e.key==='ArrowRight')n=(i+1)%tabs.length;if(e.key==='ArrowLeft')n=(i+tabs.length-1)%tabs.length;
+      if(n!==null){e.preventDefault();tabs[n].focus();tabs[n].click()}
+    });
+  });
+
+  TK.ucp.init();
+  TK.inco.init();
+  var start=decodeURIComponent(location.hash.replace(/^#/,''));
+  if(start){var p=start.split('/');if(p[0]==='ucp'){show('ucp');if(p[1])TK.ucp.open(+p[1],false)}else if(p[0]==='incoterms'){show('incoterms');TK.inco.open(p[1])}}
+  setHash(hashNow(),false);
+  renderBack();
+})();
+
+</script>
+</body>
+</html>
