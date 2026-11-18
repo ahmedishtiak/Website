@@ -8574,7 +8574,7 @@ const GRAMMAR_D = [
     {k:"ex", items:[{f:"Onpa kaunis päivä!", e:"What a beautiful day!", n:"Exclamation; the verb comes first."},{f:"Tulepa tänne.", e:"Come here now.", n:"A nudge, slightly firmer than tulehan."},{f:"Enpä usko.", e:"I don't think so.", n:"A dry, mildly contrary denial."}]},
     {k:"box", tone:"tip", f:"Liitteitä voi yhdistää: -ko + -han = -kohan.", e:"Clitics stack, and the order is fixed: the question clitic comes first, then -han or -pa. Onkohan hän kotona means 'I wonder whether he's home' and is one of the most natural ways to think aloud in Finnish. Olisikohan, tulisikohan and menisikö are worth learning as ready-made phrases."},
     {k:"box", tone:"warn", f:"Kielteisessä lauseessa ei koskaan käytetä -kin-liitettä.", e:"The single most common clitic error: En minäkin tule. It must be En minäkään tule. Check every clitic in a negative clause; if the sentence contains ei, the clitic must be -kaan or -kään."},
-    {k:"box", tone:"spoken", f:"Puheessa -han on kaikkialla: nythän, onhan, tottakai. -kaan lyhenee muotoon -kaa.", e:"Listen to any Finnish conversation and -han appears every few sentences: nythän se toimii, onhan se kallis, mähän sanoin. In fast speech -kaan often loses its final n: en mäkää tiedä. You will not be expected to produce that, but you must recognise it."},
+    {k:"box", tone:"spoken", f:"Puheessa -han on kaikkialla: nythän, onhan, mähän. -kaan lyhenee muotoon -kaa.", e:"Listen to any Finnish conversation and -han appears every few sentences: nythän se toimii, onhan se kallis, mähän sanoin. In fast speech -kaan often loses its final n: en mäkää tiedä. You will not be expected to produce that, but you must recognise it."},
     {k:"box", tone:"yki", f:"Puhumisen osassa -han ja -kin tekevät puheesta luontevaa.", e:"In the YKI speaking subtest, assessors reward natural interaction. Two or three well-placed clitics — minäkin, onhan se, eihän se haittaa — signal that you are speaking Finnish rather than translating. They cost nothing in grammar risk, because they attach to forms you already produce correctly."}
   ],
   mf: "Liite tulee viimeiseksi. Kiellon kanssa -kaan, ei -kin.",
@@ -12588,7 +12588,8 @@ function xwToday() {
 function xwAnswer(v) {
   const a = bareFi(v.fi).toLowerCase();
   if (!/^[a-zåäö]{3,13}$/.test(a)) return null;
-  if (new RegExp("(^|[^a-zåäö])" + a + "([^a-zåäö]|$)").test(String(v.en || "").toLowerCase())) return null;
+  /* also pyjama → "pyjamas", televisio → "television": the clue would spell the answer out */
+  if (String(v.en || "").toLowerCase().split(/[^a-zåäö]+/).some(t => t.startsWith(a) || (a.length >= 4 && t.includes(a)))) return null;
   return a;
 }
 function xwPool(field, daily) {
